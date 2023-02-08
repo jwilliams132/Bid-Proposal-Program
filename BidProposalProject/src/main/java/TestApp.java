@@ -35,10 +35,13 @@ import java.awt.GridLayout;
 
 public class TestApp {
 
+
+	private String path_to_List_of_counties_in_Texas = "BidProposalProject\\src\\main\\resources\\List_of_counties_in_Texas.csv";
+	private String path_to_Cropped_WR_LLC_logo = "BidProposalProject\\src\\main\\resources\\Cropped WR LLC logo.jpg";
 	private Audit audit = new Audit();
 	private ParseFullDoc parseFullDoc;
 	private FileManager fileManager = new FileManager();
-	private TexasCityFinder cityFinder = new TexasCityFinder("src\\main\\resources\\List_of_counties_in_Texas.csv");
+	private TexasCityFinder cityFinder = new TexasCityFinder(path_to_List_of_counties_in_Texas);
 	private String lettingMonthDirectory;
 
 	private ArrayList<JLabel> jobLabels = new ArrayList<JLabel>();
@@ -146,7 +149,7 @@ public class TestApp {
 		audit.add("Start");
 		frmWilliamsRoadLlc = new JFrame();
 		frmWilliamsRoadLlc
-				.setIconImage(Toolkit.getDefaultToolkit().getImage("src\\main\\resources\\Cropped WR LLC logo.jpg"));
+				.setIconImage(Toolkit.getDefaultToolkit().getImage(path_to_Cropped_WR_LLC_logo));
 		frmWilliamsRoadLlc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmWilliamsRoadLlc.setTitle("Williams Road LLC Bid Form Program");
 		frmWilliamsRoadLlc.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -391,8 +394,8 @@ public class TestApp {
 
 				audit.add("save Button was pressed.");
 
-				File excelInputFile = fileManager.chooseFile("src\\main\\resources\\Test Template.xlsm",
-						"src\\main\\resources\\", FileManager.fileChooserOptions.OPEN, xslmFileFilter);
+				File excelInputFile = fileManager.chooseFile("BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
+						null, FileManager.fileChooserOptions.OPEN, xslmFileFilter);
 
 				int startingEstimateNo = 1600;
 				ExcelManager excelManager;
@@ -515,6 +518,11 @@ public class TestApp {
 		// Add a log message
 		audit.add("All button functions added.");
 	}
+
+	// ====================================================================================================
+	// Button Functions
+	// ====================================================================================================
+
 
 	public void displayData() {
 

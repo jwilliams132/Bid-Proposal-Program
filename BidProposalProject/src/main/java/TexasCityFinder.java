@@ -17,7 +17,7 @@ public class TexasCityFinder {
 	public TexasCityFinder(String filePath) {
 
 		// Initialize the map
-		countyToCity = new HashMap<>();
+		countyToCity = new HashMap<String, String>();
 		// Read the CSV file
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(filePath));
@@ -31,10 +31,8 @@ public class TexasCityFinder {
 			// Close the file
 			reader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

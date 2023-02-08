@@ -35,12 +35,10 @@ public class ExcelManager {
 			file.close();
 		} catch (FileNotFoundException fNFE) {
 			
-			// TODO Auto-generated catch block
 			fNFE.printStackTrace();
 			
 		} catch (IOException e) {
 			
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -116,11 +114,9 @@ public class ExcelManager {
 			file.close();
 		} catch (FileNotFoundException e) {
 			
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

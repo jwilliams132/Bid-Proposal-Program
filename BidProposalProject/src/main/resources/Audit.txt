@@ -6828,3 +6828,277 @@
 2//7  17:48:55 : All job data extracted.
 2//7  17:48:55 : 	Data has been displayed.
 2//7  17:48:55 : 	Function chooseOpenFile completed.
+2//7  23:24:46 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//7  23:24:46 : All GUI elements added.
+2//7  23:24:46 : All button functions added.
+2//7  23:24:48 : chooseOpenFile Button was pressed.
+2//7  23:24:54 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//7  23:24:54 : Tries to open file.
+2//7  23:24:54 : 	File opened successfully.
+2//7  23:24:54 : Previous file loaded.
+2//7  23:24:54 : Loaded job:  0072-08-143 BEXAR
+2//7  23:24:54 : Loaded job:  3508-01-029 BEXAR
+2//7  23:24:54 : Loaded job:  0058-04-022 CHEROKEE
+2//7  23:24:54 : Loaded job:  6422-53-001 DALLAS
+2//7  23:24:54 : Loaded job:  0168-07-050 DEAF SMITH
+2//7  23:24:54 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//7  23:24:54 : Loaded job:  0016-02-171 HAYS
+2//7  23:24:54 : Loaded job:  0286-01-061 HAYS
+2//7  23:24:54 : Loaded job:  0005-05-113 HOWARD
+2//7  23:24:54 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//7  23:24:54 : Loaded job:  2786-01-018 LAMPASAS
+2//7  23:24:54 : Loaded job:  0389-01-044 LIBERTY
+2//7  23:24:54 : Loaded job:  0176-06-016 POLK, ETC
+2//7  23:24:54 : Loaded job:  0003-07-061 REEVES
+2//7  23:24:54 : Loaded job:  0123-05-015 RUSK
+2//7  23:24:54 : Loaded job:  1330-02-049 TARRANT
+2//7  23:24:54 : Loaded job:  0228-01-058 TERRY, ETC
+2//7  23:24:54 : Loaded job:  1226-02-016 TITUS
+2//7  23:24:54 : Loaded job:  1902-01-031 TRAVIS
+2//7  23:24:54 : All job data extracted.
+2//7  23:24:54 : 	Data has been displayed.
+2//7  23:24:54 : 	Function chooseOpenFile completed.
+2//7  23:25:03 : addPricing Button was pressed.
+2//7  23:25:03 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//7  23:25:03 : 	Function addPricing completed.
+2//7  23:25:04 : nextJob Button was pressed.
+2//7  23:25:04 : 	Job:  3508-01-029	Pricing page has been displayed.
+2//7  23:25:04 : 	Function nextJob completed.
+2//7  23:25:04 : nextJob Button was pressed.
+2//7  23:25:04 : 	Job:  0058-04-022	Pricing page has been displayed.
+2//7  23:25:04 : 	Function nextJob completed.
+2//7  23:25:05 : nextJob Button was pressed.
+2//7  23:25:05 : 	Job:  6422-53-001	Pricing page has been displayed.
+2//7  23:25:05 : 	Function nextJob completed.
+2//7  23:25:05 : nextJob Button was pressed.
+2//7  23:25:05 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//7  23:25:05 : 	Function nextJob completed.
+2//7  23:25:05 : nextJob Button was pressed.
+2//7  23:25:05 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//7  23:25:05 : 	Function nextJob completed.
+2//7  23:25:05 : nextJob Button was pressed.
+2//7  23:25:05 : 	Job:  0016-02-171	Pricing page has been displayed.
+2//7  23:25:05 : 	Function nextJob completed.
+2//7  23:25:05 : nextJob Button was pressed.
+2//7  23:25:05 : 	Job:  0286-01-061	Pricing page has been displayed.
+2//7  23:25:05 : 	Function nextJob completed.
+2//7  23:25:05 : nextJob Button was pressed.
+2//7  23:25:05 : 	Job:  0005-05-113	Pricing page has been displayed.
+2//7  23:25:05 : 	Function nextJob completed.
+2//7  23:25:06 : nextJob Button was pressed.
+2//7  23:25:06 : 	Job:  0095-03-107	Pricing page has been displayed.
+2//7  23:25:06 : 	Function nextJob completed.
+2//7  23:25:06 : nextJob Button was pressed.
+2//7  23:25:06 : 	Job:  2786-01-018	Pricing page has been displayed.
+2//7  23:25:06 : 	Function nextJob completed.
+2//7  23:25:06 : nextJob Button was pressed.
+2//7  23:25:06 : 	Job:  0389-01-044	Pricing page has been displayed.
+2//7  23:25:06 : 	Function nextJob completed.
+2//7  23:25:06 : nextJob Button was pressed.
+2//7  23:25:06 : 	Job:  0176-06-016	Pricing page has been displayed.
+2//7  23:25:06 : 	Function nextJob completed.
+2//7  23:25:06 : nextJob Button was pressed.
+2//7  23:25:06 : 	Job:  0003-07-061	Pricing page has been displayed.
+2//7  23:25:06 : 	Function nextJob completed.
+2//7  23:25:06 : nextJob Button was pressed.
+2//7  23:25:06 : 	Job:  0123-05-015	Pricing page has been displayed.
+2//7  23:25:06 : 	Function nextJob completed.
+2//7  23:25:07 : nextJob Button was pressed.
+2//7  23:25:07 : 	Job:  1330-02-049	Pricing page has been displayed.
+2//7  23:25:07 : 	Function nextJob completed.
+2//7  23:25:07 : nextJob Button was pressed.
+2//7  23:25:07 : 	Job:  0228-01-058	Pricing page has been displayed.
+2//7  23:25:07 : 	Function nextJob completed.
+2//7  23:25:07 : nextJob Button was pressed.
+2//7  23:25:07 : 	Job:  1226-02-016	Pricing page has been displayed.
+2//7  23:25:07 : 	Function nextJob completed.
+2//7  23:25:07 : nextJob Button was pressed.
+2//7  23:25:07 : 	Job:  1902-01-031	Pricing page has been displayed.
+2//7  23:25:07 : 	Function nextJob completed.
+2//7  23:25:08 : chooseSaveFile Button was pressed.
+2//7  23:25:15 : File to save to was chosen. Directory Path:  C:\Users\Jacob\Desktop\Letting\Test Letting
+2//7  23:25:15 : Tries to save file.
+2//7  23:25:15 : 	File saved successfully.
+2//7  23:25:15 : 	Function chooseSaveFile completed.
+2//7  23:25:17 : save Button was pressed.
+2//7  23:28:36 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//7  23:28:36 : All GUI elements added.
+2//7  23:28:36 : All button functions added.
+2//7  23:30:19 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//7  23:30:19 : All GUI elements added.
+2//7  23:30:19 : All button functions added.
+2//7  23:30:37 : chooseOpenFile Button was pressed.
+2//7  23:30:43 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//7  23:30:43 : Tries to open file.
+2//7  23:30:43 : 	File opened successfully.
+2//7  23:30:43 : Previous file loaded.
+2//7  23:30:43 : Loaded job:  0072-08-143 BEXAR
+2//7  23:30:43 : Loaded job:  3508-01-029 BEXAR
+2//7  23:30:43 : Loaded job:  0058-04-022 CHEROKEE
+2//7  23:30:43 : Loaded job:  6422-53-001 DALLAS
+2//7  23:30:43 : Loaded job:  0168-07-050 DEAF SMITH
+2//7  23:30:43 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//7  23:30:43 : Loaded job:  0016-02-171 HAYS
+2//7  23:30:43 : Loaded job:  0286-01-061 HAYS
+2//7  23:30:43 : Loaded job:  0005-05-113 HOWARD
+2//7  23:30:43 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//7  23:30:43 : Loaded job:  2786-01-018 LAMPASAS
+2//7  23:30:43 : Loaded job:  0389-01-044 LIBERTY
+2//7  23:30:43 : Loaded job:  0176-06-016 POLK, ETC
+2//7  23:30:43 : Loaded job:  0003-07-061 REEVES
+2//7  23:30:43 : Loaded job:  0123-05-015 RUSK
+2//7  23:30:43 : Loaded job:  1330-02-049 TARRANT
+2//7  23:30:43 : Loaded job:  0228-01-058 TERRY, ETC
+2//7  23:30:43 : Loaded job:  1226-02-016 TITUS
+2//7  23:30:43 : Loaded job:  1902-01-031 TRAVIS
+2//7  23:30:43 : All job data extracted.
+2//7  23:30:43 : 	Data has been displayed.
+2//7  23:30:43 : 	Function chooseOpenFile completed.
+2//7  23:30:46 : chooseSaveFile Button was pressed.
+2//7  23:30:50 : File to save to was chosen. Directory Path:  C:\Users\Jacob\Desktop\Letting\Test Letting
+2//7  23:30:50 : Tries to save file.
+2//7  23:30:50 : 	File saved successfully.
+2//7  23:30:50 : 	Function chooseSaveFile completed.
+2//7  23:30:51 : save Button was pressed.
+2//7  23:30:52 : WR-2023-1600
+2//7  23:30:52 : WR-2023-1601
+2//7  23:30:52 : WR-2023-1602
+2//7  23:30:52 : WR-2023-1610
+2//7  23:30:52 : WR-2023-1611
+2//7  23:30:52 : WR-2023-1612
+2//7  23:30:52 : WR-2023-1620
+2//7  23:30:52 : WR-2023-1621
+2//7  23:30:52 : WR-2023-1622
+2//7  23:30:52 : WR-2023-1623
+2//7  23:30:52 : WR-2023-1624
+2//7  23:30:52 : WR-2023-1625
+2//7  23:30:52 : WR-2023-1630
+2//7  23:30:52 : WR-2023-1631
+2//7  23:30:52 : WR-2023-1632
+2//7  23:30:52 : WR-2023-1633
+2//7  23:30:52 : WR-2023-1640
+2//7  23:30:52 : WR-2023-1641
+2//7  23:30:52 : WR-2023-1642
+2//7  23:30:52 : WR-2023-1643
+2//7  23:30:52 : WR-2023-1644
+2//7  23:30:52 : WR-2023-1645
+2//7  23:30:53 : WR-2023-1650
+2//7  23:30:53 : WR-2023-1651
+2//7  23:30:53 : WR-2023-1652
+2//7  23:30:53 : WR-2023-1653
+2//7  23:30:53 : WR-2023-1654
+2//7  23:30:53 : WR-2023-1655
+2//7  23:30:53 : WR-2023-1656
+2//7  23:30:53 : WR-2023-1660
+2//7  23:30:53 : WR-2023-1661
+2//7  23:30:53 : WR-2023-1670
+2//7  23:30:53 : WR-2023-1671
+2//7  23:30:53 : WR-2023-1680
+2//7  23:30:53 : WR-2023-1681
+2//7  23:30:53 : WR-2023-1690
+2//7  23:30:53 : WR-2023-1691
+2//7  23:30:53 : WR-2023-1700
+2//7  23:30:53 : WR-2023-1710
+2//7  23:30:53 : WR-2023-1720
+2//7  23:30:53 : WR-2023-1721
+2//7  23:30:53 : WR-2023-1722
+2//7  23:30:53 : WR-2023-1730
+2//7  23:30:53 : WR-2023-1731
+2//7  23:30:53 : WR-2023-1732
+2//7  23:30:53 : WR-2023-1733
+2//7  23:30:53 : WR-2023-1734
+2//7  23:30:53 : WR-2023-1740
+2//7  23:30:53 : WR-2023-1741
+2//7  23:30:53 : WR-2023-1742
+2//7  23:30:53 : WR-2023-1743
+2//7  23:30:53 : WR-2023-1744
+2//7  23:30:53 : WR-2023-1745
+2//7  23:30:53 : WR-2023-1746
+2//7  23:30:53 : WR-2023-1747
+2//7  23:30:53 : WR-2023-1750
+2//7  23:30:53 : WR-2023-1751
+2//7  23:30:53 : WR-2023-1760
+2//7  23:30:53 : WR-2023-1761
+2//7  23:30:53 : WR-2023-1762
+2//7  23:30:53 : WR-2023-1763
+2//7  23:30:53 : WR-2023-1764
+2//7  23:30:53 : WR-2023-1765
+2//7  23:30:53 : WR-2023-1770
+2//7  23:30:53 : WR-2023-1771
+2//7  23:30:53 : WR-2023-1772
+2//7  23:30:53 : WR-2023-1773
+2//7  23:30:53 : WR-2023-1774
+2//7  23:30:53 : WR-2023-1780
+2//7  23:30:56 : save	Function save completed.
