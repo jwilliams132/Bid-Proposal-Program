@@ -7102,3 +7102,222 @@
 2//7  23:30:53 : WR-2023-1774
 2//7  23:30:53 : WR-2023-1780
 2//7  23:30:56 : save	Function save completed.
+2//8  14:18:10 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//8  14:18:10 : All GUI elements added.
+2//8  14:18:10 : All button functions added.
+2//8  14:21:22 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//8  14:21:22 : All GUI elements added.
+2//8  14:21:22 : All button functions added.
+2//8  14:21:42 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//8  14:21:42 : All GUI elements added.
+2//8  14:21:42 : All button functions added.
+2//8  14:24:28 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//8  14:24:28 : All GUI elements added.
+2//8  14:24:28 : All button functions added.
+2//8  14:25:04 : chooseOpenFile Button was pressed.
+2//8  14:25:08 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//8  14:25:08 : Tries to open file.
+2//8  14:25:08 : 	File opened successfully.
+2//8  14:25:08 : Previous file loaded.
+2//8  14:25:08 : Loaded job:  0072-08-143 BEXAR
+2//8  14:25:08 : Loaded job:  3508-01-029 BEXAR
+2//8  14:25:08 : Loaded job:  0058-04-022 CHEROKEE
+2//8  14:25:08 : Loaded job:  6422-53-001 DALLAS
+2//8  14:25:08 : Loaded job:  0168-07-050 DEAF SMITH
+2//8  14:25:08 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//8  14:25:08 : Loaded job:  0016-02-171 HAYS
+2//8  14:25:08 : Loaded job:  0286-01-061 HAYS
+2//8  14:25:08 : Loaded job:  0005-05-113 HOWARD
+2//8  14:25:08 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//8  14:25:08 : Loaded job:  2786-01-018 LAMPASAS
+2//8  14:25:08 : Loaded job:  0389-01-044 LIBERTY
+2//8  14:25:08 : Loaded job:  0176-06-016 POLK, ETC
+2//8  14:25:08 : Loaded job:  0003-07-061 REEVES
+2//8  14:25:08 : Loaded job:  0123-05-015 RUSK
+2//8  14:25:08 : Loaded job:  1330-02-049 TARRANT
+2//8  14:25:08 : Loaded job:  0228-01-058 TERRY, ETC
+2//8  14:25:08 : Loaded job:  1226-02-016 TITUS
+2//8  14:25:08 : Loaded job:  1902-01-031 TRAVIS
+2//8  14:25:08 : All job data extracted.
+2//8  14:25:08 : 	Data has been displayed.
+2//8  14:25:08 : 	Function chooseOpenFile completed.
+2//8  14:25:13 : addPricing Button was pressed.
+2//8  14:25:13 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//8  14:25:13 : 	Function addPricing completed.
+2//8  14:25:14 : nextJob Button was pressed.
+2//8  14:25:14 : 	Job:  3508-01-029	Pricing page has been displayed.
+2//8  14:25:14 : 	Function nextJob completed.
+2//8  14:25:14 : nextJob Button was pressed.
+2//8  14:25:14 : 	Job:  0058-04-022	Pricing page has been displayed.
+2//8  14:25:14 : 	Function nextJob completed.
+2//8  14:25:15 : nextJob Button was pressed.
+2//8  14:25:15 : 	Job:  6422-53-001	Pricing page has been displayed.
+2//8  14:25:15 : 	Function nextJob completed.
+2//8  14:25:15 : nextJob Button was pressed.
+2//8  14:25:15 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//8  14:25:15 : 	Function nextJob completed.
+2//8  14:25:16 : nextJob Button was pressed.
+2//8  14:25:16 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//8  14:25:16 : 	Function nextJob completed.
+2//8  14:25:16 : nextJob Button was pressed.
+2//8  14:25:16 : 	Job:  0016-02-171	Pricing page has been displayed.
+2//8  14:25:16 : 	Function nextJob completed.
+2//8  14:25:17 : previousJob Button was pressed.
+2//8  14:25:17 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//8  14:25:17 : 	Function previousJob completed.
+2//8  14:25:17 : nextJob Button was pressed.
+2//8  14:25:17 : 	Job:  0016-02-171	Pricing page has been displayed.
+2//8  14:25:17 : 	Function nextJob completed.
+2//8  14:25:22 : chooseOpenFile Button was pressed.
+2//8  14:25:28 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//8  14:25:28 : Tries to open file.
+2//8  14:25:28 : 	File opened successfully.
+2//8  14:25:28 : Previous file loaded.
+2//8  14:25:28 : Loaded job:  0072-08-143 BEXAR
+2//8  14:25:28 : Loaded job:  3508-01-029 BEXAR
+2//8  14:25:28 : Loaded job:  0058-04-022 CHEROKEE
+2//8  14:25:28 : Loaded job:  6422-53-001 DALLAS
+2//8  14:25:28 : Loaded job:  0168-07-050 DEAF SMITH
+2//8  14:25:28 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//8  14:25:28 : Loaded job:  0016-02-171 HAYS
+2//8  14:25:28 : Loaded job:  0286-01-061 HAYS
+2//8  14:25:28 : Loaded job:  0005-05-113 HOWARD
+2//8  14:25:28 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//8  14:25:28 : Loaded job:  2786-01-018 LAMPASAS
+2//8  14:25:28 : Loaded job:  0389-01-044 LIBERTY
+2//8  14:25:28 : Loaded job:  0176-06-016 POLK, ETC
+2//8  14:25:28 : Loaded job:  0003-07-061 REEVES
+2//8  14:25:28 : Loaded job:  0123-05-015 RUSK
+2//8  14:25:28 : Loaded job:  1330-02-049 TARRANT
+2//8  14:25:28 : Loaded job:  0228-01-058 TERRY, ETC
+2//8  14:25:28 : Loaded job:  1226-02-016 TITUS
+2//8  14:25:28 : Loaded job:  1902-01-031 TRAVIS
+2//8  14:25:28 : All job data extracted.
+2//8  14:25:28 : 	Data has been displayed.
+2//8  14:25:28 : 	Function chooseOpenFile completed.
+2//8  14:25:29 : filterForCheckedBoxes Button was pressed.
+2//8  14:25:29 : 	Data has been displayed.
+2//8  14:25:29 : 	Function filterForCheckedBoxes completed.
+2//8  14:26:25 : chooseOpenFile Button was pressed.
+2//8  14:26:30 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//8  14:26:30 : Tries to open file.
+2//8  14:26:30 : 	File opened successfully.
+2//8  14:26:30 : Previous file loaded.
+2//8  14:26:30 : Loaded job:  0072-08-143 BEXAR
+2//8  14:26:30 : Loaded job:  3508-01-029 BEXAR
+2//8  14:26:30 : Loaded job:  0058-04-022 CHEROKEE
+2//8  14:26:30 : Loaded job:  6422-53-001 DALLAS
+2//8  14:26:30 : Loaded job:  0168-07-050 DEAF SMITH
+2//8  14:26:30 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//8  14:26:30 : Loaded job:  0016-02-171 HAYS
+2//8  14:26:30 : Loaded job:  0286-01-061 HAYS
+2//8  14:26:30 : Loaded job:  0005-05-113 HOWARD
+2//8  14:26:30 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//8  14:26:30 : Loaded job:  2786-01-018 LAMPASAS
+2//8  14:26:30 : Loaded job:  0389-01-044 LIBERTY
+2//8  14:26:30 : Loaded job:  0176-06-016 POLK, ETC
+2//8  14:26:30 : Loaded job:  0003-07-061 REEVES
+2//8  14:26:30 : Loaded job:  0123-05-015 RUSK
+2//8  14:26:30 : Loaded job:  1330-02-049 TARRANT
+2//8  14:26:30 : Loaded job:  0228-01-058 TERRY, ETC
+2//8  14:26:30 : Loaded job:  1226-02-016 TITUS
+2//8  14:26:30 : Loaded job:  1902-01-031 TRAVIS
+2//8  14:26:30 : All job data extracted.
+2//8  14:26:30 : 	Data has been displayed.
+2//8  14:26:30 : 	Function chooseOpenFile completed.
