@@ -34,8 +34,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 public class TestApp {
-
-
+	
 	private String path_to_List_of_counties_in_Texas = "BidProposalProject\\src\\main\\resources\\List_of_counties_in_Texas.csv";
 	private String path_to_Cropped_WR_LLC_logo = "BidProposalProject\\src\\main\\resources\\Cropped WR LLC logo.jpg";
 	private Audit audit = new Audit();
