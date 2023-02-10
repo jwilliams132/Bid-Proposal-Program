@@ -45,6 +45,18 @@ public class ParseFullDoc {
 
 	}
 
+	/**
+	 * Parses the data from the input file.
+	 * The contents of the file are read using the `fileManager.readFile` method and
+	 * stored in the `contentsByLine` list.
+	 * The contents of the file are then separated into jobs using the
+	 * `separateJobs` method.
+	 * The data for each job is extracted using the `extractJobData` method and
+	 * added to the `jobList`.
+	 * A message is added to the `audit` list indicating that all job data has been
+	 * extracted.
+	 */
+
 	public void parseData() {
 
 		importFileData(inputFile);
@@ -89,6 +101,18 @@ public class ParseFullDoc {
 		audit.add("	File saved successfully.");
 	}
 
+	/**
+	 * Separates the contents of the file into jobs based on the delimiter.
+	 * The contents of the file are stored in the `contentsByLine` list.
+	 * If the first line starts with a `|` character, the contents are processed as
+	 * a previous file.
+	 * Otherwise, the contents are processed as a new file, and jobs are separated
+	 * based on the "==========" delimiter.
+	 * The separated jobs are stored in the `arrayOfJobStrings` list.
+	 * A message is added to the `audit` list indicating the type of file that was
+	 * loaded.
+	 * The type of file is also set using the `setBidFileType` method.
+	 */
 	public void separateJobs() {
 
 		arrayOfJobStrings = new ArrayList<ArrayList<String>>();
