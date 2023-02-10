@@ -24,6 +24,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.SwingConstants;
 import java.awt.Toolkit;
@@ -541,6 +542,13 @@ public class TestApp {
 	// ====================================================================================================
 	// Methods
 	// ====================================================================================================
+
+	public Color randomColor() {
+
+		Random random = new Random();
+
+		return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+	}
 
 	public void displayData() {
 
