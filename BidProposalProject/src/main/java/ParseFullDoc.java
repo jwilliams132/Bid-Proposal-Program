@@ -59,7 +59,8 @@ public class ParseFullDoc {
 
 	public void parseData() {
 
-		importFileData(inputFile);
+		contentsByLine = fileManager.readFile(inputFile);
+
 		separateJobs();
 		for (ArrayList<String> job : arrayOfJobStrings) {
 
@@ -70,7 +71,6 @@ public class ParseFullDoc {
 
 	public void importFileData(File file) {
 
-		audit.add("Tries to open file.");
 		contentsByLine = fileManager.readFile(file);
 		audit.add("	File opened successfully.");
 	}
