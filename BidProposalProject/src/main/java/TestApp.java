@@ -572,32 +572,44 @@ public class TestApp {
 		viewportPanel.add(dataHeaderLabel, displayConstraints);
 
 		for (int index = 0; index < parseFullDoc.getJobList().size(); index++) {
+			Job currentJob = parseFullDoc.getJobList().get(index);
 
 			// sets all job labels into list
-			jobLabels.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,10.2f", //
-					parseFullDoc.getJobList().get(index).getCsj(), //
-					parseFullDoc.getJobList().get(index).getCounty(), //
-					parseFullDoc.getJobList().get(index).getHighway(), //
-					parseFullDoc.getJobList().get(index).getSumOfQuantities())));
+			currentJobLabel = new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
+					currentJob.getCsj(),
+					currentJob.getCounty(),
+					currentJob.getHighway(),
+					currentJob.getSumOfQuantities()));
+			currentJobLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
 
 			// sets all job check boxes into list
 			jobCheckBoxes.add(new JCheckBox(String.format("%2d:", index + 1)));
-			// System.out.println(jobCheckBoxes.get(index).getText());
 
-			jobLabels.get(index).setFont(new Font("Monospaced", Font.PLAIN, 14));
 			jobCheckBoxes.get(index).setFont(new Font("Monospaced", Font.PLAIN, 14));
+			jobCheckBoxes.get(index).setBackground(Color.LIGHT_GRAY);
 
 			displayConstraints.anchor = GridBagConstraints.NORTHEAST;
 			displayConstraints.gridx = 0;
-			displayConstraints.gridy = index + 1;
+			displayConstraints.gridy = index + lineItemCount + 1;
 			displayConstraints.ipady = 0;
 			viewportPanel.add(jobCheckBoxes.get(index), displayConstraints);
 
 			displayConstraints.anchor = GridBagConstraints.NORTHEAST;
 			displayConstraints.gridx = 1;
-			displayConstraints.gridy = index + 1;
+			displayConstraints.gridy = index + lineItemCount + 1;
 			displayConstraints.ipady = 8;
-			viewportPanel.add(jobLabels.get(index), displayConstraints);
+			viewportPanel.add(currentJobLabel, displayConstraints);
+
+			for (LineItem lineItem : currentJob.getLineItems()) {
+				lineItemCount++;
+				lineItemLabel = new JLabel(
+						String.format("%-40s     %10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(), ""));
+				lineItemLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
+				displayConstraints.gridx = 1;
+				displayConstraints.gridy = index + lineItemCount + 1;
+				viewportPanel.add(lineItemLabel, displayConstraints);
+
+			}
 		}
 		audit.add("	Data has been displayed.");
 	}
