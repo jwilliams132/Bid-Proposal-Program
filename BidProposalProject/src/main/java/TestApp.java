@@ -34,7 +34,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 public class TestApp {
-	
+
 	private String path_to_List_of_counties_in_Texas = "BidProposalProject\\src\\main\\resources\\List_of_counties_in_Texas.csv";
 	private String path_to_Cropped_WR_LLC_logo = "BidProposalProject\\src\\main\\resources\\Cropped WR LLC logo.jpg";
 	private Audit audit = new Audit();
@@ -200,36 +200,37 @@ public class TestApp {
 		// ====================================================================================================
 
 		dataPanel = new JPanel();
-		frmWilliamsRoadLlc.getContentPane().add(dataPanel, BorderLayout.CENTER);
 		dataPanel.setLayout(new BorderLayout(0, 0));
 
 		dataScrollPane = new JScrollPane();
 		dataScrollPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		dataScrollPane.getVerticalScrollBar().setUnitIncrement(16);
-		dataPanel.add(dataScrollPane, BorderLayout.CENTER);
-
-		dataHeaderLabel = new JLabel("");
-		dataHeaderLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
-		dataScrollPane.setColumnHeaderView(dataHeaderLabel);
-
-		rowHeaderPanel = new JPanel();
 		dataScrollPane.setAlignmentX(0.0f);
 		dataScrollPane.setAlignmentY(0.0f);
 
-		rowHeaderPanel.setLayout(new GridLayout(10, 1, 10, 10));
+		dataHeaderLabel = new JLabel("");
+		dataHeaderLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
 
 		rowHeaderContainer = new JPanel();
-		rowHeaderContainer.add(rowHeaderPanel);
 
-		dataScrollPane.setRowHeaderView(rowHeaderContainer);
+		rowHeaderPanel = new JPanel();
+		rowHeaderPanel.setLayout(new GridLayout(10, 1, 10, 10));
 
 		viewportPanel = new JPanel();
 		viewportPanel.setLayout(new GridLayout(10, 1, 10, 10));
 
 		viewportContainer = new JPanel();
 		viewportContainer.setLayout(new BorderLayout(0, 0));
+
+		frmWilliamsRoadLlc.getContentPane().add(dataPanel, BorderLayout.CENTER);
+
+		dataPanel.add(dataScrollPane, BorderLayout.CENTER);
+		dataScrollPane.setColumnHeaderView(dataHeaderLabel);
+
+		rowHeaderContainer.add(rowHeaderPanel);
 		viewportContainer.add(viewportPanel, BorderLayout.WEST);
 
+		dataScrollPane.setRowHeaderView(rowHeaderContainer);
 		dataScrollPane.setViewportView(viewportContainer);
 
 		// ====================================================================================================
@@ -270,7 +271,23 @@ public class TestApp {
 		// Button Functions
 		// ====================================================================================================
 
-		// choose a file to open button
+		/*
+		 * popup for a filechooser
+		 * if null, shows a warning popup
+		 * 
+		 * updates file path label
+		 * 
+		 * creates ParseFullDoc instance
+		 * 
+		 * -inside PFD
+		 * sets Audit
+		 * sets input file
+		 * parses the Data
+		 * 
+		 * enables buttons
+		 * sets data window label
+		 * displayData()
+		 */
 		chooseOpenFile.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -341,7 +358,7 @@ public class TestApp {
 			}
 		});
 
-//		 Add an action listener to the choose save file button
+		// Add an action listener to the choose save file button
 		chooseSaveDirectory.addActionListener(new ActionListener() {
 			// When the button is pressed, perform the following actions
 			public void actionPerformed(ActionEvent e) {
@@ -350,21 +367,25 @@ public class TestApp {
 				audit.add("chooseSaveFile Button was pressed.");
 				switch (currentDisplay) {
 
-				case JOB_FILTERING:
-					break;
-				case PRICING:
-					if (!checkPricingPageTextValidity())
-						return;
+					case JOB_FILTERING:
+						break;
+					case PRICING:
+						if (!checkPricingPageTextValidity())
+							return;
 				}
 
 				lettingMonthDirectory = fileManager.chooseDirectory(null);
 				// Get the selected file
-				File formattedOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Program Ouput.txt", null, FileManager.fileChooserOptions.SAVE, null);
-				File userFriendlyOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Program Output (User Friendly).txt", null, FileManager.fileChooserOptions.SAVE, null);
-				File emailList =  fileManager.chooseFile(lettingMonthDirectory + "\\Email List.txt", null, FileManager.fileChooserOptions.SAVE, null);
+				File formattedOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Program Ouput.txt", null,
+						FileManager.fileChooserOptions.SAVE, null);
+				File userFriendlyOutput = fileManager.chooseFile(
+						lettingMonthDirectory + "\\Program Output (User Friendly).txt", null,
+						FileManager.fileChooserOptions.SAVE, null);
+				File emailList = fileManager.chooseFile(lettingMonthDirectory + "\\Email List.txt", null,
+						FileManager.fileChooserOptions.SAVE, null);
 
-//				// Set the prices for the current job
-//				setPrices();
+				// // Set the prices for the current job
+				// setPrices();
 				// Set the file path label to show the chosen file
 				saveFilePathLabel.setText("Directory Path:  " + lettingMonthDirectory);
 
@@ -384,8 +405,6 @@ public class TestApp {
 			}
 		});
 
-
-
 		// save button
 		save.addActionListener(new ActionListener() {
 
@@ -393,7 +412,8 @@ public class TestApp {
 
 				audit.add("save Button was pressed.");
 
-				File excelInputFile = fileManager.chooseFile("BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
+				File excelInputFile = fileManager.chooseFile(
+						"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
 						null, FileManager.fileChooserOptions.OPEN, xslmFileFilter);
 
 				int startingEstimateNo = 1600;
@@ -438,9 +458,9 @@ public class TestApp {
 				parseFullDoc.setJobList(selectedJobList); // set the job list to the selected jobs
 
 				// for every job, print the info
-//				for (Job job : parseFullDoc.getJobList())
-//
-//					job.printJobInfo(); // print the job info
+				// for (Job job : parseFullDoc.getJobList())
+				//
+				// job.printJobInfo(); // print the job info
 
 				displayData(); // display the new data
 				filterForCheckedBoxes.setEnabled(false);
@@ -519,25 +539,16 @@ public class TestApp {
 	}
 
 	// ====================================================================================================
-	// Button Functions
+	// Methods
 	// ====================================================================================================
-
 
 	public void displayData() {
 
-		dataScrollPane.remove(viewportContainer);
-		dataScrollPane.remove(rowHeaderContainer);
-
-		viewportPanel.removeAll();
-		rowHeaderContainer.removeAll();
-
-		viewportContainer.remove(viewportPanel);
-		rowHeaderContainer.remove(rowHeaderPanel);
-
-		GridBagConstraints constraints = new GridBagConstraints();
-
+		GridBagConstraints displayConstraints = new GridBagConstraints();
 		jobLabels = new ArrayList<JLabel>();
 		jobCheckBoxes = new ArrayList<JCheckBox>();
+
+		clearScrollPanel();
 
 		dataHeaderLabel = new JLabel(" CSJ                 County              Highway             Total Quantities");
 		dataHeaderLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
@@ -545,22 +556,20 @@ public class TestApp {
 		rowHeaderPanel = new JPanel();
 		rowHeaderPanel.setLayout(new GridBagLayout());
 
-		rowHeaderContainer.add(rowHeaderPanel);
-
-		dataScrollPane.setRowHeaderView(rowHeaderContainer);
-
 		viewportPanel = new JPanel();
 		viewportPanel.setLayout(new GridBagLayout());
 		viewportPanel.setBackground(Color.LIGHT_GRAY);
-
-		viewportContainer.add(viewportPanel, BorderLayout.NORTH);
-
-		dataScrollPane.setViewportView(viewportContainer);
 		viewportPanel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
-		constraints.gridx = 1;
-		constraints.gridy = 0;
-		viewportPanel.add(dataHeaderLabel, constraints);
+		rowHeaderContainer.add(rowHeaderPanel);
+		viewportContainer.add(viewportPanel, BorderLayout.NORTH);
+
+		dataScrollPane.setRowHeaderView(rowHeaderContainer);
+		dataScrollPane.setViewportView(viewportContainer);
+
+		displayConstraints.gridx = 1;
+		displayConstraints.gridy = 0;
+		viewportPanel.add(dataHeaderLabel, displayConstraints);
 
 		for (int index = 0; index < parseFullDoc.getJobList().size(); index++) {
 
@@ -573,29 +582,40 @@ public class TestApp {
 
 			// sets all job check boxes into list
 			jobCheckBoxes.add(new JCheckBox(String.format("%2d:", index + 1)));
-//			System.out.println(jobCheckBoxes.get(index).getText());
+			// System.out.println(jobCheckBoxes.get(index).getText());
 
 			jobLabels.get(index).setFont(new Font("Monospaced", Font.PLAIN, 14));
 			jobCheckBoxes.get(index).setFont(new Font("Monospaced", Font.PLAIN, 14));
 
-			constraints.anchor = GridBagConstraints.NORTHEAST;
-			constraints.gridx = 0;
-			constraints.gridy = index + 1;
-			constraints.ipady = 0;
-			viewportPanel.add(jobCheckBoxes.get(index), constraints);
+			displayConstraints.anchor = GridBagConstraints.NORTHEAST;
+			displayConstraints.gridx = 0;
+			displayConstraints.gridy = index + 1;
+			displayConstraints.ipady = 0;
+			viewportPanel.add(jobCheckBoxes.get(index), displayConstraints);
 
-			constraints.anchor = GridBagConstraints.NORTHEAST;
-			constraints.gridx = 1;
-			constraints.gridy = index + 1;
-			constraints.ipady = 8;
-			viewportPanel.add(jobLabels.get(index), constraints);
+			displayConstraints.anchor = GridBagConstraints.NORTHEAST;
+			displayConstraints.gridx = 1;
+			displayConstraints.gridy = index + 1;
+			displayConstraints.ipady = 8;
+			viewportPanel.add(jobLabels.get(index), displayConstraints);
 		}
 		audit.add("	Data has been displayed.");
 	}
 
+	private void clearScrollPanel() {
+		viewportPanel.removeAll();
+		rowHeaderPanel.removeAll();
+
+		viewportContainer.remove(viewportPanel);
+		rowHeaderContainer.remove(rowHeaderPanel);
+
+		dataScrollPane.remove(viewportContainer);
+		dataScrollPane.remove(rowHeaderContainer);
+	}
+
 	public void displayPricingInput() {
 
-		GridBagConstraints constraints = new GridBagConstraints();
+		GridBagConstraints displayPricingConstraints = new GridBagConstraints();
 
 		dataHeaderLabel = new JLabel();
 		dataHeaderLabel.setText(String.format("%-20s%-20s%-20s%-20s", parseFullDoc.getJobList().get(jobIndex).getCsj(),
@@ -606,6 +626,7 @@ public class TestApp {
 
 		rowHeaderPanel = new JPanel();
 		rowHeaderContainer.add(rowHeaderPanel);
+		rowHeaderContainer.add(new JButton("button"));
 		dataScrollPane.setRowHeaderView(rowHeaderPanel);
 
 		viewportPanel = new JPanel();
@@ -613,38 +634,23 @@ public class TestApp {
 		dataScrollPane.setViewportView(viewportPanel);
 		viewportPanel.setLayout(new GridBagLayout());
 
-		constraints.anchor = GridBagConstraints.BELOW_BASELINE_LEADING;
-		constraints.ipadx = 10;
-		constraints.ipady = 10;
+		displayPricingConstraints.anchor = GridBagConstraints.BELOW_BASELINE_LEADING;
+		displayPricingConstraints.ipadx = 10;
+		displayPricingConstraints.ipady = 10;
 
-//		constraints.gridx = 0;
-//		constraints.gridy = 0;
-//		viewportPanel.add(new JLabel("Up to how many mobilizations?  "), constraints);
-//		constraints.gridx = 1;
-//		constraints.gridy = 0;
-//		addUpTo_MobsToPricingPage(constraints);
-
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		viewportPanel.add(new JLabel("Total Mobilizations Price?  "), constraints);
-		constraints.gridx = 1;
-		constraints.gridy = 1;
-		addTotalMobsToPricingPage(constraints);
-
-//		constraints.gridx = 0;
-//		constraints.gridy = 2;
-//		viewportPanel.add(new JLabel("Additional Mobilizations Price   "), constraints);
-//		constraints.gridx = 1;
-//		constraints.gridy = 2;
-//		addAdditionalMobsToPricingPage(constraints);
-
-		addLineItemsToPricingPage(constraints);
+		displayPricingConstraints.gridx = 0;
+		displayPricingConstraints.gridy = 1;
+		viewportPanel.add(new JLabel("Total Mobilizations Price?  "), displayPricingConstraints);
+		displayPricingConstraints.gridx = 1;
+		displayPricingConstraints.gridy = 1;
+		addTotalMobsToPricingPage(displayPricingConstraints);
+		addLineItemsToPricingPage(displayPricingConstraints);
 
 		totalMobsTextField.requestFocus();
 		audit.add("	Job:  " + parseFullDoc.getJobList().get(jobIndex).getCsj() + "	Pricing page has been displayed.");
 	}
 
-	public void addUpTo_MobsToPricingPage(GridBagConstraints constraints) {
+	public void addUpTo_MobsToPricingPage(GridBagConstraints displayPricingConstraints) {
 
 		upToMobsTextField = new JTextField();
 		upToMobsTextField.setText(String.format("%d", parseFullDoc.getJobList().get(jobIndex).getUpTo_Mobs()));
@@ -659,10 +665,10 @@ public class TestApp {
 			public void focusLost(FocusEvent e) {
 			}
 		});
-		viewportPanel.add(upToMobsTextField, constraints);
+		viewportPanel.add(upToMobsTextField, displayPricingConstraints);
 	}
 
-	public void addAdditionalMobsToPricingPage(GridBagConstraints constraints) {
+	public void addAdditionalMobsToPricingPage(GridBagConstraints displayPricingConstraints) {
 
 		additionalMobsTextField = new JTextField();
 		additionalMobsTextField
@@ -678,10 +684,10 @@ public class TestApp {
 			public void focusLost(FocusEvent e) {
 			}
 		});
-		viewportPanel.add(additionalMobsTextField, constraints);
+		viewportPanel.add(additionalMobsTextField, displayPricingConstraints);
 	}
 
-	public void addTotalMobsToPricingPage(GridBagConstraints constraints) {
+	public void addTotalMobsToPricingPage(GridBagConstraints displayPricingConstraints) {
 
 		totalMobsTextField = new JTextField();
 		totalMobsTextField.setText(String.format("%.0f", parseFullDoc.getJobList().get(jobIndex).getTotalMobs()));
@@ -697,22 +703,22 @@ public class TestApp {
 			}
 
 		});
-		viewportPanel.add(totalMobsTextField, constraints);
+		viewportPanel.add(totalMobsTextField, displayPricingConstraints);
 	}
 
-	public void addLineItemsToPricingPage(GridBagConstraints constraints) {
+	public void addLineItemsToPricingPage(GridBagConstraints displayPricingConstraints) {
 
 		for (int index = 0; index < parseFullDoc.getJobList().get(jobIndex).getLineItems().size(); index++) {
 
 			final int indexForActionListener = index;
-			constraints.gridx = 0;
-			constraints.gridy = index + 4;
+			displayPricingConstraints.gridx = 0;
+			displayPricingConstraints.gridy = index + 4;
 			viewportPanel.add(
 					new JLabel(String.format("%s%s%,2.2f",
 							parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getDescription(),
 							"        Quantity: ",
 							parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getQuantity())),
-					constraints);
+					displayPricingConstraints);
 			lineItemPrices.add(new JTextField());
 			lineItemPrices.get(index).setPreferredSize(new Dimension(50, 20));
 			lineItemPrices.get(index).setText(String.format("%1.2f",
@@ -731,17 +737,17 @@ public class TestApp {
 
 			});
 
-			constraints.gridx = 1;
-			constraints.gridy = index + 4;
-			viewportPanel.add(lineItemPrices.get(index), constraints);
+			displayPricingConstraints.gridx = 1;
+			displayPricingConstraints.gridy = index + 4;
+			viewportPanel.add(lineItemPrices.get(index), displayPricingConstraints);
 		}
 	}
 
 	public void setPrices() {
 
-//		pFD.getJobList().get(jobIndex).setUpTo_Mobs(Integer.valueOf(upToMobsTextField.getText()));
+		// pFD.getJobList().get(jobIndex).setUpTo_Mobs(Integer.valueOf(upToMobsTextField.getText()));
 		parseFullDoc.getJobList().get(jobIndex).setTotalMobs(Float.valueOf(totalMobsTextField.getText()));
-//		pFD.getJobList().get(jobIndex).setAdditionalMobs(Float.valueOf(additionalMobsTextField.getText()));
+		// pFD.getJobList().get(jobIndex).setAdditionalMobs(Float.valueOf(additionalMobsTextField.getText()));
 
 		// use this if additional mobs is the same as total mobs (add in check boxes to
 		// allow the choice
@@ -778,7 +784,7 @@ public class TestApp {
 			excelManager.setCellValue(sheetName, 4, 20, job.getUpTo_Mobs());
 			excelManager.setCellValue(sheetName, 0, 27,
 					String.format("%s%d", "WR-2023-", estimateNumber + contractorIndex));
-			
+
 			audit.add(String.format("%s%d", "WR-2023-", estimateNumber + contractorIndex));
 
 			totalAmount += job.getTotalMobs();

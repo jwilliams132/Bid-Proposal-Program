@@ -26,7 +26,7 @@ public class TexasCityFinder {
 
 				// Split the line into columns
 				String[] columns = line.split(",");
-				countyToCity.put(columns[0], columns[1]);
+				countyToCity.put(columns[0].toUpperCase(), columns[1]);
 			}
 			// Close the file
 			reader.close();
@@ -38,8 +38,11 @@ public class TexasCityFinder {
 	}
 
 	public String getLargestCity(String county) {
-		county = county.toLowerCase();
-		county = county.replaceFirst(county.substring(0, 1), county.substring(0, 1).toUpperCase());
+		System.out.println(county);
+		if (county.length() > 5 && county.substring(county.length() - 5).equals(", ETC"))
+			county = county.substring(0, county.length() - 5);
+		System.out.println(" ".concat(county));
+		System.out.println(" ".concat(countyToCity.get(county)));
 		return countyToCity.get(county);
 	}
 }

@@ -378,11 +378,6 @@ public class ParseFullDoc {
 					job.setContractorList(updatedBiddersJob.getContractorList());
 	}
 
-	public ArrayList<String> createMailingList() {
-
-		return null;
-	}
-
 	// ====================================================================================================
 	// Getter/Setters
 	// ====================================================================================================

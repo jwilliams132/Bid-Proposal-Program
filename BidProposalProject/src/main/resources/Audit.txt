@@ -7321,3 +7321,1209 @@
 2//8  14:26:30 : All job data extracted.
 2//8  14:26:30 : 	Data has been displayed.
 2//8  14:26:30 : 	Function chooseOpenFile completed.
+2//9  15:49:43 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  15:49:43 : All GUI elements added.
+2//9  15:49:43 : All button functions added.
+2//9  15:49:44 : chooseOpenFile Button was pressed.
+2//9  15:49:50 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  15:49:50 : Previous file loaded.
+2//9  15:49:50 : Loaded job:  0072-08-143 BEXAR
+2//9  15:49:50 : Loaded job:  3508-01-029 BEXAR
+2//9  15:49:50 : Loaded job:  0058-04-022 CHEROKEE
+2//9  15:49:50 : Loaded job:  6422-53-001 DALLAS
+2//9  15:49:50 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  15:49:50 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  15:49:50 : Loaded job:  0016-02-171 HAYS
+2//9  15:49:50 : Loaded job:  0286-01-061 HAYS
+2//9  15:49:50 : Loaded job:  0005-05-113 HOWARD
+2//9  15:49:50 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  15:49:50 : Loaded job:  2786-01-018 LAMPASAS
+2//9  15:49:50 : Loaded job:  0389-01-044 LIBERTY
+2//9  15:49:50 : Loaded job:  0176-06-016 POLK, ETC
+2//9  15:49:50 : Loaded job:  0003-07-061 REEVES
+2//9  15:49:50 : Loaded job:  0123-05-015 RUSK
+2//9  15:49:50 : Loaded job:  1330-02-049 TARRANT
+2//9  15:49:50 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  15:49:50 : Loaded job:  1226-02-016 TITUS
+2//9  15:49:50 : Loaded job:  1902-01-031 TRAVIS
+2//9  15:49:50 : All job data extracted.
+2//9  15:49:50 : 	Data has been displayed.
+2//9  15:49:50 : 	Function chooseOpenFile completed.
+2//9  15:49:53 : chooseOpenFile Button was pressed.
+2//9  15:50:00 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//9  15:50:00 : Previous file loaded.
+2//9  15:50:00 : Loaded job:  0072-08-143 BEXAR
+2//9  15:50:00 : Loaded job:  3508-01-029 BEXAR
+2//9  15:50:00 : Loaded job:  0058-04-022 CHEROKEE
+2//9  15:50:00 : Loaded job:  6422-53-001 DALLAS
+2//9  15:50:00 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  15:50:00 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  15:50:00 : Loaded job:  0016-02-171 HAYS
+2//9  15:50:00 : Loaded job:  0286-01-061 HAYS
+2//9  15:50:00 : Loaded job:  0005-05-113 HOWARD
+2//9  15:50:00 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  15:50:00 : Loaded job:  2786-01-018 LAMPASAS
+2//9  15:50:00 : Loaded job:  0389-01-044 LIBERTY
+2//9  15:50:00 : Loaded job:  0176-06-016 POLK, ETC
+2//9  15:50:00 : Loaded job:  0003-07-061 REEVES
+2//9  15:50:00 : Loaded job:  0123-05-015 RUSK
+2//9  15:50:00 : Loaded job:  1330-02-049 TARRANT
+2//9  15:50:00 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  15:50:00 : Loaded job:  1226-02-016 TITUS
+2//9  15:50:00 : Loaded job:  1902-01-031 TRAVIS
+2//9  15:50:00 : All job data extracted.
+2//9  15:50:00 : 	Data has been displayed.
+2//9  15:50:00 : 	Function chooseOpenFile completed.
+2//9  15:50:08 : addPricing Button was pressed.
+2//9  15:50:08 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//9  15:50:08 : 	Function addPricing completed.
+2//9  15:50:09 : chooseOpenFile Button was pressed.
+2//9  15:50:12 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//9  15:50:12 : Previous file loaded.
+2//9  15:50:12 : Loaded job:  0072-08-143 BEXAR
+2//9  15:50:12 : Loaded job:  3508-01-029 BEXAR
+2//9  15:50:12 : Loaded job:  0058-04-022 CHEROKEE
+2//9  15:50:12 : Loaded job:  6422-53-001 DALLAS
+2//9  15:50:12 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  15:50:12 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  15:50:12 : Loaded job:  0016-02-171 HAYS
+2//9  15:50:12 : Loaded job:  0286-01-061 HAYS
+2//9  15:50:12 : Loaded job:  0005-05-113 HOWARD
+2//9  15:50:12 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  15:50:12 : Loaded job:  2786-01-018 LAMPASAS
+2//9  15:50:12 : Loaded job:  0389-01-044 LIBERTY
+2//9  15:50:12 : Loaded job:  0176-06-016 POLK, ETC
+2//9  15:50:12 : Loaded job:  0003-07-061 REEVES
+2//9  15:50:12 : Loaded job:  0123-05-015 RUSK
+2//9  15:50:12 : Loaded job:  1330-02-049 TARRANT
+2//9  15:50:12 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  15:50:12 : Loaded job:  1226-02-016 TITUS
+2//9  15:50:12 : Loaded job:  1902-01-031 TRAVIS
+2//9  15:50:12 : All job data extracted.
+2//9  15:50:12 : 	Data has been displayed.
+2//9  15:50:12 : 	Function chooseOpenFile completed.
+2//9  20:21:30 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  20:21:30 : All GUI elements added.
+2//9  20:21:30 : All button functions added.
+2//9  20:21:32 : chooseOpenFile Button was pressed.
+2//9  20:21:36 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  20:21:36 : Previous file loaded.
+2//9  20:21:36 : Loaded job:  0072-08-143 BEXAR
+2//9  20:21:36 : Loaded job:  3508-01-029 BEXAR
+2//9  20:21:36 : Loaded job:  0058-04-022 CHEROKEE
+2//9  20:21:36 : Loaded job:  6422-53-001 DALLAS
+2//9  20:21:36 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  20:21:36 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  20:21:36 : Loaded job:  0016-02-171 HAYS
+2//9  20:21:36 : Loaded job:  0286-01-061 HAYS
+2//9  20:21:36 : Loaded job:  0005-05-113 HOWARD
+2//9  20:21:36 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  20:21:36 : Loaded job:  2786-01-018 LAMPASAS
+2//9  20:21:36 : Loaded job:  0389-01-044 LIBERTY
+2//9  20:21:36 : Loaded job:  0176-06-016 POLK, ETC
+2//9  20:21:36 : Loaded job:  0003-07-061 REEVES
+2//9  20:21:36 : Loaded job:  0123-05-015 RUSK
+2//9  20:21:36 : Loaded job:  1330-02-049 TARRANT
+2//9  20:21:36 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  20:21:36 : Loaded job:  1226-02-016 TITUS
+2//9  20:21:36 : Loaded job:  1902-01-031 TRAVIS
+2//9  20:21:36 : All job data extracted.
+2//9  20:21:36 : 	Data has been displayed.
+2//9  20:21:36 : 	Function chooseOpenFile completed.
+2//9  20:21:40 : addPricing Button was pressed.
+2//9  20:21:40 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//9  20:21:40 : 	Function addPricing completed.
+2//9  20:31:06 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  20:31:07 : All GUI elements added.
+2//9  20:31:07 : All button functions added.
+2//9  20:31:08 : chooseOpenFile Button was pressed.
+2//9  20:31:21 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  20:31:21 : Previous file loaded.
+2//9  20:31:21 : Loaded job:  0072-08-143 BEXAR
+2//9  20:31:21 : Loaded job:  3508-01-029 BEXAR
+2//9  20:31:21 : Loaded job:  0058-04-022 CHEROKEE
+2//9  20:31:21 : Loaded job:  6422-53-001 DALLAS
+2//9  20:31:21 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  20:31:21 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  20:31:21 : Loaded job:  0016-02-171 HAYS
+2//9  20:31:21 : Loaded job:  0286-01-061 HAYS
+2//9  20:31:21 : Loaded job:  0005-05-113 HOWARD
+2//9  20:31:21 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  20:31:21 : Loaded job:  2786-01-018 LAMPASAS
+2//9  20:31:21 : Loaded job:  0389-01-044 LIBERTY
+2//9  20:31:21 : Loaded job:  0176-06-016 POLK, ETC
+2//9  20:31:21 : Loaded job:  0003-07-061 REEVES
+2//9  20:31:21 : Loaded job:  0123-05-015 RUSK
+2//9  20:31:21 : Loaded job:  1330-02-049 TARRANT
+2//9  20:31:21 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  20:31:21 : Loaded job:  1226-02-016 TITUS
+2//9  20:31:21 : Loaded job:  1902-01-031 TRAVIS
+2//9  20:31:21 : All job data extracted.
+2//9  20:31:21 : 	Data has been displayed.
+2//9  20:31:21 : 	Function chooseOpenFile completed.
+2//9  20:31:24 : addPricing Button was pressed.
+2//9  20:31:24 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//9  20:31:24 : 	Function addPricing completed.
+2//9  20:31:31 : filterForCheckedBoxes Button was pressed.
+2//9  20:31:31 : 	Data has been displayed.
+2//9  20:31:31 : 	Function filterForCheckedBoxes completed.
+2//9  20:31:34 : nextJob Button was pressed.
+2//9  20:31:34 : nextJob Button was pressed.
+2//9  20:31:34 : nextJob Button was pressed.
+2//9  20:31:34 : nextJob Button was pressed.
+2//9  20:31:35 : nextJob Button was pressed.
+2//9  20:31:35 : nextJob Button was pressed.
+2//9  20:31:36 : nextJob Button was pressed.
+2//9  20:31:36 : nextJob Button was pressed.
+2//9  20:31:36 : nextJob Button was pressed.
+2//9  20:31:36 : nextJob Button was pressed.
+2//9  20:31:36 : nextJob Button was pressed.
+2//9  20:31:36 : nextJob Button was pressed.
+2//9  20:31:37 : nextJob Button was pressed.
+2//9  20:31:47 : nextJob Button was pressed.
+2//9  20:31:47 : nextJob Button was pressed.
+2//9  20:31:48 : nextJob Button was pressed.
+2//9  20:31:49 : nextJob Button was pressed.
+2//9  20:31:49 : nextJob Button was pressed.
+2//9  20:31:49 : nextJob Button was pressed.
+2//9  20:31:51 : nextJob Button was pressed.
+2//9  20:34:20 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  20:34:20 : All GUI elements added.
+2//9  20:34:20 : All button functions added.
+2//9  20:34:21 : chooseOpenFile Button was pressed.
+2//9  20:34:27 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  20:34:27 : Previous file loaded.
+2//9  20:34:27 : Loaded job:  0072-08-143 BEXAR
+2//9  20:34:27 : Loaded job:  3508-01-029 BEXAR
+2//9  20:34:27 : Loaded job:  0058-04-022 CHEROKEE
+2//9  20:34:27 : Loaded job:  6422-53-001 DALLAS
+2//9  20:34:27 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  20:34:27 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  20:34:27 : Loaded job:  0016-02-171 HAYS
+2//9  20:34:27 : Loaded job:  0286-01-061 HAYS
+2//9  20:34:27 : Loaded job:  0005-05-113 HOWARD
+2//9  20:34:27 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  20:34:27 : Loaded job:  2786-01-018 LAMPASAS
+2//9  20:34:27 : Loaded job:  0389-01-044 LIBERTY
+2//9  20:34:27 : Loaded job:  0176-06-016 POLK, ETC
+2//9  20:34:27 : Loaded job:  0003-07-061 REEVES
+2//9  20:34:27 : Loaded job:  0123-05-015 RUSK
+2//9  20:34:27 : Loaded job:  1330-02-049 TARRANT
+2//9  20:34:27 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  20:34:27 : Loaded job:  1226-02-016 TITUS
+2//9  20:34:27 : Loaded job:  1902-01-031 TRAVIS
+2//9  20:34:27 : All job data extracted.
+2//9  20:34:27 : 	Data has been displayed.
+2//9  20:34:27 : 	Function chooseOpenFile completed.
+2//9  20:34:29 : addPricing Button was pressed.
+2//9  20:34:29 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//9  20:34:29 : 	Function addPricing completed.
+2//9  20:34:35 : chooseOpenFile Button was pressed.
+2//9  20:34:46 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Jan. Letting\New folder\Combined.txt
+2//9  20:34:46 : New file loaded.
+2//9  20:34:46 : Loaded job:  0072-08-143 BEXAR
+2//9  20:34:46 : Loaded job:  3508-01-029 BEXAR
+2//9  20:34:46 : Loaded job:  0039-12-259 CAMERON
+2//9  20:34:46 : Loaded job:  0921-06-306 CAMERON, ETC
+2//9  20:34:46 : Loaded job:  0058-04-022 CHEROKEE
+2//9  20:34:46 : Loaded job:  1013-01-038 COLLIN
+2//9  20:34:46 : Loaded job:  6422-53-001 DALLAS
+2//9  20:34:46 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  20:34:46 : Loaded job:  0196-02-128 DENTON
+2//9  20:34:46 : Loaded job:  6409-43-001 ECTOR
+2//9  20:34:46 : Loaded job:  0092-03-057 ELLIS
+2//9  20:34:46 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  20:34:46 : Loaded job:  0053-06-031 GARZA
+2//9  20:34:46 : Loaded job:  0901-19-176 GRAYSON
+2//9  20:34:46 : Loaded job:  0286-01-062 HAYS
+2//9  20:34:46 : Loaded job:  0016-02-171 HAYS
+2//9  20:34:46 : Loaded job:  0286-01-061 HAYS
+2//9  20:34:46 : Loaded job:  0005-05-113 HOWARD
+2//9  20:34:46 : Loaded job:  2658-01-013 HUNT
+2//9  20:34:46 : Loaded job:  6398-30-001 JOHNSON
+2//9  20:34:46 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  20:34:46 : Loaded job:  2786-01-018 LAMPASAS
+2//9  20:34:46 : Loaded job:  0389-01-044 LIBERTY
+2//9  20:34:46 : Loaded job:  0700-04-051 LLANO
+2//9  20:34:46 : Loaded job:  0067-07-100 LUBBOCK
+2//9  20:34:46 : Loaded job:  0053-15-067 NOLAN
+2//9  20:34:46 : Loaded job:  0176-05-199 POLK, ETC
+2//9  20:34:46 : Loaded job:  0176-06-016 POLK, ETC
+2//9  20:34:46 : Loaded job:  2635-04-042 POTTER
+2//9  20:34:46 : Loaded job:  0003-07-061 REEVES
+2//9  20:34:46 : Loaded job:  1014-02-043 ROCKWALL
+2//9  20:34:46 : Loaded job:  0123-04-023 RUSK
+2//9  20:34:46 : Loaded job:  0123-05-015 RUSK
+2//9  20:34:46 : Loaded job:  0087-06-031 SAN PATRICIO
+2//9  20:34:46 : Loaded job:  3469-01-014 STEPHENS
+2//9  20:34:46 : Loaded job:  1330-02-049 TARRANT
+2//9  20:34:46 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  20:34:46 : Loaded job:  1226-02-016 TITUS
+2//9  20:34:46 : Loaded job:  1902-01-031 TRAVIS
+2//9  20:34:46 : Loaded job:  0229-04-060 UPTON
+2//9  20:34:46 : Loaded job:  0143-04-072 WILSON
+2//9  20:34:46 : All job data extracted.
+2//9  20:34:46 : 	Data has been displayed.
+2//9  20:34:46 : 	Function chooseOpenFile completed.
+2//9  21:49:22 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  21:49:22 : All GUI elements added.
+2//9  21:49:22 : All button functions added.
+2//9  21:49:23 : chooseOpenFile Button was pressed.
+2//9  21:49:29 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//9  21:49:29 : Previous file loaded.
+2//9  21:49:29 : Loaded job:  0072-08-143 BEXAR
+2//9  21:49:29 : Loaded job:  3508-01-029 BEXAR
+2//9  21:49:29 : Loaded job:  0058-04-022 CHEROKEE
+2//9  21:49:29 : Loaded job:  6422-53-001 DALLAS
+2//9  21:49:29 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  21:49:29 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  21:49:29 : Loaded job:  0016-02-171 HAYS
+2//9  21:49:29 : Loaded job:  0286-01-061 HAYS
+2//9  21:49:29 : Loaded job:  0005-05-113 HOWARD
+2//9  21:49:29 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  21:49:29 : Loaded job:  2786-01-018 LAMPASAS
+2//9  21:49:29 : Loaded job:  0389-01-044 LIBERTY
+2//9  21:49:29 : Loaded job:  0176-06-016 POLK, ETC
+2//9  21:49:29 : Loaded job:  0003-07-061 REEVES
+2//9  21:49:29 : Loaded job:  0123-05-015 RUSK
+2//9  21:49:29 : Loaded job:  1330-02-049 TARRANT
+2//9  21:49:29 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  21:49:29 : Loaded job:  1226-02-016 TITUS
+2//9  21:49:29 : Loaded job:  1902-01-031 TRAVIS
+2//9  21:49:29 : All job data extracted.
+2//9  21:49:29 : 	Data has been displayed.
+2//9  21:49:29 : 	Function chooseOpenFile completed.
+2//9  21:54:00 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  21:54:00 : All GUI elements added.
+2//9  21:54:00 : All button functions added.
+2//9  21:54:01 : chooseOpenFile Button was pressed.
+2//9  21:54:04 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  21:54:04 : Previous file loaded.
+2//9  21:54:04 : Loaded job:  0072-08-143 BEXAR
+2//9  21:54:04 : Loaded job:  3508-01-029 BEXAR
+2//9  21:54:04 : Loaded job:  0058-04-022 CHEROKEE
+2//9  21:54:04 : Loaded job:  6422-53-001 DALLAS
+2//9  21:54:04 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  21:54:04 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  21:54:04 : Loaded job:  0016-02-171 HAYS
+2//9  21:54:04 : Loaded job:  0286-01-061 HAYS
+2//9  21:54:04 : Loaded job:  0005-05-113 HOWARD
+2//9  21:54:04 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  21:54:04 : Loaded job:  2786-01-018 LAMPASAS
+2//9  21:54:04 : Loaded job:  0389-01-044 LIBERTY
+2//9  21:54:04 : Loaded job:  0176-06-016 POLK, ETC
+2//9  21:54:04 : Loaded job:  0003-07-061 REEVES
+2//9  21:54:04 : Loaded job:  0123-05-015 RUSK
+2//9  21:54:04 : Loaded job:  1330-02-049 TARRANT
+2//9  21:54:04 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  21:54:04 : Loaded job:  1226-02-016 TITUS
+2//9  21:54:04 : Loaded job:  1902-01-031 TRAVIS
+2//9  21:54:04 : All job data extracted.
+2//9  21:54:04 : 	Data has been displayed.
+2//9  21:54:04 : 	Function chooseOpenFile completed.
+2//9  21:56:54 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  21:56:54 : All GUI elements added.
+2//9  21:56:54 : All button functions added.
+2//9  21:56:56 : chooseOpenFile Button was pressed.
+2//9  21:57:00 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  21:57:00 : Previous file loaded.
+2//9  21:57:00 : Loaded job:  0072-08-143 BEXAR
+2//9  21:57:00 : Loaded job:  3508-01-029 BEXAR
+2//9  21:57:00 : Loaded job:  0058-04-022 CHEROKEE
+2//9  21:57:00 : Loaded job:  6422-53-001 DALLAS
+2//9  21:57:00 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  21:57:00 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  21:57:00 : Loaded job:  0016-02-171 HAYS
+2//9  21:57:00 : Loaded job:  0286-01-061 HAYS
+2//9  21:57:00 : Loaded job:  0005-05-113 HOWARD
+2//9  21:57:00 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  21:57:00 : Loaded job:  2786-01-018 LAMPASAS
+2//9  21:57:00 : Loaded job:  0389-01-044 LIBERTY
+2//9  21:57:00 : Loaded job:  0176-06-016 POLK, ETC
+2//9  21:57:00 : Loaded job:  0003-07-061 REEVES
+2//9  21:57:00 : Loaded job:  0123-05-015 RUSK
+2//9  21:57:00 : Loaded job:  1330-02-049 TARRANT
+2//9  21:57:00 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  21:57:00 : Loaded job:  1226-02-016 TITUS
+2//9  21:57:00 : Loaded job:  1902-01-031 TRAVIS
+2//9  21:57:00 : All job data extracted.
+2//9  21:57:00 : 	Data has been displayed.
+2//9  21:57:00 : 	Function chooseOpenFile completed.
+2//9  21:57:05 : filterForCheckedBoxes Button was pressed.
+2//9  21:57:05 : 	Data has been displayed.
+2//9  21:57:05 : 	Function filterForCheckedBoxes completed.
+2//9  21:57:38 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  21:57:38 : All GUI elements added.
+2//9  21:57:38 : All button functions added.
+2//9  21:57:39 : chooseOpenFile Button was pressed.
+2//9  21:57:47 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  21:57:47 : Previous file loaded.
+2//9  21:57:47 : Loaded job:  0072-08-143 BEXAR
+2//9  21:57:47 : Loaded job:  3508-01-029 BEXAR
+2//9  21:57:47 : Loaded job:  0058-04-022 CHEROKEE
+2//9  21:57:47 : Loaded job:  6422-53-001 DALLAS
+2//9  21:57:47 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  21:57:47 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  21:57:47 : Loaded job:  0016-02-171 HAYS
+2//9  21:57:47 : Loaded job:  0286-01-061 HAYS
+2//9  21:57:47 : Loaded job:  0005-05-113 HOWARD
+2//9  21:57:47 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  21:57:47 : Loaded job:  2786-01-018 LAMPASAS
+2//9  21:57:47 : Loaded job:  0389-01-044 LIBERTY
+2//9  21:57:47 : Loaded job:  0176-06-016 POLK, ETC
+2//9  21:57:47 : Loaded job:  0003-07-061 REEVES
+2//9  21:57:47 : Loaded job:  0123-05-015 RUSK
+2//9  21:57:47 : Loaded job:  1330-02-049 TARRANT
+2//9  21:57:47 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  21:57:47 : Loaded job:  1226-02-016 TITUS
+2//9  21:57:47 : Loaded job:  1902-01-031 TRAVIS
+2//9  21:57:47 : All job data extracted.
+2//9  21:57:47 : 	Data has been displayed.
+2//9  21:57:47 : 	Function chooseOpenFile completed.
+2//9  21:57:52 : filterForCheckedBoxes Button was pressed.
+2//9  21:57:52 : 	Data has been displayed.
+2//9  21:57:52 : 	Function filterForCheckedBoxes completed.
+2//9  22:00:37 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  22:00:38 : All GUI elements added.
+2//9  22:00:38 : All button functions added.
+2//9  22:00:39 : chooseOpenFile Button was pressed.
+2//9  22:00:42 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  22:00:43 : Previous file loaded.
+2//9  22:00:43 : Loaded job:  0072-08-143 BEXAR
+2//9  22:00:43 : Loaded job:  3508-01-029 BEXAR
+2//9  22:00:43 : Loaded job:  0058-04-022 CHEROKEE
+2//9  22:00:43 : Loaded job:  6422-53-001 DALLAS
+2//9  22:00:43 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  22:00:43 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  22:00:43 : Loaded job:  0016-02-171 HAYS
+2//9  22:00:43 : Loaded job:  0286-01-061 HAYS
+2//9  22:00:43 : Loaded job:  0005-05-113 HOWARD
+2//9  22:00:43 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  22:00:43 : Loaded job:  2786-01-018 LAMPASAS
+2//9  22:00:43 : Loaded job:  0389-01-044 LIBERTY
+2//9  22:00:43 : Loaded job:  0176-06-016 POLK, ETC
+2//9  22:00:43 : Loaded job:  0003-07-061 REEVES
+2//9  22:00:43 : Loaded job:  0123-05-015 RUSK
+2//9  22:00:43 : Loaded job:  1330-02-049 TARRANT
+2//9  22:00:43 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  22:00:43 : Loaded job:  1226-02-016 TITUS
+2//9  22:00:43 : Loaded job:  1902-01-031 TRAVIS
+2//9  22:00:43 : All job data extracted.
+2//9  22:00:43 : 	Data has been displayed.
+2//9  22:00:43 : 	Function chooseOpenFile completed.
+2//9  22:00:47 : filterForCheckedBoxes Button was pressed.
+2//9  22:00:47 : 	Data has been displayed.
+2//9  22:00:47 : 	Function filterForCheckedBoxes completed.
+2//9  22:00:54 : chooseOpenFile Button was pressed.
+2//9  22:01:00 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Jan. Letting\New folder\Combined.txt
+2//9  22:01:00 : New file loaded.
+2//9  22:01:00 : Loaded job:  0072-08-143 BEXAR
+2//9  22:01:00 : Loaded job:  3508-01-029 BEXAR
+2//9  22:01:00 : Loaded job:  0039-12-259 CAMERON
+2//9  22:01:00 : Loaded job:  0921-06-306 CAMERON, ETC
+2//9  22:01:00 : Loaded job:  0058-04-022 CHEROKEE
+2//9  22:01:00 : Loaded job:  1013-01-038 COLLIN
+2//9  22:01:00 : Loaded job:  6422-53-001 DALLAS
+2//9  22:01:00 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  22:01:00 : Loaded job:  0196-02-128 DENTON
+2//9  22:01:00 : Loaded job:  6409-43-001 ECTOR
+2//9  22:01:00 : Loaded job:  0092-03-057 ELLIS
+2//9  22:01:00 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  22:01:00 : Loaded job:  0053-06-031 GARZA
+2//9  22:01:00 : Loaded job:  0901-19-176 GRAYSON
+2//9  22:01:00 : Loaded job:  0286-01-062 HAYS
+2//9  22:01:00 : Loaded job:  0016-02-171 HAYS
+2//9  22:01:00 : Loaded job:  0286-01-061 HAYS
+2//9  22:01:00 : Loaded job:  0005-05-113 HOWARD
+2//9  22:01:00 : Loaded job:  2658-01-013 HUNT
+2//9  22:01:00 : Loaded job:  6398-30-001 JOHNSON
+2//9  22:01:00 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  22:01:00 : Loaded job:  2786-01-018 LAMPASAS
+2//9  22:01:00 : Loaded job:  0389-01-044 LIBERTY
+2//9  22:01:00 : Loaded job:  0700-04-051 LLANO
+2//9  22:01:00 : Loaded job:  0067-07-100 LUBBOCK
+2//9  22:01:00 : Loaded job:  0053-15-067 NOLAN
+2//9  22:01:00 : Loaded job:  0176-05-199 POLK, ETC
+2//9  22:01:00 : Loaded job:  0176-06-016 POLK, ETC
+2//9  22:01:00 : Loaded job:  2635-04-042 POTTER
+2//9  22:01:00 : Loaded job:  0003-07-061 REEVES
+2//9  22:01:00 : Loaded job:  1014-02-043 ROCKWALL
+2//9  22:01:00 : Loaded job:  0123-04-023 RUSK
+2//9  22:01:00 : Loaded job:  0123-05-015 RUSK
+2//9  22:01:00 : Loaded job:  0087-06-031 SAN PATRICIO
+2//9  22:01:00 : Loaded job:  3469-01-014 STEPHENS
+2//9  22:01:00 : Loaded job:  1330-02-049 TARRANT
+2//9  22:01:00 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  22:01:00 : Loaded job:  1226-02-016 TITUS
+2//9  22:01:00 : Loaded job:  1902-01-031 TRAVIS
+2//9  22:01:00 : Loaded job:  0229-04-060 UPTON
+2//9  22:01:00 : Loaded job:  0143-04-072 WILSON
+2//9  22:01:00 : All job data extracted.
+2//9  22:01:00 : 	Data has been displayed.
+2//9  22:01:00 : 	Function chooseOpenFile completed.
+2//9  22:01:15 : filterForCheckedBoxes Button was pressed.
+2//9  22:01:15 : 	Data has been displayed.
+2//9  22:01:15 : 	Function filterForCheckedBoxes completed.
+2//9  22:01:23 : chooseOpenFile Button was pressed.
+2//9  22:01:28 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  22:01:28 : Previous file loaded.
+2//9  22:01:28 : Loaded job:  0072-08-143 BEXAR
+2//9  22:01:28 : Loaded job:  3508-01-029 BEXAR
+2//9  22:01:28 : Loaded job:  0058-04-022 CHEROKEE
+2//9  22:01:28 : Loaded job:  6422-53-001 DALLAS
+2//9  22:01:28 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  22:01:28 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  22:01:28 : Loaded job:  0016-02-171 HAYS
+2//9  22:01:28 : Loaded job:  0286-01-061 HAYS
+2//9  22:01:28 : Loaded job:  0005-05-113 HOWARD
+2//9  22:01:28 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  22:01:28 : Loaded job:  2786-01-018 LAMPASAS
+2//9  22:01:28 : Loaded job:  0389-01-044 LIBERTY
+2//9  22:01:28 : Loaded job:  0176-06-016 POLK, ETC
+2//9  22:01:28 : Loaded job:  0003-07-061 REEVES
+2//9  22:01:28 : Loaded job:  0123-05-015 RUSK
+2//9  22:01:28 : Loaded job:  1330-02-049 TARRANT
+2//9  22:01:28 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  22:01:28 : Loaded job:  1226-02-016 TITUS
+2//9  22:01:28 : Loaded job:  1902-01-031 TRAVIS
+2//9  22:01:28 : All job data extracted.
+2//9  22:01:28 : 	Data has been displayed.
+2//9  22:01:28 : 	Function chooseOpenFile completed.
+2//9  22:18:25 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  22:18:26 : All GUI elements added.
+2//9  22:18:26 : All button functions added.
+2//9  22:18:27 : chooseOpenFile Button was pressed.
+2//9  22:18:32 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  22:18:32 : Previous file loaded.
+2//9  22:18:32 : Loaded job:  0072-08-143 BEXAR
+2//9  22:18:32 : Loaded job:  3508-01-029 BEXAR
+2//9  22:18:32 : Loaded job:  0058-04-022 CHEROKEE
+2//9  22:18:32 : Loaded job:  6422-53-001 DALLAS
+2//9  22:18:32 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  22:18:32 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  22:18:32 : Loaded job:  0016-02-171 HAYS
+2//9  22:18:32 : Loaded job:  0286-01-061 HAYS
+2//9  22:18:32 : Loaded job:  0005-05-113 HOWARD
+2//9  22:18:32 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  22:18:32 : Loaded job:  2786-01-018 LAMPASAS
+2//9  22:18:32 : Loaded job:  0389-01-044 LIBERTY
+2//9  22:18:32 : Loaded job:  0176-06-016 POLK, ETC
+2//9  22:18:32 : Loaded job:  0003-07-061 REEVES
+2//9  22:18:32 : Loaded job:  0123-05-015 RUSK
+2//9  22:18:32 : Loaded job:  1330-02-049 TARRANT
+2//9  22:18:32 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  22:18:32 : Loaded job:  1226-02-016 TITUS
+2//9  22:18:32 : Loaded job:  1902-01-031 TRAVIS
+2//9  22:18:32 : All job data extracted.
+2//9  22:18:32 : 	Data has been displayed.
+2//9  22:18:32 : 	Function chooseOpenFile completed.
+2//9  22:18:39 : filterForCheckedBoxes Button was pressed.
+2//9  22:18:39 : 	Data has been displayed.
+2//9  22:18:39 : 	Function filterForCheckedBoxes completed.
+2//9  22:18:42 : addPricing Button was pressed.
+2//9  22:18:42 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:18:42 : 	Function addPricing completed.
+2//9  22:18:43 : nextJob Button was pressed.
+2//9  22:18:43 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:18:43 : 	Function nextJob completed.
+2//9  22:18:46 : previousJob Button was pressed.
+2//9  22:18:46 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:18:46 : 	Function previousJob completed.
+2//9  22:18:46 : nextJob Button was pressed.
+2//9  22:18:46 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:18:46 : 	Function nextJob completed.
+2//9  22:18:47 : previousJob Button was pressed.
+2//9  22:18:47 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:18:47 : 	Function previousJob completed.
+2//9  22:18:47 : nextJob Button was pressed.
+2//9  22:18:47 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:18:47 : 	Function nextJob completed.
+2//9  22:18:47 : nextJob Button was pressed.
+2//9  22:18:47 : 	Job:  0095-03-107	Pricing page has been displayed.
+2//9  22:18:47 : 	Function nextJob completed.
+2//9  22:18:48 : previousJob Button was pressed.
+2//9  22:18:48 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:18:48 : 	Function previousJob completed.
+2//9  22:18:52 : previousJob Button was pressed.
+2//9  22:18:52 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:18:52 : 	Function previousJob completed.
+2//9  22:21:34 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  22:21:34 : All GUI elements added.
+2//9  22:21:34 : All button functions added.
+2//9  22:22:02 : chooseOpenFile Button was pressed.
+2//9  22:22:05 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//9  22:22:05 : Previous file loaded.
+2//9  22:22:05 : Loaded job:  0072-08-143 BEXAR
+2//9  22:22:05 : Loaded job:  3508-01-029 BEXAR
+2//9  22:22:05 : Loaded job:  0058-04-022 CHEROKEE
+2//9  22:22:05 : Loaded job:  6422-53-001 DALLAS
+2//9  22:22:05 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  22:22:05 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  22:22:05 : Loaded job:  0016-02-171 HAYS
+2//9  22:22:05 : Loaded job:  0286-01-061 HAYS
+2//9  22:22:05 : Loaded job:  0005-05-113 HOWARD
+2//9  22:22:05 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  22:22:05 : Loaded job:  2786-01-018 LAMPASAS
+2//9  22:22:05 : Loaded job:  0389-01-044 LIBERTY
+2//9  22:22:05 : Loaded job:  0176-06-016 POLK, ETC
+2//9  22:22:05 : Loaded job:  0003-07-061 REEVES
+2//9  22:22:05 : Loaded job:  0123-05-015 RUSK
+2//9  22:22:05 : Loaded job:  1330-02-049 TARRANT
+2//9  22:22:05 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  22:22:05 : Loaded job:  1226-02-016 TITUS
+2//9  22:22:05 : Loaded job:  1902-01-031 TRAVIS
+2//9  22:22:05 : All job data extracted.
+2//9  22:22:05 : 	Data has been displayed.
+2//9  22:22:05 : 	Function chooseOpenFile completed.
+2//9  22:22:16 : filterForCheckedBoxes Button was pressed.
+2//9  22:22:16 : 	Data has been displayed.
+2//9  22:22:16 : 	Function filterForCheckedBoxes completed.
+2//9  22:22:17 : addPricing Button was pressed.
+2//9  22:22:17 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:22:17 : 	Function addPricing completed.
+2//9  22:22:19 : nextJob Button was pressed.
+2//9  22:22:19 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:22:19 : 	Function nextJob completed.
+2//9  22:22:20 : nextJob Button was pressed.
+2//9  22:22:20 : nextJob Button was pressed.
+2//9  22:22:20 : 	Job:  0095-03-107	Pricing page has been displayed.
+2//9  22:22:20 : 	Function nextJob completed.
+2//9  22:22:20 : nextJob Button was pressed.
+2//9  22:22:20 : 	Job:  0176-06-016	Pricing page has been displayed.
+2//9  22:22:20 : 	Function nextJob completed.
+2//9  22:22:23 : previousJob Button was pressed.
+2//9  22:22:23 : 	Job:  0095-03-107	Pricing page has been displayed.
+2//9  22:22:23 : 	Function previousJob completed.
+2//9  22:23:48 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  22:23:48 : All GUI elements added.
+2//9  22:23:48 : All button functions added.
+2//9  22:23:50 : chooseOpenFile Button was pressed.
+2//9  22:23:52 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//9  22:23:52 : Previous file loaded.
+2//9  22:23:52 : Loaded job:  0072-08-143 BEXAR
+2//9  22:23:52 : Loaded job:  3508-01-029 BEXAR
+2//9  22:23:52 : Loaded job:  0058-04-022 CHEROKEE
+2//9  22:23:52 : Loaded job:  6422-53-001 DALLAS
+2//9  22:23:52 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  22:23:52 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  22:23:52 : Loaded job:  0016-02-171 HAYS
+2//9  22:23:52 : Loaded job:  0286-01-061 HAYS
+2//9  22:23:52 : Loaded job:  0005-05-113 HOWARD
+2//9  22:23:52 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  22:23:52 : Loaded job:  2786-01-018 LAMPASAS
+2//9  22:23:52 : Loaded job:  0389-01-044 LIBERTY
+2//9  22:23:52 : Loaded job:  0176-06-016 POLK, ETC
+2//9  22:23:52 : Loaded job:  0003-07-061 REEVES
+2//9  22:23:52 : Loaded job:  0123-05-015 RUSK
+2//9  22:23:52 : Loaded job:  1330-02-049 TARRANT
+2//9  22:23:52 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  22:23:52 : Loaded job:  1226-02-016 TITUS
+2//9  22:23:52 : Loaded job:  1902-01-031 TRAVIS
+2//9  22:23:52 : All job data extracted.
+2//9  22:23:52 : 	Data has been displayed.
+2//9  22:23:52 : 	Function chooseOpenFile completed.
+2//9  22:24:05 : addPricing Button was pressed.
+2//9  22:24:05 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//9  22:24:05 : 	Function addPricing completed.
+2//9  22:24:11 : nextJob Button was pressed.
+2//9  22:24:11 : 	Job:  3508-01-029	Pricing page has been displayed.
+2//9  22:24:11 : 	Function nextJob completed.
+2//9  22:24:12 : nextJob Button was pressed.
+2//9  22:24:12 : 	Job:  0058-04-022	Pricing page has been displayed.
+2//9  22:24:12 : 	Function nextJob completed.
+2//9  22:24:18 : nextJob Button was pressed.
+2//9  22:24:18 : 	Job:  6422-53-001	Pricing page has been displayed.
+2//9  22:24:18 : 	Function nextJob completed.
+2//9  22:24:18 : nextJob Button was pressed.
+2//9  22:24:18 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:24:18 : 	Function nextJob completed.
+2//9  22:24:20 : nextJob Button was pressed.
+2//9  22:24:20 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:24:20 : 	Function nextJob completed.
+2//9  22:24:29 : nextJob Button was pressed.
+2//9  22:26:01 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  22:26:01 : All GUI elements added.
+2//9  22:26:01 : All button functions added.
+2//9  22:26:02 : chooseOpenFile Button was pressed.
+2//9  22:26:05 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//9  22:26:05 : Previous file loaded.
+2//9  22:26:05 : Loaded job:  0072-08-143 BEXAR
+2//9  22:26:05 : Loaded job:  3508-01-029 BEXAR
+2//9  22:26:05 : Loaded job:  0058-04-022 CHEROKEE
+2//9  22:26:05 : Loaded job:  6422-53-001 DALLAS
+2//9  22:26:05 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  22:26:05 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  22:26:05 : Loaded job:  0016-02-171 HAYS
+2//9  22:26:05 : Loaded job:  0286-01-061 HAYS
+2//9  22:26:05 : Loaded job:  0005-05-113 HOWARD
+2//9  22:26:05 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  22:26:05 : Loaded job:  2786-01-018 LAMPASAS
+2//9  22:26:05 : Loaded job:  0389-01-044 LIBERTY
+2//9  22:26:05 : Loaded job:  0176-06-016 POLK, ETC
+2//9  22:26:05 : Loaded job:  0003-07-061 REEVES
+2//9  22:26:05 : Loaded job:  0123-05-015 RUSK
+2//9  22:26:05 : Loaded job:  1330-02-049 TARRANT
+2//9  22:26:05 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  22:26:05 : Loaded job:  1226-02-016 TITUS
+2//9  22:26:05 : Loaded job:  1902-01-031 TRAVIS
+2//9  22:26:05 : All job data extracted.
+2//9  22:26:05 : 	Data has been displayed.
+2//9  22:26:05 : 	Function chooseOpenFile completed.
+2//9  22:26:07 : addPricing Button was pressed.
+2//9  22:26:07 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//9  22:26:07 : 	Function addPricing completed.
+2//9  22:26:11 : nextJob Button was pressed.
+2//9  22:26:11 : 	Job:  3508-01-029	Pricing page has been displayed.
+2//9  22:26:11 : 	Function nextJob completed.
+2//9  22:26:12 : nextJob Button was pressed.
+2//9  22:26:12 : 	Job:  0058-04-022	Pricing page has been displayed.
+2//9  22:26:12 : 	Function nextJob completed.
+2//9  22:26:12 : nextJob Button was pressed.
+2//9  22:26:12 : 	Job:  6422-53-001	Pricing page has been displayed.
+2//9  22:26:12 : 	Function nextJob completed.
+2//9  22:26:12 : nextJob Button was pressed.
+2//9  22:26:12 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:26:12 : 	Function nextJob completed.
+2//9  22:26:13 : nextJob Button was pressed.
+2//9  22:26:13 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:26:13 : 	Function nextJob completed.
+2//9  22:26:13 : nextJob Button was pressed.
+2//9  22:26:14 : previousJob Button was pressed.
+2//9  22:26:14 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:26:14 : 	Function previousJob completed.
+2//9  22:26:14 : previousJob Button was pressed.
+2//9  22:26:14 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:26:14 : 	Function previousJob completed.
+2//9  22:28:18 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  22:28:19 : All GUI elements added.
+2//9  22:28:19 : All button functions added.
+2//9  22:28:20 : chooseOpenFile Button was pressed.
+2//9  22:28:25 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Program Ouput.txt
+2//9  22:28:25 : Previous file loaded.
+2//9  22:28:25 : Loaded job:  0072-08-143 BEXAR
+2//9  22:28:25 : Loaded job:  3508-01-029 BEXAR
+2//9  22:28:25 : Loaded job:  0058-04-022 CHEROKEE
+2//9  22:28:25 : Loaded job:  6422-53-001 DALLAS
+2//9  22:28:25 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  22:28:25 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  22:28:25 : Loaded job:  0016-02-171 HAYS
+2//9  22:28:25 : Loaded job:  0286-01-061 HAYS
+2//9  22:28:25 : Loaded job:  0005-05-113 HOWARD
+2//9  22:28:25 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  22:28:25 : Loaded job:  2786-01-018 LAMPASAS
+2//9  22:28:25 : Loaded job:  0389-01-044 LIBERTY
+2//9  22:28:25 : Loaded job:  0176-06-016 POLK, ETC
+2//9  22:28:25 : Loaded job:  0003-07-061 REEVES
+2//9  22:28:25 : Loaded job:  0123-05-015 RUSK
+2//9  22:28:25 : Loaded job:  1330-02-049 TARRANT
+2//9  22:28:25 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  22:28:25 : Loaded job:  1226-02-016 TITUS
+2//9  22:28:25 : Loaded job:  1902-01-031 TRAVIS
+2//9  22:28:25 : All job data extracted.
+2//9  22:28:25 : 	Data has been displayed.
+2//9  22:28:25 : 	Function chooseOpenFile completed.
+2//9  22:28:27 : addPricing Button was pressed.
+2//9  22:28:27 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//9  22:28:27 : 	Function addPricing completed.
+2//9  22:28:30 : nextJob Button was pressed.
+2//9  22:28:30 : 	Job:  3508-01-029	Pricing page has been displayed.
+2//9  22:28:30 : 	Function nextJob completed.
+2//9  22:28:31 : nextJob Button was pressed.
+2//9  22:28:31 : 	Job:  0058-04-022	Pricing page has been displayed.
+2//9  22:28:31 : 	Function nextJob completed.
+2//9  22:28:33 : nextJob Button was pressed.
+2//9  22:28:33 : 	Job:  6422-53-001	Pricing page has been displayed.
+2//9  22:28:33 : 	Function nextJob completed.
+2//9  22:28:35 : nextJob Button was pressed.
+2//9  22:28:35 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:28:35 : 	Function nextJob completed.
+2//9  22:28:38 : nextJob Button was pressed.
+2//9  22:28:38 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:28:38 : 	Function nextJob completed.
+2//9  22:28:40 : nextJob Button was pressed.
+2//9  22:28:40 : 	Job:  0016-02-171	Pricing page has been displayed.
+2//9  22:28:40 : 	Function nextJob completed.
+2//9  22:28:40 : nextJob Button was pressed.
+2//9  22:28:40 : 	Job:  0286-01-061	Pricing page has been displayed.
+2//9  22:28:40 : 	Function nextJob completed.
+2//9  22:28:41 : nextJob Button was pressed.
+2//9  22:28:41 : 	Job:  0005-05-113	Pricing page has been displayed.
+2//9  22:28:41 : 	Function nextJob completed.
+2//9  22:28:41 : nextJob Button was pressed.
+2//9  22:28:41 : 	Job:  0095-03-107	Pricing page has been displayed.
+2//9  22:28:41 : 	Function nextJob completed.
+2//9  22:28:42 : nextJob Button was pressed.
+2//9  22:28:42 : 	Job:  2786-01-018	Pricing page has been displayed.
+2//9  22:28:42 : 	Function nextJob completed.
+2//9  22:28:42 : nextJob Button was pressed.
+2//9  22:28:42 : 	Job:  0389-01-044	Pricing page has been displayed.
+2//9  22:28:42 : 	Function nextJob completed.
+2//9  22:28:42 : nextJob Button was pressed.
+2//9  22:28:42 : 	Job:  0176-06-016	Pricing page has been displayed.
+2//9  22:28:42 : 	Function nextJob completed.
+2//9  22:28:42 : nextJob Button was pressed.
+2//9  22:28:42 : 	Job:  0003-07-061	Pricing page has been displayed.
+2//9  22:28:42 : 	Function nextJob completed.
+2//9  22:28:42 : nextJob Button was pressed.
+2//9  22:28:42 : 	Job:  0123-05-015	Pricing page has been displayed.
+2//9  22:28:42 : 	Function nextJob completed.
+2//9  22:28:43 : nextJob Button was pressed.
+2//9  22:28:43 : 	Job:  1330-02-049	Pricing page has been displayed.
+2//9  22:28:43 : 	Function nextJob completed.
+2//9  22:28:43 : nextJob Button was pressed.
+2//9  22:28:43 : 	Job:  0228-01-058	Pricing page has been displayed.
+2//9  22:28:43 : 	Function nextJob completed.
+2//9  22:28:43 : nextJob Button was pressed.
+2//9  22:28:43 : 	Job:  1226-02-016	Pricing page has been displayed.
+2//9  22:28:43 : 	Function nextJob completed.
+2//9  22:28:43 : nextJob Button was pressed.
+2//9  22:28:43 : 	Job:  1902-01-031	Pricing page has been displayed.
+2//9  22:28:43 : 	Function nextJob completed.
+2//9  22:33:40 : 
+##################################################
+# .###############################################
+#    %%%%%%%%%%%%%####%%%%%&%###%%%%%%%%%%%%%%%###
+#  *##/           ###/       ###%              ###
+#  *####(         ###        ###%              ###
+#  *#######       ##%         ##%              ###
+#   %#######%    ###.         %###            %###
+#    %########% ,###          .###           %####
+#    ,##########%%#/           ##%           #####
+#     ###########              (#/          .#####
+#     %##########  ##           #.          %#####
+#     ,##########,%####         %           ######
+#      ##########(#######                  .######
+#      %###################                #######
+#      .#####################.             #######
+#       ################.,#####,          .#######
+#       ################  #######*        %#######
+#       ,##############*  #########(      ########
+#        ##############    ###########   .########
+#        %#############    ############% %########
+#        .############     /############% ########
+#         ###########%      ############(   %#####
+#                                             %###
+#                                               %#
+2//9  22:33:40 : All GUI elements added.
+2//9  22:33:40 : All button functions added.
+2//9  22:33:43 : chooseOpenFile Button was pressed.
+2//9  22:33:46 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Dec. Combined.txt
+2//9  22:33:46 : Previous file loaded.
+2//9  22:33:48 : chooseOpenFile Button was pressed.
+2//9  22:34:02 : File to open was chosen.  File Path:  C:\Users\Jacob\Desktop\Letting\Test Letting\Testtext.txt
+2//9  22:34:02 : Previous file loaded.
+2//9  22:34:02 : Loaded job:  0072-08-143 BEXAR
+2//9  22:34:02 : Loaded job:  3508-01-029 BEXAR
+2//9  22:34:02 : Loaded job:  0058-04-022 CHEROKEE
+2//9  22:34:02 : Loaded job:  6422-53-001 DALLAS
+2//9  22:34:02 : Loaded job:  0168-07-050 DEAF SMITH
+2//9  22:34:02 : Loaded job:  3510-04-019 FORT BEND, ETC
+2//9  22:34:02 : Loaded job:  0016-02-171 HAYS
+2//9  22:34:02 : Loaded job:  0286-01-061 HAYS
+2//9  22:34:02 : Loaded job:  0005-05-113 HOWARD
+2//9  22:34:02 : Loaded job:  0095-03-107 KAUFMAN, ETC
+2//9  22:34:02 : Loaded job:  2786-01-018 LAMPASAS
+2//9  22:34:02 : Loaded job:  0389-01-044 LIBERTY
+2//9  22:34:02 : Loaded job:  0176-06-016 POLK, ETC
+2//9  22:34:02 : Loaded job:  0003-07-061 REEVES
+2//9  22:34:02 : Loaded job:  0123-05-015 RUSK
+2//9  22:34:02 : Loaded job:  1330-02-049 TARRANT
+2//9  22:34:02 : Loaded job:  0228-01-058 TERRY, ETC
+2//9  22:34:02 : Loaded job:  1226-02-016 TITUS
+2//9  22:34:02 : Loaded job:  1902-01-031 TRAVIS
+2//9  22:34:02 : All job data extracted.
+2//9  22:34:02 : 	Data has been displayed.
+2//9  22:34:02 : 	Function chooseOpenFile completed.
+2//9  22:34:06 : addPricing Button was pressed.
+2//9  22:34:06 : 	Job:  0072-08-143	Pricing page has been displayed.
+2//9  22:34:06 : 	Function addPricing completed.
+2//9  22:34:08 : nextJob Button was pressed.
+2//9  22:34:08 : 	Job:  3508-01-029	Pricing page has been displayed.
+2//9  22:34:08 : 	Function nextJob completed.
+2//9  22:34:08 : nextJob Button was pressed.
+2//9  22:34:08 : 	Job:  0058-04-022	Pricing page has been displayed.
+2//9  22:34:08 : 	Function nextJob completed.
+2//9  22:34:08 : nextJob Button was pressed.
+2//9  22:34:08 : 	Job:  6422-53-001	Pricing page has been displayed.
+2//9  22:34:08 : 	Function nextJob completed.
+2//9  22:34:09 : nextJob Button was pressed.
+2//9  22:34:09 : 	Job:  0168-07-050	Pricing page has been displayed.
+2//9  22:34:09 : 	Function nextJob completed.
+2//9  22:34:09 : nextJob Button was pressed.
+2//9  22:34:09 : 	Job:  3510-04-019	Pricing page has been displayed.
+2//9  22:34:09 : 	Function nextJob completed.
+2//9  22:34:09 : nextJob Button was pressed.
+2//9  22:34:09 : 	Job:  0016-02-171	Pricing page has been displayed.
+2//9  22:34:09 : 	Function nextJob completed.
+2//9  22:34:10 : nextJob Button was pressed.
+2//9  22:34:10 : 	Job:  0286-01-061	Pricing page has been displayed.
+2//9  22:34:10 : 	Function nextJob completed.
+2//9  22:34:10 : nextJob Button was pressed.
+2//9  22:34:10 : 	Job:  0005-05-113	Pricing page has been displayed.
+2//9  22:34:10 : 	Function nextJob completed.
+2//9  22:34:10 : nextJob Button was pressed.
+2//9  22:34:10 : 	Job:  0095-03-107	Pricing page has been displayed.
+2//9  22:34:10 : 	Function nextJob completed.
+2//9  22:34:10 : nextJob Button was pressed.
+2//9  22:34:10 : 	Job:  2786-01-018	Pricing page has been displayed.
+2//9  22:34:10 : 	Function nextJob completed.
+2//9  22:34:10 : nextJob Button was pressed.
+2//9  22:34:11 : 	Job:  0389-01-044	Pricing page has been displayed.
+2//9  22:34:11 : 	Function nextJob completed.
+2//9  22:34:11 : nextJob Button was pressed.
+2//9  22:34:11 : 	Job:  0176-06-016	Pricing page has been displayed.
+2//9  22:34:11 : 	Function nextJob completed.
+2//9  22:34:12 : nextJob Button was pressed.
+2//9  22:34:12 : 	Job:  0003-07-061	Pricing page has been displayed.
+2//9  22:34:12 : 	Function nextJob completed.
+2//9  22:34:13 : nextJob Button was pressed.
+2//9  22:34:13 : 	Job:  0123-05-015	Pricing page has been displayed.
+2//9  22:34:13 : 	Function nextJob completed.
+2//9  22:34:14 : nextJob Button was pressed.
+2//9  22:34:14 : 	Job:  1330-02-049	Pricing page has been displayed.
+2//9  22:34:14 : 	Function nextJob completed.
+2//9  22:34:15 : nextJob Button was pressed.
+2//9  22:34:15 : 	Job:  0228-01-058	Pricing page has been displayed.
+2//9  22:34:15 : 	Function nextJob completed.
+2//9  22:34:15 : nextJob Button was pressed.
+2//9  22:34:15 : 	Job:  1226-02-016	Pricing page has been displayed.
+2//9  22:34:15 : 	Function nextJob completed.
+2//9  22:34:15 : nextJob Button was pressed.
+2//9  22:34:15 : 	Job:  1902-01-031	Pricing page has been displayed.
+2//9  22:34:15 : 	Function nextJob completed.
