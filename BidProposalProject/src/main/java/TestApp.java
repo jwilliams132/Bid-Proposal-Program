@@ -44,7 +44,7 @@ public class TestApp {
 	private TexasCityFinder cityFinder = new TexasCityFinder(path_to_List_of_counties_in_Texas);
 	private String lettingMonthDirectory;
 
-	private ArrayList<JLabel> jobLabels = new ArrayList<JLabel>();
+	// private ArrayList<JLabel> jobLabels = new ArrayList<JLabel>();
 	private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
 	private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
 	private int jobIndex = 0;
@@ -553,12 +553,14 @@ public class TestApp {
 	public void displayData() {
 
 		GridBagConstraints displayConstraints = new GridBagConstraints();
-		jobLabels = new ArrayList<JLabel>();
+		JLabel currentJobLabel;
+		JLabel lineItemLabel;
 		jobCheckBoxes = new ArrayList<JCheckBox>();
+		int lineItemCount = 0;
 
 		clearScrollPanel();
 
-		dataHeaderLabel = new JLabel(" CSJ                 County              Highway             Total Quantities");
+		dataHeaderLabel = new JLabel("  CSJ                 County              Highway             Total Quantities");
 		dataHeaderLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
 
 		rowHeaderPanel = new JPanel();
