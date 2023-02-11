@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+BidProposalProject\src\main\resources\Audit.txt
 
 # BlueJ files
 *.ctxt
