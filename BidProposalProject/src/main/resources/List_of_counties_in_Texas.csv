@@ -1,21 +1,21 @@
-Anderson County,Palestine
-Andrews County,Andrews
-Angelina County,Lufkin
-Aransas County,Corpus Christi
+Anderson,Palestine
+Andrews,Andrews
+Angelina,Lufkin
+Aransas,Corpus Christi
 Archer,Archer City
 Armstrong,Claude
 Atascosa,Pleasanton
-Austin County,Sealy
+Austin,Sealy
 Bailey,Muleshoe
-Bandera County,Lakehills
+Bandera,Lakehills
 Bastrop,Elgin
 Baylor,Seymour
 Bee,Beeville
 Bell,Killeen
-Bexar County,San Antonio
+Bexar,San Antonio
 Blanco,Johnson City
 Borden,Gail
-Bosque County,Clifton
+Bosque,Clifton
 Bowie,Texarkana
 Brazoria,Pearland
 Brazos,College Station
@@ -23,12 +23,12 @@ Brewster,Alpine
 Briscoe,Silverton
 Brooks,Falfurrias
 Brown,Brownwood
-Burleson County,Caldwell
+Burleson,Caldwell
 Burnet,Marble Falls
-Caldwell County,San Marcos
+Caldwell,San Marcos
 Calhoun,Port Lavaca
 Callahan,Clyde
-Cameron County,Brownsville
+Cameron,Brownsville
 Camp,Pittsburg
 Carson,Panhandle
 Cass,Atlanta
@@ -38,12 +38,12 @@ Cherokee,Jacksonville
 Childress,Childress
 Clay,Henrietta
 Cochran,Morton
-Coke County,Robert Lee
+Coke,Robert Lee
 Coleman,Coleman
-Collin County,Plano
+Collin,Plano
 Collingsworth,Wellington
-Colorado County,Columbus
-Comal County,New Braunfels
+Colorado,Columbus
+Comal,New Braunfels
 Comanche,Comanche
 Concho,Eden
 Cooke,Gainesville
@@ -52,54 +52,54 @@ Cottle,Paducah
 Crane,Crane
 Crockett,Ozona
 Crosby,Ralls
-Culberson County,Van Horn
+Culberson,Van Horn
 Dallam,Dalhart
 Dallas,Dallas
-Dawson County,Lamesa
+Dawson,Lamesa
 Deaf Smith,Hereford
-Delta County,Cooper
-Denton County,Denton
+Delta,Cooper
+Denton,Denton
 DeWitt,Cuero
 Dickens,Spur
 Dimmit,Carrizo Springs
 Donley,Clarendon
 Duval,San Diego
-Eastland County,Cisco
-Ector County,Odessa
+Eastland,Cisco
+Ector,Odessa
 Edwards,Rocksprings
 Ellis,Waxahachie
 El Paso,El Paso
 Erath,Stephenville
-Falls County,Marlin
-Fannin County,Bonham
+Falls,Marlin
+Fannin,Bonham
 Fayette,La Grange
 Fisher,Rotan
-Floyd County,Floydada
+Floyd,Floydada
 Foard,Crowell
 Fort Bend,Sugar Land
 Franklin,Mount Vernon
 Freestone,Teague
-Frio County,Pearsall
+Frio,Pearsall
 Gaines,Seminole
 Galveston,League City
 Garza,Post
 Gillespie,Fredericksburg
-Glasscock County,Garden City
+Glasscock,Garden City
 Goliad,Goliad
 Gonzales,Gonzales
 Gray,Pampa
 Grayson,Sherman
-Gregg County,Longview
+Gregg,Longview
 Grimes,Navasota
 Guadalupe,New Braunfels
 Hale,Plainview
 Hall,Memphis
-Hamilton County,Hamilton
+Hamilton,Hamilton
 Hansford,Spearman
 Hardeman,Quanah
 Hardin,Lumberton
 Harris,Houston
-Harrison County,Marshall
+Harrison,Marshall
 Hartley,Dalhart
 Haskell,Haskell
 Hays,San Marcos
@@ -115,7 +115,7 @@ Howard,Big Spring
 Hudspeth,Fort Hancock
 Hunt,Greenville
 Hutchinson,Borger
-Irion County,Mertzon
+Irion,Mertzon
 Jack,Jacksboro
 Jackson,Edna
 Jasper,Jasper
@@ -128,10 +128,10 @@ Jones,Stamford
 Karnes,Kenedy
 Kaufman,Forney
 Kendall,Boerne
-Kenedy County,Sarita
-Kent County,Jayton
-Kerr County,Kerrville
-Kimble County,Junction
+Kenedy,Sarita
+Kent,Jayton
+Kerr,Kerrville
+Kimble,Junction
 King,Guthrie
 Kinney,Brackettville
 Kleberg,Kingsville
@@ -140,17 +140,17 @@ Lamar,Paris
 Lamb,Littlefield
 Lampasas,Lampasas
 La Salle,Cotulla
-Lavaca County,Hallettsville
+Lavaca,Hallettsville
 Lee,Giddings
 Leon,Buffalo
 Liberty,Dayton
 Limestone,Mexia
 Lipscomb,Booker
-Live Oak County,George West
+Live Oak,George West
 Llano,Kingsland
-Loving County,Mentone
+Loving,Mentone
 Lubbock,Lubbock
-Lynn County,Tahoka
+Lynn,Tahoka
 McCulloch,Brady
 McLennan,Waco
 McMullen,Tilden
@@ -161,7 +161,7 @@ Mason,Mason
 Matagorda,Bay City
 Maverick,Eagle Pass
 Medina,Hondo
-Menard County,Menard
+Menard,Menard
 Midland,Midland
 Milam,Rockdale
 Mills,Goldthwaite
@@ -169,7 +169,7 @@ Mitchell,Colorado City
 Montague,Bowie
 Montgomery,The Woodlands
 Moore,Dumas
-Morris County,Daingerfield
+Morris,Daingerfield
 Motley,Matador
 Nacogdoches,Nacogdoches
 Navarro,Corsicana
@@ -178,9 +178,9 @@ Nolan,Sweetwater
 Nueces,Corpus Christi
 Ochiltree,Perryton
 Oldham,Vega
-Orange County,Orange
-Palo Pinto County,Mineral Wells
-Panola County,Carthage
+Orange,Orange
+Palo Pinto,Mineral Wells
+Panola,Carthage
 Parker,Weatherford
 Parmer,Friona
 Pecos,Fort Stockton
@@ -194,7 +194,7 @@ Real,Camp Wood
 Red River,Clarksville
 Reeves,Pecos
 Refugio,Refugio
-Roberts County,Miami
+Roberts,Miami
 Robertson,Hearne
 Rockwall,Dallas
 Runnels,Ballinger
@@ -202,9 +202,9 @@ Rusk,Henderson
 Sabine,Milam
 San Augustine,San Augustine
 San Jacinto,Shepherd
-San Patricio County,Corpus Christi
+San Patricio,Corpus Christi
 San Saba,San Saba
-Schleicher County,Eldorado
+Schleicher,Eldorado
 Scurry,Snyder
 Shackelford,Albany
 Shelby,Center
@@ -220,10 +220,10 @@ Swisher,Tulia
 Tarrant,Fort Worth
 Taylor,Abilene
 Terrell,Sanderson
-Terry County,Brownfield
+Terry,Brownfield
 Throckmorton,Throckmorton
 Titus,Mount Pleasant
-Tom Green County,San Angelo
+Tom Green,San Angelo
 Travis,Austin
 Trinity,Trinity
 Tyler,Woodville
@@ -234,21 +234,21 @@ Val Verde,Del Rio
 Van Zandt,Canton
 Victoria,Victoria
 Walker,Huntsville
-Waller County,Prairie View
+Waller,Prairie View
 Ward,Monahans
 Washington,Brenham
-Webb County,Laredo
-Wharton County,El Campo
+Webb,Laredo
+Wharton,El Campo
 Wheeler,Shamrock
 Wichita,Wichita Falls
 Wilbarger,Vernon
 Willacy,Raymondville
 Williamson,Round Rock
 Wilson,Floresville
-Winkler County,Kermit
+Winkler,Kermit
 Wise,Decatur
 Wood,Mineola
 Yoakum,Denver City
 Young,Graham
-Zapata County,Zapata
-Zavala County,Crystal City
+Zapata,Zapata
+Zavala,Crystal City

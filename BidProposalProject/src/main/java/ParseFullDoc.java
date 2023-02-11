@@ -7,26 +7,28 @@ import java.util.regex.Pattern;
 
 public class ParseFullDoc {
 
-	public static void main(String[] args) {
+	// public static void main(String[] args) {
 
-//		FileManager manager = new FileManager();
-//		File file1 = new File("C:\\Users\\Jacob\\Desktop\\Letting\\Test Letting\\Testtext.txt");
-//		File file2 = new File("C:\\Users\\Jacob\\Desktop\\Letting\\Test Letting\\Testtext2.txt");
-//
-//		List<String> l1 = manager.readFile(file1);
-//		List<String> l2 = manager.readFile(file2);
-//
-//		for (int i = 0; i < (l1.size() < l2.size() ? l2.size() : l1.size()); i++) {
-//			if (l1.get(i).equals(l2.get(i))) {
-//				System.out.println("match");
-//			} else {
-//				System.out.println();
-//				System.out.println(l1.get(i));
-//				System.out.println(l2.get(i));
-//				System.out.println();
-//			}
-//		}
-	}
+	// 	FileManager manager = new FileManager();
+	// 	File file1 = new File("C:\\Users\\Jacob\\Desktop\\Letting\\Test
+	// 	Letting\\Testtext.txt");
+	// 	File file2 = new File("C:\\Users\\Jacob\\Desktop\\Letting\\Test
+	// 	Letting\\Testtext2.txt");
+		
+	// 	List<String> l1 = manager.readFile(file1);
+	// 	List<String> l2 = manager.readFile(file2);
+		
+	// 	for (int i = 0; i < (l1.size() < l2.size() ? l2.size() : l1.size()); i++) {
+	// 	if (l1.get(i).equals(l2.get(i))) {
+	// 	System.out.println("match");
+	// 	} else {
+	// 	System.out.println();
+	// 	System.out.println(l1.get(i));
+	// 	System.out.println(l2.get(i));
+	// 	System.out.println();
+	// 	}
+	// 	}
+	// }
 
 	private FileManager fileManager = new FileManager();
 	private Audit audit;
@@ -43,9 +45,22 @@ public class ParseFullDoc {
 
 	}
 
+	/**
+	 * Parses the data from the input file.
+	 * The contents of the file are read using the `fileManager.readFile` method and
+	 * stored in the `contentsByLine` list.
+	 * The contents of the file are then separated into jobs using the
+	 * `separateJobs` method.
+	 * The data for each job is extracted using the `extractJobData` method and
+	 * added to the `jobList`.
+	 * A message is added to the `audit` list indicating that all job data has been
+	 * extracted.
+	 */
+
 	public void parseData() {
 
-		importFileData(inputFile);
+		contentsByLine = fileManager.readFile(inputFile);
+
 		separateJobs();
 		for (ArrayList<String> job : arrayOfJobStrings) {
 
@@ -56,7 +71,6 @@ public class ParseFullDoc {
 
 	public void importFileData(File file) {
 
-		audit.add("Tries to open file.");
 		contentsByLine = fileManager.readFile(file);
 		audit.add("	File opened successfully.");
 	}
@@ -87,6 +101,18 @@ public class ParseFullDoc {
 		audit.add("	File saved successfully.");
 	}
 
+	/**
+	 * Separates the contents of the file into jobs based on the delimiter.
+	 * The contents of the file are stored in the `contentsByLine` list.
+	 * If the first line starts with a `|` character, the contents are processed as
+	 * a previous file.
+	 * Otherwise, the contents are processed as a new file, and jobs are separated
+	 * based on the "==========" delimiter.
+	 * The separated jobs are stored in the `arrayOfJobStrings` list.
+	 * A message is added to the `audit` list indicating the type of file that was
+	 * loaded.
+	 * The type of file is also set using the `setBidFileType` method.
+	 */
 	public void separateJobs() {
 
 		arrayOfJobStrings = new ArrayList<ArrayList<String>>();
@@ -376,11 +402,6 @@ public class ParseFullDoc {
 				if (job.getCsj().equals(updatedBiddersJob.getCsj()))
 
 					job.setContractorList(updatedBiddersJob.getContractorList());
-	}
-
-	public ArrayList<String> createMailingList() {
-
-		return null;
 	}
 
 	// ====================================================================================================
