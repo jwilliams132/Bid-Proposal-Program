@@ -543,13 +543,6 @@ public class TestApp {
 	// Methods
 	// ====================================================================================================
 
-	public Color randomColor() {
-
-		Random random = new Random();
-
-		return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
-	}
-
 	public void displayData() {
 
 		GridBagConstraints displayConstraints = new GridBagConstraints();
@@ -648,7 +641,7 @@ public class TestApp {
 
 		rowHeaderPanel = new JPanel();
 		rowHeaderContainer.add(rowHeaderPanel);
-		rowHeaderContainer.add(new JButton("button"));
+		rowHeaderContainer.add(new JButton("LOL"));
 		dataScrollPane.setRowHeaderView(rowHeaderPanel);
 
 		viewportPanel = new JPanel();
@@ -868,5 +861,12 @@ public class TestApp {
 			return textField.getText();
 		}
 		return null;
+	}
+
+	public Color randomColor() {
+
+		Random random = new Random();
+
+		return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
 	}
 }
