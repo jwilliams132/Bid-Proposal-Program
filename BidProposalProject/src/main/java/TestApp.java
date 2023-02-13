@@ -165,7 +165,7 @@ public class TestApp {
 		openFilePanel.setLayout(new BorderLayout(10, 10));
 		frmWilliamsRoadLlc.getContentPane().add(openFilePanel, BorderLayout.NORTH);
 
-		chooseOpenFile = new JButton("Choose file to open...");
+		chooseOpenFile = new JButton("Open Bidding File...");
 		openFilePanel.add(chooseOpenFile, BorderLayout.WEST);
 
 		updateBidders = new JButton("Add Updated Bidders");
@@ -641,7 +641,7 @@ public class TestApp {
 
 		rowHeaderPanel = new JPanel();
 		rowHeaderContainer.add(rowHeaderPanel);
-		rowHeaderContainer.add(new JButton("LOL"));
+		// rowHeaderContainer.add(new JButton("LOL"));
 		dataScrollPane.setRowHeaderView(rowHeaderPanel);
 
 		viewportPanel = new JPanel();
