@@ -657,7 +657,6 @@ public class TestApp {
 
 		rowHeaderPanel = new JPanel();
 		rowHeaderContainer.add(rowHeaderPanel);
-		// rowHeaderContainer.add(new JButton("LOL"));
 		dataScrollPane.setRowHeaderView(rowHeaderPanel);
 
 		viewportPanel = new JPanel();
