@@ -43,6 +43,9 @@ public class TestApp {
 	private FileManager fileManager = new FileManager();
 	private TexasCityFinder cityFinder = new TexasCityFinder(path_to_List_of_counties_in_Texas);
 	private String lettingMonthDirectory;
+	private final Font FONT = new Font("Monospaced", Font.PLAIN, 14);
+	private final Color BACKGROUND = Color.LIGHT_GRAY;
+	private final Color FOREGROUND = Color.BLACK;
 
 	// private ArrayList<JLabel> jobLabels = new ArrayList<JLabel>();
 	private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
@@ -209,8 +212,12 @@ public class TestApp {
 		dataScrollPane.setAlignmentX(0.0f);
 		dataScrollPane.setAlignmentY(0.0f);
 
-		dataHeaderLabel = new JLabel("");
-		dataHeaderLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
+		dataHeaderLabel = new JLabel("") {
+			{
+				setFont(FONT);
+				setForeground(FOREGROUND);
+			}
+		};
 
 		rowHeaderContainer = new JPanel();
 
@@ -546,22 +553,24 @@ public class TestApp {
 	public void displayData() {
 
 		GridBagConstraints displayConstraints = new GridBagConstraints();
-		JLabel currentJobLabel;
-		JLabel lineItemLabel;
 		jobCheckBoxes = new ArrayList<JCheckBox>();
 		int lineItemCount = 0;
 
 		clearScrollPanel();
 
-		dataHeaderLabel = new JLabel("  CSJ                 County              Highway             Total Quantities");
-		dataHeaderLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
+		dataHeaderLabel = new JLabel("  CSJ                 County              Highway             Total Quantities"){
+			{
+				setFont(FONT);
+				setForeground(FOREGROUND);
+			}
+		};
 
 		rowHeaderPanel = new JPanel();
 		rowHeaderPanel.setLayout(new GridBagLayout());
 
 		viewportPanel = new JPanel();
 		viewportPanel.setLayout(new GridBagLayout());
-		viewportPanel.setBackground(Color.LIGHT_GRAY);
+		viewportPanel.setBackground(BACKGROUND);
 		viewportPanel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
 		rowHeaderContainer.add(rowHeaderPanel);
@@ -577,19 +586,14 @@ public class TestApp {
 		for (int index = 0; index < parseFullDoc.getJobList().size(); index++) {
 			Job currentJob = parseFullDoc.getJobList().get(index);
 
-			// sets all job labels into list
-			currentJobLabel = new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
-					currentJob.getCsj(),
-					currentJob.getCounty(),
-					currentJob.getHighway(),
-					currentJob.getSumOfQuantities()));
-			currentJobLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
-
 			// sets all job check boxes into list
-			jobCheckBoxes.add(new JCheckBox(String.format("%2d:", index + 1)));
-
-			jobCheckBoxes.get(index).setFont(new Font("Monospaced", Font.PLAIN, 14));
-			jobCheckBoxes.get(index).setBackground(Color.LIGHT_GRAY);
+			jobCheckBoxes.add(new JCheckBox(String.format("%2d:", index + 1)) {
+				{
+					setFont(FONT);
+					setBackground(BACKGROUND);
+					setForeground(FOREGROUND);
+				}
+			});
 
 			displayConstraints.anchor = GridBagConstraints.NORTHEAST;
 			displayConstraints.gridx = 0;
@@ -601,16 +605,28 @@ public class TestApp {
 			displayConstraints.gridx = 1;
 			displayConstraints.gridy = index + lineItemCount + 1;
 			displayConstraints.ipady = 8;
-			viewportPanel.add(currentJobLabel, displayConstraints);
+			viewportPanel.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
+					currentJob.getCsj(),
+					currentJob.getCounty(),
+					currentJob.getHighway(),
+					currentJob.getSumOfQuantities())) {
+				{
+					setFont(FONT);
+					setForeground(FOREGROUND);
+				}
+			}, displayConstraints);
 
 			for (LineItem lineItem : currentJob.getLineItems()) {
 				lineItemCount++;
-				lineItemLabel = new JLabel(
-						String.format("%-40s     %10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(), ""));
-				lineItemLabel.setFont(new Font("Monospaced", Font.PLAIN, 14));
 				displayConstraints.gridx = 1;
 				displayConstraints.gridy = index + lineItemCount + 1;
-				viewportPanel.add(lineItemLabel, displayConstraints);
+				viewportPanel.add(new JLabel(
+						String.format("%-40s     %,10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(), "")) {
+					{
+						setFont(FONT);
+						setForeground(FOREGROUND);
+					}
+				}, displayConstraints);
 
 			}
 		}
@@ -655,7 +671,12 @@ public class TestApp {
 
 		displayPricingConstraints.gridx = 0;
 		displayPricingConstraints.gridy = 1;
-		viewportPanel.add(new JLabel("Total Mobilizations Price?  "), displayPricingConstraints);
+		viewportPanel.add(new JLabel("Total Mobilizations Price?  ") {
+			{
+				setFont(FONT);
+				setForeground(FOREGROUND);
+			}
+		}, displayPricingConstraints);
 		displayPricingConstraints.gridx = 1;
 		displayPricingConstraints.gridy = 1;
 		addTotalMobsToPricingPage(displayPricingConstraints);
@@ -728,11 +749,16 @@ public class TestApp {
 			final int indexForActionListener = index;
 			displayPricingConstraints.gridx = 0;
 			displayPricingConstraints.gridy = index + 4;
-			viewportPanel.add(
-					new JLabel(String.format("%s%s%,2.2f",
-							parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getDescription(),
-							"        Quantity: ",
-							parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getQuantity())),
+			viewportPanel.add(new JLabel(String.format("%-40s%s%,12.2f%s",
+					parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getDescription(),
+					"    Quantity: ",
+					parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getQuantity(),
+					" (Sq. Yds.)")) {
+				{
+					setFont(FONT);
+					setForeground(FOREGROUND);
+				}
+			},
 					displayPricingConstraints);
 			lineItemPrices.add(new JTextField());
 			lineItemPrices.get(index).setPreferredSize(new Dimension(50, 20));
