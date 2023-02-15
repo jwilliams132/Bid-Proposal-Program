@@ -44,7 +44,7 @@ public class TestApp {
 	private TexasCityFinder cityFinder = new TexasCityFinder(path_to_List_of_counties_in_Texas);
 	private String lettingMonthDirectory;
 	private final Font FONT = new Font("Monospaced", Font.PLAIN, 14);
-	private final Color BACKGROUND = Color.LIGHT_GRAY;
+	private final Color BACKGROUND = Color.WHITE;
 	private final Color FOREGROUND = Color.BLACK;
 
 	// private ArrayList<JLabel> jobLabels = new ArrayList<JLabel>();
@@ -157,13 +157,14 @@ public class TestApp {
 		frmWilliamsRoadLlc.setTitle("Williams Road LLC Bid Form Program");
 		frmWilliamsRoadLlc.getContentPane().setLayout(new BorderLayout(0, 0));
 		frmWilliamsRoadLlc.setSize(1000, 600);
+		frmWilliamsRoadLlc.setBackground(BACKGROUND);
 
 		// ====================================================================================================
 		// Main Panel (North) Open File
 		// ====================================================================================================
 
 		openFilePanel = new JPanel();
-		openFilePanel.setBackground(new Color(255, 255, 255));
+		openFilePanel.setBackground(BACKGROUND);
 		openFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		openFilePanel.setLayout(new BorderLayout(10, 10));
 		frmWilliamsRoadLlc.getContentPane().add(openFilePanel, BorderLayout.NORTH);
@@ -187,7 +188,7 @@ public class TestApp {
 		frmWilliamsRoadLlc.getContentPane().add(saveFilePanel, BorderLayout.SOUTH);
 		saveFilePanel.setLayout(new BorderLayout(10, 10));
 		saveFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-
+		saveFilePanel.setBackground(BACKGROUND);
 		chooseSaveDirectory = new JButton("Choose Directory...");
 		chooseSaveDirectory.setEnabled(false);
 		saveFilePanel.add(chooseSaveDirectory, BorderLayout.WEST);
@@ -205,12 +206,14 @@ public class TestApp {
 
 		dataPanel = new JPanel();
 		dataPanel.setLayout(new BorderLayout(0, 0));
-
+		dataPanel.setBackground(BACKGROUND);
 		dataScrollPane = new JScrollPane();
 		dataScrollPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		dataScrollPane.getVerticalScrollBar().setUnitIncrement(16);
 		dataScrollPane.setAlignmentX(0.0f);
 		dataScrollPane.setAlignmentY(0.0f);
+		dataScrollPane.setBackground(BACKGROUND);
+
 
 		dataHeaderLabel = new JLabel("") {
 			{
@@ -220,6 +223,7 @@ public class TestApp {
 		};
 
 		rowHeaderContainer = new JPanel();
+		rowHeaderContainer.setBackground(BACKGROUND);
 
 		rowHeaderPanel = new JPanel();
 		rowHeaderPanel.setLayout(new GridLayout(10, 1, 10, 10));
@@ -229,6 +233,7 @@ public class TestApp {
 
 		viewportContainer = new JPanel();
 		viewportContainer.setLayout(new BorderLayout(0, 0));
+		viewportContainer.setBackground(BACKGROUND);
 
 		frmWilliamsRoadLlc.getContentPane().add(dataPanel, BorderLayout.CENTER);
 
@@ -246,10 +251,12 @@ public class TestApp {
 		// ====================================================================================================
 
 		dataManipulationPanel = new JPanel();
+		dataManipulationPanel.setBackground(BACKGROUND);
 		dataPanel.add(dataManipulationPanel, BorderLayout.SOUTH);
 		dataManipulationPanel.setLayout(new BorderLayout(0, 0));
 
 		jobFilterPanel = new JPanel();
+		jobFilterPanel.setBackground(BACKGROUND);
 		dataManipulationPanel.add(jobFilterPanel, BorderLayout.WEST);
 		jobFilterPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
@@ -263,6 +270,7 @@ public class TestApp {
 
 		jobSelectionPanel = new JPanel();
 		jobSelectionPanel.setLayout(new FlowLayout());
+		jobSelectionPanel.setBackground(BACKGROUND);
 		dataManipulationPanel.add(jobSelectionPanel, BorderLayout.CENTER);
 
 		previousJob = new JButton("<< Previous Job");
@@ -561,6 +569,7 @@ public class TestApp {
 		dataHeaderLabel = new JLabel("  CSJ                 County              Highway             Total Quantities"){
 			{
 				setFont(FONT);
+				setBackground(BACKGROUND);
 				setForeground(FOREGROUND);
 			}
 		};
