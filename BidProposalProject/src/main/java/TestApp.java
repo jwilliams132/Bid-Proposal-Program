@@ -93,11 +93,9 @@ public class TestApp {
 
 	// =====Data Panel==========
 	/**/private JPanel dataPanel;
-
-	// ==========Data Scroll Pane====
 	/* -- */private JScrollPane dataScrollPane;
-
-	/* ------ */private JLabel dataHeaderLabel;
+	/* ------ */private JPanel columnHeaderPanel;
+	/* ---------- */private JLabel dataHeaderLabel;
 	/* ------ */private JPanel rowHeaderContainer;
 	/* ---------- */private JPanel rowHeaderPanel;
 	/* ------ */private JPanel viewportContainer;
@@ -214,6 +212,8 @@ public class TestApp {
 		dataScrollPane.setAlignmentY(0.0f);
 		dataScrollPane.setBackground(BACKGROUND);
 
+		columnHeaderPanel = new JPanel(new BorderLayout(0, 0));
+		columnHeaderPanel.setBackground(BACKGROUND);
 
 		dataHeaderLabel = new JLabel("") {
 			{
@@ -222,6 +222,7 @@ public class TestApp {
 			}
 		};
 
+		columnHeaderPanel.add(dataHeaderLabel, BorderLayout.WEST);
 		rowHeaderContainer = new JPanel();
 		rowHeaderContainer.setBackground(BACKGROUND);
 
@@ -230,6 +231,7 @@ public class TestApp {
 
 		viewportPanel = new JPanel();
 		viewportPanel.setLayout(new GridLayout(10, 1, 10, 10));
+		
 
 		viewportContainer = new JPanel();
 		viewportContainer.setLayout(new BorderLayout(0, 0));
@@ -238,7 +240,7 @@ public class TestApp {
 		frmWilliamsRoadLlc.getContentPane().add(dataPanel, BorderLayout.CENTER);
 
 		dataPanel.add(dataScrollPane, BorderLayout.CENTER);
-		dataScrollPane.setColumnHeaderView(dataHeaderLabel);
+		dataScrollPane.setColumnHeaderView(columnHeaderPanel);
 
 		rowHeaderContainer.add(rowHeaderPanel);
 		viewportContainer.add(viewportPanel, BorderLayout.WEST);
