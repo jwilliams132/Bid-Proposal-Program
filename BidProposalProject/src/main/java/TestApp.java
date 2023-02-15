@@ -43,11 +43,11 @@ public class TestApp {
 	private FileManager fileManager = new FileManager();
 	private TexasCityFinder cityFinder = new TexasCityFinder(path_to_List_of_counties_in_Texas);
 	private String lettingMonthDirectory;
-	private final Font FONT = new Font("Monospaced", Font.PLAIN, 14);
+	private final Font FONT = new Font("Monospaced", Font.PLAIN, 16);
 	private final Color BACKGROUND = Color.WHITE;
 	private final Color FOREGROUND = Color.BLACK;
+	private final Color SCROLLPANECOLOR	= Color.LIGHT_GRAY;
 
-	// private ArrayList<JLabel> jobLabels = new ArrayList<JLabel>();
 	private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
 	private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
 	private int jobIndex = 0;
@@ -204,16 +204,15 @@ public class TestApp {
 
 		dataPanel = new JPanel();
 		dataPanel.setLayout(new BorderLayout(0, 0));
-		dataPanel.setBackground(BACKGROUND);
+		dataPanel.setBackground(SCROLLPANECOLOR);
+
 		dataScrollPane = new JScrollPane();
 		dataScrollPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		dataScrollPane.getVerticalScrollBar().setUnitIncrement(16);
-		dataScrollPane.setAlignmentX(0.0f);
-		dataScrollPane.setAlignmentY(0.0f);
-		dataScrollPane.setBackground(BACKGROUND);
+		dataScrollPane.setBackground(SCROLLPANECOLOR);
 
 		columnHeaderPanel = new JPanel(new BorderLayout(0, 0));
-		columnHeaderPanel.setBackground(BACKGROUND);
+		columnHeaderPanel.setBackground(SCROLLPANECOLOR);
 
 		dataHeaderLabel = new JLabel("") {
 			{
@@ -224,7 +223,7 @@ public class TestApp {
 
 		columnHeaderPanel.add(dataHeaderLabel, BorderLayout.WEST);
 		rowHeaderContainer = new JPanel();
-		rowHeaderContainer.setBackground(BACKGROUND);
+		rowHeaderContainer.setBackground(SCROLLPANECOLOR);
 
 		rowHeaderPanel = new JPanel();
 		rowHeaderPanel.setLayout(new GridLayout(10, 1, 10, 10));
@@ -235,7 +234,7 @@ public class TestApp {
 
 		viewportContainer = new JPanel();
 		viewportContainer.setLayout(new BorderLayout(0, 0));
-		viewportContainer.setBackground(BACKGROUND);
+		viewportContainer.setBackground(SCROLLPANECOLOR);
 
 		frmWilliamsRoadLlc.getContentPane().add(dataPanel, BorderLayout.CENTER);
 
@@ -568,10 +567,10 @@ public class TestApp {
 
 		clearScrollPanel();
 
-		dataHeaderLabel = new JLabel("  CSJ                 County              Highway             Total Quantities"){
+		dataHeaderLabel = new JLabel("CSJ                 County              Highway             Total Quantities"){
 			{
 				setFont(FONT);
-				setBackground(BACKGROUND);
+				setBackground(SCROLLPANECOLOR);
 				setForeground(FOREGROUND);
 			}
 		};
@@ -581,11 +580,11 @@ public class TestApp {
 
 		viewportPanel = new JPanel();
 		viewportPanel.setLayout(new GridBagLayout());
-		viewportPanel.setBackground(BACKGROUND);
+		viewportPanel.setBackground(SCROLLPANECOLOR);
 		viewportPanel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
 		rowHeaderContainer.add(rowHeaderPanel);
-		viewportContainer.add(viewportPanel, BorderLayout.NORTH);
+		viewportContainer.add(viewportPanel, BorderLayout.WEST);
 
 		dataScrollPane.setRowHeaderView(rowHeaderContainer);
 		dataScrollPane.setViewportView(viewportContainer);
@@ -601,21 +600,19 @@ public class TestApp {
 			jobCheckBoxes.add(new JCheckBox(String.format("%2d:", index + 1)) {
 				{
 					setFont(FONT);
-					setBackground(BACKGROUND);
+					setBackground(SCROLLPANECOLOR);
 					setForeground(FOREGROUND);
 				}
 			});
 
-			displayConstraints.anchor = GridBagConstraints.NORTHEAST;
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = index + lineItemCount + 1;
-			displayConstraints.ipady = 0;
+			// displayConstraints.ipady = 0;
 			viewportPanel.add(jobCheckBoxes.get(index), displayConstraints);
 
-			displayConstraints.anchor = GridBagConstraints.NORTHEAST;
 			displayConstraints.gridx = 1;
 			displayConstraints.gridy = index + lineItemCount + 1;
-			displayConstraints.ipady = 8;
+			// displayConstraints.ipady = 8;
 			viewportPanel.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
 					currentJob.getCsj(),
 					currentJob.getCounty(),
