@@ -224,11 +224,6 @@ public class TestApp {
 		};
 
 		columnHeaderPanel.add(dataHeaderLabel, BorderLayout.WEST);
-		// rowHeaderContainer = new JPanel();
-		// rowHeaderContainer.setBackground(SCROLLPANECOLOR);
-
-		// rowHeaderPanel = new JPanel();
-		// rowHeaderPanel.setLayout(new GridLayout(10, 1, 10, 10));
 
 		viewportPanel = new JPanel() {
 			{
@@ -264,8 +259,6 @@ public class TestApp {
 		dataScrollPane.setColumnHeaderView(columnHeaderPanel);
 
 		viewportContainer.add(viewportPanel);
-
-		// dataScrollPane.setRowHeaderView(rowHeaderContainer);
 		dataScrollPane.setViewportView(viewportContainer);
 
 		// ===========================================================================
@@ -597,17 +590,13 @@ public class TestApp {
 			}
 		};
 
-		// rowHeaderPanel = new JPanel();
-		// rowHeaderPanel.setLayout(new GridBagLayout());
 
 		viewportPanel = new JPanel(new GridBagLayout());
 		viewportPanel.setBackground(SCROLLPANECOLOR);
 		viewportPanel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
-		// rowHeaderContainer.add(rowHeaderPanel);
 		viewportContainer.add(viewportPanel, BorderLayout.NORTH);
 
-		// dataScrollPane.setRowHeaderView(rowHeaderContainer);
 		dataScrollPane.setViewportView(viewportContainer);
 
 		displayConstraints.gridx = 1;
@@ -628,12 +617,10 @@ public class TestApp {
 
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = index + lineItemCount + 1;
-			// displayConstraints.ipady = 0;
 			viewportPanel.add(jobCheckBoxes.get(index), displayConstraints);
 
 			displayConstraints.gridx = 1;
 			displayConstraints.gridy = index + lineItemCount + 1;
-			// displayConstraints.ipady = 8;
 			viewportPanel.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
 					currentJob.getCsj(),
 					currentJob.getCounty(),
@@ -664,13 +651,8 @@ public class TestApp {
 
 	private void clearScrollPanel() {
 		viewportPanel.removeAll();
-		// rowHeaderPanel.removeAll();
-
 		viewportContainer.remove(viewportPanel);
-		// rowHeaderContainer.remove(rowHeaderPanel);
-
 		dataScrollPane.remove(viewportContainer);
-		// dataScrollPane.remove(rowHeaderContainer);
 	}
 
 	public void displayPricingInput() {
@@ -683,10 +665,6 @@ public class TestApp {
 				parseFullDoc.getJobList().get(jobIndex).getHighway(), "county's largest city:  "
 						+ cityFinder.getLargestCity(parseFullDoc.getJobList().get(jobIndex).getCounty())));
 		dataScrollPane.setColumnHeaderView(dataHeaderLabel);
-
-		// rowHeaderPanel = new JPanel();
-		// rowHeaderContainer.add(rowHeaderPanel);
-		// dataScrollPane.setRowHeaderView(rowHeaderPanel);
 
 		viewportPanel = new JPanel();
 		viewportContainer.add(viewportPanel);
