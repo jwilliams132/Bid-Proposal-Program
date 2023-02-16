@@ -492,6 +492,7 @@ public class TestApp {
 				// job.printJobInfo(); // print the job info
 
 				displayData(); // display the new data
+
 				filterForCheckedBoxes.setEnabled(false);
 				addPricing.setEnabled(true);
 				audit.add("	Function filterForCheckedBoxes completed.");
@@ -588,29 +589,34 @@ public class TestApp {
 				}
 			}
 		};
+
 		final JCheckBox checkAll = new JCheckBox(" ALL ") {
 			{
-
 				setFont(FONT);
 				setBackground(SCROLLPANECOLOR);
 				setForeground(FOREGROUND);
-
 				addItemListener(checkAllListener);
+			}
+		};
+
+		final ItemListener jobCheckBoxListener = new ItemListener() {
+
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.DESELECTED) {
+
+					checkAll.removeItemListener(checkAllListener);
+					checkAll.setSelected(false);
+					checkAll.addItemListener(checkAllListener);
+				}
 			}
 		};
 		int lineItemCount = 0;
 
 		clearScrollPanel();
 
-			}
-		};
-
 		viewportPanel = new JPanel(new GridBagLayout());
 		viewportPanel.setBackground(SCROLLPANECOLOR);
-		viewportPanel.setBorder(new EmptyBorder(5, 0, 0, 0));
-
 		viewportContainer.add(viewportPanel, BorderLayout.NORTH);
-
 		dataScrollPane.setViewportView(viewportContainer);
 
 		displayConstraints.gridx = 1;
@@ -633,18 +639,7 @@ public class TestApp {
 					setFont(FONT);
 					setBackground(SCROLLPANECOLOR);
 					setForeground(FOREGROUND);
-
-					addItemListener(new ItemListener() {
-
-						public void itemStateChanged(ItemEvent e) {
-							if (e.getStateChange() == ItemEvent.DESELECTED) {
-
-								checkAll.removeItemListener(checkAllListener);
-								checkAll.setSelected(false);
-								checkAll.addItemListener(checkAllListener);
-							}
-						}
-					});
+					addItemListener(jobCheckBoxListener);
 				}
 			});
 			displayConstraints.gridx = 0;
@@ -683,6 +678,12 @@ public class TestApp {
 			}
 		}
 		audit.add("	Data has been displayed.");
+	}
+
+	@Deprecated
+	private void displayDataREWORK() {
+		clearScrollPanel();
+
 	}
 
 	private void selectAllCheckBoxes(ArrayList<JCheckBox> checkBoxes) {
