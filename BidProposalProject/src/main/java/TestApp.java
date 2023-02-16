@@ -46,7 +46,7 @@ public class TestApp {
 	private final Font FONT = new Font("Monospaced", Font.PLAIN, 16);
 	private final Color BACKGROUND = Color.WHITE;
 	private final Color FOREGROUND = Color.BLACK;
-	private final Color SCROLLPANECOLOR	= Color.LIGHT_GRAY;
+	private final Color SCROLLPANECOLOR = Color.LIGHT_GRAY;
 
 	private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
 	private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
@@ -157,9 +157,9 @@ public class TestApp {
 		frmWilliamsRoadLlc.setSize(1000, 600);
 		frmWilliamsRoadLlc.setBackground(BACKGROUND);
 
-		// ====================================================================================================
+		// ==================================================
 		// Main Panel (North) Open File
-		// ====================================================================================================
+		// ==================================================
 
 		openFilePanel = new JPanel();
 		openFilePanel.setBackground(BACKGROUND);
@@ -178,9 +178,9 @@ public class TestApp {
 		openFilePathLabel = new JLabel("File Path:  ");
 		openFilePanel.add(openFilePathLabel);
 
-		// ====================================================================================================
+		// ==================================================
 		// Main Panel (South) Save File
-		// ====================================================================================================
+		// ==================================================
 
 		saveFilePanel = new JPanel();
 		frmWilliamsRoadLlc.getContentPane().add(saveFilePanel, BorderLayout.SOUTH);
@@ -198,9 +198,9 @@ public class TestApp {
 		saveFilePathLabel = new JLabel("Directory Path:  ");
 		saveFilePanel.add(saveFilePathLabel);
 
-		// ====================================================================================================
+		// ==================================================
 		// Main Panel (Center) Display Data
-		// ====================================================================================================
+		// ==================================================
 
 		dataPanel = new JPanel();
 		dataPanel.setLayout(new BorderLayout(0, 0));
@@ -230,7 +230,6 @@ public class TestApp {
 
 		viewportPanel = new JPanel();
 		viewportPanel.setLayout(new GridLayout(10, 1, 10, 10));
-		
 
 		viewportContainer = new JPanel();
 		viewportContainer.setLayout(new BorderLayout(0, 0));
@@ -247,9 +246,9 @@ public class TestApp {
 		dataScrollPane.setRowHeaderView(rowHeaderContainer);
 		dataScrollPane.setViewportView(viewportContainer);
 
-		// ====================================================================================================
+		// ==================================================
 		// Sub Panel (MP (Center)) (South) Manipulation Buttons
-		// ====================================================================================================
+		// ==================================================
 
 		dataManipulationPanel = new JPanel();
 		dataManipulationPanel.setBackground(BACKGROUND);
@@ -567,7 +566,7 @@ public class TestApp {
 
 		clearScrollPanel();
 
-		dataHeaderLabel = new JLabel("CSJ                 County              Highway             Total Quantities"){
+		dataHeaderLabel = new JLabel("CSJ                 County              Highway             Total Quantities") {
 			{
 				setFont(FONT);
 				setBackground(SCROLLPANECOLOR);
