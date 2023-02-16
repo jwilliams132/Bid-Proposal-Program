@@ -98,7 +98,6 @@ public class TestApp {
 	/**/private JPanel dataPanel;
 	/* -- */private JScrollPane dataScrollPane;
 	/* ------ */private JPanel columnHeaderPanel;
-	/* ---------- */private JLabel dataHeaderLabel;
 	/* ------ */private JPanel viewportContainer;
 	/* ---------- */private JPanel viewportPanel;
 	/* -------------- */private JTextField upToMobsTextField;
@@ -217,15 +216,6 @@ public class TestApp {
 
 		columnHeaderPanel = new JPanel();
 		columnHeaderPanel.setBackground(SCROLLPANECOLOR);
-
-		dataHeaderLabel = new JLabel("") {
-			{
-				setFont(FONT);
-				setForeground(FOREGROUND);
-			}
-		};
-
-		columnHeaderPanel.add(dataHeaderLabel, BorderLayout.WEST);
 
 		viewportPanel = new JPanel() {
 			{
@@ -359,7 +349,13 @@ public class TestApp {
 				updateBidders.setEnabled(true);
 
 				// set header
-				dataHeaderLabel.setText("Job List for " + parseFullDoc.getBidFileType());
+				columnHeaderPanel.add(new JLabel() {
+					{
+						setText("Job List for ".concat(parseFullDoc.getBidFileType()));
+						setFont(FONT);
+						setForeground(FOREGROUND);
+					}
+				}, BorderLayout.WEST);
 
 				// Display the data
 				displayData();
@@ -606,11 +602,6 @@ public class TestApp {
 
 		clearScrollPanel();
 
-		dataHeaderLabel = new JLabel("CSJ                 County              Highway             Total Quantities") {
-			{
-				setFont(FONT);
-				setBackground(SCROLLPANECOLOR);
-				setForeground(FOREGROUND);
 			}
 		};
 
@@ -624,7 +615,14 @@ public class TestApp {
 
 		displayConstraints.gridx = 1;
 		displayConstraints.gridy = 0;
-		viewportPanel.add(dataHeaderLabel, displayConstraints);
+		viewportPanel.add(new JLabel() {
+			{
+				setText(String.format("%-20s%-20s%-20s%16s", "CSJ", "County", "Highway", "Total Quantities"));
+				setFont(FONT);
+				setBackground(SCROLLPANECOLOR);
+				setForeground(FOREGROUND);
+			}
+		}, displayConstraints);
 
 		for (int index = 0; index < parseFullDoc.getJobList().size(); index++) {
 			Job currentJob = parseFullDoc.getJobList().get(index);
@@ -708,13 +706,17 @@ public class TestApp {
 	public void displayPricingInput() {
 
 		GridBagConstraints displayPricingConstraints = new GridBagConstraints();
-
-		dataHeaderLabel = new JLabel();
-		dataHeaderLabel.setText(String.format("%-20s%-20s%-20s%-20s", parseFullDoc.getJobList().get(jobIndex).getCsj(),
-				parseFullDoc.getJobList().get(jobIndex).getCounty(),
-				parseFullDoc.getJobList().get(jobIndex).getHighway(), "county's largest city:  "
-						+ cityFinder.getLargestCity(parseFullDoc.getJobList().get(jobIndex).getCounty())));
-		dataScrollPane.setColumnHeaderView(dataHeaderLabel);
+		final Job currentJob = parseFullDoc.getJobList().get(jobIndex);
+		dataScrollPane.setColumnHeaderView(new JLabel() {
+			{
+				setText(String.format("%-20s%-20s%-20s%-20s", currentJob.getCsj(),
+						currentJob.getCounty(),
+						currentJob.getHighway(),
+						"county's largest city:  ".concat(cityFinder.getLargestCity(currentJob.getCounty()))));
+				setFont(FONT);
+				setForeground(FOREGROUND);
+			}
+		});
 
 		viewportPanel = new JPanel();
 		viewportContainer.add(viewportPanel);
