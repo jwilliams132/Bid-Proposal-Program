@@ -603,11 +603,10 @@ public class TestApp {
 		viewportPanel.setBackground(SCROLLPANECOLOR);
 		viewportPanel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
-		rowHeaderContainer.add(rowHeaderPanel);
-		viewportContainer.add(viewportPanel, BorderLayout.WEST);
+		// rowHeaderContainer.add(rowHeaderPanel);
 		viewportContainer.add(viewportPanel, BorderLayout.NORTH);
 
-		dataScrollPane.setRowHeaderView(rowHeaderContainer);
+		// dataScrollPane.setRowHeaderView(rowHeaderContainer);
 		dataScrollPane.setViewportView(viewportContainer);
 
 		displayConstraints.gridx = 1;
