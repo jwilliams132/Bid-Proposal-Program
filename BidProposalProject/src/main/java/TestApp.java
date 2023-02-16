@@ -43,6 +43,7 @@ public class TestApp {
 	private FileManager fileManager = new FileManager();
 	private TexasCityFinder cityFinder = new TexasCityFinder(path_to_List_of_counties_in_Texas);
 	private String lettingMonthDirectory;
+	private final Font TITLEFONT = new Font("Monospaced", Font.BOLD, 50);
 	private final Font FONT = new Font("Monospaced", Font.PLAIN, 16);
 	private final Color BACKGROUND = Color.WHITE;
 	private final Color FOREGROUND = Color.BLACK;
@@ -117,6 +118,9 @@ public class TestApp {
 	/* -- */private JButton chooseSaveDirectory;
 	/* -- */private JLabel saveFilePathLabel;
 	/* -- */private JButton save;
+
+	JLabel startupLabel1;
+	JLabel startupLabel2;
 
 	/**
 	 * Launch the application.
@@ -226,8 +230,29 @@ public class TestApp {
 		// rowHeaderPanel = new JPanel();
 		// rowHeaderPanel.setLayout(new GridLayout(10, 1, 10, 10));
 
-		viewportPanel = new JPanel();
-		viewportPanel.setLayout(new GridLayout(10, 1, 10, 10));
+		viewportPanel = new JPanel() {
+			{
+				setLayout(new GridLayout(2, 0));
+				setBackground(SCROLLPANECOLOR);
+			}
+		};
+		startupLabel1 = new JLabel("BIDDING PROGRAM") {
+			{
+				setFont(TITLEFONT);
+				setHorizontalAlignment(JLabel.CENTER);
+				setVerticalAlignment(JLabel.BOTTOM);
+			}
+		};
+
+		startupLabel2 = new JLabel("Click \"Open Bidding File\" To Get Started") {
+			{
+				setFont(FONT);
+				setHorizontalAlignment(JLabel.CENTER);
+				setVerticalAlignment(JLabel.TOP);
+			}
+		};
+		viewportPanel.add(startupLabel1);
+		viewportPanel.add(startupLabel2);
 
 		viewportContainer = new JPanel();
 		viewportContainer.setLayout(new BorderLayout(0, 0));
