@@ -96,8 +96,6 @@ public class TestApp {
 	/* -- */private JScrollPane dataScrollPane;
 	/* ------ */private JPanel columnHeaderPanel;
 	/* ---------- */private JLabel dataHeaderLabel;
-	/* ------ */private JPanel rowHeaderContainer;
-	/* ---------- */private JPanel rowHeaderPanel;
 	/* ------ */private JPanel viewportContainer;
 	/* ---------- */private JPanel viewportPanel;
 	/* -------------- */private JTextField upToMobsTextField;
@@ -222,11 +220,11 @@ public class TestApp {
 		};
 
 		columnHeaderPanel.add(dataHeaderLabel, BorderLayout.WEST);
-		rowHeaderContainer = new JPanel();
-		rowHeaderContainer.setBackground(SCROLLPANECOLOR);
+		// rowHeaderContainer = new JPanel();
+		// rowHeaderContainer.setBackground(SCROLLPANECOLOR);
 
-		rowHeaderPanel = new JPanel();
-		rowHeaderPanel.setLayout(new GridLayout(10, 1, 10, 10));
+		// rowHeaderPanel = new JPanel();
+		// rowHeaderPanel.setLayout(new GridLayout(10, 1, 10, 10));
 
 		viewportPanel = new JPanel();
 		viewportPanel.setLayout(new GridLayout(10, 1, 10, 10));
@@ -240,10 +238,9 @@ public class TestApp {
 		dataPanel.add(dataScrollPane, BorderLayout.CENTER);
 		dataScrollPane.setColumnHeaderView(columnHeaderPanel);
 
-		rowHeaderContainer.add(rowHeaderPanel);
-		viewportContainer.add(viewportPanel, BorderLayout.WEST);
+		viewportContainer.add(viewportPanel);
 
-		dataScrollPane.setRowHeaderView(rowHeaderContainer);
+		// dataScrollPane.setRowHeaderView(rowHeaderContainer);
 		dataScrollPane.setViewportView(viewportContainer);
 
 		// ==================================================
@@ -574,16 +571,16 @@ public class TestApp {
 			}
 		};
 
-		rowHeaderPanel = new JPanel();
-		rowHeaderPanel.setLayout(new GridBagLayout());
+		// rowHeaderPanel = new JPanel();
+		// rowHeaderPanel.setLayout(new GridBagLayout());
 
-		viewportPanel = new JPanel();
 		viewportPanel.setLayout(new GridBagLayout());
 		viewportPanel.setBackground(SCROLLPANECOLOR);
 		viewportPanel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
 		rowHeaderContainer.add(rowHeaderPanel);
 		viewportContainer.add(viewportPanel, BorderLayout.WEST);
+		viewportContainer.add(viewportPanel, BorderLayout.NORTH);
 
 		dataScrollPane.setRowHeaderView(rowHeaderContainer);
 		dataScrollPane.setViewportView(viewportContainer);
@@ -665,6 +662,9 @@ public class TestApp {
 		rowHeaderPanel = new JPanel();
 		rowHeaderContainer.add(rowHeaderPanel);
 		dataScrollPane.setRowHeaderView(rowHeaderPanel);
+		// rowHeaderPanel = new JPanel();
+		// rowHeaderContainer.add(rowHeaderPanel);
+		// dataScrollPane.setRowHeaderView(rowHeaderPanel);
 
 		viewportPanel = new JPanel();
 		viewportContainer.add(viewportPanel);
