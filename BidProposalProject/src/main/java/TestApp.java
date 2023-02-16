@@ -664,13 +664,13 @@ public class TestApp {
 
 	private void clearScrollPanel() {
 		viewportPanel.removeAll();
-		rowHeaderPanel.removeAll();
+		// rowHeaderPanel.removeAll();
 
 		viewportContainer.remove(viewportPanel);
-		rowHeaderContainer.remove(rowHeaderPanel);
+		// rowHeaderContainer.remove(rowHeaderPanel);
 
 		dataScrollPane.remove(viewportContainer);
-		dataScrollPane.remove(rowHeaderContainer);
+		// dataScrollPane.remove(rowHeaderContainer);
 	}
 
 	public void displayPricingInput() {
@@ -684,9 +684,6 @@ public class TestApp {
 						+ cityFinder.getLargestCity(parseFullDoc.getJobList().get(jobIndex).getCounty())));
 		dataScrollPane.setColumnHeaderView(dataHeaderLabel);
 
-		rowHeaderPanel = new JPanel();
-		rowHeaderContainer.add(rowHeaderPanel);
-		dataScrollPane.setRowHeaderView(rowHeaderPanel);
 		// rowHeaderPanel = new JPanel();
 		// rowHeaderContainer.add(rowHeaderPanel);
 		// dataScrollPane.setRowHeaderView(rowHeaderPanel);
