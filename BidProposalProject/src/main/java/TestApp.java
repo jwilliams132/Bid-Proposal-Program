@@ -213,7 +213,7 @@ public class TestApp {
 		dataScrollPane.getVerticalScrollBar().setUnitIncrement(16);
 		dataScrollPane.setBackground(SCROLLPANECOLOR);
 
-		columnHeaderPanel = new JPanel(new BorderLayout(0, 0));
+		columnHeaderPanel = new JPanel();
 		columnHeaderPanel.setBackground(SCROLLPANECOLOR);
 
 		dataHeaderLabel = new JLabel("") {
@@ -599,7 +599,7 @@ public class TestApp {
 		// rowHeaderPanel = new JPanel();
 		// rowHeaderPanel.setLayout(new GridBagLayout());
 
-		viewportPanel.setLayout(new GridBagLayout());
+		viewportPanel = new JPanel(new GridBagLayout());
 		viewportPanel.setBackground(SCROLLPANECOLOR);
 		viewportPanel.setBorder(new EmptyBorder(5, 0, 0, 0));
 
