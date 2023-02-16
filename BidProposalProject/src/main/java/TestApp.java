@@ -360,7 +360,7 @@ public class TestApp {
 				// Enable a few buttons
 				chooseSaveDirectory.setEnabled(true);
 				filterForCheckedBoxes.setEnabled(true);
-				addPricing.setEnabled(true);
+				addPricing.setEnabled(false);
 				updateBidders.setEnabled(true);
 
 				// set header
@@ -502,6 +502,7 @@ public class TestApp {
 
 				displayData(); // display the new data
 				filterForCheckedBoxes.setEnabled(false);
+				addPricing.setEnabled(true);
 				audit.add("	Function filterForCheckedBoxes completed.");
 			}
 		});
