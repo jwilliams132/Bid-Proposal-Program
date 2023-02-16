@@ -22,6 +22,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
@@ -578,6 +580,28 @@ public class TestApp {
 
 		GridBagConstraints displayConstraints = new GridBagConstraints();
 		jobCheckBoxes = new ArrayList<JCheckBox>();
+		final ItemListener checkAllListener = new ItemListener() {
+
+			public void itemStateChanged(ItemEvent event) {
+				if (event.getStateChange() == ItemEvent.SELECTED) {
+
+					selectAllCheckBoxes(jobCheckBoxes);
+				} else {
+
+					deselectAllCheckBoxes(jobCheckBoxes);
+				}
+			}
+		};
+		final JCheckBox checkAll = new JCheckBox(" ALL ") {
+			{
+
+				setFont(FONT);
+				setBackground(SCROLLPANECOLOR);
+				setForeground(FOREGROUND);
+
+				addItemListener(checkAllListener);
+			}
+		};
 		int lineItemCount = 0;
 
 		clearScrollPanel();
@@ -589,7 +613,6 @@ public class TestApp {
 				setForeground(FOREGROUND);
 			}
 		};
-
 
 		viewportPanel = new JPanel(new GridBagLayout());
 		viewportPanel.setBackground(SCROLLPANECOLOR);
@@ -606,15 +629,29 @@ public class TestApp {
 		for (int index = 0; index < parseFullDoc.getJobList().size(); index++) {
 			Job currentJob = parseFullDoc.getJobList().get(index);
 
-			// sets all job check boxes into list
-			jobCheckBoxes.add(new JCheckBox(String.format("%2d:", index + 1)) {
+			// sets all job check boxes into list here
+			jobCheckBoxes.add(new JCheckBox(String.format("  %2d:", index + 1)) {
 				{
 					setFont(FONT);
 					setBackground(SCROLLPANECOLOR);
 					setForeground(FOREGROUND);
+
+					addItemListener(new ItemListener() {
+
+						public void itemStateChanged(ItemEvent e) {
+							if (e.getStateChange() == ItemEvent.DESELECTED) {
+
+								checkAll.removeItemListener(checkAllListener);
+								checkAll.setSelected(false);
+								checkAll.addItemListener(checkAllListener);
+							}
+						}
+					});
 				}
 			});
-
+			displayConstraints.gridx = 0;
+			displayConstraints.gridy = 0;
+			viewportPanel.add(checkAll, displayConstraints);
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = index + lineItemCount + 1;
 			viewportPanel.add(jobCheckBoxes.get(index), displayConstraints);
@@ -647,6 +684,18 @@ public class TestApp {
 			}
 		}
 		audit.add("	Data has been displayed.");
+	}
+
+	private void selectAllCheckBoxes(ArrayList<JCheckBox> checkBoxes) {
+		for (JCheckBox checkBox : checkBoxes) {
+			checkBox.setSelected(true);
+		}
+	}
+
+	private void deselectAllCheckBoxes(ArrayList<JCheckBox> checkBoxes) {
+		for (JCheckBox checkBox : checkBoxes) {
+			checkBox.setSelected(false);
+		}
 	}
 
 	private void clearScrollPanel() {
