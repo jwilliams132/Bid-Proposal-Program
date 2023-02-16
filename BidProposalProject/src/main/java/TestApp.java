@@ -654,6 +654,7 @@ public class TestApp {
 			viewportPanel.add(checkAll, displayConstraints);
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = index + lineItemCount + 1;
+
 			viewportPanel.add(jobCheckBoxes.get(index), displayConstraints);
 
 			displayConstraints.gridx = 1;
