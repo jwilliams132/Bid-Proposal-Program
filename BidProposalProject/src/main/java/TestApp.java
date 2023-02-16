@@ -189,7 +189,7 @@ public class TestApp {
 		saveFilePanel.setLayout(new BorderLayout(10, 10));
 		saveFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		saveFilePanel.setBackground(BACKGROUND);
-		chooseSaveDirectory = new JButton("Choose Directory...");
+		chooseSaveDirectory = new JButton("Choose a folder to save to...");
 		chooseSaveDirectory.setEnabled(false);
 		saveFilePanel.add(chooseSaveDirectory, BorderLayout.WEST);
 
