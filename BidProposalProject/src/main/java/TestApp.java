@@ -639,7 +639,7 @@ public class TestApp {
 					currentJob.getHighway(),
 					currentJob.getSumOfQuantities())) {
 				{
-					setFont(FONT);
+					setFont(new Font("Monospaced", Font.BOLD, 16));
 					setForeground(FOREGROUND);
 				}
 			}, displayConstraints);
