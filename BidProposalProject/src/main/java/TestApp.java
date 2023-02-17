@@ -710,7 +710,11 @@ public class TestApp {
 		dataScrollPane.remove(viewportContainer);
 	}
 
-	public void displayPricingInput() {
+	// ===========================================================================
+	// Pricing Display
+	// ===========================================================================
+
+	public void displayPricing() {
 
 		GridBagConstraints displayPricingConstraints = new GridBagConstraints();
 		final Job currentJob = parseFullDoc.getJobList().get(jobIndex);
@@ -725,10 +729,10 @@ public class TestApp {
 			}
 		});
 
-		viewportPanel = new JPanel();
-		viewportContainer.add(viewportPanel);
-		dataScrollPane.setViewportView(viewportPanel);
-		viewportPanel.setLayout(new GridBagLayout());
+		JPanel pricingDisplay = new JPanel();
+		viewportContainer.add(pricingDisplay);
+		dataScrollPane.setViewportView(pricingDisplay);
+		pricingDisplay.setLayout(new GridBagLayout());
 
 		displayPricingConstraints.anchor = GridBagConstraints.BELOW_BASELINE_LEADING;
 		displayPricingConstraints.ipadx = 10;
@@ -736,7 +740,7 @@ public class TestApp {
 
 		displayPricingConstraints.gridx = 0;
 		displayPricingConstraints.gridy = 1;
-		viewportPanel.add(new JLabel("Total Mobilizations Price?  ") {
+		pricingDisplay.add(new JLabel("Total Mobilizations Price?  ") {
 			{
 				setFont(FONT);
 				setForeground(FOREGROUND);
@@ -744,14 +748,14 @@ public class TestApp {
 		}, displayPricingConstraints);
 		displayPricingConstraints.gridx = 1;
 		displayPricingConstraints.gridy = 1;
-		addTotalMobsToPricingPage(displayPricingConstraints);
-		addLineItemsToPricingPage(displayPricingConstraints);
+		addTotalMobsToPricingPage(pricingDisplay, displayPricingConstraints);
+		addLineItemsToPricingPage(pricingDisplay, displayPricingConstraints);
 
 		totalMobsTextField.requestFocus();
 		audit.add("	Job:  " + parseFullDoc.getJobList().get(jobIndex).getCsj() + "	Pricing page has been displayed.");
 	}
 
-	public void addUpTo_MobsToPricingPage(GridBagConstraints displayPricingConstraints) {
+	public void addUpTo_MobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
 		upToMobsTextField = new JTextField();
 		upToMobsTextField.setText(String.format("%d", parseFullDoc.getJobList().get(jobIndex).getUpTo_Mobs()));
@@ -766,10 +770,10 @@ public class TestApp {
 			public void focusLost(FocusEvent e) {
 			}
 		});
-		viewportPanel.add(upToMobsTextField, displayPricingConstraints);
+		pricingDisplay.add(upToMobsTextField, displayPricingConstraints);
 	}
 
-	public void addAdditionalMobsToPricingPage(GridBagConstraints displayPricingConstraints) {
+	public void addAdditionalMobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
 		additionalMobsTextField = new JTextField();
 		additionalMobsTextField
@@ -785,10 +789,10 @@ public class TestApp {
 			public void focusLost(FocusEvent e) {
 			}
 		});
-		viewportPanel.add(additionalMobsTextField, displayPricingConstraints);
+		pricingDisplay.add(additionalMobsTextField, displayPricingConstraints);
 	}
 
-	public void addTotalMobsToPricingPage(GridBagConstraints displayPricingConstraints) {
+	public void addTotalMobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
 		totalMobsTextField = new JTextField();
 		totalMobsTextField.setText(String.format("%.0f", parseFullDoc.getJobList().get(jobIndex).getTotalMobs()));
@@ -804,17 +808,17 @@ public class TestApp {
 			}
 
 		});
-		viewportPanel.add(totalMobsTextField, displayPricingConstraints);
+		pricingDisplay.add(totalMobsTextField, displayPricingConstraints);
 	}
 
-	public void addLineItemsToPricingPage(GridBagConstraints displayPricingConstraints) {
+	public void addLineItemsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
 		for (int index = 0; index < parseFullDoc.getJobList().get(jobIndex).getLineItems().size(); index++) {
 
 			final int indexForActionListener = index;
 			displayPricingConstraints.gridx = 0;
 			displayPricingConstraints.gridy = index + 4;
-			viewportPanel.add(new JLabel(String.format("%-40s%s%,12.2f%s",
+			pricingDisplay.add(new JLabel(String.format("%-40s%s%,12.2f%s",
 					parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getDescription(),
 					"    Quantity: ",
 					parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getQuantity(),
@@ -845,7 +849,7 @@ public class TestApp {
 
 			displayPricingConstraints.gridx = 1;
 			displayPricingConstraints.gridy = index + 4;
-			viewportPanel.add(lineItemPrices.get(index), displayPricingConstraints);
+			pricingDisplay.add(lineItemPrices.get(index), displayPricingConstraints);
 		}
 	}
 
