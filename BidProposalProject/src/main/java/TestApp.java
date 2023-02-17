@@ -491,7 +491,7 @@ public class TestApp {
 				//
 				// job.printJobInfo(); // print the job info
 
-				displayData(); // display the new data
+				displayFiltered(); // display the new data
 
 				filterForCheckedBoxes.setEnabled(false);
 				addPricing.setEnabled(true);
@@ -573,10 +573,14 @@ public class TestApp {
 	// Methods
 	// ====================================================================================================
 
+	private void clearScrollPanel() {
+		viewportContainer.removeAll();
+	}
+
 	// ===========================================================================
 	// First Display
 	// ===========================================================================
-	
+
 	public void displayFirst() {
 
 		GridBagConstraints displayConstraints = new GridBagConstraints();
@@ -686,12 +690,6 @@ public class TestApp {
 		audit.add("	Data has been displayed.");
 	}
 
-	@Deprecated
-	private void displayDataREWORK() {
-		clearScrollPanel();
-
-	}
-
 	private void selectAllCheckBoxes(ArrayList<JCheckBox> checkBoxes) {
 		for (JCheckBox checkBox : checkBoxes) {
 			checkBox.setSelected(true);
@@ -704,10 +702,62 @@ public class TestApp {
 		}
 	}
 
-	private void clearScrollPanel() {
-		viewportPanel.removeAll();
-		viewportContainer.remove(viewportPanel);
-		dataScrollPane.remove(viewportContainer);
+	// ===========================================================================
+	// Filtered Display
+	// ===========================================================================
+
+	private void displayFiltered() {
+
+		clearScrollPanel();
+
+		JPanel filteredDisplay = new JPanel(new GridBagLayout());
+		GridBagConstraints filteredDisplayConstraints = new GridBagConstraints();
+
+		filteredDisplay.setBackground(SCROLLPANECOLOR);
+		viewportContainer.add(filteredDisplay, BorderLayout.NORTH);
+		dataScrollPane.setViewportView(viewportContainer);
+
+		filteredDisplayConstraints.gridx = 0;
+		filteredDisplayConstraints.gridy = 0;
+
+		filteredDisplay.add(new JLabel() {
+			{
+				setText(String.format("%-20s%-20s%-20s%16s", "CSJ", "County", "Highway", "Total Quantities"));
+				setFont(FONT);
+				setBackground(SCROLLPANECOLOR);
+				setForeground(FOREGROUND);
+			}
+		}, filteredDisplayConstraints);
+
+		int filteredLineItemCount = 0;
+		for (int jobCount = 0; jobCount < parseFullDoc.getJobList().size(); jobCount++) {
+
+			Job currentJob = parseFullDoc.getJobList().get(jobCount);
+
+			filteredDisplayConstraints.gridy = jobCount + filteredLineItemCount + 1;
+			filteredDisplay.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
+					currentJob.getCsj(),
+					currentJob.getCounty(),
+					currentJob.getHighway(),
+					currentJob.getSumOfQuantities())) {
+				{
+					setFont(new Font("Monospaced", Font.BOLD, 16));
+					setForeground(FOREGROUND);
+				}
+			}, filteredDisplayConstraints);
+
+			for (LineItem lineItem : currentJob.getLineItems()) {
+				filteredLineItemCount++;
+				filteredDisplayConstraints.gridy = jobCount + filteredLineItemCount + 1;
+				filteredDisplay.add(new JLabel(
+						String.format("%-40s     %,10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(), "")) {
+					{
+						setFont(FONT);
+						setForeground(FOREGROUND);
+					}
+				}, filteredDisplayConstraints);
+			}
+		}
 	}
 
 	// ===========================================================================
