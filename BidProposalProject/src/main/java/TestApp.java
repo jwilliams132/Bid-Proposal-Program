@@ -506,7 +506,7 @@ public class TestApp {
 
 				audit.add("addPricing Button was pressed.");
 
-				displayPricingInput(); // display the pricing window
+				displayPricing(); // display the pricing window
 				currentDisplay = displayPages.PRICING;
 
 				if (parseFullDoc.getJobList().size() > 1) {
@@ -529,7 +529,7 @@ public class TestApp {
 
 					setPrices();
 					jobIndex--;
-					displayPricingInput();
+					displayPricing();
 
 					nextJob.setEnabled(true);
 					ifFirstJob = (jobIndex == 0);
@@ -552,7 +552,7 @@ public class TestApp {
 
 					setPrices();
 					jobIndex++;
-					displayPricingInput();
+					displayPricing();
 					previousJob.setEnabled(true);
 
 					ifLastJob = (jobIndex == parseFullDoc.getJobList().size() - 1);
