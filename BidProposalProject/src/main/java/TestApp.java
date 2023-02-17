@@ -358,7 +358,7 @@ public class TestApp {
 				}, BorderLayout.WEST);
 
 				// Display the data
-				displayData();
+				displayFirst();
 				currentDisplay = displayPages.JOB_FILTERING;
 
 				// Add an entry to the audit log
@@ -573,9 +573,15 @@ public class TestApp {
 	// Methods
 	// ====================================================================================================
 
-	public void displayData() {
+	// ===========================================================================
+	// First Display
+	// ===========================================================================
+	
+	public void displayFirst() {
 
 		GridBagConstraints displayConstraints = new GridBagConstraints();
+		JPanel firstDisplay = new JPanel(new GridBagLayout());
+
 		jobCheckBoxes = new ArrayList<JCheckBox>();
 		final ItemListener checkAllListener = new ItemListener() {
 
@@ -614,14 +620,14 @@ public class TestApp {
 
 		clearScrollPanel();
 
-		viewportPanel = new JPanel(new GridBagLayout());
-		viewportPanel.setBackground(SCROLLPANECOLOR);
-		viewportContainer.add(viewportPanel, BorderLayout.NORTH);
+		firstDisplay = new JPanel(new GridBagLayout());
+		firstDisplay.setBackground(SCROLLPANECOLOR);
+		viewportContainer.add(firstDisplay, BorderLayout.NORTH);
 		dataScrollPane.setViewportView(viewportContainer);
 
 		displayConstraints.gridx = 1;
 		displayConstraints.gridy = 0;
-		viewportPanel.add(new JLabel() {
+		firstDisplay.add(new JLabel() {
 			{
 				setText(String.format("%-20s%-20s%-20s%16s", "CSJ", "County", "Highway", "Total Quantities"));
 				setFont(FONT);
@@ -644,15 +650,15 @@ public class TestApp {
 			});
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = 0;
-			viewportPanel.add(checkAll, displayConstraints);
+			firstDisplay.add(checkAll, displayConstraints);
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = index + lineItemCount + 1;
 
-			viewportPanel.add(jobCheckBoxes.get(index), displayConstraints);
+			firstDisplay.add(jobCheckBoxes.get(index), displayConstraints);
 
 			displayConstraints.gridx = 1;
 			displayConstraints.gridy = index + lineItemCount + 1;
-			viewportPanel.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
+			firstDisplay.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
 					currentJob.getCsj(),
 					currentJob.getCounty(),
 					currentJob.getHighway(),
@@ -667,7 +673,7 @@ public class TestApp {
 				lineItemCount++;
 				displayConstraints.gridx = 1;
 				displayConstraints.gridy = index + lineItemCount + 1;
-				viewportPanel.add(new JLabel(
+				firstDisplay.add(new JLabel(
 						String.format("%-40s     %,10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(), "")) {
 					{
 						setFont(FONT);
