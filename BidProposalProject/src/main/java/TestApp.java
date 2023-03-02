@@ -451,7 +451,7 @@ public class TestApp {
 						"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
 						null, FileManager.fileChooserOptions.OPEN, xslmFileFilter);
 
-				int startingEstimateNo = 1600;
+				int startingEstimateNo = 1780;
 				ExcelManager excelManager;
 
 				for (int jobIndex = 0; jobIndex < parseFullDoc.getJobList().size(); jobIndex++) {
