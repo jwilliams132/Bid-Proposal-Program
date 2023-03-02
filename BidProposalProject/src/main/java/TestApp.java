@@ -144,6 +144,9 @@ public class TestApp {
 	 */
 	public TestApp() {
 		initialize();
+		chooseOpenFile.doClick(); //testing purposes
+		filterForCheckedBoxes.doClick(); //testing purposes
+		addPricing.doClick();
 	}
 
 	/**
@@ -318,7 +321,10 @@ public class TestApp {
 				audit.add("chooseOpenFile Button was pressed.");
 
 				// The "chooseOpenFileButton" was pressed, so show the file chooser
-				File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
+				// File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
+				
+				//testing purposes
+				File inputFile = fileManager.chooseFile("C:\\Users\\School laptop(Jacob)\\Desktop\\Letting\\Test\\Combined.txt", null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
 
 				if (inputFile == null) {
 					showWarning("Warning", "Error", "No file selected");
@@ -366,7 +372,7 @@ public class TestApp {
 
 			}
 		});
-
+		
 		// open file button
 		updateBidders.addActionListener(new ActionListener() {
 
