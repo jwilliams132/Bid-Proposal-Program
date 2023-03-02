@@ -144,8 +144,8 @@ public class TestApp {
 	 */
 	public TestApp() {
 		initialize();
-		chooseOpenFile.doClick(); //testing purposes
-		filterForCheckedBoxes.doClick(); //testing purposes
+		chooseOpenFile.doClick(); // testing purposes
+		filterForCheckedBoxes.doClick(); // testing purposes
 		addPricing.doClick();
 	}
 
@@ -321,10 +321,13 @@ public class TestApp {
 				audit.add("chooseOpenFile Button was pressed.");
 
 				// The "chooseOpenFileButton" was pressed, so show the file chooser
-				// File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
-				
-				//testing purposes
-				File inputFile = fileManager.chooseFile("C:\\Users\\School laptop(Jacob)\\Desktop\\Letting\\Test\\Combined.txt", null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
+				// File inputFile = fileManager.chooseFile(null, null,
+				// FileManager.fileChooserOptions.OPEN, txtFileFilter);
+
+				// testing purposes
+				File inputFile = fileManager.chooseFile(
+						"C:\\Users\\School laptop(Jacob)\\Desktop\\Letting\\Test\\Combined.txt", null,
+						FileManager.fileChooserOptions.OPEN, txtFileFilter);
 
 				if (inputFile == null) {
 					showWarning("Warning", "Error", "No file selected");
@@ -372,7 +375,7 @@ public class TestApp {
 
 			}
 		});
-		
+
 		// open file button
 		updateBidders.addActionListener(new ActionListener() {
 
@@ -485,7 +488,6 @@ public class TestApp {
 				// for every check box, add job to buffer job list
 				for (int currentJobCheckBox = 0; currentJobCheckBox < jobCheckBoxes.size(); currentJobCheckBox++) {
 
-					
 					// if the check box is selected, add the corresponding job to the buffer
 					if (jobCheckBoxes.get(currentJobCheckBox).isSelected()) {
 
@@ -857,6 +859,8 @@ public class TestApp {
 
 	public void addTotalMobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
+		pricingDisplay.add(new JLabel("$"), displayPricingConstraints);
+		displayPricingConstraints.gridx = 2;
 		totalMobsTextField = new JTextField();
 		totalMobsTextField.setText(String.format("%.0f", parseFullDoc.getJobList().get(jobIndex).getTotalMobs()));
 		totalMobsTextField.setPreferredSize(new Dimension(50, 20));
@@ -912,7 +916,14 @@ public class TestApp {
 
 			displayPricingConstraints.gridx = 1;
 			displayPricingConstraints.gridy = index + 4;
+
+			pricingDisplay.add(new JLabel("$"), displayPricingConstraints);
+			displayPricingConstraints.gridx = 2;
+
 			pricingDisplay.add(lineItemPrices.get(index), displayPricingConstraints);
+
+			displayPricingConstraints.gridx = 3;
+			pricingDisplay.add(new JLabel("(per Sq. Yd.)"), displayPricingConstraints);
 		}
 	}
 
