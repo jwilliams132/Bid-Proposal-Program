@@ -476,6 +476,8 @@ public class TestApp {
 
 			public void actionPerformed(ActionEvent e) {
 
+				boolean hasSeletedCheckBox = false;
+
 				audit.add("filterForCheckedBoxes Button was pressed.");
 
 				ArrayList<Job> selectedJobList = new ArrayList<Job>(); // create a buffer list of jobs
@@ -483,13 +485,18 @@ public class TestApp {
 				// for every check box, add job to buffer job list
 				for (int currentJobCheckBox = 0; currentJobCheckBox < jobCheckBoxes.size(); currentJobCheckBox++) {
 
+					
 					// if the check box is selected, add the corresponding job to the buffer
 					if (jobCheckBoxes.get(currentJobCheckBox).isSelected()) {
 
+						hasSeletedCheckBox = true;
 						selectedJobList.add(parseFullDoc.getJobList().get(currentJobCheckBox)); // add job to buffer
 					}
 				}
 
+				if (!hasSeletedCheckBox) {
+					selectedJobList.addAll(parseFullDoc.getJobList());
+				}
 				parseFullDoc.setJobList(selectedJobList); // set the job list to the selected jobs
 
 				// for every job, print the info
