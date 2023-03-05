@@ -113,6 +113,7 @@ public class TestApp {
 	/* ---------- */private JButton addPricing;
 	/* ------ */private JPanel jobSelectionPanel;
 	/* ---------- */private JButton previousJob;
+	/* ---------- */private JLabel currentJob;
 	/* ---------- */private JButton nextJob;
 
 	// =====Save File Panel=====
@@ -303,6 +304,14 @@ public class TestApp {
 		previousJob = new JButton("<< Previous Job");
 		previousJob.setEnabled(false);
 		jobSelectionPanel.add(previousJob);
+
+		currentJob = new JLabel("(00/00)") {
+			{
+				setFont(FONT);
+			}
+		};
+
+		jobSelectionPanel.add(currentJob);
 
 		nextJob = new JButton("Next Job >>");
 		nextJob.setEnabled(false);
@@ -801,6 +810,7 @@ public class TestApp {
 
 		// displaySideLegend(); TODO
 		GridBagConstraints displayPricingConstraints = new GridBagConstraints();
+		currentJob.setText(String.format("(%02d/%02d)", jobIndex + 1, parseFullDoc.getJobList().size()));
 		final Job currentJob = parseFullDoc.getJobList().get(jobIndex);
 		dataScrollPane.setColumnHeaderView(new JLabel() {
 			{
@@ -1106,3 +1116,6 @@ public class TestApp {
 		legendScrollPane.setViewportView(legendPanel);
 	}
 }
+
+// find a way to make all ethods that add a panel to display to instead return a
+// panel that will get added where it is called
