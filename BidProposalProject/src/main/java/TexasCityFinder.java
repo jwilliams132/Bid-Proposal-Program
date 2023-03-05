@@ -38,11 +38,9 @@ public class TexasCityFinder {
 	}
 
 	public String getLargestCity(String county) {
-		System.out.println(county);
+		
 		if (county.length() > 5 && county.substring(county.length() - 5).equals(", ETC"))
 			county = county.substring(0, county.length() - 5);
-		System.out.println(" ".concat(county));
-		System.out.println(" ".concat(countyToCity.get(county)));
 		return countyToCity.get(county);
 	}
 }
