@@ -548,10 +548,7 @@ public class TestApp {
 
 				audit.add("addPricing Button was pressed.");
 
-<<<<<<< HEAD
-=======
 				// displaySideLegend(); TODO
->>>>>>> fcdaf6591004a30788cbcf5e33803972eb90a024
 				displayPricing(); // display the pricing window
 				currentDisplay = displayPages.PRICING;
 
