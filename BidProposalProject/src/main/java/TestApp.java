@@ -53,6 +53,7 @@ public class TestApp {
 
 	private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
 	private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
+	// private ArrayList<Job> fulljobList = new ArrayList<Job>(); // TODO
 	private int jobIndex = 0;
 	boolean ifFirstJob;
 	boolean ifLastJob;
