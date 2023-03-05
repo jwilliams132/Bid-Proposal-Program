@@ -1,34 +1,32 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-// import java.util.List;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ParseFullDoc {
 
-	// public static void main(String[] args) {
+	public static void main(String[] args) {
 
-	// 	FileManager manager = new FileManager();
-	// 	File file1 = new File("C:\\Users\\Jacob\\Desktop\\Letting\\Test
-	// 	Letting\\Testtext.txt");
-	// 	File file2 = new File("C:\\Users\\Jacob\\Desktop\\Letting\\Test
-	// 	Letting\\Testtext2.txt");
+		FileManager manager = new FileManager();
+		File file1 = manager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
+		File file2 = manager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
 		
-	// 	List<String> l1 = manager.readFile(file1);
-	// 	List<String> l2 = manager.readFile(file2);
+		List<String> l1 = manager.readFile(file1);
+		List<String> l2 = manager.readFile(file2);
 		
-	// 	for (int i = 0; i < (l1.size() < l2.size() ? l2.size() : l1.size()); i++) {
-	// 	if (l1.get(i).equals(l2.get(i))) {
-	// 	System.out.println("match");
-	// 	} else {
-	// 	System.out.println();
-	// 	System.out.println(l1.get(i));
-	// 	System.out.println(l2.get(i));
-	// 	System.out.println();
-	// 	}
-	// 	}
-	// }
+		for (int i = 0; i < (l1.size() < l2.size() ? l2.size() : l1.size()); i++) {
+		if (l1.get(i).equals(l2.get(i))) {
+		System.out.println("match");
+		} else {
+		System.out.println();
+		System.out.println(l1.get(i));
+		System.out.println(l2.get(i));
+		System.out.println();
+		}
+		}
+	}
 
 	private FileManager fileManager = new FileManager();
 	private Audit audit;
