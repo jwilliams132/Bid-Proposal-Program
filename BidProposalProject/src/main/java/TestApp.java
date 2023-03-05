@@ -96,6 +96,9 @@ public class TestApp {
 
 	// =====Data Panel==========
 	/**/private JPanel dataPanel;
+	/* -- */private JScrollPane legendScrollPane;
+	/* ------ */private JPanel legendPanel;
+	/* ---------- */private JLabel locatorLabel;
 	/* -- */private JScrollPane dataScrollPane;
 	/* ------ */private JPanel columnHeaderPanel;
 	/* ------ */private JPanel viewportContainer;
@@ -103,7 +106,6 @@ public class TestApp {
 	/* -------------- */private JTextField upToMobsTextField;
 	/* -------------- */private JTextField totalMobsTextField;
 	/* -------------- */private JTextField additionalMobsTextField;
-
 	// ==========Data Manipulation Panel
 	/* -- */private JPanel dataManipulationPanel;
 	/* ------ */private JPanel jobFilterPanel;
@@ -212,6 +214,19 @@ public class TestApp {
 		dataPanel.setLayout(new BorderLayout(0, 0));
 		dataPanel.setBackground(SCROLLPANECOLOR);
 
+		legendScrollPane = new JScrollPane();
+		legendScrollPane.setBorder(new EmptyBorder(0, 10, 0, 10));
+		legendScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+		legendScrollPane.setBackground(BACKGROUND);
+
+		legendPanel = new JPanel() {
+			{
+				setLayout(new GridBagLayout());
+				setBackground(BACKGROUND);
+			}
+		};
+		locatorLabel = new JLabel(">");
+
 		dataScrollPane = new JScrollPane();
 		dataScrollPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		dataScrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -249,6 +264,8 @@ public class TestApp {
 		viewportContainer.setBackground(SCROLLPANECOLOR);
 
 		frmWilliamsRoadLlc.getContentPane().add(dataPanel, BorderLayout.CENTER);
+
+		dataPanel.add(legendScrollPane, BorderLayout.WEST);
 
 		dataPanel.add(dataScrollPane, BorderLayout.CENTER);
 		dataScrollPane.setColumnHeaderView(columnHeaderPanel);
@@ -521,6 +538,7 @@ public class TestApp {
 
 				audit.add("addPricing Button was pressed.");
 
+				// displaySideLegend(); TODO
 				displayPricing(); // display the pricing window
 				currentDisplay = displayPages.PRICING;
 
@@ -781,6 +799,7 @@ public class TestApp {
 
 	public void displayPricing() {
 
+		// displaySideLegend(); TODO
 		GridBagConstraints displayPricingConstraints = new GridBagConstraints();
 		final Job currentJob = parseFullDoc.getJobList().get(jobIndex);
 		dataScrollPane.setColumnHeaderView(new JLabel() {
@@ -1037,5 +1056,53 @@ public class TestApp {
 		Random random = new Random();
 
 		return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+	}
+
+	public void displaySideLegend() {
+		ArrayList<JButton> jobButtons = new ArrayList<JButton>();
+		for (int jobIndexForLegendButtons = 0; jobIndexForLegendButtons < parseFullDoc.getJobList()
+				.size(); jobIndexForLegendButtons++) {
+
+			Job job = parseFullDoc.getJobList().get(jobIndexForLegendButtons);
+			final int JOB_INDEX = jobIndexForLegendButtons;
+
+			String bufferCounty = job.getCounty();
+			if (bufferCounty.length() > 5 && bufferCounty.substring(bufferCounty.length() - 5).equals(", ETC"))
+				bufferCounty = bufferCounty.substring(0, bufferCounty.length() - 5);
+
+			final String CSJ = job.getCsj().substring(8, 11);
+			final String county = bufferCounty;
+
+			jobButtons.add(new JButton() {
+				{
+					setText(String.format("%13s %s", county, CSJ));
+					setFont(FONT);
+
+					addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+
+							jobIndex = JOB_INDEX;
+							displayPricing();
+						}
+					});
+				}
+			});
+
+			GridBagConstraints legendConstraints = new GridBagConstraints();
+
+			legendPanel.remove(locatorLabel);
+			legendConstraints.gridx = 0;
+			legendConstraints.gridy = jobIndex;
+			legendPanel.add(locatorLabel, legendConstraints);
+
+			legendConstraints.gridx = 1;
+
+				for (int buttonIndex = 0; buttonIndex < jobButtons.size(); buttonIndex++) {
+				
+				legendConstraints.gridy = buttonIndex;
+				legendPanel.add(jobButtons.get(buttonIndex), legendConstraints);
+			}
+		}
+		legendScrollPane.setViewportView(legendPanel);
 	}
 }
