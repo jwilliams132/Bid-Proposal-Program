@@ -53,7 +53,7 @@ public class TestApp {
 
 	private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
 	private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
-	// private ArrayList<Job> fulljobList = new ArrayList<Job>(); // TODO
+	// private ArrayList<Job> fullJobList = new ArrayList<Job>(); // TODO
 	private int jobIndex = 0;
 	boolean ifFirstJob;
 	boolean ifLastJob;
@@ -148,9 +148,9 @@ public class TestApp {
 	 */
 	public TestApp() {
 		initialize();
-		chooseOpenFile.doClick(); // testing purposes
-		filterForCheckedBoxes.doClick(); // testing purposes
-		addPricing.doClick();
+		// chooseOpenFile.doClick(); // testing purposes
+		// filterForCheckedBoxes.doClick(); // testing purposes
+		// addPricing.doClick();
 	}
 
 	/**
@@ -325,7 +325,7 @@ public class TestApp {
 		// ====================================================================================================
 
 		/*
-		 * popup for a filechooser
+		 * popup for a fileChooser
 		 * if null, shows a warning popup
 		 * 
 		 * updates file path label
@@ -348,13 +348,12 @@ public class TestApp {
 				audit.add("chooseOpenFile Button was pressed.");
 
 				// The "chooseOpenFileButton" was pressed, so show the file chooser
-				// File inputFile = fileManager.chooseFile(null, null,
-				// FileManager.fileChooserOptions.OPEN, txtFileFilter);
+				File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
 
 				// testing purposes
-				File inputFile = fileManager.chooseFile(
-						"C:\\Users\\School laptop(Jacob)\\Desktop\\Letting\\Test\\Combined.txt", null,
-						FileManager.fileChooserOptions.OPEN, txtFileFilter);
+				// File inputFile = fileManager.chooseFile("C:\\Users\\School
+				// laptop(Jacob)\\Desktop\\Letting\\Test\\Combined.txt", null,
+				// FileManager.fileChooserOptions.OPEN, txtFileFilter);
 
 				if (inputFile == null) {
 					showWarning("Warning", "Error", "No file selected");
@@ -441,7 +440,7 @@ public class TestApp {
 
 				lettingMonthDirectory = fileManager.chooseDirectory(null);
 				// Get the selected file
-				File formattedOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Program Ouput.txt", null,
+				File formattedOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Program Output.txt", null,
 						FileManager.fileChooserOptions.SAVE, null);
 				File userFriendlyOutput = fileManager.chooseFile(
 						lettingMonthDirectory + "\\Program Output (User Friendly).txt", null,
@@ -506,7 +505,7 @@ public class TestApp {
 
 			public void actionPerformed(ActionEvent e) {
 
-				boolean hasSeletedCheckBox = false;
+				boolean hasSelectedCheckBox = false;
 
 				audit.add("filterForCheckedBoxes Button was pressed.");
 
@@ -518,12 +517,12 @@ public class TestApp {
 					// if the check box is selected, add the corresponding job to the buffer
 					if (jobCheckBoxes.get(currentJobCheckBox).isSelected()) {
 
-						hasSeletedCheckBox = true;
+						hasSelectedCheckBox = true;
 						selectedJobList.add(parseFullDoc.getJobList().get(currentJobCheckBox)); // add job to buffer
 					}
 				}
 
-				if (!hasSeletedCheckBox) {
+				if (!hasSelectedCheckBox) {
 					selectedJobList.addAll(parseFullDoc.getJobList());
 				}
 				parseFullDoc.setJobList(selectedJobList); // set the job list to the selected jobs
@@ -548,7 +547,6 @@ public class TestApp {
 
 				audit.add("addPricing Button was pressed.");
 
-				// displaySideLegend(); TODO
 				displayPricing(); // display the pricing window
 				currentDisplay = displayPages.PRICING;
 
@@ -809,7 +807,7 @@ public class TestApp {
 
 	public void displayPricing() {
 
-		// displaySideLegend(); TODO
+		displaySideLegend(); // TODO
 		GridBagConstraints displayPricingConstraints = new GridBagConstraints();
 		currentJob.setText(String.format("(%02d/%02d)", jobIndex + 1, parseFullDoc.getJobList().size()));
 		final Job currentJob = parseFullDoc.getJobList().get(jobIndex);
@@ -1108,8 +1106,8 @@ public class TestApp {
 
 			legendConstraints.gridx = 1;
 
-				for (int buttonIndex = 0; buttonIndex < jobButtons.size(); buttonIndex++) {
-				
+			for (int buttonIndex = 0; buttonIndex < jobButtons.size(); buttonIndex++) {
+
 				legendConstraints.gridy = buttonIndex;
 				legendPanel.add(jobButtons.get(buttonIndex), legendConstraints);
 			}
@@ -1118,5 +1116,5 @@ public class TestApp {
 	}
 }
 
-// find a way to make all ethods that add a panel to display to instead return a
+// find a way to make all methods that add a panel to display to instead return a
 // panel that will get added where it is called
