@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
@@ -26,9 +27,9 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
-import javax.swing.SwingConstants;
 import java.awt.Toolkit;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -53,7 +54,6 @@ public class TestApp {
 
 	private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
 	private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
-	// private ArrayList<Job> fullJobList = new ArrayList<Job>(); // TODO
 	private int jobIndex = 0;
 	boolean ifFirstJob;
 	boolean ifLastJob;
@@ -103,7 +103,7 @@ public class TestApp {
 	/* -- */private JScrollPane dataScrollPane;
 	/* ------ */private JPanel columnHeaderPanel;
 	/* ------ */private JPanel viewportContainer;
-	/* ---------- */private JPanel viewportPanel;
+	/* ---------- */private JPanel startupPanel;
 	/* -------------- */private JTextField upToMobsTextField;
 	/* -------------- */private JTextField totalMobsTextField;
 	/* -------------- */private JTextField additionalMobsTextField;
@@ -167,22 +167,16 @@ public class TestApp {
 		frmWilliamsRoadLlc.setSize(1000, 600);
 		frmWilliamsRoadLlc.setBackground(BACKGROUND);
 
+		initializeButtons();
+		initializePanesAndPanels();
+
 		// ===========================================================================
 		// Main Panel (North) Open File
 		// ===========================================================================
 
-		openFilePanel = new JPanel();
-		openFilePanel.setBackground(BACKGROUND);
-		openFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		openFilePanel.setLayout(new BorderLayout(10, 10));
 		frmWilliamsRoadLlc.getContentPane().add(openFilePanel, BorderLayout.NORTH);
 
-		chooseOpenFile = new JButton("Open Bidding File...");
 		openFilePanel.add(chooseOpenFile, BorderLayout.WEST);
-
-		updateBidders = new JButton("Add Updated Bidders");
-		updateBidders.setHorizontalAlignment(SwingConstants.LEFT);
-		updateBidders.setEnabled(false);
 		openFilePanel.add(updateBidders, BorderLayout.EAST);
 
 		openFilePathLabel = new JLabel("File Path:  ");
@@ -192,17 +186,10 @@ public class TestApp {
 		// Main Panel (South) Save File
 		// ===========================================================================
 
-		saveFilePanel = new JPanel();
 		frmWilliamsRoadLlc.getContentPane().add(saveFilePanel, BorderLayout.SOUTH);
-		saveFilePanel.setLayout(new BorderLayout(10, 10));
-		saveFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		saveFilePanel.setBackground(BACKGROUND);
-		chooseSaveDirectory = new JButton("Choose a folder to save to...");
-		chooseSaveDirectory.setEnabled(false);
+
 		saveFilePanel.add(chooseSaveDirectory, BorderLayout.WEST);
 
-		save = new JButton("Export Excel Files");
-		save.setEnabled(false);
 		saveFilePanel.add(save, BorderLayout.EAST);
 
 		saveFilePathLabel = new JLabel("Directory Path:  ");
@@ -212,37 +199,8 @@ public class TestApp {
 		// Main Panel (Center) Display Data
 		// ===========================================================================
 
-		dataPanel = new JPanel();
-		dataPanel.setLayout(new BorderLayout(0, 0));
-		dataPanel.setBackground(SCROLLPANECOLOR);
-
-		legendScrollPane = new JScrollPane();
-		legendScrollPane.setBorder(new EmptyBorder(0, 10, 0, 10));
-		legendScrollPane.getVerticalScrollBar().setUnitIncrement(16);
-		legendScrollPane.setBackground(BACKGROUND);
-
-		legendPanel = new JPanel() {
-			{
-				setLayout(new GridBagLayout());
-				setBackground(BACKGROUND);
-			}
-		};
 		locatorLabel = new JLabel(">");
 
-		dataScrollPane = new JScrollPane();
-		dataScrollPane.setBorder(new EmptyBorder(10, 10, 10, 10));
-		dataScrollPane.getVerticalScrollBar().setUnitIncrement(16);
-		dataScrollPane.setBackground(SCROLLPANECOLOR);
-
-		columnHeaderPanel = new JPanel();
-		columnHeaderPanel.setBackground(SCROLLPANECOLOR);
-
-		viewportPanel = new JPanel() {
-			{
-				setLayout(new GridLayout(2, 0));
-				setBackground(SCROLLPANECOLOR);
-			}
-		};
 		startupLabel1 = new JLabel("BIDDING PROGRAM") {
 			{
 				setFont(TITLEFONT);
@@ -258,12 +216,8 @@ public class TestApp {
 				setVerticalAlignment(JLabel.TOP);
 			}
 		};
-		viewportPanel.add(startupLabel1);
-		viewportPanel.add(startupLabel2);
-
-		viewportContainer = new JPanel();
-		viewportContainer.setLayout(new BorderLayout(0, 0));
-		viewportContainer.setBackground(SCROLLPANECOLOR);
+		startupPanel.add(startupLabel1);
+		startupPanel.add(startupLabel2);
 
 		frmWilliamsRoadLlc.getContentPane().add(dataPanel, BorderLayout.CENTER);
 
@@ -272,38 +226,23 @@ public class TestApp {
 		dataPanel.add(dataScrollPane, BorderLayout.CENTER);
 		dataScrollPane.setColumnHeaderView(columnHeaderPanel);
 
-		viewportContainer.add(viewportPanel);
+		viewportContainer.add(startupPanel);
 		dataScrollPane.setViewportView(viewportContainer);
 
 		// ===========================================================================
 		// Sub Panel (MP (Center)) (South) Manipulation Buttons
 		// ===========================================================================
 
-		dataManipulationPanel = new JPanel();
-		dataManipulationPanel.setBackground(BACKGROUND);
 		dataPanel.add(dataManipulationPanel, BorderLayout.SOUTH);
-		dataManipulationPanel.setLayout(new BorderLayout(0, 0));
 
-		jobFilterPanel = new JPanel();
-		jobFilterPanel.setBackground(BACKGROUND);
 		dataManipulationPanel.add(jobFilterPanel, BorderLayout.WEST);
-		jobFilterPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		filterForCheckedBoxes = new JButton("Confirm Selected Jobs");
-		filterForCheckedBoxes.setEnabled(false);
 		jobFilterPanel.add(filterForCheckedBoxes);
 
-		addPricing = new JButton("Add Pricing to Jobs");
-		addPricing.setEnabled(false);
 		jobFilterPanel.add(addPricing);
 
-		jobSelectionPanel = new JPanel();
-		jobSelectionPanel.setLayout(new FlowLayout());
-		jobSelectionPanel.setBackground(BACKGROUND);
 		dataManipulationPanel.add(jobSelectionPanel, BorderLayout.CENTER);
 
-		previousJob = new JButton("<< Previous Job");
-		previousJob.setEnabled(false);
 		jobSelectionPanel.add(previousJob);
 
 		currentJob = new JLabel("(00/00)") {
@@ -346,8 +285,6 @@ public class TestApp {
 			public void actionPerformed(ActionEvent e) {
 
 				audit.add("chooseOpenFile Button was pressed.");
-
-				// The "chooseOpenFileButton" was pressed, so show the file chooser
 				File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
 
 				// testing purposes
@@ -360,30 +297,16 @@ public class TestApp {
 					audit.add("No file was selected");
 					return;
 				}
-
-				// Update the label with the file path
 				openFilePathLabel.setText("File Path:  " + inputFile);
-
-				// Add an entry to the audit log
 				audit.add("File to open was chosen.  " + openFilePathLabel.getText());
-
-				// Create an object of the file manipulation class
 				parseFullDoc = new ParseFullDoc();
-
-				// Set the audit log and the input file for the file manipulation object
 				parseFullDoc.setAudit(audit);
 				parseFullDoc.setNewInputFile(inputFile);
-
-				// Parse the data in the input file and create a list of job objects
 				parseFullDoc.parseData();
-
-				// Enable a few buttons
 				chooseSaveDirectory.setEnabled(true);
 				filterForCheckedBoxes.setEnabled(true);
 				addPricing.setEnabled(false);
 				updateBidders.setEnabled(true);
-
-				// set header
 				columnHeaderPanel.add(new JLabel() {
 					{
 						setText("Job List for ".concat(parseFullDoc.getBidFileType()));
@@ -391,12 +314,8 @@ public class TestApp {
 						setForeground(FOREGROUND);
 					}
 				}, BorderLayout.WEST);
-
-				// Display the data
 				displayFirst();
 				currentDisplay = displayPages.JOB_FILTERING;
-
-				// Add an entry to the audit log
 				audit.add("	Function chooseOpenFile completed.");
 
 			}
@@ -614,6 +533,91 @@ public class TestApp {
 	// Methods
 	// ====================================================================================================
 
+	private void initializeButtons() {
+		chooseOpenFile = new JButton("Open Bidding File...");
+
+		updateBidders = new JButton("Add Updated Bidders");
+		updateBidders.setEnabled(false);
+
+		chooseSaveDirectory = new JButton("Choose a folder to save to...");
+		chooseSaveDirectory.setEnabled(false);
+
+		save = new JButton("Export Excel Files");
+		save.setEnabled(false);
+
+		filterForCheckedBoxes = new JButton("Confirm Selected Jobs");
+		filterForCheckedBoxes.setEnabled(false);
+
+		addPricing = new JButton("Add Pricing to Jobs");
+		addPricing.setEnabled(false);
+
+		previousJob = new JButton("<< Previous Job");
+		previousJob.setEnabled(false);
+
+		nextJob = new JButton("Next Job >>");
+		nextJob.setEnabled(false);
+
+	}
+
+	private void initializePanesAndPanels() {
+
+		openFilePanel = new JPanel();
+		openFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		openFilePanel.setLayout(new BorderLayout(10, 10));
+
+		saveFilePanel = new JPanel();
+		saveFilePanel.setLayout(new BorderLayout(10, 10));
+		saveFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+		dataPanel = new JPanel();
+		dataPanel.setLayout(new BorderLayout(0, 0));
+
+		legendPanel = new JPanel();
+		legendPanel.setLayout(new GridBagLayout());
+
+		startupPanel = new JPanel();
+		startupPanel.setLayout(new GridLayout(2, 0));
+
+		columnHeaderPanel = new JPanel();
+
+		viewportContainer = new JPanel();
+		viewportContainer.setLayout(new BorderLayout(0, 0));
+
+		dataManipulationPanel = new JPanel();
+		dataManipulationPanel.setLayout(new BorderLayout(0, 0));
+
+		jobFilterPanel = new JPanel();
+		jobFilterPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+		jobSelectionPanel = new JPanel();
+		jobSelectionPanel.setLayout(new FlowLayout());
+
+		legendScrollPane = new JScrollPane();
+		legendScrollPane.setBorder(new EmptyBorder(0, 10, 0, 10));
+		legendScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+
+		dataScrollPane = new JScrollPane();
+		dataScrollPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+		dataScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+
+		ArrayList<JComponent> backgroundColorPanesAndPanels = new ArrayList<JComponent>(
+				Arrays.asList(openFilePanel, saveFilePanel, legendPanel, dataManipulationPanel,
+						jobFilterPanel, jobSelectionPanel));
+
+		for (JComponent component : backgroundColorPanesAndPanels) {
+			component.setBackground(BACKGROUND);
+		}
+
+		ArrayList<JComponent> scrollPaneColorPanesAndPanels = new ArrayList<JComponent>();
+		scrollPaneColorPanesAndPanels
+				.addAll(Arrays.asList(dataPanel, startupPanel, viewportContainer, columnHeaderPanel));
+		scrollPaneColorPanesAndPanels.addAll(Arrays.asList(legendScrollPane, dataScrollPane));
+
+		for (JComponent component : scrollPaneColorPanesAndPanels) {
+			component.setBackground(SCROLLPANECOLOR);
+		}
+	}
+
 	private void clearScrollPanel() {
 		viewportContainer.removeAll();
 	}
@@ -807,7 +811,7 @@ public class TestApp {
 
 	public void displayPricing() {
 
-		displaySideLegend(); // TODO
+		displaySideLegend();
 		GridBagConstraints displayPricingConstraints = new GridBagConstraints();
 		currentJob.setText(String.format("(%02d/%02d)", jobIndex + 1, parseFullDoc.getJobList().size()));
 		final Job currentJob = parseFullDoc.getJobList().get(jobIndex);
@@ -1116,5 +1120,6 @@ public class TestApp {
 	}
 }
 
-// find a way to make all methods that add a panel to display to instead return a
+// find a way to make all methods that add a panel to display to instead return
+// a
 // panel that will get added where it is called
