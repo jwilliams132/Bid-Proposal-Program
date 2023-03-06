@@ -97,16 +97,16 @@ public class TestApp {
 
 	// =====Data Panel==========
 	/**/private JPanel dataPanel;
-	/* -- */private JScrollPane legendScrollPane;
-	/* ------ */private JPanel legendPanel;
-	/* ---------- */private JLabel locatorLabel;
-	/* -- */private JScrollPane dataScrollPane;
-	/* ------ */private JPanel columnHeaderPanel;
-	/* ------ */private JPanel viewportContainer;
-	/* ---------- */private JPanel startupPanel;
-	/* -------------- */private JTextField upToMobsTextField;
-	/* -------------- */private JTextField totalMobsTextField;
-	/* -------------- */private JTextField additionalMobsTextField;
+	/* ---- */private JPanel displayPanel;
+	/* ------ */private JScrollPane legendScrollPane;
+	/* ---------- */private JPanel legendPanel;
+	/* -------------- */private JLabel locatorLabel;
+	/* ------ */private JScrollPane dataScrollPane;
+	/* ---------- */private JPanel columnHeaderPanel;
+	/* ---------- */private JPanel viewportContainer;
+	/* ------------------ */private JTextField upToMobsTextField;
+	/* ------------------ */private JTextField totalMobsTextField;
+	/* ------------------ */private JTextField additionalMobsTextField;
 	// ==========Data Manipulation Panel
 	/* -- */private JPanel dataManipulationPanel;
 	/* ------ */private JPanel jobFilterPanel;
@@ -120,12 +120,9 @@ public class TestApp {
 	// =====Save File Panel=====
 	/**/private JPanel saveFilePanel;
 
-	/* -- */private JButton chooseSaveDirectory;
+	/* -- */private JButton chooseSaveFolder;
 	/* -- */private JLabel saveFilePathLabel;
-	/* -- */private JButton save;
-
-	JLabel startupLabel1;
-	JLabel startupLabel2;
+	/* -- */private JButton saveExcel;
 
 	/**
 	 * Launch the application.
@@ -157,43 +154,49 @@ public class TestApp {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
+		// ===========================================================================
+		// Frame
+		// ===========================================================================
+
 		audit.add("Start");
-		frmWilliamsRoadLlc = new JFrame();
-		frmWilliamsRoadLlc
-				.setIconImage(Toolkit.getDefaultToolkit().getImage(path_to_Cropped_WR_LLC_logo));
-		frmWilliamsRoadLlc.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frmWilliamsRoadLlc.setTitle("Williams Road LLC Bid Form Program");
-		frmWilliamsRoadLlc.getContentPane().setLayout(new BorderLayout(0, 0));
-		frmWilliamsRoadLlc.setSize(1000, 600);
-		frmWilliamsRoadLlc.setBackground(BACKGROUND);
 
 		initializeButtons();
 		initializePanesAndPanels();
+		addBackgrounds();
+
+		frmWilliamsRoadLlc = new JFrame() {
+			{
+				setIconImage(Toolkit.getDefaultToolkit().getImage(path_to_Cropped_WR_LLC_logo));
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				setTitle("Williams Road LLC Bid Form Program");
+				getContentPane().setLayout(new BorderLayout());
+				setSize(1000, 600);
+				setBackground(BACKGROUND);
+
+				getContentPane().add(openFilePanel, BorderLayout.NORTH);
+				getContentPane().add(dataPanel, BorderLayout.CENTER);
+				getContentPane().add(saveFilePanel, BorderLayout.SOUTH);
+			}
+		};
 
 		// ===========================================================================
 		// Main Panel (North) Open File
 		// ===========================================================================
 
-		frmWilliamsRoadLlc.getContentPane().add(openFilePanel, BorderLayout.NORTH);
-
-		openFilePanel.add(chooseOpenFile, BorderLayout.WEST);
-		openFilePanel.add(updateBidders, BorderLayout.EAST);
-
 		openFilePathLabel = new JLabel("File Path:  ");
-		openFilePanel.add(openFilePathLabel);
+		openFilePanel.add(chooseOpenFile, BorderLayout.WEST);
+		openFilePanel.add(openFilePathLabel, BorderLayout.CENTER);
+		openFilePanel.add(updateBidders, BorderLayout.EAST);
 
 		// ===========================================================================
 		// Main Panel (South) Save File
 		// ===========================================================================
 
-		frmWilliamsRoadLlc.getContentPane().add(saveFilePanel, BorderLayout.SOUTH);
-
-		saveFilePanel.add(chooseSaveDirectory, BorderLayout.WEST);
-
-		saveFilePanel.add(save, BorderLayout.EAST);
-
 		saveFilePathLabel = new JLabel("Directory Path:  ");
-		saveFilePanel.add(saveFilePathLabel);
+		saveFilePanel.add(chooseSaveFolder, BorderLayout.WEST);
+		saveFilePanel.add(saveFilePathLabel, BorderLayout.CENTER);
+		saveFilePanel.add(saveExcel, BorderLayout.EAST);
 
 		// ===========================================================================
 		// Main Panel (Center) Display Data
@@ -201,60 +204,31 @@ public class TestApp {
 
 		locatorLabel = new JLabel(">");
 
-		startupLabel1 = new JLabel("BIDDING PROGRAM") {
-			{
-				setFont(TITLEFONT);
-				setHorizontalAlignment(JLabel.CENTER);
-				setVerticalAlignment(JLabel.BOTTOM);
-			}
-		};
-
-		startupLabel2 = new JLabel("Click \"Open Bidding File\" To Get Started") {
-			{
-				setFont(FONT);
-				setHorizontalAlignment(JLabel.CENTER);
-				setVerticalAlignment(JLabel.TOP);
-			}
-		};
-		startupPanel.add(startupLabel1);
-		startupPanel.add(startupLabel2);
-
-		frmWilliamsRoadLlc.getContentPane().add(dataPanel, BorderLayout.CENTER);
-
 		dataPanel.add(legendScrollPane, BorderLayout.WEST);
-
 		dataPanel.add(dataScrollPane, BorderLayout.CENTER);
 		dataScrollPane.setColumnHeaderView(columnHeaderPanel);
 
-		viewportContainer.add(startupPanel);
+		viewportContainer.add(createStartupDisplay());
 		dataScrollPane.setViewportView(viewportContainer);
 
 		// ===========================================================================
 		// Sub Panel (MP (Center)) (South) Manipulation Buttons
 		// ===========================================================================
 
+		dataManipulationPanel.add(jobFilterPanel, BorderLayout.WEST);
+		dataManipulationPanel.add(jobSelectionPanel, BorderLayout.CENTER);
 		dataPanel.add(dataManipulationPanel, BorderLayout.SOUTH);
 
-		dataManipulationPanel.add(jobFilterPanel, BorderLayout.WEST);
-
 		jobFilterPanel.add(filterForCheckedBoxes);
-
 		jobFilterPanel.add(addPricing);
 
-		dataManipulationPanel.add(jobSelectionPanel, BorderLayout.CENTER);
-
 		jobSelectionPanel.add(previousJob);
-
 		currentJob = new JLabel("(00/00)") {
 			{
 				setFont(FONT);
 			}
 		};
-
 		jobSelectionPanel.add(currentJob);
-
-		nextJob = new JButton("Next Job >>");
-		nextJob.setEnabled(false);
 		jobSelectionPanel.add(nextJob);
 
 		audit.add("All GUI elements added.");
@@ -298,15 +272,19 @@ public class TestApp {
 					return;
 				}
 				openFilePathLabel.setText("File Path:  " + inputFile);
+
 				audit.add("File to open was chosen.  " + openFilePathLabel.getText());
+
 				parseFullDoc = new ParseFullDoc();
 				parseFullDoc.setAudit(audit);
 				parseFullDoc.setNewInputFile(inputFile);
 				parseFullDoc.parseData();
-				chooseSaveDirectory.setEnabled(true);
+
+				chooseSaveFolder.setEnabled(true);
 				filterForCheckedBoxes.setEnabled(true);
 				addPricing.setEnabled(false);
 				updateBidders.setEnabled(true);
+
 				columnHeaderPanel.add(new JLabel() {
 					{
 						setText("Job List for ".concat(parseFullDoc.getBidFileType()));
@@ -342,7 +320,7 @@ public class TestApp {
 		});
 
 		// Add an action listener to the choose save file button
-		chooseSaveDirectory.addActionListener(new ActionListener() {
+		chooseSaveFolder.addActionListener(new ActionListener() {
 			// When the button is pressed, perform the following actions
 			public void actionPerformed(ActionEvent e) {
 
@@ -373,7 +351,7 @@ public class TestApp {
 				saveFilePathLabel.setText("Directory Path:  " + lettingMonthDirectory);
 
 				// Enable the save button
-				save.setEnabled(true);
+				saveExcel.setEnabled(true);
 
 				// Add a log message with the chosen file's path
 				audit.add("File to save to was chosen. Directory Path:  " + lettingMonthDirectory);
@@ -389,7 +367,7 @@ public class TestApp {
 		});
 
 		// save button
-		save.addActionListener(new ActionListener() {
+		saveExcel.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -529,34 +507,53 @@ public class TestApp {
 		audit.add("All button functions added.");
 	}
 
+	private JPanel createStartupDisplay() {
+
+		return new JPanel() {
+			{
+				add(new JLabel("BIDDING PROGRAM") {
+					{
+						setFont(TITLEFONT);
+						setHorizontalAlignment(JLabel.CENTER);
+						setVerticalAlignment(JLabel.BOTTOM);
+					}
+				});
+				add(new JLabel("Click \"Open Bidding File\" To Get Started") {
+					{
+						setFont(FONT);
+						setHorizontalAlignment(JLabel.CENTER);
+						setVerticalAlignment(JLabel.TOP);
+					}
+				});
+				setLayout(new GridLayout(2, 0));
+				setBackground(SCROLLPANECOLOR);
+			}
+		};
+	}
+
 	// ====================================================================================================
 	// Methods
 	// ====================================================================================================
 
 	private void initializeButtons() {
+
 		chooseOpenFile = new JButton("Open Bidding File...");
 
 		updateBidders = new JButton("Add Updated Bidders");
-		updateBidders.setEnabled(false);
-
-		chooseSaveDirectory = new JButton("Choose a folder to save to...");
-		chooseSaveDirectory.setEnabled(false);
-
-		save = new JButton("Export Excel Files");
-		save.setEnabled(false);
-
+		chooseSaveFolder = new JButton("Choose a folder to save to...");
+		saveExcel = new JButton("Export Excel Files");
 		filterForCheckedBoxes = new JButton("Confirm Selected Jobs");
-		filterForCheckedBoxes.setEnabled(false);
-
 		addPricing = new JButton("Add Pricing to Jobs");
-		addPricing.setEnabled(false);
-
 		previousJob = new JButton("<< Previous Job");
-		previousJob.setEnabled(false);
-
 		nextJob = new JButton("Next Job >>");
-		nextJob.setEnabled(false);
 
+		updateBidders.setEnabled(false);
+		chooseSaveFolder.setEnabled(false);
+		saveExcel.setEnabled(false);
+		filterForCheckedBoxes.setEnabled(false);
+		addPricing.setEnabled(false);
+		previousJob.setEnabled(false);
+		nextJob.setEnabled(false);
 	}
 
 	private void initializePanesAndPanels() {
@@ -570,13 +567,13 @@ public class TestApp {
 		saveFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
 		dataPanel = new JPanel();
-		dataPanel.setLayout(new BorderLayout(0, 0));
+		dataPanel.setLayout(new BorderLayout());
+
+		displayPanel = new JPanel();
+		displayPanel.setLayout(new BorderLayout());
 
 		legendPanel = new JPanel();
 		legendPanel.setLayout(new GridBagLayout());
-
-		startupPanel = new JPanel();
-		startupPanel.setLayout(new GridLayout(2, 0));
 
 		columnHeaderPanel = new JPanel();
 
@@ -599,10 +596,12 @@ public class TestApp {
 		dataScrollPane = new JScrollPane();
 		dataScrollPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		dataScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+	}
 
+	private void addBackgrounds() {
 		ArrayList<JComponent> backgroundColorPanesAndPanels = new ArrayList<JComponent>(
 				Arrays.asList(openFilePanel, saveFilePanel, legendPanel, dataManipulationPanel,
-						jobFilterPanel, jobSelectionPanel));
+						jobFilterPanel, jobSelectionPanel, displayPanel));
 
 		for (JComponent component : backgroundColorPanesAndPanels) {
 			component.setBackground(BACKGROUND);
@@ -610,7 +609,7 @@ public class TestApp {
 
 		ArrayList<JComponent> scrollPaneColorPanesAndPanels = new ArrayList<JComponent>();
 		scrollPaneColorPanesAndPanels
-				.addAll(Arrays.asList(dataPanel, startupPanel, viewportContainer, columnHeaderPanel));
+				.addAll(Arrays.asList(dataPanel, viewportContainer, columnHeaderPanel));
 		scrollPaneColorPanesAndPanels.addAll(Arrays.asList(legendScrollPane, dataScrollPane));
 
 		for (JComponent component : scrollPaneColorPanesAndPanels) {
