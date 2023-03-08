@@ -98,9 +98,6 @@ public class TestApp {
 	// =====Data Panel==========
 	/**/private JPanel dataPanel;
 	/* ---- */private JPanel displayPanel;
-	/* ------ */private JScrollPane legendScrollPane;
-	/* ---------- */private JPanel legendPanel;
-	/* -------------- */private JLabel locatorLabel;
 	/* ------ */private JScrollPane dataScrollPane;
 	/* ---------- */private JPanel columnHeaderPanel;
 	/* ---------- */private JPanel viewportContainer;
@@ -202,9 +199,7 @@ public class TestApp {
 		// Main Panel (Center) Display Data
 		// ===========================================================================
 
-		locatorLabel = new JLabel(">");
-
-		dataPanel.add(legendScrollPane, BorderLayout.WEST);
+		// dataPanel.add(getLegendScrollPane(), BorderLayout.WEST);
 		dataPanel.add(dataScrollPane, BorderLayout.CENTER);
 		dataScrollPane.setColumnHeaderView(columnHeaderPanel);
 
@@ -572,9 +567,6 @@ public class TestApp {
 		displayPanel = new JPanel();
 		displayPanel.setLayout(new BorderLayout());
 
-		legendPanel = new JPanel();
-		legendPanel.setLayout(new GridBagLayout());
-
 		columnHeaderPanel = new JPanel();
 
 		viewportContainer = new JPanel();
@@ -589,10 +581,6 @@ public class TestApp {
 		jobSelectionPanel = new JPanel();
 		jobSelectionPanel.setLayout(new FlowLayout());
 
-		legendScrollPane = new JScrollPane();
-		legendScrollPane.setBorder(new EmptyBorder(0, 10, 0, 10));
-		legendScrollPane.getVerticalScrollBar().setUnitIncrement(16);
-
 		dataScrollPane = new JScrollPane();
 		dataScrollPane.setBorder(new EmptyBorder(10, 10, 10, 10));
 		dataScrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -600,7 +588,7 @@ public class TestApp {
 
 	private void addBackgrounds() {
 		ArrayList<JComponent> backgroundColorPanesAndPanels = new ArrayList<JComponent>(
-				Arrays.asList(openFilePanel, saveFilePanel, legendPanel, dataManipulationPanel,
+				Arrays.asList(openFilePanel, saveFilePanel, dataManipulationPanel,
 						jobFilterPanel, jobSelectionPanel, displayPanel));
 
 		for (JComponent component : backgroundColorPanesAndPanels) {
@@ -610,7 +598,7 @@ public class TestApp {
 		ArrayList<JComponent> scrollPaneColorPanesAndPanels = new ArrayList<JComponent>();
 		scrollPaneColorPanesAndPanels
 				.addAll(Arrays.asList(dataPanel, viewportContainer, columnHeaderPanel));
-		scrollPaneColorPanesAndPanels.addAll(Arrays.asList(legendScrollPane, dataScrollPane));
+		scrollPaneColorPanesAndPanels.addAll(Arrays.asList(dataScrollPane));
 
 		for (JComponent component : scrollPaneColorPanesAndPanels) {
 			component.setBackground(SCROLLPANECOLOR);
@@ -810,7 +798,6 @@ public class TestApp {
 
 	public void displayPricing() {
 
-		displaySideLegend();
 		GridBagConstraints displayPricingConstraints = new GridBagConstraints();
 		currentJob.setText(String.format("(%02d/%02d)", jobIndex + 1, parseFullDoc.getJobList().size()));
 		final Job currentJob = parseFullDoc.getJobList().get(jobIndex);
@@ -1070,7 +1057,18 @@ public class TestApp {
 		return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
 	}
 
-	public void displaySideLegend() {
+	public JScrollPane getLegendScrollPane() {
+
+		JPanel legendPanel = new JPanel();
+		legendPanel.setLayout(new GridBagLayout());
+		
+		JScrollPane legendScrollPane = new JScrollPane();
+		legendScrollPane.setBorder(new EmptyBorder(0, 10, 0, 10));
+		legendScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+
+		JLabel rightLocatorLabel = new JLabel("<");
+		JLabel leftLocatorLabel = new JLabel(">");
+
 		ArrayList<JButton> jobButtons = new ArrayList<JButton>();
 		for (int jobIndexForLegendButtons = 0; jobIndexForLegendButtons < parseFullDoc.getJobList()
 				.size(); jobIndexForLegendButtons++) {
@@ -1102,10 +1100,15 @@ public class TestApp {
 
 			GridBagConstraints legendConstraints = new GridBagConstraints();
 
-			legendPanel.remove(locatorLabel);
+			legendPanel.remove(leftLocatorLabel);
 			legendConstraints.gridx = 0;
 			legendConstraints.gridy = jobIndex;
-			legendPanel.add(locatorLabel, legendConstraints);
+			legendPanel.add(leftLocatorLabel, legendConstraints);
+
+			legendPanel.remove(rightLocatorLabel);
+			legendConstraints.gridx = 2;
+			legendConstraints.gridy = jobIndex;
+			legendPanel.add(rightLocatorLabel, legendConstraints);
 
 			legendConstraints.gridx = 1;
 
@@ -1116,6 +1119,7 @@ public class TestApp {
 			}
 		}
 		legendScrollPane.setViewportView(legendPanel);
+		return legendScrollPane;
 	}
 }
 
