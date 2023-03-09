@@ -33,7 +33,7 @@ public class ParseFullDoc {
 
 	private ArrayList<ArrayList<String>> arrayOfJobStrings;
 	private ArrayList<Job> jobList = new ArrayList<Job>();
-
+	private ArrayList<Job> fullJobList = new ArrayList<Job>();
 	private ArrayList<String> contentsByLine;
 	private File inputFile = null;
 
@@ -426,8 +426,16 @@ public class ParseFullDoc {
 		return jobList;
 	}
 
+	public ArrayList<Job> FullJobList() {
+		return fullJobList;
+	}
+
 	public void setJobList(ArrayList<Job> selectedJobList) {
-		jobList = selectedJobList;
+		this.jobList = selectedJobList;
+	}
+
+	public void setFullJobList(ArrayList<Job> fullJobList) {
+		this.fullJobList = fullJobList;
 	}
 
 	public String getBidFileType() {
