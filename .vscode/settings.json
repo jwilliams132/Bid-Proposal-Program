@@ -4,5 +4,6 @@
         "SCROLLPANECOLOR",
         "TITLEFONT",
         "xslm"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }
