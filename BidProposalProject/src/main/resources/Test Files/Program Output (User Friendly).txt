@@ -1,0 +1,525 @@
+County:		      BEXAR
+Highway:	      SL 345
+CSJ:		      0072-08-143
+Working Days:     180
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (2")                     43,209    1.00
+
+PLANE ASPH CONC PAV (3")                    194,772    2.00
+
+PLANE ASPH CONC PAV (4")                     40,823    3.00
+
+----------------------------------------------------------------------------------------------------
+County:		      BEXAR
+Highway:	      SH 151
+CSJ:		      3508-01-029
+Working Days:     1079
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV(0"-16")       3,942    3.00
+
+PLANE ASPH CONC PAV(2" TO 4")               656,422    5.00
+
+PLANE ASPH CONC PAV(6" TO 8")                12,372    8.00
+
+----------------------------------------------------------------------------------------------------
+County:		      CAMERON
+Highway:	      BU 77-X, ETC
+CSJ:		      0039-12-259
+Working Days:     125
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLAN & TEXT ASPH CONC PAV(0" TO 3")          11,552    2.00
+
+PLANE ASPH CONC PAV (0" TO 1 1/2")          126,134    58.00
+
+----------------------------------------------------------------------------------------------------
+County:		      CAMERON, ETC
+Highway:	      CS, ETC
+CSJ:		      0921-06-306
+Working Days:     234
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV(0"-16")       1,247    2.00
+
+----------------------------------------------------------------------------------------------------
+County:		      CHEROKEE
+Highway:	      SH 294
+CSJ:		      0058-04-022
+Working Days:     114
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (1")                        369    6584651.00
+
+PLANE ASPH CONC PAV (2")                     48,636    654.00
+
+PLANE ASPH CONC PAV(1" TO 2")                   622    8.00
+
+----------------------------------------------------------------------------------------------------
+County:		      COLLIN
+Highway:	      FM 546
+CSJ:		      1013-01-038
+Working Days:     90
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE & ASPH PAV (4"-12")          659    284.00
+
+REMOVING STAB BASE & ASP PAV (18"-24")       10,229    52.00
+
+----------------------------------------------------------------------------------------------------
+County:		      DALLAS
+Highway:	      IH0045
+CSJ:		      6422-53-001
+Working Days:     0
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLAN & TEXT ASPH CONC PAV(0" TO 3")          31,700    6.00
+
+----------------------------------------------------------------------------------------------------
+County:		      DEAF SMITH
+Highway:	      US 60
+CSJ:		      0168-07-050
+Working Days:     194
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE & ASPH PAV (12")             312    63.00
+
+PLANE ASPH CONC PAV(0" TO 2")                 4,866    5.00
+
+PLANE ASPH CONC PAV (3")                    207,555    2.00
+
+----------------------------------------------------------------------------------------------------
+County:		      DENTON
+Highway:	      IH 35E
+CSJ:		      0196-02-128
+Working Days:     0
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV (2")         37,135    8.00
+
+REMOVING STAB BASE AND ASPH PAV (6")          1,881    2.00
+
+REMOVING STAB BASE & ASPH PAV (12")          40,196    47.00
+
+REMOVING STAB BASE AND ASPH PAV (10")        31,046    6.00
+
+REMOVING STAB BASE AND ASPH PAV(15")          3,978    278.00
+
+PLANE ASPH CONC PAV(0" TO 6")                11,122    4.00
+
+----------------------------------------------------------------------------------------------------
+County:		      ECTOR
+Highway:	      IH0020
+CSJ:		      6409-43-001
+Working Days:     40
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV (3")         18,606    59.00
+
+----------------------------------------------------------------------------------------------------
+County:		      ELLIS
+Highway:	      IH 45
+CSJ:		      0092-03-057
+Working Days:     180
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV(8")           1,510    58.00
+
+----------------------------------------------------------------------------------------------------
+County:		      FORT BEND, ETC
+Highway:	      SH 99
+CSJ:		      3510-04-019
+Working Days:     592
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING TREATED BASE (8")                   45,812    21.00
+
+----------------------------------------------------------------------------------------------------
+County:		      GARZA
+Highway:	      US 84
+CSJ:		      0053-06-031
+Working Days:     175
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (4")                      1,267    321.00
+
+----------------------------------------------------------------------------------------------------
+County:		      GRAYSON
+Highway:	      VA
+CSJ:		      0901-19-176
+Working Days:     176
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV (6")            653    32198.00
+
+PLANE ASPH CONC PAV(0" TO 2")                   134    654.00
+
+----------------------------------------------------------------------------------------------------
+County:		      HAYS
+Highway:	      SH 80, ETC
+CSJ:		      0286-01-062
+Working Days:     146
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV (2"-6")         525    6874.00
+
+----------------------------------------------------------------------------------------------------
+County:		      HAYS
+Highway:	      IH 35
+CSJ:		      0016-02-171
+Working Days:     80
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (2")                    226,582    2.00
+
+----------------------------------------------------------------------------------------------------
+County:		      HAYS
+Highway:	      SH 21
+CSJ:		      0286-01-061
+Working Days:     40
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (1")                     51,948    2.00
+
+----------------------------------------------------------------------------------------------------
+County:		      HOWARD
+Highway:	      IH 20
+CSJ:		      0005-05-113
+Working Days:     48
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (2")                    197,697    5.00
+
+----------------------------------------------------------------------------------------------------
+County:		      HUNT
+Highway:	      FM 2642, ETC
+CSJ:		      2658-01-013
+Working Days:     495
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVE STAB BASE & ASPH PAV (24")            48,170    2.00
+
+REMOVING STAB BASE AND ASPH PAV (11")        18,161    4.00
+
+REMOVING STAB BASE & ASPH PAV (10"-12")      10,136    2.00
+
+PLANE ASPH CONC PAV (3")                      3,107    6.00
+
+----------------------------------------------------------------------------------------------------
+County:		      JOHNSON
+Highway:	      FM0917
+CSJ:		      6398-30-001
+Working Days:     0
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLAN & TEXT ASPH CONC PAV(0" TO 3")           5,312    2.00
+
+PLAN & TEXT ASPH CONC PAV(0" TO 4")          19,656    6.00
+
+----------------------------------------------------------------------------------------------------
+County:		      KAUFMAN, ETC
+Highway:	      US 80, ETC
+CSJ:		      0095-03-107
+Working Days:     248
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (2")                     72,003    5.00
+
+----------------------------------------------------------------------------------------------------
+County:		      LAMPASAS
+Highway:	      FM 2657
+CSJ:		      2786-01-018
+Working Days:     50
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (2")                    112,664    13.00
+
+----------------------------------------------------------------------------------------------------
+County:		      LIBERTY
+Highway:	      SH 146
+CSJ:		      0389-01-044
+Working Days:     142
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (1")                    223,384    329.00
+
+PLANE ASPH CONC PAV (0" TO 1 1/2")            5,422    9.00
+
+----------------------------------------------------------------------------------------------------
+County:		      LLANO
+Highway:	      SH 71
+CSJ:		      0700-04-051
+Working Days:     75
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV(0" TO 2")                13,983    20.00
+
+----------------------------------------------------------------------------------------------------
+County:		      LUBBOCK
+Highway:	      IH 27
+CSJ:		      0067-07-100
+Working Days:     223
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (2"-3")                   2,728    5.00
+
+----------------------------------------------------------------------------------------------------
+County:		      NOLAN
+Highway:	      FM 608
+CSJ:		      0053-15-067
+Working Days:     263
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV (6")         15,431    26.00
+
+----------------------------------------------------------------------------------------------------
+County:		      POLK, ETC
+Highway:	      US 59
+CSJ:		      0176-05-199
+Working Days:     69
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV(0" TO 2")                11,400    23.00
+
+----------------------------------------------------------------------------------------------------
+County:		      POLK, ETC
+Highway:	      BU 59-J, ETC
+CSJ:		      0176-06-016
+Working Days:     121
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV(0" TO 2")                30,344    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      POTTER
+Highway:	      SL 335
+CSJ:		      2635-04-042
+Working Days:     88
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE & ASPH PAV(14")            1,213    0.00
+
+REMOVING STAB BASE AND ASPH PAV (4")            323    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      REEVES
+Highway:	      IH 20
+CSJ:		      0003-07-061
+Working Days:     283
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV(8")          61,790    0.00
+
+PLANE ASPH CONC PAV (3")                    368,770    0.00
+
+PLANE ASPH CONC PAV (2 1/2")                 48,262    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      ROCKWALL
+Highway:	      FM 548
+CSJ:		      1014-02-043
+Working Days:     102
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV (2"-8")          86    0.00
+
+REMOVING STAB BASE & ASPH PAV (18")           2,378    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      RUSK
+Highway:	      US 84
+CSJ:		      0123-04-023
+Working Days:     97
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV(0" TO 2")                 1,244    0.00
+
+PLANE ASPH CONC PAV(2" TO 4")                 1,911    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      RUSK
+Highway:	      US 84
+CSJ:		      0123-05-015
+Working Days:     214
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLANE ASPH CONC PAV (3")                     77,893    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      SAN PATRICIO
+Highway:	      BS 359B, ETC
+CSJ:		      0087-06-031
+Working Days:     125
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV(0"-16")         691    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      STEPHENS
+Highway:	      FM 3099
+CSJ:		      3469-01-014
+Working Days:     224
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE & ASPH PAV (8"-10")        2,658    0.00
+
+REMOVING STAB BASE & ASPH PAV (0-6")          4,032    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      TARRANT
+Highway:	      FM 1187
+CSJ:		      1330-02-049
+Working Days:     160
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE & ASPH PAV(14")              397    0.00
+
+REMOVING STAB BASE AND ASPH PAV(15")            533    0.00
+
+PLANE ASPH CONC PAV(0" TO 2")                32,105    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      TERRY, ETC
+Highway:	      US 62
+CSJ:		      0228-01-058
+Working Days:     393
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE & ASPH PAV (8"-10")        3,348    0.00
+
+PLANE ASPH CONC PAV(4" TO 6")               118,323    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      TITUS
+Highway:	      FM 1735
+CSJ:		      1226-02-016
+Working Days:     276
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV (0-4")        1,651    0.00
+
+REMOVING STAB BASE AND ASPH PAV (5")         52,277    0.00
+
+PLANE ASPH CONC PAV(0" TO 2")                 2,213    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      TRAVIS
+Highway:	      FM 1825, ETC
+CSJ:		      1902-01-031
+Working Days:     90
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+PLAN & TEXT ASPH CONC PAV(0" TO 2")          34,912    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      UPTON
+Highway:	      US 385, ETC
+CSJ:		      0229-04-060
+Working Days:     120
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE AND ASPH PAV (6")            492    0.00
+
+REMOVING STAB BASE & ASPH PAV (9")           37,164    0.00
+
+PLANE ASPH CONC PAV (1.5")                    6,296    0.00
+
+PLANE ASPH CONC PAV (2 1/2")                  5,566    0.00
+
+----------------------------------------------------------------------------------------------------
+County:		      WILSON
+Highway:	      US 87
+CSJ:		      0143-04-072
+Working Days:     190
+
+Item Description:                       Quantities:   Price:
+
+============================================================
+REMOVING STAB BASE & ASPH PAV (12")              60    0.00
+
+REMOVE STAB BASE & ASPH PAV (12"-22")         1,515    0.00
+
+PLANE ASPH CONC PAV (1" TO 4")                  486    0.00
+
+----------------------------------------------------------------------------------------------------

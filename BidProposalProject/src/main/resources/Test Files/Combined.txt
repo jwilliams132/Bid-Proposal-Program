@@ -1,0 +1,1700 @@
+COUNTY: BEXAR                   HIGHWAY: SL 345            LENGTH:   5.1010 MI
+CONTROL NUMBER: 0072-08-143            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 72-8-143
+TYPE: OVERLAY
+TIME FOR COMPLETION: 180 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:   7,431,636.81
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       CARLOS ARCILA
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    4102 IH 35 SOUTH                      <-changed 
+  6230 E. STASSNEY LANE                    NEW BRAUNFELS, TX 78130
+  AUSTIN TX 78744-3147                     830/609-0707
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: IH 10
+  LIMITS TO: BALCONES ROAD
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6045     PLANE ASPH CONC PAV (2")                SY       43,209.000
+      354 6048     PLANE ASPH CONC PAV (3")                SY      194,772.000
+      354 6057     PLANE ASPH CONC PAV (4")                SY       40,823.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+AUSTIN BRIDGE & ROAD SERVICES, LP.. IRVING          (214)596-7300 (214)596-7395 <-FAX
+                                                    EMAIL:ABRWORKS@AUSTIN-IND.COM
+CLARK CONSTRUCTION OF TEXAS, INC... SAN ANTONIO     (210)661-6785 (210)661-6421 <-FAX
+                                                    EMAIL:CHAD@CLARKPAVE.COM
+HUNTER INDUSTRIES, LTD............. SAN MARCOS      (512)353-7757 (512)353-7482 <-FAX
+                                                    EMAIL:CARTER@HUNTERIND.COM
+LONE STAR PAVING COMPANY........... AUSTIN          (512)428-5778 (512)532-6241 <-FAX
+                                                    EMAIL:ESTIMATING@LSPAVING.COM
+TEXAS MATERIALS GROUP, INC......... CEDAR PARK      (512)861-7100
+WILLIAMS BROTHERS CONSTRUCTION CO., HOUSTON         (713)522-9821 (713)520-5247 <-FAX
+                                                    EMAIL:SSCHULGEN@WBCTX.COM
+  
+EMAIL ALL:ABRWORKS@AUSTIN-IND.COM;CHAD@CLARKPAVE.COM;CARTER@HUNTERIND.COM;ESTIMATING@LSPAVING.COM;SSCHULGEN@WBCTX.COM;
+
+================================================================================
+
+COUNTY: BEXAR                   HIGHWAY: SH 151            LENGTH:  11.1820 MI
+CONTROL NUMBER: 3508-01-029, ETC       *                 DBE GOAL:      8.5 %    <-changed 
+PROJECT NUMBER: F 2023(162), ETC
+TYPE: WIDEN FREEWAY
+TIME FOR COMPLETION: 1079 WORKING DAYS               GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST: 118,588,321.03    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       CARLOS ARCILA
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    4102 IH 35 SOUTH                      <-changed 
+  6230 E. STASSNEY LANE                    NEW BRAUNFELS, TX 78130
+  AUSTIN TX 78744-3147                     830/609-0707
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6037     REMOVING STAB BASE AND ASPH PAV(0"-16") SY        3,942.000
+      354 6024     PLANE ASPH CONC PAV(2" TO 4")           SY      656,422.000
+      354 6026     PLANE ASPH CONC PAV(6" TO 8")           SY       12,372.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+AUSTIN BRIDGE & ROAD SERVICES, LP.. IRVING          (214)596-7300 (214)596-7395 <-FAX
+                                                    EMAIL:ABRWORKS@AUSTIN-IND.COM
+WEBBER, LLC........................ HOUSTON         (281)987-8787 (281)449-6658 <-FAX
+                                                    EMAIL:WEBBERESTIMATING@WWEBBER.COM
+WILLIAMS BROTHERS CONSTRUCTION CO., HOUSTON         (713)522-9821 (713)520-5247 <-FAX
+                                                    EMAIL:SSCHULGEN@WBCTX.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+JORDAN FOSTER CONSTRUCTION, LLC.... EL PASO         (915)877-3333 (915)877-3999 <-FAX
+                                                    EMAIL:JGOODRICH@JORDANFOSTERCONSTRUCTION.COM
+  
+EMAIL ALL:ABRWORKS@AUSTIN-IND.COM;WEBBERESTIMATING@WWEBBER.COM;SSCHULGEN@WBCTX.COM;JGOODRICH@JORDANFOSTERCONSTRUCTION.COM;
+
+================================================================================
+
+COUNTY: CAMERON                 HIGHWAY: BU 77-X, ETC      LENGTH:   8.7410 MI
+CONTROL NUMBER: 0039-12-259, ETC       *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 39-12-259, ETC
+TYPE: OVERLAY
+TIME FOR COMPLETION: 125 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:   6,987,316.20    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       ANDRES ESPINOZA
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    1350 EAST HIGHWAY 77                  <-changed 
+  6230 E. STASSNEY LANE                    SAN BENITO, TX 78586
+  AUSTIN TX 78744-3147                     956/399-5102
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:12/6/2022  ADDED TO LETTING:12/6/2022                    
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6003     PLAN & TEXT ASPH CONC PAV(0" TO 3")     SY       11,552.000
+      354 6051     PLANE ASPH CONC PAV (0" TO 1 1/2")      SY      126,134.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+FOREMOST PAVING, INC............... WESLACO         (956)316-8900 (956)316-8901 <-FAX
+                                                    EMAIL:LETTING@FPITEX.COM
+IOC COMPANY LLC.................... EDINBURG        (956)380-2897 (956)380-4085 <-FAX
+                                                    EMAIL:IOCCOMPANY@IOCCOMPANY.COM
+TEXAS CORDIA CONSTRUCTION, LLC..... EDINBURG        956-627-6181  956-386-0289 <-FAX
+                                                    EMAIL:YARA@TEXASCORDIA.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+EARTHWORKS ENTERPRISE.............. PENITAS         (956)424-3414 (956)683-6149 <-FAX
+                                                    EMAIL:BGARCIA@2GSLLC.COM
+  
+EMAIL ALL:LETTING@FPITEX.COM;IOCCOMPANY@IOCCOMPANY.COM;YARA@TEXASCORDIA.COM;BGARCIA@2GSLLC.COM;
+
+================================================================================
+
+COUNTY: CAMERON, ETC            HIGHWAY: CS, ETC           LENGTH:        0 MI
+CONTROL NUMBER: 0921-06-306, ETC       *                 DBE GOAL:      4.0 %    <-changed 
+PROJECT NUMBER: BR 2023(387), ETC
+TYPE: BRIDGE REPLACEMENT
+TIME FOR COMPLETION: 234 WORKING DAYS                GUARANTY:      30,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST:   1,475,967.77    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       ANDRES ESPINOZA
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    1350 EAST HIGHWAY 77                  <-changed 
+  6230 E. STASSNEY LANE                    SAN BENITO, TX 78586
+  AUSTIN TX 78744-3147                     956/399-5102
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6037     REMOVING STAB BASE AND ASPH PAV(0"-16") SY        1,247.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+ARANDA BROTHERS CONSTRUCTION CO., I HOUSTON         281-330-7221  281-449-6350 <-FAX
+FOREMOST PAVING, INC............... WESLACO         (956)316-8900 (956)316-8901 <-FAX
+                                                    EMAIL:LETTING@FPITEX.COM
+IOC COMPANY LLC.................... EDINBURG        (956)380-2897 (956)380-4085 <-FAX
+                                                    EMAIL:IOCCOMPANY@IOCCOMPANY.COM
+LUCANIA CONSTRUCTION LLC........... MISSION         (956)600-4471 (956)529-5182 <-FAX
+                                                    EMAIL:NICOLAIUVONE@LUCANIACONSTRUCTION.COM
+TEXAS CORDIA CONSTRUCTION, LLC..... EDINBURG        956-627-6181  956-386-0289 <-FAX
+                                                    EMAIL:YARA@TEXASCORDIA.COM
+  
+EMAIL ALL:LETTING@FPITEX.COM;IOCCOMPANY@IOCCOMPANY.COM;NICOLAIUVONE@LUCANIACONSTRUCTION.COM;YARA@TEXASCORDIA.COM;
+
+================================================================================
+
+COUNTY: CHEROKEE                HIGHWAY: SH 294            LENGTH:        0 MI
+CONTROL NUMBER: 0058-04-022            *                 DBE GOAL:      6.0 %    <-changed 
+PROJECT NUMBER: F 2023(372)
+TYPE: REHABILITATION OF EXISTING ROAD
+TIME FOR COMPLETION: 114 WORKING DAYS                GUARANTY:      60,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:   2,987,393.30
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       PAUL SCHNEIDER
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    15986 SH 155 SOUTH                    <-changed 
+  6230 E. STASSNEY LANE                    TYLER, TX 75703
+  AUSTIN TX 78744-3147                     903/509-9066
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: CR 2326
+  LIMITS TO: SH 21
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6043     PLANE ASPH CONC PAV (1")                SY          369.000
+      354 6045     PLANE ASPH CONC PAV (2")                SY       48,636.000
+      354 6089     PLANE ASPH CONC PAV(1" TO 2")           SY          622.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+BIG CREEK CONSTRUCTION, LTD........ WACO, TX        (254)662-3100 (254)857-3289 <-FAX
+                                                    EMAIL:QUOTES@BIGCREEKCONSTRUCTION.COM
+DREWERY CONSTRUCTION COMPANY, INCOR NACOGDOCHES     (936)560-1534 (936)560-6542 <-FAX
+                                                    EMAIL:DREWERYWHEATON@GMAIL.COM
+L. S. EQUIPMENT CO., INC........... HENDERSON       (903)657-1555 (903)657-1556 <-FAX
+                                                    EMAIL:LSEQUIP@SUDDENLINKMAIL.COM
+MADDEN CONTRACTING COMPANY, LLC.... MINDEN, LA      (318)377-0928 (318)377-9065 <-FAX
+                                                    EMAIL:PGULLEY@MADDENCONTRACTING.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+A. L. HELMCAMP, INC................ BUFFALO         (903)626-5911 (903)626-4156 <-FAX
+                                                    EMAIL:ESTIMATING@ALHELMCAMP.COM
+EAST TEXAS BRIDGE, INC............. LONGVIEW        (903)553-9669 (903)758-2717 <-FAX
+                                                    EMAIL:ALAN@ETBRIDGE.COM
+  
+EMAIL ALL:QUOTES@BIGCREEKCONSTRUCTION.COM;DREWERYWHEATON@GMAIL.COM;LSEQUIP@SUDDENLINKMAIL.COM;PGULLEY@MADDENCONTRACTING.COM;ESTIMATING@ALHELMCAMP.COM;ALAN@ETBRIDGE.COM;
+
+================================================================================
+
+COUNTY: COLLIN                  HIGHWAY: FM 546            LENGTH:     0.84 MI
+CONTROL NUMBER: 1013-01-038            *                 DBE GOAL:      6.0 %    <-changed 
+PROJECT NUMBER: STP 2023(356)HES
+TYPE: INTERSECTION & OPERATIONAL IMPRV
+TIME FOR COMPLETION: 90 WORKING DAYS                 GUARANTY:      57,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:   2,840,327.39
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       JENNIFER VORSTER
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    2205 SOUTH SH 5                       <-changed 
+  6230 E. STASSNEY LANE                    MCKINNEY, TX 75069
+  AUSTIN TX 78744-3147                     972/547-2231
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: AT FM 3286 INTERSECTION
+  LIMITS TO: .
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6079     REMOVING STAB BASE & ASPH PAV (4"-12")  SY          659.000
+      105 6168     REMOVING STAB BASE & ASP PAV (18"-24")  SY       10,229.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+ED BELL CONSTRUCTION COMPANY....... DALLAS          (214)358-6581 (214)352-3201 <-FAX
+                                                    EMAIL:ESTIMATING@EDBELLCONSTRUCTION.COM
+FNH CONSTRUCTION, LLC.............. PLANO           (469)248-0301 (469)248-2720 <-FAX
+                                                    EMAIL:CANDACE@FNHCONSTRUCTION.COM
+RAGLE CONSTRUCTION, INC............ EULESS          (817)508-0051 (817)472-9942 <-FAX
+                                                    EMAIL:TXESTIMATING@RAGLEINC.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+A. K. GILLIS & SONS, LLC........... SULPHUR SPRINGS (903)885-3124 (903)885-7023 <-FAX
+                                                    EMAIL:SLITTLE@AKGILLIS.COM
+  
+EMAIL ALL:ESTIMATING@EDBELLCONSTRUCTION.COM;CANDACE@FNHCONSTRUCTION.COM;TXESTIMATING@RAGLEINC.COM;SLITTLE@AKGILLIS.COM;
+
+================================================================================
+
+COUNTY: DALLAS                  HIGHWAY: IH0045            LENGTH:     0.01 MI
+CONTROL NUMBER: 6422-53-001            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: RMC - 642253001
+TYPE: FLEXIBLE PAVEMENT STRUCTURE REPAIR
+TIME FOR COMPLETION: 365 CALENDAR DAYS               GUARANTY:      24,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST:   1,198,472.00
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       TERRY BLOCKER
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    4777 EAST HIGHWAY 80                  <-changed 
+  6230 E. STASSNEY LANE                    MESQUITE, TX 75150
+  AUSTIN TX 78744-3147                     214/320-4468
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: ON IH 45 IN
+  LIMITS TO: SOUTHEAST DALLAS COUNTY MAINTENANCE
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6003     PLAN & TEXT ASPH CONC PAV(0" TO 3")     SY       31,700.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+FNH CONSTRUCTION, LLC.............. PLANO           (469)248-0301 (469)248-2720 <-FAX
+                                                    EMAIL:CANDACE@FNHCONSTRUCTION.COM
+FOUTSCO PAVING COMPANY, LLC........ BARTONVILLE     (940)222-1012
+                                                    EMAIL:LFOUTS@FOUTSCOPAVING.COM
+PEACHTREE CONSTRUCTION, LTD........ KELLER          817-741-4658  817-741-4648 <-FAX
+                                                    EMAIL:JBCLARK@PEACHTREECON.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+IBCTX, LLC......................... LAKE DALLAS     (940)279-4200
+                                                    EMAIL:ESTIMATING@IBCTX.COM
+  
+EMAIL ALL:CANDACE@FNHCONSTRUCTION.COM;LFOUTS@FOUTSCOPAVING.COM;JBCLARK@PEACHTREECON.COM;ESTIMATING@IBCTX.COM;
+
+================================================================================
+
+COUNTY: DEAF SMITH              HIGHWAY: US 60             LENGTH:  26.3900 MI
+CONTROL NUMBER: 0168-07-050, ETC       *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 168-7-50, ETC
+TYPE: REHABILITATION OF EXISTING ROAD
+TIME FOR COMPLETION: 194 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:  24,184,741.42
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       JOE CHAPPELL
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    04AMARLOAE                            <-changed 
+  6230 E. STASSNEY LANE                    , TX 0
+  AUSTIN TX 78744-3147                     0
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6020     REMOVING STAB BASE & ASPH PAV (12")     SY          312.000
+      354 6021     PLANE ASPH CONC PAV(0" TO 2")           SY        4,866.000
+      354 6048     PLANE ASPH CONC PAV (3")                SY      207,555.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+ALLEN BUTLER CONSTRUCTION, INC..... RANSOM CANYON   (806)745-7498
+                                                    EMAIL:ESTIMATING@ALLENBUTLER.NET
+DUININCK, INC...................... ROANOKE         (817)491-0946 (817)491-9528 <-FAX
+                                                    EMAIL:RCDUININCK@DUININCK.COM
+GILVIN-TERRILL, LTD................ AMARILLO        (806)944-5200 (806)944-5271 <-FAX
+                                                    EMAIL:RAYMOND@GILVINT.COM
+J. LEE MILLIGAN, INC............... AMARILLO        (806)373-4386 (806)373-5350 <-FAX
+                                                    EMAIL:HALAN@ARN.NET
+KIEWIT INFRASTRUCTURE SOUTH CO..... FORT WORTH      (817)337-7000 (817)337-7001 <-FAX
+                                                    EMAIL:JEFF.WHITEHEAD@KIEWIT.COM
+RK HALL, LLC....................... PARIS           (903)784-7280 (903)784-7068 <-FAX
+                                                    EMAIL:ESTIMATING@RKHALLCONSTRUCTION.COM
+  
+EMAIL ALL:ESTIMATING@ALLENBUTLER.NET;RCDUININCK@DUININCK.COM;RAYMOND@GILVINT.COM;HALAN@ARN.NET;JEFF.WHITEHEAD@KIEWIT.COM;ESTIMATING@RKHALLCONSTRUCTION.COM;
+
+================================================================================
+
+COUNTY: DENTON                  HIGHWAY: IH 35E            LENGTH:   0.8010 MI
+CONTROL NUMBER: 0196-02-128            *                 DBE GOAL:      8.0 %    <-changed 
+PROJECT NUMBER: F 2023(340)
+TYPE: INTERCHANGE (NEW OR RECONSTRUCTED)
+TIME FOR COMPLETION:  WORKING DAYS BY CONTRACTOR **  GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:  83,487,310.30
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       TRAVIS CAMPBELL
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    2624 W. PRAIRIE STREET                <-changed 
+  6230 E. STASSNEY LANE                    DENTON, TX 76201
+  AUSTIN TX 78744-3147                     940/323-1809
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: AT 1171 AND MAIN STREET
+  LIMITS TO: .
+DATE FIRST ADVERTISED:12/2/2022  ADDED TO LETTING:12/2/2022                     
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6002     REMOVING STAB BASE AND ASPH PAV (2")    SY       37,135.000
+      105 6008     REMOVING STAB BASE AND ASPH PAV (6")    SY        1,881.000
+      105 6020     REMOVING STAB BASE & ASPH PAV (12")     SY       40,196.000
+      105 6044     REMOVING STAB BASE AND ASPH PAV (10")   SY       31,046.000
+      105 6105     REMOVING STAB BASE AND ASPH PAV(15")    SY        3,978.000
+      354 6029     PLANE ASPH CONC PAV(0" TO 6")           SY       11,122.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+RAGLE CONSTRUCTION, INC............ EULESS          (817)508-0051 (817)472-9942 <-FAX
+                                                    EMAIL:TXESTIMATING@RAGLEINC.COM
+SEMA CONSTRUCTION, INC............. CENTENNIAL, CO  (303)627-2600 (303)627-2626 <-FAX
+                                                    EMAIL:ESTIMATING.TX@SEMACONSTRUCTION.COM
+WEBBER, LLC........................ HOUSTON         (281)987-8787 (281)449-6658 <-FAX
+                                                    EMAIL:WEBBERESTIMATING@WWEBBER.COM
+ZACHRY CONSTRUCTION CORPORATION.... SAN ANTONIO     (210)871-2700 (210)871-6906 <-FAX
+                                                    EMAIL:ZCCBIDS@ZACHRYCORP.COM
+  
+EMAIL ALL:TXESTIMATING@RAGLEINC.COM;ESTIMATING.TX@SEMACONSTRUCTION.COM;WEBBERESTIMATING@WWEBBER.COM;ZCCBIDS@ZACHRYCORP.COM;
+
+================================================================================
+
+COUNTY: ECTOR                   HIGHWAY: IH0020            LENGTH:     0.01 MI
+CONTROL NUMBER: 6409-43-001            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: RMC - 640943001
+TYPE: MILL AND INLAY
+TIME FOR COMPLETION: 40 WORKING DAYS                 GUARANTY:      35,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:   1,743,411.60    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       SAUL ROMERO, P.E
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    3901 EAST US HIGHWAY 80               <-changed 
+  6230 E. STASSNEY LANE                    ODESSA, TX 79761
+  AUSTIN TX 78744-3147                     432/498-4770
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: VARIOUS
+  LIMITS TO: VARIOUS
+DATE FIRST ADVERTISED:8/3/2022  ADDED TO LETTING:11/25/2022                     
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6005     REMOVING STAB BASE AND ASPH PAV (3")    SY       18,606.000   <-CHANGED
++ DELETED ->          354 6048 PLANE ASPH CONC PAV (3")                         
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+DAN WILLIAMS COMPANY............... AUSTIN          (512)320-1410 (512)320-1413 <-FAX
+                                                    EMAIL:DWILLIAMS@DANWILLIAMSCOMPANY.COM
+FNF CONSTRUCTION, INC.............. TEMPE, AZ       (480)784-2910 (480)829-8607 <-FAX
+                                                    EMAIL:BIDS@FNFINC.COM
+JONES BROS. DIRT & PAVING CONTRACTO ODESSA          (432)332-0721 (432)332-0724 <-FAX
+                                                    EMAIL:ESTIMATING@JONESDP.COM
+REECE ALBERT, INC.................. SAN ANGELO      (325)653-1241 (325)653-6086 <-FAX
+                                                    EMAIL:MIKE@REECEALBERTINC.COM
+RK HALL, LLC....................... PARIS           (903)784-7280 (903)784-7068 <-FAX
+                                                    EMAIL:ESTIMATING@RKHALLCONSTRUCTION.COM
+  
+EMAIL ALL:DWILLIAMS@DANWILLIAMSCOMPANY.COM;BIDS@FNFINC.COM;ESTIMATING@JONESDP.COM;MIKE@REECEALBERTINC.COM;ESTIMATING@RKHALLCONSTRUCTION.COM;
+
+================================================================================
+
+COUNTY: ELLIS                   HIGHWAY: IH 45             LENGTH:  23.4360 MI
+CONTROL NUMBER: 0092-03-057, ETC       *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 92-3-57, ETC
+TYPE: RESTORATION
+TIME FOR COMPLETION: 180 WORKING DAYS                GUARANTY:      54,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST:   2,710,186.91    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       JUAN PAREDES
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    124 FM 876                            <-changed 
+  6230 E. STASSNEY LANE                    WAXAHACHIE, TX 75167
+  AUSTIN TX 78744-3147                     972/923-5641
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6041     REMOVING STAB BASE AND ASPH PAV(8")     SY        1,510.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+FNH CONSTRUCTION, LLC.............. PLANO           (469)248-0301 (469)248-2720 <-FAX
+                                                    EMAIL:CANDACE@FNHCONSTRUCTION.COM
+GHB EQUIPMENT COMPANY, L.L.C....... BONHAM          (903)583-5000 (972)924-4713 <-FAX
+                                                    EMAIL:SUPPORT@GHB-BRIDGE.COM
+GIBSON & ASSOCIATES, INC........... BALCH SPRINGS   (972)557-1199 (972)557-1552 <-FAX
+                                                    EMAIL:ESTIMATING@GIBSONASSOC.NET
+O. TREVINO CONSTRUCTION, LLC....... N. RICHLAND HIL (817)430-2410 (817)491-3831 <-FAX
+                                                    EMAIL:BRADY@OTCONST.COM
+SILVER CREEK CONSTRUCTION, INC..... PONDER          (940)479-2970 (940)479-2971 <-FAX
+                                                    EMAIL:SCCI1992@EMBARQMAIL.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+IBCTX, LLC......................... LAKE DALLAS     (940)279-4200
+                                                    EMAIL:ESTIMATING@IBCTX.COM
+  
+EMAIL ALL:CANDACE@FNHCONSTRUCTION.COM;SUPPORT@GHB-BRIDGE.COM;ESTIMATING@GIBSONASSOC.NET;BRADY@OTCONST.COM;SCCI1992@EMBARQMAIL.COM;ESTIMATING@IBCTX.COM;
+
+================================================================================
+
+COUNTY: FORT BEND, ETC          HIGHWAY: SH 99             LENGTH:   7.3060 MI
+CONTROL NUMBER: 3510-04-019, ETC       *                 DBE GOAL:      9.0 %
+PROJECT NUMBER: STP 2022(936)MM, ETC
+TYPE: WIDEN FREEWAY
+TIME FOR COMPLETION: 592 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST: 100,292,491.80    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       CARLOS ZEPEDA JR
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    4235 SH 36                            <-changed 
+  6230 E. STASSNEY LANE                    ROSENBERG, TX 77471
+  AUSTIN TX 78744-3147                     979/864-8523
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:6/23/2022  ADDED TO LETTING:11/24/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6161     REMOVING TREATED BASE (8")              SY       45,812.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+GRANITE CONSTRUCTION COMPANY....... WATSONVILLE, CA (831)722-2716 (831)728-7513 <-FAX
+                                                    EMAIL:ISABEL.BARRON@GCINC.COM
+JAMES CONSTRUCTION GROUP, LLC...... BATON ROUGE, LA (281)350-3500 (877)293-7671 <-FAX
+WEBBER, LLC........................ HOUSTON         (281)987-8787 (281)449-6658 <-FAX
+                                                    EMAIL:WEBBERESTIMATING@WWEBBER.COM
+WILLIAMS BROTHERS CONSTRUCTION CO., HOUSTON         (713)522-9821 (713)520-5247 <-FAX
+                                                    EMAIL:SSCHULGEN@WBCTX.COM
+ZACHRY CONSTRUCTION CORPORATION.... SAN ANTONIO     (210)871-2700 (210)871-6906 <-FAX
+                                                    EMAIL:ZCCBIDS@ZACHRYCORP.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+MAIN LANE INDUSTRIES LTD........... HOUSTON         (713)896-3141
+                                                    EMAIL:ANTHONY.COLOMBO@MC2CIVIL.COM
+PULICE CONSTRUCTION, INC........... SCOTTSDALE, AZ  (602)944-2241
+                                                    EMAIL:TEXASESTIMATING@PULICE.COM
+  
+EMAIL ALL:ISABEL.BARRON@GCINC.COM;WEBBERESTIMATING@WWEBBER.COM;SSCHULGEN@WBCTX.COM;ZCCBIDS@ZACHRYCORP.COM;ANTHONY.COLOMBO@MC2CIVIL.COM;TEXASESTIMATING@PULICE.COM;
+
+================================================================================
+
+COUNTY: GARZA                   HIGHWAY: US 84             LENGTH:        0 MI
+CONTROL NUMBER: 0053-06-031            *                 DBE GOAL:      4.5 %    <-changed 
+PROJECT NUMBER: BR 2023(365)                                                     <-changed 
+TYPE: BRIDGE REPLACEMENT
+TIME FOR COMPLETION: 175 WORKING DAYS                GUARANTY:      45,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:   2,242,931.40
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       SEVE SISNEROS
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    800 WEST WEBB                         <-changed 
+  6230 E. STASSNEY LANE                    BROWNFIELD, TX 79316
+  AUSTIN TX 78744-3147                     806/637-4501
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: 0.18 MI EAST OF FM 1269
+  LIMITS TO: 1.04 MI EAST OF FM 1269
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6057     PLANE ASPH CONC PAV (4")                SY        1,267.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+COPPELL CONSTRUCTION CO., INC...... SAINT JO, TX    (940)995-3101 (940)995-2416 <-FAX
+                                                    EMAIL:TWEGER@COPPELLCONST.COM
+EARTH BUILDERS, L.P................ DECATUR         (940)627-0686 (940)627-0687 <-FAX
+                                                    EMAIL:ESTIMATING@EARTHBUILDERS.NET
+GILVIN-TERRILL, LTD................ AMARILLO        (806)944-5200 (806)944-5271 <-FAX
+                                                    EMAIL:RAYMOND@GILVINT.COM
+  
+EMAIL ALL:TWEGER@COPPELLCONST.COM;ESTIMATING@EARTHBUILDERS.NET;RAYMOND@GILVINT.COM;
+
+================================================================================
+
+COUNTY: GRAYSON                 HIGHWAY: VA                LENGTH:     2.24 MI
+CONTROL NUMBER: 0901-19-176            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 901-19-176
+TYPE: OVERLAY
+TIME FOR COMPLETION: 176 WORKING DAYS                GUARANTY:      56,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023     * EST.COST:   2,810,273.12
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       AARON BLOOM
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    3904 US 75 SOUTH                      <-changed 
+  6230 E. STASSNEY LANE                    SHERMAN, TX 75090
+  AUSTIN TX 78744-3147                     903/892-6529
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: WITHIN EISENHOWER STATE PARK
+  LIMITS TO: .
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6008     REMOVING STAB BASE AND ASPH PAV (6")    SY          653.000
+      354 6021     PLANE ASPH CONC PAV(0" TO 2")           SY          134.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+D. L. LENNON INCORPORATED - CONTRAC COMMERCE        (903)886-3174 (903)886-8845 <-FAX
+                                                    EMAIL:CONTACT@DLLENNON.COM
+FNH CONSTRUCTION, LLC.............. PLANO           (469)248-0301 (469)248-2720 <-FAX
+                                                    EMAIL:CANDACE@FNHCONSTRUCTION.COM
+JAGOE-PUBLIC COMPANY............... DENTON          (940)382-2581 (940)382-9732 <-FAX
+                                                    EMAIL:ESTIMATING@JAGOEPUBLIC.COM
+RK HALL, LLC....................... PARIS           (903)784-7280 (903)784-7068 <-FAX
+                                                    EMAIL:ESTIMATING@RKHALLCONSTRUCTION.COM
+  
+EMAIL ALL:CONTACT@DLLENNON.COM;CANDACE@FNHCONSTRUCTION.COM;ESTIMATING@JAGOEPUBLIC.COM;ESTIMATING@RKHALLCONSTRUCTION.COM;
+
+================================================================================
+
+COUNTY: HAYS                    HIGHWAY: SH 80, ETC        LENGTH:        0 MI
+CONTROL NUMBER: 0286-01-062, ETC       *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 286-1-62, ETC
+TYPE: PEDESTRIAN, SIDEWALKS & CURB RAMPS
+TIME FOR COMPLETION: 146 WORKING DAYS                GUARANTY:      23,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST:   1,163,131.20
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       WILLIAM SEMORA JR
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    9725 S IH 35                          <-changed 
+  6230 E. STASSNEY LANE                    AUSTIN, TX 78744
+  AUSTIN TX 78744-3147                     512/292-2401
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6011     REMOVING STAB BASE AND ASPH PAV (2"-6") SY          525.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+AARON CONCRETE CONTRACTORS, L.P.... AUSTIN          (512)926-7326 (512)926-2291 <-FAX
+                                                    EMAIL:DALE@AARONCONCRETE.COM
+DEAN WORD COMPANY, LTD............. NEW BRAUNFELS   (830)606-5000 (830)606-5008 <-FAX
+                                                    EMAIL:CONTRACTOR@DEANWORD.COM
+FNH CONSTRUCTION, LLC.............. PLANO           (469)248-0301 (469)248-2720 <-FAX
+                                                    EMAIL:CANDACE@FNHCONSTRUCTION.COM
+TI-ZACK CONCRETE, INC.............. LE CENTER, MN   (507)357-6463 (507)357-6096 <-FAX
+                                                    EMAIL:ESTIMATING@TIZACK.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+LONE STAR SITEWORK, LLC............ WIMBERLEY       (512)393-1582 (512)262-6060 <-FAX
+                                                    EMAIL:OFFICE@LONESTARSITEWORK.COM
+  
+EMAIL ALL:DALE@AARONCONCRETE.COM;CONTRACTOR@DEANWORD.COM;CANDACE@FNHCONSTRUCTION.COM;ESTIMATING@TIZACK.COM;OFFICE@LONESTARSITEWORK.COM;
+
+================================================================================
+
+COUNTY: HAYS                    HIGHWAY: IH 35             LENGTH:        0 MI
+CONTROL NUMBER: 0016-02-171            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 16-2-171
+TYPE: OVERLAY
+TIME FOR COMPLETION: 80 WORKING DAYS                 GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:   7,379,165.00    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       WILLIAM SEMORA JR
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    9725 S IH 35                          <-changed 
+  6230 E. STASSNEY LANE                    AUSTIN, TX 78744
+  AUSTIN TX 78744-3147                     512/292-2401
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: YARRINGTON RD.
+  LIMITS TO: KYLE CROSSING
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6045     PLANE ASPH CONC PAV (2")                SY      226,582.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+CLARK CONSTRUCTION OF TEXAS, INC... SAN ANTONIO     (210)661-6785 (210)661-6421 <-FAX
+                                                    EMAIL:CHAD@CLARKPAVE.COM
+HUNTER INDUSTRIES, LTD............. SAN MARCOS      (512)353-7757 (512)353-7482 <-FAX
+                                                    EMAIL:CARTER@HUNTERIND.COM
+LONE STAR PAVING COMPANY........... AUSTIN          (512)428-5778 (512)532-6241 <-FAX
+                                                    EMAIL:ESTIMATING@LSPAVING.COM
+TEXAS MATERIALS GROUP, INC......... CEDAR PARK      (512)861-7100
+  
+EMAIL ALL:CHAD@CLARKPAVE.COM;CARTER@HUNTERIND.COM;ESTIMATING@LSPAVING.COM;
+
+================================================================================
+
+COUNTY: HAYS                    HIGHWAY: SH 21             LENGTH:        0 MI
+CONTROL NUMBER: 0286-01-061            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 286-1-61
+TYPE: OVERLAY
+TIME FOR COMPLETION: 40 WORKING DAYS                 GUARANTY:      24,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:   1,209,889.50    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       WILLIAM SEMORA JR
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    9725 S IH 35                          <-changed 
+  6230 E. STASSNEY LANE                    AUSTIN, TX 78744
+  AUSTIN TX 78744-3147                     512/292-2401
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: IH 35
+  LIMITS TO: SH 21
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6043     PLANE ASPH CONC PAV (1")                SY       51,948.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+CLARK CONSTRUCTION OF TEXAS, INC... SAN ANTONIO     (210)661-6785 (210)661-6421 <-FAX
+                                                    EMAIL:CHAD@CLARKPAVE.COM
+HUNTER INDUSTRIES, LTD............. SAN MARCOS      (512)353-7757 (512)353-7482 <-FAX
+                                                    EMAIL:CARTER@HUNTERIND.COM
+LONE STAR PAVING COMPANY........... AUSTIN          (512)428-5778 (512)532-6241 <-FAX
+                                                    EMAIL:ESTIMATING@LSPAVING.COM
+TEXAS MATERIALS GROUP, INC......... CEDAR PARK      (512)861-7100
+  
+EMAIL ALL:CHAD@CLARKPAVE.COM;CARTER@HUNTERIND.COM;ESTIMATING@LSPAVING.COM;
+
+================================================================================
+
+COUNTY: HOWARD                  HIGHWAY: IH 20             LENGTH:   7.4570 MI
+CONTROL NUMBER: 0005-05-113, ETC       *                 DBE GOAL:      0.0 %
+PROJECT NUMBER: F 2023(104)
+TYPE: OVERLAY
+TIME FOR COMPLETION: 48 WORKING DAYS                 GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:   5,863,483.59
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       RYAN SAYLES
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    1301 N HWY 350                        <-changed 
+  6230 E. STASSNEY LANE                    BIG SPRING, TX 79720
+  AUSTIN TX 78744-3147                     432/263-4768
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:7/28/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6045     PLANE ASPH CONC PAV (2")                SY      197,697.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+BONTKE BROTHERS CONSTRUCTION COMPAN ABILENE         (325)677-6276 (325)677-6270 <-FAX
+                                                    EMAIL:BONTKEBROS@GMAIL.COM
+RK HALL, LLC....................... PARIS           (903)784-7280 (903)784-7068 <-FAX
+                                                    EMAIL:ESTIMATING@RKHALLCONSTRUCTION.COM
+  
+EMAIL ALL:BONTKEBROS@GMAIL.COM;ESTIMATING@RKHALLCONSTRUCTION.COM;
+
+================================================================================
+
+COUNTY: HUNT                    HIGHWAY: FM 2642, ETC      LENGTH:     2.99 MI
+CONTROL NUMBER: 2658-01-013, ETC       *                 DBE GOAL:      6.0 %
+PROJECT NUMBER: F 2023(058), ETC
+TYPE: WIDEN NON-FREEWAY
+TIME FOR COMPLETION: 495 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST:  28,409,608.15    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       JAMES ATKINS
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    3001 I-30 EAST                        <-changed 
+  6230 E. STASSNEY LANE                    GREENVILLE, TX 75402
+  AUSTIN TX 78744-3147                     903/453-3107
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:8/25/2022  ADDED TO LETTING:11/24/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6029     REMOVE STAB BASE & ASPH PAV (24")       SY       48,170.000
+      105 6038     REMOVING STAB BASE AND ASPH PAV (11")   SY       18,161.000
+      105 6058     REMOVING STAB BASE & ASPH PAV (10"-12") SY       10,136.000
+      354 6048     PLANE ASPH CONC PAV (3")                SY        3,107.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+ED BELL CONSTRUCTION COMPANY....... DALLAS          (214)358-6581 (214)352-3201 <-FAX
+                                                    EMAIL:ESTIMATING@EDBELLCONSTRUCTION.COM
+HARPER BROTHERS CONSTRUCTION LLC... HOUSTON         (713)893-4593 (713)893-0048 <-FAX
+                                                    EMAIL:BIDS@HARPERBRO.COM
+MARIO SINACOLA & SONS EXCAVATING, I FRISCO          (214)387-3900 (214)387-3940 <-FAX
+                                                    EMAIL:ENGINEERING@MARIOSINACOLA.COM
+R CONSTRUCTION CIVIL, LLC.......... BUFFALO         (713)334-5757
+***** SUPPLEMENTAL LIST OF BIDDERS
+EAST TEXAS BRIDGE, INC............. LONGVIEW        (903)553-9669 (903)758-2717 <-FAX
+                                                    EMAIL:ALAN@ETBRIDGE.COM
+  
+EMAIL ALL:ESTIMATING@EDBELLCONSTRUCTION.COM;BIDS@HARPERBRO.COM;ENGINEERING@MARIOSINACOLA.COM;ALAN@ETBRIDGE.COM;
+
+================================================================================
+
+COUNTY: JOHNSON                 HIGHWAY: FM0917            LENGTH:     0.01 MI
+CONTROL NUMBER: 6398-30-001            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: RMC - 639830001
+TYPE: FLEXIBLE PAVEMENT STRUCTURE REPAIR
+TIME FOR COMPLETION: 365 CALENDAR DAYS               GUARANTY:      12,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:     592,979.66
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       JANET CRAWFORD
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    2200 FM 2280                          <-changed 
+  6230 E. STASSNEY LANE                    CLEBURNE, TX 76031
+  AUSTIN TX 78744-3147                     817/202-2900
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: VARIOUS LOCATIONS WITHIN
+  LIMITS TO: JOHNSON COUNTY
+DATE FIRST ADVERTISED:12/1/2022  ADDED TO LETTING:12/12/2022                    
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6003     PLAN & TEXT ASPH CONC PAV(0" TO 3")     SY        5,312.000
+      354 6004     PLAN & TEXT ASPH CONC PAV(0" TO 4")     SY       19,656.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+FOUTSCO PAVING COMPANY, LLC........ BARTONVILLE     (940)222-1012
+                                                    EMAIL:LFOUTS@FOUTSCOPAVING.COM
+NORTHEASTERN PAVERS, LLC........... GRANBURY        (817)573-3809
+                                                    EMAIL:CODYBARRINGTON@YAHOO.COM
+PEACHTREE CONSTRUCTION, LTD........ KELLER          817-741-4658  817-741-4648 <-FAX
+                                                    EMAIL:JBCLARK@PEACHTREECON.COM
+  
+EMAIL ALL:LFOUTS@FOUTSCOPAVING.COM;CODYBARRINGTON@YAHOO.COM;JBCLARK@PEACHTREECON.COM;
+
+================================================================================
+
+COUNTY: KAUFMAN, ETC            HIGHWAY: US 80, ETC        LENGTH: 241.0960 MI
+CONTROL NUMBER: 0095-03-107, ETC       *                 DBE GOAL:      0.0 %
+PROJECT NUMBER: F 2023(084), ETC
+TYPE: SEAL COAT
+TIME FOR COMPLETION: 248 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST:  21,841,302.13    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       JEFFREY BUSH, P.E.
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    2750 S WASHINGTON                     <-changed 
+  6230 E. STASSNEY LANE                    KAUFMAN, TX 75142
+  AUSTIN TX 78744-3147                     972/962-3617
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6045     PLANE ASPH CONC PAV (2")                SY       72,003.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+BRANNAN PAVING CO., LTD............ VICTORIA        (361)573-3130 (361)573-6211 <-FAX
+                                                    EMAIL:BONNIEB@BRANNANPAVING.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+CK NEWBERRY, LLC................... KENEDY          (830)217-9256 (830)217-9257 <-FAX
+                                                    EMAIL:TPENA@CKNEWBERRY.COM
+  
+EMAIL ALL:BONNIEB@BRANNANPAVING.COM;TPENA@CKNEWBERRY.COM;
+
+================================================================================
+
+COUNTY: LAMPASAS                HIGHWAY: FM 2657           LENGTH:        0 MI   <-changed 
+CONTROL NUMBER: 2786-01-018, ETC       *                 DBE GOAL:      0.0 %
+PROJECT NUMBER: F 2023(376), ETC
+TYPE: OVERLAY
+TIME FOR COMPLETION: 50 WORKING DAYS                 GUARANTY:      67,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:   3,335,006.67
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       BART FRIS
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    2160 CR 381                           <-changed 
+  6230 E. STASSNEY LANE                    BROWNWOOD, TX 76802
+  AUSTIN TX 78744-3147                     325/643-0358
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6045     PLANE ASPH CONC PAV (2")                SY      112,664.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+BIG CREEK CONSTRUCTION, LTD........ WACO, TX        (254)662-3100 (254)857-3289 <-FAX
+                                                    EMAIL:QUOTES@BIGCREEKCONSTRUCTION.COM
+LONE STAR PAVING COMPANY........... AUSTIN          (512)428-5778 (512)532-6241 <-FAX
+                                                    EMAIL:ESTIMATING@LSPAVING.COM
+TEXAS MATERIALS GROUP, INC......... CEDAR PARK      (512)861-7100
+  
+EMAIL ALL:QUOTES@BIGCREEKCONSTRUCTION.COM;ESTIMATING@LSPAVING.COM;
+
+================================================================================
+
+COUNTY: LIBERTY                 HIGHWAY: SH 146            LENGTH:  10.9070 MI
+CONTROL NUMBER: 0389-01-044, ETC       *                 DBE GOAL:      0.0 %
+PROJECT NUMBER: F 2023(345), ETC
+TYPE: OVERLAY
+TIME FOR COMPLETION: 142 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:  11,413,207.48    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       ROBERTO RODRIGUEZ
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    209 LAYL DR                           <-changed 
+  6230 E. STASSNEY LANE                    LIBERTY, TX 77575
+  AUSTIN TX 78744-3147                     936/336-2244
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6043     PLANE ASPH CONC PAV (1")                SY      223,384.000
+      354 6051     PLANE ASPH CONC PAV (0" TO 1 1/2")      SY        5,422.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+TEXAS MATERIALS GROUP, INC......... CEDAR PARK      (512)861-7100
+VULCAN MATERIALS ASPHALT AND CONSTR CONROE          (936)756-6960 (936)760-1625 <-FAX
+                                                    EMAIL:TXDOTBIDSVMAC@VMCMAIL.COM
+
+================================================================================
+
+COUNTY: LLANO                   HIGHWAY: SH 71             LENGTH:        0 MI
+CONTROL NUMBER: 0700-04-051            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 700-4-51
+TYPE: OVERLAY
+TIME FOR COMPLETION: 75 WORKING DAYS                 GUARANTY:      39,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023     * EST.COST:   1,970,901.52
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       CATHLEEN KRATZ
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    3029 SH 29 EAST                       <-changed 
+  6230 E. STASSNEY LANE                    BURNET, TX 78611
+  AUSTIN TX 78744-3147                     512/715-5701
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: EAST SH 16
+  LIMITS TO: 0.624 MILES EAST OF BYRNES CREEK
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6021     PLANE ASPH CONC PAV(0" TO 2")           SY       13,983.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+ALLEN KELLER COMPANY............... FREDERICKSBURG  (830)997-2118 (830)997-8428 <-FAX
+                                                    EMAIL:JBRANDENBERGER@ALLENKELLERCO.COM
+BIG CREEK CONSTRUCTION, LTD........ WACO, TX        (254)662-3100 (254)857-3289 <-FAX
+                                                    EMAIL:QUOTES@BIGCREEKCONSTRUCTION.COM
+CLARK CONSTRUCTION OF TEXAS, INC... SAN ANTONIO     (210)661-6785 (210)661-6421 <-FAX
+                                                    EMAIL:CHAD@CLARKPAVE.COM
+HUNTER INDUSTRIES, LTD............. SAN MARCOS      (512)353-7757 (512)353-7482 <-FAX
+                                                    EMAIL:CARTER@HUNTERIND.COM
+LONE STAR PAVING COMPANY........... AUSTIN          (512)428-5778 (512)532-6241 <-FAX
+                                                    EMAIL:ESTIMATING@LSPAVING.COM
+TEXAS MATERIALS GROUP, INC......... CEDAR PARK      (512)861-7100
+  
+EMAIL ALL:JBRANDENBERGER@ALLENKELLERCO.COM;QUOTES@BIGCREEKCONSTRUCTION.COM;CHAD@CLARKPAVE.COM;CARTER@HUNTERIND.COM;ESTIMATING@LSPAVING.COM;
+
+================================================================================
+
+COUNTY: LUBBOCK                 HIGHWAY: IH 27             LENGTH:        0 MI
+CONTROL NUMBER: 0067-07-100, ETC       *                 DBE GOAL:      4.5 %    <-changed 
+PROJECT NUMBER: BR 2023(366), ETC                                                <-changed 
+TYPE: BRIDGE WIDENING OR REHABILITATION
+TIME FOR COMPLETION: 223 WORKING DAYS                GUARANTY:      46,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:   2,309,611.75    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       MICHAEL WITTIE
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    135 SLATON ROAD                       <-changed 
+  6230 E. STASSNEY LANE                    LUBBOCK, TX 79404
+  AUSTIN TX 78744-3147                     806/748-4466
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6068     PLANE ASPH CONC PAV (2"-3")             SY        2,728.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+MB WESTERN INDUSTRIAL CONTRACTING C PASADENA        (281)943-0886 (281)487-5726 <-FAX
+                                                    EMAIL:ADAWOTOLA@MBWESTERN.COM
+SCR CIVIL CONSTRUCTION, LLC........ RICHMOND        (281)344-0700 (281)344-0099 <-FAX
+                                                    EMAIL:TOM@SCRCONSTRUCTION.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+EARTH BUILDERS, L.P................ DECATUR         (940)627-0686 (940)627-0687 <-FAX
+                                                    EMAIL:ESTIMATING@EARTHBUILDERS.NET
+GILVIN-TERRILL, LTD................ AMARILLO        (806)944-5200 (806)944-5271 <-FAX
+                                                    EMAIL:RAYMOND@GILVINT.COM
+TALBRAN ENTERPRISES LLC............ FRISCO          972-814-0124  214-618-1724 <-FAX
+                                                    EMAIL:PROJECTS@TALBRAN.COM
+  
+EMAIL ALL:ADAWOTOLA@MBWESTERN.COM;TOM@SCRCONSTRUCTION.COM;ESTIMATING@EARTHBUILDERS.NET;RAYMOND@GILVINT.COM;PROJECTS@TALBRAN.COM;
+
+================================================================================
+
+COUNTY: NOLAN                   HIGHWAY: FM 608            LENGTH:        0 MI
+CONTROL NUMBER: 0053-15-067            *                 DBE GOAL:      7.0 %    <-changed 
+PROJECT NUMBER: F 2023(163)
+TYPE: REHABILITATION OF EXISTING ROAD
+TIME FOR COMPLETION: 263 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:   8,882,726.96
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       RYAN SAYLES
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    1301 N HWY 350                        <-changed 
+  6230 E. STASSNEY LANE                    BIG SPRING, TX 79720
+  AUSTIN TX 78744-3147                     432/263-4768
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: BI 20
+  LIMITS TO: FM 1170
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6008     REMOVING STAB BASE AND ASPH PAV (6")    SY       15,431.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+BONTKE BROTHERS CONSTRUCTION COMPAN ABILENE         (325)677-6276 (325)677-6270 <-FAX
+                                                    EMAIL:BONTKEBROS@GMAIL.COM
+CK NEWBERRY, LLC................... KENEDY          (830)217-9256 (830)217-9257 <-FAX
+                                                    EMAIL:TPENA@CKNEWBERRY.COM
+GILVIN-TERRILL, LTD................ AMARILLO        (806)944-5200 (806)944-5271 <-FAX
+                                                    EMAIL:RAYMOND@GILVINT.COM
+SALINAS CONSTRUCTION TECHNOLOGIES,. PLEASANTON      (830)281-3500 (830)281-3502 <-FAX
+                                                    EMAIL:MBENITEZ@SALINASCONSTRUCTIONTECHNOLOGIES.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+HJC FARMS, INC..................... HAWLEY          (325)537-2582 (325)999-7923 <-FAX
+                                                    EMAIL:MICHELLESOLIZ@HJCFARMS.COM
+  
+EMAIL ALL:BONTKEBROS@GMAIL.COM;TPENA@CKNEWBERRY.COM;RAYMOND@GILVINT.COM;MBENITEZ@SALINASCONSTRUCTIONTECHNOLOGIES.COM;MICHELLESOLIZ@HJCFARMS.COM;
+
+================================================================================
+
+COUNTY: POLK, ETC               HIGHWAY: US 59             LENGTH:        0 MI
+CONTROL NUMBER: 0176-05-199, ETC       *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 176-5-199, ETC
+TYPE: OVERLAY
+TIME FOR COMPLETION: 69 WORKING DAYS                 GUARANTY:      98,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST:   4,908,732.15
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       CLINT JONES
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    3161 US HIGHWAY 59 NORTH              <-changed 
+  6230 E. STASSNEY LANE                    LIVINGSTON, TX 77351
+  AUSTIN TX 78744-3147                     936/327-8981
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6021     PLANE ASPH CONC PAV(0" TO 2")           SY       11,400.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+DREWERY CONSTRUCTION COMPANY, INCOR NACOGDOCHES     (936)560-1534 (936)560-6542 <-FAX
+                                                    EMAIL:DREWERYWHEATON@GMAIL.COM
+MOORE BROTHERS CONSTRUCTION COMPANY LUFKIN          (936)639-2261 (936)639-5876 <-FAX
+                                                    EMAIL:THOMASMOORE@MOOREBRO.COM
+TEXAS MATERIALS GROUP, INC......... CEDAR PARK      (512)861-7100
+VULCAN MATERIALS ASPHALT AND CONSTR CONROE          (936)756-6960 (936)760-1625 <-FAX
+                                                    EMAIL:TXDOTBIDSVMAC@VMCMAIL.COM
+  
+EMAIL ALL:DREWERYWHEATON@GMAIL.COM;THOMASMOORE@MOOREBRO.COM;TXDOTBIDSVMAC@VMCMAIL.COM;
+
+================================================================================
+
+COUNTY: POLK, ETC               HIGHWAY: BU 59-J, ETC      LENGTH:        0 MI
+CONTROL NUMBER: 0176-06-016, ETC       *                 DBE GOAL:      0.0 %
+PROJECT NUMBER: F 2023(076), ETC
+TYPE: OVERLAY
+TIME FOR COMPLETION: 121 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:   8,309,288.95    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       CLINT JONES
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    3161 US HIGHWAY 59 NORTH              <-changed 
+  6230 E. STASSNEY LANE                    LIVINGSTON, TX 77351
+  AUSTIN TX 78744-3147                     936/327-8981
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6021     PLANE ASPH CONC PAV(0" TO 2")           SY       30,344.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+DREWERY CONSTRUCTION COMPANY, INCOR NACOGDOCHES     (936)560-1534 (936)560-6542 <-FAX
+                                                    EMAIL:DREWERYWHEATON@GMAIL.COM
+MOORE BROTHERS CONSTRUCTION COMPANY LUFKIN          (936)639-2261 (936)639-5876 <-FAX
+                                                    EMAIL:THOMASMOORE@MOOREBRO.COM
+TEXAS MATERIALS GROUP, INC......... CEDAR PARK      (512)861-7100
+VULCAN MATERIALS ASPHALT AND CONSTR CONROE          (936)756-6960 (936)760-1625 <-FAX
+                                                    EMAIL:TXDOTBIDSVMAC@VMCMAIL.COM
+  
+EMAIL ALL:DREWERYWHEATON@GMAIL.COM;THOMASMOORE@MOOREBRO.COM;TXDOTBIDSVMAC@VMCMAIL.COM;
+
+================================================================================
+
+COUNTY: POTTER                  HIGHWAY: SL 335            LENGTH:        0 MI
+CONTROL NUMBER: 2635-04-042            *                 DBE GOAL:      3.0 %    <-changed 
+PROJECT NUMBER: STP 2023(380)HES
+TYPE: SAFETY IMPROVEMENT PROJECTS
+TIME FOR COMPLETION: 88 WORKING DAYS                 GUARANTY:      51,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023     * EST.COST:   2,548,524.55
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       JOE CHAPPELL
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    04AMARLOAE                            <-changed 
+  6230 E. STASSNEY LANE                    , TX 0
+  AUSTIN TX 78744-3147                     0
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: FM 1719
+  LIMITS TO: US 87
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6019     REMOVING STAB BASE & ASPH PAV(14")      SY        1,213.000
+      105 6074     REMOVING STAB BASE AND ASPH PAV (4")    SY          323.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+GILVIN-TERRILL, LTD................ AMARILLO        (806)944-5200 (806)944-5271 <-FAX
+                                                    EMAIL:RAYMOND@GILVINT.COM
+HJC FARMS, INC..................... HAWLEY          (325)537-2582 (325)999-7923 <-FAX
+                                                    EMAIL:MICHELLESOLIZ@HJCFARMS.COM
+L A FULLER & SONS CONSTRUCTION, LTD AMARILLO        (806)373-6049 (806)372-3920 <-FAX
+                                                    EMAIL:JOSH.FULLER@FULLERANDSONS.COM
+SCR CIVIL CONSTRUCTION, LLC........ RICHMOND        (281)344-0700 (281)344-0099 <-FAX
+                                                    EMAIL:TOM@SCRCONSTRUCTION.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+AMERICAN INFRASTRUCTURE MAINTENANCE HOUSTON         (281)973-7888
+                                                    EMAIL:JAVIER.ROLON@AIMMUS.COM
+  
+EMAIL ALL:RAYMOND@GILVINT.COM;MICHELLESOLIZ@HJCFARMS.COM;JOSH.FULLER@FULLERANDSONS.COM;TOM@SCRCONSTRUCTION.COM;JAVIER.ROLON@AIMMUS.COM;
+
+================================================================================
+
+COUNTY: REEVES                  HIGHWAY: IH 20             LENGTH:        0 MI
+CONTROL NUMBER: 0003-07-061            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 3-7-61
+TYPE: REHABILITATION OF EXISTING ROAD
+TIME FOR COMPLETION: 283 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023     * EST.COST:  24,055,038.72    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       RICARDO BETANCOURT
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    3901 EAST US HIGHWAY 80               <-changed 
+  6230 E. STASSNEY LANE                    ODESSA, TX 79761
+  AUSTIN TX 78744-3147                     432/498-4745
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: COUNTRY CLUB
+  LIMITS TO: 1.5 MILES W OF FM 516
+DATE FIRST ADVERTISED:12/12/2022  ADDED TO LETTING:12/12/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6041     REMOVING STAB BASE AND ASPH PAV(8")     SY       61,790.000
+      354 6048     PLANE ASPH CONC PAV (3")                SY      368,770.000
+      354 6064     PLANE ASPH CONC PAV (2 1/2")            SY       48,262.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+DAN WILLIAMS COMPANY............... AUSTIN          (512)320-1410 (512)320-1413 <-FAX
+                                                    EMAIL:DWILLIAMS@DANWILLIAMSCOMPANY.COM
+FNF CONSTRUCTION, INC.............. TEMPE, AZ       (480)784-2910 (480)829-8607 <-FAX
+                                                    EMAIL:BIDS@FNFINC.COM
+GILVIN-TERRILL, LTD................ AMARILLO        (806)944-5200 (806)944-5271 <-FAX
+                                                    EMAIL:RAYMOND@GILVINT.COM
+JONES BROS. DIRT & PAVING CONTRACTO ODESSA          (432)332-0721 (432)332-0724 <-FAX
+                                                    EMAIL:ESTIMATING@JONESDP.COM
+KIEWIT INFRASTRUCTURE SOUTH CO..... FORT WORTH      (817)337-7000 (817)337-7001 <-FAX
+                                                    EMAIL:JEFF.WHITEHEAD@KIEWIT.COM
+  
+EMAIL ALL:DWILLIAMS@DANWILLIAMSCOMPANY.COM;BIDS@FNFINC.COM;RAYMOND@GILVINT.COM;ESTIMATING@JONESDP.COM;JEFF.WHITEHEAD@KIEWIT.COM;
+
+================================================================================
+
+COUNTY: ROCKWALL                HIGHWAY: FM 548            LENGTH:   0.1810 MI
+CONTROL NUMBER: 1014-02-043            *                 DBE GOAL:      6.5 %    <-changed 
+PROJECT NUMBER: BR 2023(416)
+TYPE: BRIDGE REPLACEMENT
+TIME FOR COMPLETION: 102 WORKING DAYS                GUARANTY:      77,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:   3,836,735.95    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       LANE SELMAN, P.E.
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    2750 S WASHINGTON                     <-changed 
+  6230 E. STASSNEY LANE                    KAUFMAN, TX 75142
+  AUSTIN TX 78744-3147                     972/962-3617
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: AT PARKER CREEK
+  LIMITS TO: .
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6045     REMOVING STAB BASE AND ASPH PAV (2"-8") SY           86.000
+      105 6054     REMOVING STAB BASE & ASPH PAV (18")     SY        2,378.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+ED BELL CONSTRUCTION COMPANY....... DALLAS          (214)358-6581 (214)352-3201 <-FAX
+                                                    EMAIL:ESTIMATING@EDBELLCONSTRUCTION.COM
+MCMAHON CONTRACTING AND CONSTRUCTIO
+RAGLE CONSTRUCTION, INC............ EULESS          (817)508-0051 (817)472-9942 <-FAX
+                                                    EMAIL:TXESTIMATING@RAGLEINC.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+IBCTX, LLC......................... LAKE DALLAS     (940)279-4200
+                                                    EMAIL:ESTIMATING@IBCTX.COM
+INDUS ROAD & BRIDGE, INC...........
+  
+EMAIL ALL:ESTIMATING@EDBELLCONSTRUCTION.COM;TXESTIMATING@RAGLEINC.COM;ESTIMATING@IBCTX.COM;
+
+================================================================================
+
+COUNTY: RUSK                    HIGHWAY: US 84             LENGTH:   2.0830 MI
+CONTROL NUMBER: 0123-04-023            *                 DBE GOAL:      6.0 %    <-changed 
+PROJECT NUMBER: F 2023(370)
+TYPE: WIDEN NON-FREEWAY
+TIME FOR COMPLETION: 97 WORKING DAYS                 GUARANTY:      61,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023     * EST.COST:   3,073,701.30    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       STACY WYLIE                           <-changed 
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    4549A W LOOP 281                      <-changed 
+  6230 E. STASSNEY LANE                    LONGVIEW, TX 75604
+  AUSTIN TX 78744-3147                     903/234-0532
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: FM 2753, E
+  LIMITS TO: FM 225
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6021     PLANE ASPH CONC PAV(0" TO 2")           SY        1,244.000
+      354 6024     PLANE ASPH CONC PAV(2" TO 4")           SY        1,911.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+DREWERY CONSTRUCTION COMPANY, INCOR NACOGDOCHES     (936)560-1534 (936)560-6542 <-FAX
+                                                    EMAIL:DREWERYWHEATON@GMAIL.COM
+H. V. CAVER, INC................... ATLANTA         (903)796-2586 (903)796-7530 <-FAX
+                                                    EMAIL:SCOTT@HVCAVER.COM
+L. S. EQUIPMENT CO., INC........... HENDERSON       (903)657-1555 (903)657-1556 <-FAX
+                                                    EMAIL:LSEQUIP@SUDDENLINKMAIL.COM
+MADDEN CONTRACTING COMPANY, LLC.... MINDEN, LA      (318)377-0928 (318)377-9065 <-FAX
+                                                    EMAIL:PGULLEY@MADDENCONTRACTING.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+EAST TEXAS BRIDGE, INC............. LONGVIEW        (903)553-9669 (903)758-2717 <-FAX
+                                                    EMAIL:ALAN@ETBRIDGE.COM
+REYNOLDS & KAY, LTD................ TYLER           (903)592-0835 (903)597-2547 <-FAX
+                                                    EMAIL:KELVIN.DESHAZO@SBCGLOBAL.NET
+  
+EMAIL ALL:DREWERYWHEATON@GMAIL.COM;SCOTT@HVCAVER.COM;LSEQUIP@SUDDENLINKMAIL.COM;PGULLEY@MADDENCONTRACTING.COM;ALAN@ETBRIDGE.COM;KELVIN.DESHAZO@SBCGLOBAL.NET;
+
+================================================================================
+
+COUNTY: RUSK                    HIGHWAY: US 84             LENGTH:        0 MI
+CONTROL NUMBER: 0123-05-015            *                 DBE GOAL:      6.0 %    <-changed 
+PROJECT NUMBER: F 2023(369)
+TYPE: REHABILITATION OF EXISTING ROAD
+TIME FOR COMPLETION: 214 WORKING DAYS                GUARANTY:     100,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:  11,730,694.34    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       BRYAN LUTZ, P.E.
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    2709 WEST FRONT STREET                <-changed 
+  6230 E. STASSNEY LANE                    TYLER, TX 75702
+  AUSTIN TX 78744-3147                     903/510-9285
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: FM 225, E
+  LIMITS TO: CR 3155
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6048     PLANE ASPH CONC PAV (3")                SY       77,893.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+DREWERY CONSTRUCTION COMPANY, INCOR NACOGDOCHES     (936)560-1534 (936)560-6542 <-FAX
+                                                    EMAIL:DREWERYWHEATON@GMAIL.COM
+H. V. CAVER, INC................... ATLANTA         (903)796-2586 (903)796-7530 <-FAX
+                                                    EMAIL:SCOTT@HVCAVER.COM
+L. S. EQUIPMENT CO., INC........... HENDERSON       (903)657-1555 (903)657-1556 <-FAX
+                                                    EMAIL:LSEQUIP@SUDDENLINKMAIL.COM
+LONGVIEW BRIDGE AND ROAD, LTD...... LONGVIEW        (903)663-0264 (903)663-4967 <-FAX
+                                                    EMAIL:ESTIMATING@LONGVIEWBRIDGE.COM
+MADDEN CONTRACTING COMPANY, LLC.... MINDEN, LA      (318)377-0928 (318)377-9065 <-FAX
+                                                    EMAIL:PGULLEY@MADDENCONTRACTING.COM
+PINTO CONSTRUCTION CO., INC........ NACOGDOCHES     (936)569-6155
+                                                    EMAIL:CHINTON0810@YAHOO.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+EAST TEXAS BRIDGE, INC............. LONGVIEW        (903)553-9669 (903)758-2717 <-FAX
+                                                    EMAIL:ALAN@ETBRIDGE.COM
+REYNOLDS & KAY, LTD................ TYLER           (903)592-0835 (903)597-2547 <-FAX
+                                                    EMAIL:KELVIN.DESHAZO@SBCGLOBAL.NET
+  
+EMAIL ALL:DREWERYWHEATON@GMAIL.COM;SCOTT@HVCAVER.COM;LSEQUIP@SUDDENLINKMAIL.COM;ESTIMATING@LONGVIEWBRIDGE.COM;PGULLEY@MADDENCONTRACTING.COM;CHINTON0810@YAHOO.COM;ALAN@ETBRIDGE.COM;KELVIN.DESHAZO@SBCGLOBAL.NET;
+
+================================================================================
+
+COUNTY: SAN PATRICIO            HIGHWAY: BS 359B, ETC      LENGTH:        0 MI
+CONTROL NUMBER: 0087-06-031, ETC       *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 87-6-31, ETC
+TYPE: PEDESTRIAN, SIDEWALKS & CURB RAMPS
+TIME FOR COMPLETION: 125 WORKING DAYS                GUARANTY:      37,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:   1,831,463.70    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       ROBERT ISASSI
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    US 181 2 MILES S OF SINTO             <-changed 
+  6230 E. STASSNEY LANE                    SINTON, TX 78387
+  AUSTIN TX 78744-3147                     361/364-6402
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6037     REMOVING STAB BASE AND ASPH PAV(0"-16") SY          691.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+BRIZO CONSTRUCTION, LLC............ HOUSTON         (409)316-4764
+                                                    EMAIL:INFO@BRIZOCONSTRUCTION.COM
+FNH CONSTRUCTION, LLC.............. PLANO           (469)248-0301 (469)248-2720 <-FAX
+                                                    EMAIL:CANDACE@FNHCONSTRUCTION.COM
+LUCANIA CONSTRUCTION LLC........... MISSION         (956)600-4471 (956)529-5182 <-FAX
+                                                    EMAIL:NICOLAIUVONE@LUCANIACONSTRUCTION.COM
+MAKO CONTRACTING, LLC.............. CORPUS CHRISTI  (361)561-6256
+                                                    EMAIL:TRAVIS@MAKOCONTRACTING.COM
+TI-ZACK CONCRETE, INC.............. LE CENTER, MN   (507)357-6463 (507)357-6096 <-FAX
+                                                    EMAIL:ESTIMATING@TIZACK.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+CROSS PLUS CONSTRUCTION, LLC....... CHINA SPRING    (254)848-2244 (254)848-8390 <-FAX
+                                                    EMAIL:CROSSPLUSOFFICE@YAHOO.COM
+PROJECT ALLIED RESOURCES, LLC...... HOUSTON         281-799-1006  (281)204-2209 <-FAX
+                                                    EMAIL:FRANCORR59@YAHOO.COM
+  
+EMAIL ALL:INFO@BRIZOCONSTRUCTION.COM;CANDACE@FNHCONSTRUCTION.COM;NICOLAIUVONE@LUCANIACONSTRUCTION.COM;TRAVIS@MAKOCONTRACTING.COM;ESTIMATING@TIZACK.COM;CROSSPLUSOFFICE@YAHOO.COM;FRANCORR59@YAHOO.COM;
+
+================================================================================
+
+COUNTY: STEPHENS                HIGHWAY: FM 3099           LENGTH:   0.8260 MI
+CONTROL NUMBER: 3469-01-014            *                 DBE GOAL:      6.0 %    <-changed 
+PROJECT NUMBER: F 2023(378)
+TYPE: INTERSECTION & OPERATIONAL IMPRV
+TIME FOR COMPLETION: 224 WORKING DAYS                GUARANTY:      61,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023     * EST.COST:   3,069,767.15
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       JORDAN PERRY
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    906 E MAIN ST                         <-changed 
+  6230 E. STASSNEY LANE                    EASTLAND, TX 76448
+  AUSTIN TX 78744-3147                     254/629-6313
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: NEAR NORTHGLEN RD.
+  LIMITS TO: 0.2 MI. S OF US 180
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6015     REMOVING STAB BASE & ASPH PAV (8"-10")  SY        2,658.000
+      105 6043     REMOVING STAB BASE & ASPH PAV (0-6")    SY        4,032.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+3LW CIVIL LLC...................... MASON           (325)347-7898 (325)294-4544 <-FAX
+                                                    EMAIL:3LW@3LWCIVIL.COM
+PEACHTREE CONSTRUCTION, LTD........ KELLER          817-741-4658  817-741-4648 <-FAX
+                                                    EMAIL:JBCLARK@PEACHTREECON.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+A. L. HELMCAMP, INC................ BUFFALO         (903)626-5911 (903)626-4156 <-FAX
+                                                    EMAIL:ESTIMATING@ALHELMCAMP.COM
+JAY MILLS CONTRACTING, INCORPORATED STEPHENVILLE    (254)965-6657 (254)965-4977 <-FAX
+                                                    EMAIL:ESTIMATING@JMCTX.COM
+  
+EMAIL ALL:3LW@3LWCIVIL.COM;JBCLARK@PEACHTREECON.COM;ESTIMATING@ALHELMCAMP.COM;ESTIMATING@JMCTX.COM;
+
+================================================================================
+
+COUNTY: TARRANT                 HIGHWAY: FM 1187           LENGTH:   0.9910 MI
+CONTROL NUMBER: 1330-02-049            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 1330-2-49
+TYPE: OVERLAY
+TIME FOR COMPLETION: 160 WORKING DAYS                GUARANTY:      37,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023     * EST.COST:   1,853,416.25
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       DAVID NEELEY
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    1427 W BANKHEAD                       <-changed 
+  6230 E. STASSNEY LANE                    WEATHERFORD, TX 76086
+  AUSTIN TX 78744-3147                     682/229-2800
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: WEST OF IH 35W NB FRONTAGE ROAD
+  LIMITS TO: WEST OF HUNTERS FIELD BLVD
+DATE FIRST ADVERTISED:1/20/2022  ADDED TO LETTING:11/24/2022                    
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6019     REMOVING STAB BASE & ASPH PAV(14")      SY          397.000
+      105 6105     REMOVING STAB BASE AND ASPH PAV(15")    SY          533.000
+      354 6021     PLANE ASPH CONC PAV(0" TO 2")           SY       32,105.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+ED BELL CONSTRUCTION COMPANY....... DALLAS          (214)358-6581 (214)352-3201 <-FAX
+                                                    EMAIL:ESTIMATING@EDBELLCONSTRUCTION.COM
+FOUTSCO PAVING COMPANY, LLC........ BARTONVILLE     (940)222-1012
+                                                    EMAIL:LFOUTS@FOUTSCOPAVING.COM
+  
+EMAIL ALL:ESTIMATING@EDBELLCONSTRUCTION.COM;LFOUTS@FOUTSCOPAVING.COM;
+
+================================================================================
+
+COUNTY: TERRY, ETC              HIGHWAY: US 62             LENGTH:   2.5750 MI
+CONTROL NUMBER: 0228-01-058, ETC       *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 228-1-58, ETC
+TYPE: REHABILITATION OF EXISTING ROAD
+TIME FOR COMPLETION: 393 WORKING DAYS                GUARANTY:     100,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST:  19,058,645.26
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       SEVE SISNEROS
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    800 WEST WEBB                         <-changed 
+  6230 E. STASSNEY LANE                    BROWNFIELD, TX 79316
+  AUSTIN TX 78744-3147                     806/637-4501
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6015     REMOVING STAB BASE & ASPH PAV (8"-10")  SY        3,348.000
+      354 6025     PLANE ASPH CONC PAV(4" TO 6")           SY      118,323.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+ALLEN BUTLER CONSTRUCTION, INC..... RANSOM CANYON   (806)745-7498
+                                                    EMAIL:ESTIMATING@ALLENBUTLER.NET
+CI CONSTRUCTORS, INC............... CARLSBAD, NM    (575)885-8838 (575)887-0896 <-FAX
+                                                    EMAIL:JNICHOLAS@CICONSTRUCTORS.COM
+DUININCK, INC...................... ROANOKE         (817)491-0946 (817)491-9528 <-FAX
+                                                    EMAIL:RCDUININCK@DUININCK.COM
+GILVIN-TERRILL, LTD................ AMARILLO        (806)944-5200 (806)944-5271 <-FAX
+                                                    EMAIL:RAYMOND@GILVINT.COM
+JAMES HAMILTON CONSTRUCTION CO..... SILVER CITY,NM  (505)388-1546 (505)388-3256 <-FAX
+                                                    EMAIL:JHCC@DIGNPAVE.COM
+SACYR CONSTRUCTION USA LLC......... MIAMI, FL       (786)773-5847
+                                                    EMAIL:STIQUE@SACYR.COM
+  
+EMAIL ALL:ESTIMATING@ALLENBUTLER.NET;JNICHOLAS@CICONSTRUCTORS.COM;RCDUININCK@DUININCK.COM;RAYMOND@GILVINT.COM;JHCC@DIGNPAVE.COM;STIQUE@SACYR.COM;
+
+================================================================================
+
+COUNTY: TITUS                   HIGHWAY: FM 1735           LENGTH:   2.1020 MI
+CONTROL NUMBER: 1226-02-016            *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 1226-2-16
+TYPE: REHABILITATION OF EXISTING ROAD
+TIME FOR COMPLETION: 276 WORKING DAYS                GUARANTY:     100,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023     * EST.COST:  14,615,960.38    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       WENDY STARKES
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    300 EAST LOOP 390 N                   <-changed 
+  6230 E. STASSNEY LANE                    MARSHALL, TX 75670
+  AUSTIN TX 78744-3147                     903/935-2809
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: SH 49
+  LIMITS TO: 2.1 MI S OF SH 49
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6021     REMOVING STAB BASE AND ASPH PAV (0-4")  SY        1,651.000
+      105 6023     REMOVING STAB BASE AND ASPH PAV (5")    SY       52,277.000   <-CHANGED
+      354 6021     PLANE ASPH CONC PAV(0" TO 2")           SY        2,213.000   <-CHANGED
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+H. H. HOWARD & SONS, INC........... DAINGERFIELD    (903)656-3846 (903)656-3543 <-FAX
+                                                    EMAIL:HHHOWARDCONST@AOL.COM
+H. V. CAVER, INC................... ATLANTA         (903)796-2586 (903)796-7530 <-FAX
+                                                    EMAIL:SCOTT@HVCAVER.COM
+LONGVIEW BRIDGE AND ROAD, LTD...... LONGVIEW        (903)663-0264 (903)663-4967 <-FAX
+                                                    EMAIL:ESTIMATING@LONGVIEWBRIDGE.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+A. K. GILLIS & SONS, LLC........... SULPHUR SPRINGS (903)885-3124 (903)885-7023 <-FAX
+                                                    EMAIL:SLITTLE@AKGILLIS.COM
+EAST TEXAS BRIDGE, INC............. LONGVIEW        (903)553-9669 (903)758-2717 <-FAX
+                                                    EMAIL:ALAN@ETBRIDGE.COM
+  
+EMAIL ALL:HHHOWARDCONST@AOL.COM;SCOTT@HVCAVER.COM;ESTIMATING@LONGVIEWBRIDGE.COM;SLITTLE@AKGILLIS.COM;ALAN@ETBRIDGE.COM;
+
+================================================================================
+
+COUNTY: TRAVIS                  HIGHWAY: FM 1825, ETC      LENGTH:        0 MI
+CONTROL NUMBER: 1902-01-031, ETC       *                 SBE GOAL:      0.0 %
+PROJECT NUMBER: C 1902-1-31, ETC
+TYPE: OVERLAY
+TIME FOR COMPLETION: 90 WORKING DAYS                 GUARANTY:      38,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 06, 2023       EST.COST:   1,916,806.17
+BIDS WILL BE OPENED:  1:00 PM JANUARY 06, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       JASON CAVNESS
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    1001 EAST PARMER LANE STE             <-changed 
+  6230 E. STASSNEY LANE                    AUSTIN, TX 78753
+  AUSTIN TX 78744-3147                     512/997-2202
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/25/2022  ADDED TO LETTING:11/25/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      354 6002     PLAN & TEXT ASPH CONC PAV(0" TO 2")     SY       34,912.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+HUNTER INDUSTRIES, LTD............. SAN MARCOS      (512)353-7757 (512)353-7482 <-FAX
+                                                    EMAIL:CARTER@HUNTERIND.COM
+LONE STAR PAVING COMPANY........... AUSTIN          (512)428-5778 (512)532-6241 <-FAX
+                                                    EMAIL:ESTIMATING@LSPAVING.COM
+TEXAS MATERIALS GROUP, INC......... CEDAR PARK      (512)861-7100
+  
+EMAIL ALL:CARTER@HUNTERIND.COM;ESTIMATING@LSPAVING.COM;
+
+================================================================================
+
+COUNTY: UPTON                   HIGHWAY: US 385, ETC       LENGTH:        0 MI
+CONTROL NUMBER: 0229-04-060, ETC       *                 DBE GOAL:      2.5 %    <-changed 
+PROJECT NUMBER: F 2022(979), ETC
+TYPE: REHABILITATION OF EXISTING ROAD
+TIME FOR COMPLETION: 120 WORKING DAYS                GUARANTY:     100,000.00    <-changed 
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023       EST.COST:   5,194,897.98    <-changed 
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       FRED HERRERA, P.E.
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    5100 W IH 20                          <-changed 
+  6230 E. STASSNEY LANE                    MIDLAND, TX 79703
+  AUSTIN TX 78744-3147                     432/694-2195
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                  
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6008     REMOVING STAB BASE AND ASPH PAV (6")    SY          492.000
+      105 6013     REMOVING STAB BASE & ASPH PAV (9")      SY       37,164.000
+      354 6041     PLANE ASPH CONC PAV (1.5")              SY        6,296.000
+      354 6064     PLANE ASPH CONC PAV (2 1/2")            SY        5,566.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+FNF CONSTRUCTION, INC.............. TEMPE, AZ       (480)784-2910 (480)829-8607 <-FAX
+                                                    EMAIL:BIDS@FNFINC.COM
+JONES BROS. DIRT & PAVING CONTRACTO ODESSA          (432)332-0721 (432)332-0724 <-FAX
+                                                    EMAIL:ESTIMATING@JONESDP.COM
+RAGLE CONSTRUCTION, INC............ EULESS          (817)508-0051 (817)472-9942 <-FAX
+                                                    EMAIL:TXESTIMATING@RAGLEINC.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+DELHUR INDUSTRIES, INC............. ANDREWS         (432)897-4301 (432)897-1471 <-FAX
+                                                    EMAIL:BWELCH@DELHUR.COM
+  
+EMAIL ALL:BIDS@FNFINC.COM;ESTIMATING@JONESDP.COM;TXESTIMATING@RAGLEINC.COM;BWELCH@DELHUR.COM;
+
+================================================================================
+
+COUNTY: WILSON                  HIGHWAY: US 87             LENGTH:   0.0770 MI
+CONTROL NUMBER: 0143-04-072            *                 DBE GOAL:      6.0 %    <-changed 
+PROJECT NUMBER: BR 2023(420)
+TYPE: BRIDGE REPLACEMENT
+TIME FOR COMPLETION: 190 WORKING DAYS                GUARANTY:      43,000.00
+BIDS RECEIVED UNTIL:  1:00 PM JANUARY 05, 2023     * EST.COST:   2,169,866.63
+BIDS WILL BE OPENED:  1:00 PM JANUARY 05, 2023
+  MAIL OR DELIVER BIDS TO:                 FOR QUESTIONS CALL:      <-changed 
+  TEXAS DEPARTMENT OF TRANSPORTATION       WILLIAM LOCKETT
+  ATTN: CONSTRUCTION DIVISION - M1C3.02    4102 IH 35 SOUTH                      <-changed 
+  6230 E. STASSNEY LANE                    NEW BRAUNFELS, TX 78130
+  AUSTIN TX 78744-3147                     830/609-0707
+  FOR QUESTIONS REGARDING A PROPOSAL CALL 512/416-2498
+  TO REQUEST A PROPOSAL GO TO HTTP://WWW.DOT.STATE.TX.US/BUSINESS/PR.HTM
+  FOR ELECTRONIC BIDDING VISIT THE WEBSITE BELOW:
+       HTTP://WWW.TXDOT.GOV/BUSINESS/LETTING-BIDS/EBS.HTML
+LIMITS FROM: AT CLIFTON BRANCH
+  LIMITS TO: .
+DATE FIRST ADVERTISED:11/24/2022  ADDED TO LETTING:11/24/2022                   
+------------------------------------------------------------------------------
+     ITEM DES  S.P                                                APPROXIMATE 
+ ALT NO.  CD.  NO. ITEM DESCRIPTION                       UNIT    QUANTITIES  
+------------------------------------------------------------------------------
+      105 6020     REMOVING STAB BASE & ASPH PAV (12")     SY           60.000
+      105 6164     REMOVE STAB BASE & ASPH PAV (12"-22")   SY        1,515.000
+      354 6106     PLANE ASPH CONC PAV (1" TO 4")          SY          486.000
+
+PLANHOLDERS
+--------------------------------------------------------------------------------
+ACME BRIDGE COMPANY, INC........... NEW BRAUNFELS   (830)620-4770 (830)620-4669 <-FAX
+                                                    EMAIL:INFO@ACMEBRIDGE.COM
+CK NEWBERRY, LLC................... KENEDY          (830)217-9256 (830)217-9257 <-FAX
+                                                    EMAIL:TPENA@CKNEWBERRY.COM
+DEAN WORD COMPANY, LTD............. NEW BRAUNFELS   (830)606-5000 (830)606-5008 <-FAX
+                                                    EMAIL:CONTRACTOR@DEANWORD.COM
+E-Z BEL CONSTRUCTION, LLC.......... SAN ANTONIO     (210)736-6595 (210)735-1842 <-FAX
+                                                    EMAIL:SPARK@EZBEL.COM
+HUNTER INDUSTRIES, LTD............. SAN MARCOS      (512)353-7757 (512)353-7482 <-FAX
+                                                    EMAIL:CARTER@HUNTERIND.COM
+LISKA CONSTRUCTION COMPANY, INC.... KARNES CITY     (830)780-2277 (830)780-3374 <-FAX
+                                                    EMAIL:TYLER.LISKA@GMAIL.COM
+LUCANIA CONSTRUCTION LLC........... MISSION         (956)600-4471 (956)529-5182 <-FAX
+                                                    EMAIL:NICOLAIUVONE@LUCANIACONSTRUCTION.COM
+SB CONTRACTORS LLC................. NEW BRAUNFELS   (512)265-7744
+                                                    EMAIL:ESTIMATING@SBCONTRACTORSLLC.COM
+***** SUPPLEMENTAL LIST OF BIDDERS
+INDUS ROAD & BRIDGE, INC...........
+SALINAS CONSTRUCTION TECHNOLOGIES,. PLEASANTON      (830)281-3500 (830)281-3502 <-FAX
+                                                    EMAIL:MBENITEZ@SALINASCONSTRUCTIONTECHNOLOGIES.COM
+  
+EMAIL ALL:INFO@ACMEBRIDGE.COM;TPENA@CKNEWBERRY.COM;CONTRACTOR@DEANWORD.COM;SPARK@EZBEL.COM;CARTER@HUNTERIND.COM;TYLER.LISKA@GMAIL.COM;NICOLAIUVONE@LUCANIACONSTRUCTION.COM;ESTIMATING@SBCONTRACTORSLLC.COM;MBENITEZ@SALINASCONSTRUCTIONTECHNOLOGIES.COM;
+
+================================================================================
+
