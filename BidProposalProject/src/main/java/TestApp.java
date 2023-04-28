@@ -158,8 +158,8 @@ public class TestApp {
 	 */
 	public TestApp() {
 		initialize();
-		chooseOpenFile.doClick(); // testing purposes
-		filterForCheckedBoxes.doClick(); // testing purposes
+		// chooseOpenFile.doClick(); // testing purposes
+		// filterForCheckedBoxes.doClick(); // testing purposes
 		// addPricing.doClick();
 	}
 
@@ -368,7 +368,7 @@ public class TestApp {
 						"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
 						null, FileManager.fileChooserOptions.OPEN, xslmFileFilter);
 
-				int startingEstimateNo = 1780;
+				int startingEstimateNo = 1960;  // APR FINISHED WITH 2111
 				ExcelManager excelManager;
 
 				for (int jobIndex = 0; jobIndex < parseFullDoc.getJobList().size(); jobIndex++) {
@@ -474,12 +474,10 @@ public class TestApp {
 	private void chooseOpenFileButton() {
 		audit.add("chooseOpenFile Button was pressed.");
 
-		// File inputFile = fileManager.chooseFile(null, null,
-		// FileManager.fileChooserOptions.OPEN,
-		// txtFileFilter);
-		File inputFile = fileManager.chooseFile(
-				"BidProposalProject\\src\\main\\resources\\Test Files\\Program Output.txt",
-				null, FileManager.fileChooserOptions.OPEN, null);
+		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
+		// File inputFile = fileManager.chooseFile(
+		// 		"BidProposalProject\\src\\main\\resources\\Test Files\\Program Output.txt",
+		// 		null, FileManager.fileChooserOptions.OPEN, null);
 
 		if (inputFile == null) {
 			showWarning("Warning", "Error", "No file selected");
