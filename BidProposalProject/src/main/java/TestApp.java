@@ -293,16 +293,25 @@ public class TestApp {
 			public void actionPerformed(ActionEvent e) {
 
 				audit.add("updateBidders Button was pressed");
-				File bidderFile = fileManager.chooseFile(null, null,
+				File updatedFile = fileManager.chooseFile(null, null,
 						FileManager.fileChooserOptions.OPEN, null);
 
-				if (bidderFile == null) {
+				if (updatedFile == null) {
 					showWarning("Warning", "Error", "No file selected");
 					audit.add("No file was selected");
 					return;
 				}
 
-				parseFullDoc.updateBidders(bidderFile);
+				ParseFullDoc updatedDoc;
+				updatedDoc = new ParseFullDoc();
+				updatedDoc.setNewInputFile(updatedFile);
+				updatedDoc.setAudit(audit);
+				updatedDoc.parseData();
+				updatedDoc.setFullJobList(updatedDoc.getJobList());
+
+				displayPanel.removeAll();
+				changeDisplay(getBiddersDisplay(updatedDoc), null);
+
 				audit.add(" Function updateBidders completed.");
 			}
 		});
@@ -366,7 +375,7 @@ public class TestApp {
 						"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
 						null, FileManager.fileChooserOptions.OPEN, xslmFileFilter);
 
-				int startingEstimateNo = 2520;  // APR FINISHED WITH 2111 // may finished with 2310 june 2513
+				int startingEstimateNo = 2520; // APR FINISHED WITH 2111 // may finished with 2310 june 2513
 				ExcelManager excelManager;
 
 				for (int jobIndex = 0; jobIndex < parseFullDoc.getJobList().size(); jobIndex++) {
@@ -474,8 +483,8 @@ public class TestApp {
 
 		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
 		// File inputFile = fileManager.chooseFile(
-		// 		"BidProposalProject\\src\\main\\resources\\Test Files\\Program Output.txt",
-		// 		null, FileManager.fileChooserOptions.OPEN, null);
+		// "BidProposalProject\\src\\main\\resources\\Test Files\\Program Output.txt",
+		// null, FileManager.fileChooserOptions.OPEN, null);
 
 		if (inputFile == null) {
 			showWarning("Warning", "Error", "No file selected");
@@ -667,18 +676,9 @@ public class TestApp {
 
 		JScrollPane firstDisplayPane = new JScrollPane();
 		firstDisplayPane.getVerticalScrollBar().setUnitIncrement(16);
-		JPanel columnHeader = new JPanel();
 
 		GridBagConstraints displayConstraints = new GridBagConstraints();
 		JPanel firstDisplay = new JPanel(new GridBagLayout());
-
-		columnHeader.add(new JLabel() {
-			{
-				setText("Job List for ".concat(parseFullDoc.getBidFileType()));
-				setFont(FONT);
-				setForeground(FOREGROUND);
-			}
-		}, BorderLayout.WEST);
 
 		jobCheckBoxes = new ArrayList<JCheckBox>();
 		final ItemListener checkAllListener = new ItemListener() {
@@ -723,6 +723,7 @@ public class TestApp {
 
 		firstDisplayPane.setViewportView(firstDisplay);
 
+		// Top Heading =============
 		displayConstraints.gridx = 1;
 		displayConstraints.gridy = 0;
 		firstDisplay.add(new JLabel() {
@@ -734,10 +735,11 @@ public class TestApp {
 			}
 		}, displayConstraints);
 
+		// for each job
 		for (int index = 0; index < parseFullDoc.getJobList().size(); index++) {
 			Job currentJob = parseFullDoc.getJobList().get(index);
 
-			// sets all job check boxes into list here
+			// adds job check boxes into list here
 			jobCheckBoxes.add(new JCheckBox(String.format("  %2d:", index + 1)) {
 				{
 					setFont(FONT);
@@ -752,8 +754,10 @@ public class TestApp {
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = index + lineItemCount + 1;
 
+			// puts checkbox on display
 			firstDisplay.add(jobCheckBoxes.get(index), displayConstraints);
 
+			// displays job heading
 			displayConstraints.gridx = 1;
 			displayConstraints.gridy = index + lineItemCount + 1;
 			firstDisplay.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
@@ -767,6 +771,7 @@ public class TestApp {
 				}
 			}, displayConstraints);
 
+			// displays line items
 			for (LineItem lineItem : currentJob.getLineItems()) {
 				lineItemCount++;
 				displayConstraints.gridx = 1;
@@ -1117,6 +1122,44 @@ public class TestApp {
 		if (currentButton * heightOfButton - heightOfButton < currentPosition) {
 			scrollPane.getViewport().setViewPosition(new Point(0, currentButton * heightOfButton - heightOfButton));
 		}
+	}
+
+	// ===========================================================================
+	// "Update Job Data" Display
+	// ===========================================================================
+
+	public JScrollPane getBiddersDisplay(ParseFullDoc updatedDoc) {
+
+		JScrollPane biddersDisplay = new JScrollPane();
+
+		JPanel bidderView = new JPanel(new GridBagLayout());
+		bidderView.setBackground(SCROLLPANECOLOR);
+		biddersDisplay.setViewportView(bidderView);
+
+		ArrayList<Job> filteredUpdatedJobs = filterUpdatedJobs(updatedDoc);
+
+		bidderView.add(new JCheckBox(String.format("Hello%nThere%n - Kenobi")));
+		parseFullDoc.getJobList();
+		return biddersDisplay;
+	}
+
+	public ArrayList<Job> filterUpdatedJobs(ParseFullDoc updatedDoc) {
+		ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
+		for (Job updatedJob : updatedDoc.getJobList()) {
+			
+			for (Job oldJob : parseFullDoc.getJobList()) {
+
+				if (oldJob.getCsj().equals(updatedJob.getCsj())) {
+
+					filteredUpdatedJobs.add(updatedJob);
+					break;
+				}
+			}
+
+			if(filteredUpdatedJobs.size() == parseFullDoc.getJobList().size())
+				break;
+		}
+		return filteredUpdatedJobs;
 	}
 
 	// ===========================================================================
