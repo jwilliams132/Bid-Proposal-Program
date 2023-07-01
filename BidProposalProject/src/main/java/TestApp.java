@@ -309,8 +309,7 @@ public class TestApp {
 				updatedDoc.parseData();
 				updatedDoc.setFullJobList(updatedDoc.getJobList());
 
-				displayPanel.removeAll();
-				changeDisplay(getBiddersDisplay(updatedDoc), null);
+				displayJobInfoFrame(updatedDoc);
 
 				audit.add(" Function updateBidders completed.");
 			}
@@ -375,11 +374,7 @@ public class TestApp {
 						"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
 						null, FileManager.fileChooserOptions.OPEN, xslmFileFilter);
 
-<<<<<<< HEAD
-				int startingEstimateNo = 2520;  // APR FINISHED WITH 2111 // may finished with 2310 june 2513 july 2684
-=======
-				int startingEstimateNo = 2520; // APR FINISHED WITH 2111 // may finished with 2310 june 2513
->>>>>>> df6fda27c2797f8d90a0442072764060400bdb5d
+				int startingEstimateNo = 2520; // APR FINISHED WITH 2111 // may finished with 2310 june 2513 july 2684
 				ExcelManager excelManager;
 
 				for (int jobIndex = 0; jobIndex < parseFullDoc.getJobList().size(); jobIndex++) {
@@ -1132,35 +1127,63 @@ public class TestApp {
 	// "Update Job Data" Display
 	// ===========================================================================
 
-	public JScrollPane getBiddersDisplay(ParseFullDoc updatedDoc) {
+	private void displayJobInfoFrame(ParseFullDoc updatedDoc) {
 
-		JScrollPane biddersDisplay = new JScrollPane();
+		JFrame updateInfoFrame = new JFrame() {
+			{
+				setIconImage(Toolkit.getDefaultToolkit().getImage(path_to_Cropped_WR_LLC_logo));
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				setTitle("Update Bidding Information");
+				getContentPane().setLayout(new BorderLayout());
+				setSize(1250, 600);
+				setBackground(BACKGROUND);
 
-		JPanel bidderView = new JPanel(new GridBagLayout());
-		bidderView.setBackground(SCROLLPANECOLOR);
-		biddersDisplay.setViewportView(bidderView);
+			}
+		};
 
-		ArrayList<Job> filteredUpdatedJobs = filterUpdatedJobs(updatedDoc);
+		GridBagConstraints updateBagConstraints = new GridBagConstraints();
 
-		bidderView.add(new JCheckBox(String.format("Hello%nThere%n - Kenobi")));
-		parseFullDoc.getJobList();
-		return biddersDisplay;
+		JScrollPane oldInfoDisplay = new JScrollPane();
+		JScrollPane newInfoDisplay = new JScrollPane();
+
+		JPanel oldView = new JPanel(new GridBagLayout());
+		JPanel newView = new JPanel(new GridBagLayout());
+
+		oldView.setBackground(SCROLLPANECOLOR);
+		newView.setBackground(SCROLLPANECOLOR);
+
+		oldInfoDisplay.setViewportView(oldView);
+		newInfoDisplay.setViewportView(newView);
+
+		ArrayList<Job> oldJobs = parseFullDoc.getJobList();
+		ArrayList<Job> newJobs = filterUpdatedJobs(updatedDoc);
+
+
+
+		updateInfoFrame.setVisible(true);
 	}
 
-	public ArrayList<Job> filterUpdatedJobs(ParseFullDoc updatedDoc) {
+	private ArrayList<Job> filterUpdatedJobs(ParseFullDoc updatedDoc) {
+
 		ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
+
+		// for each updated job...
 		for (Job updatedJob : updatedDoc.getJobList()) {
-			
+
+			// check each old job
 			for (Job oldJob : parseFullDoc.getJobList()) {
 
+				// and if the CSJ's match
 				if (oldJob.getCsj().equals(updatedJob.getCsj())) {
 
+					// add the updated job to the list
 					filteredUpdatedJobs.add(updatedJob);
 					break;
 				}
 			}
 
-			if(filteredUpdatedJobs.size() == parseFullDoc.getJobList().size())
+			// stop once the count of jobs is correct
+			if (filteredUpdatedJobs.size() == parseFullDoc.getJobList().size())
 				break;
 		}
 		return filteredUpdatedJobs;
