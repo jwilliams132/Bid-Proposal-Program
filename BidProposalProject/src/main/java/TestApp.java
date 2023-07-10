@@ -28,6 +28,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.ItemEvent;
 import java.io.File;
 import java.util.ArrayList;
@@ -66,6 +68,14 @@ public class TestApp {
 
 	private enum Display {
 		STARTUP, FIRST, FILTERED, PRICING
+	};
+
+	private enum Status {
+		ENABLED, DISABLED
+	};
+
+	private enum JOBSET {
+		OLD, NEW
 	};
 
 	private Display currentDisplay = null;
@@ -293,7 +303,9 @@ public class TestApp {
 			public void actionPerformed(ActionEvent e) {
 
 				audit.add("updateBidders Button was pressed");
-				File updatedFile = fileManager.chooseFile(null, null,
+				// File updatedFile = fileManager.chooseFile(null, null,
+				// 		FileManager.fileChooserOptions.OPEN, null);
+				File updatedFile = fileManager.chooseFile("C:\\Users\\School laptop(Jacob)\\Desktop\\Test\\Program Output OLD.txt", null,
 						FileManager.fileChooserOptions.OPEN, null);
 
 				if (updatedFile == null) {
@@ -301,7 +313,9 @@ public class TestApp {
 					audit.add("No file was selected");
 					return;
 				}
-
+				// File updatedFile = new File(
+				// "C:\\Users\\School laptop(Jacob)\\Desktop\\Letting\\May\\Program
+				// Output.txt");
 				ParseFullDoc updatedDoc;
 				updatedDoc = new ParseFullDoc();
 				updatedDoc.setNewInputFile(updatedFile);
@@ -309,9 +323,7 @@ public class TestApp {
 				updatedDoc.parseData();
 				updatedDoc.setFullJobList(updatedDoc.getJobList());
 
-				displayPanel.removeAll();
-				changeDisplay(getBiddersDisplay(updatedDoc), null);
-
+				displayUpdateInfoFrame(updatedDoc);
 				audit.add(" Function updateBidders completed.");
 			}
 		});
@@ -481,10 +493,11 @@ public class TestApp {
 	private void chooseOpenFileButton() {
 		audit.add("chooseOpenFile Button was pressed.");
 
-		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
-		// File inputFile = fileManager.chooseFile(
-		// "BidProposalProject\\src\\main\\resources\\Test Files\\Program Output.txt",
-		// null, FileManager.fileChooserOptions.OPEN, null);
+		// File inputFile = fileManager.chooseFile(null, null,
+		// FileManager.fileChooserOptions.OPEN, txtFileFilter);
+		File inputFile = fileManager.chooseFile(
+				"C:\\Users\\School laptop(Jacob)\\Desktop\\Test\\Program Output.txt", null,
+				FileManager.fileChooserOptions.OPEN, null);
 
 		if (inputFile == null) {
 			showWarning("Warning", "Error", "No file selected");
@@ -1128,40 +1141,170 @@ public class TestApp {
 	// "Update Job Data" Display
 	// ===========================================================================
 
-	public JScrollPane getBiddersDisplay(ParseFullDoc updatedDoc) {
-
-		JScrollPane biddersDisplay = new JScrollPane();
-
-		JPanel bidderView = new JPanel(new GridBagLayout());
-		bidderView.setBackground(SCROLLPANECOLOR);
-		biddersDisplay.setViewportView(bidderView);
-
-		ArrayList<Job> filteredUpdatedJobs = filterUpdatedJobs(updatedDoc);
-
-		bidderView.add(new JCheckBox(String.format("Hello%nThere%n - Kenobi")));
-		parseFullDoc.getJobList();
-		return biddersDisplay;
-	}
-
 	public ArrayList<Job> filterUpdatedJobs(ParseFullDoc updatedDoc) {
-		ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
-		for (Job updatedJob : updatedDoc.getJobList()) {
-			
-			for (Job oldJob : parseFullDoc.getJobList()) {
 
+		ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
+		// for each old Job...
+		for (Job oldJob : parseFullDoc.getJobList()) {
+
+			// check each new job...
+			for (Job updatedJob : updatedDoc.getJobList()) {
+
+				// and if it matches a job...
 				if (oldJob.getCsj().equals(updatedJob.getCsj())) {
 
+					// add it to the list
 					filteredUpdatedJobs.add(updatedJob);
 					break;
 				}
 			}
 
-			if(filteredUpdatedJobs.size() == parseFullDoc.getJobList().size())
+			// leave the loop if the list sizes match
+			if (filteredUpdatedJobs.size() == parseFullDoc.getJobList().size())
 				break;
+		}
+
+		for (Job job : filteredUpdatedJobs) {
+			System.out.println(job.getCsj());
 		}
 		return filteredUpdatedJobs;
 	}
 
+	private void displayUpdateInfoFrame(ParseFullDoc updatedDoc) {
+
+		JFrame updateInfoFrame = new JFrame() {
+			{
+				setIconImage(Toolkit.getDefaultToolkit().getImage(path_to_Cropped_WR_LLC_logo));
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				setTitle("Update Information");
+				getContentPane().setLayout(new BorderLayout());
+				setSize(1250, 600);
+				setBackground(Color.BLUE);
+				setVisible(true);
+			}
+		};
+
+		JScrollPane oldJobSP = new JScrollPane();
+		JScrollPane newJobSP = new JScrollPane();
+
+		ArrayList<Job> oldJobs = parseFullDoc.getJobList();
+		ArrayList<Job> newJobs = filterUpdatedJobs(updatedDoc);
+
+		final ArrayList<JLabel> jobLabels = new ArrayList<JLabel>();
+		final ArrayList<Status> jobLabelStatus = new ArrayList<Status>();
+
+		JPanel oldJobView = getInfoViewPort(JOBSET.OLD, oldJobs, newJobs, jobLabels, jobLabelStatus);
+		JPanel newJobView = getInfoViewPort(JOBSET.NEW, oldJobs, newJobs, jobLabels, jobLabelStatus);
+
+		oldJobSP.setViewportView(oldJobView);
+		newJobSP.setViewportView(newJobView);
+
+		oldJobSP.setBackground(Color.GRAY);
+		oldJobView.setBackground(Color.GRAY);
+		newJobSP.setBackground(Color.CYAN);
+		newJobView.setBackground(Color.CYAN);
+
+		updateInfoFrame.add(oldJobSP, BorderLayout.CENTER);
+		updateInfoFrame.add(newJobSP, BorderLayout.CENTER);
+	}
+
+	private JPanel getInfoViewPort(JOBSET whichJobset, ArrayList<Job> oldJobs, ArrayList<Job> newJobs,
+			final ArrayList<JLabel> jobLabels, final ArrayList<Status> jobLabelStatus) {
+
+		JPanel infoPanel = new JPanel(new GridBagLayout());
+		GridBagConstraints infoConstraints = new GridBagConstraints();
+		infoConstraints.gridx = 0;
+		infoConstraints.gridy = 0;
+
+		ArrayList<Job> chosenJobSet = whichJobset == JOBSET.OLD ? oldJobs : newJobs;
+
+		String buffer;
+		int maxContractors, newJobsContractorCount, oldJobsContractorCount;
+
+		// for every Job
+		for (int jobIndex = 0; jobIndex < chosenJobSet.size(); jobIndex++) {
+
+			// make the index final
+			final int JOBINDEX = jobIndex;
+
+			// find the count of the larger contractor count between old and new
+			oldJobsContractorCount = oldJobs.get(jobIndex).getContractorList().size();
+			newJobsContractorCount = newJobs.get(jobIndex).getContractorList().size();
+			maxContractors = newJobsContractorCount > oldJobsContractorCount ? newJobsContractorCount
+					: oldJobsContractorCount;
+
+			buffer = new String("<html>");
+			buffer = buffer.concat(String.format("%-20s%-20s%s", chosenJobSet.get(jobIndex).getCsj(),
+					chosenJobSet.get(jobIndex).getCounty(), "<br>"));
+
+			System.out.println("job " + jobIndex);
+			System.out.println("contractor count " + chosenJobSet.get(jobIndex).getContractorList().size());
+			// for each contractor
+			for (int contractorIndex = 0; contractorIndex < maxContractors; contractorIndex++) {
+
+				// TODO make it so where if its a new contractor, change the color of the text
+				System.out.println("contractor" + contractorIndex);
+				System.out.println();
+				buffer = buffer
+						.concat(String.format("%s%s",
+								chosenJobSet.get(jobIndex).getContractorList().size() < contractorIndex ? chosenJobSet
+										.get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
+										: "<br>",
+								"<br>"));
+			}
+			buffer = buffer.concat("</html>");
+
+			// create new Label for the whole job
+			jobLabels.add(new JLabel(buffer) {
+				{
+					setFont(FONT);
+				}
+			});
+
+			infoConstraints.gridy = jobIndex;
+			infoPanel.add(jobLabels.get(jobIndex), infoConstraints);
+			jobLabelStatus.add(Status.DISABLED);
+
+			jobLabels.get(jobIndex).addMouseListener(new MouseListener() {
+				public void mouseClicked(MouseEvent e) {
+				}
+
+				public void mousePressed(MouseEvent e) {
+					labelWhenClicked(jobLabels, jobLabelStatus, JOBINDEX);
+				}
+
+				public void mouseReleased(MouseEvent e) {
+				}
+
+				public void mouseEntered(MouseEvent e) {
+					jobLabels.get(JOBINDEX).setBackground(Color.BLUE);
+				}
+
+				public void mouseExited(MouseEvent e) {
+				}
+			});
+
+		}
+		return infoPanel;
+	}
+
+	private void labelWhenClicked(final ArrayList<JLabel> jobLabels, final ArrayList<Status> jobLabelStatus,
+			final int JOBINDEX) {
+		if (jobLabelStatus.get(JOBINDEX) == Status.ENABLED) {
+
+			jobLabels.get(JOBINDEX).setBackground(Color.BLUE);
+			jobLabelStatus.set(JOBINDEX, Status.DISABLED);
+		}
+		if (jobLabelStatus.get(JOBINDEX) == Status.DISABLED) {
+
+			jobLabels.get(JOBINDEX).setBackground(Color.LIGHT_GRAY);
+			jobLabelStatus.set(JOBINDEX, Status.ENABLED);
+		}
+	}
+
+	public void changeLabel(JLabel label) {
+		label.setBackground(Color.BLUE);
+	}
 	// ===========================================================================
 	// Other Methods
 	// ===========================================================================
