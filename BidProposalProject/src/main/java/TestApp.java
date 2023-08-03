@@ -121,7 +121,6 @@ public class TestApp {
 
 	// =====Save File Panel=====
 	/**/private JPanel saveFilePanel;
-
 	/* -- */private JButton chooseSaveFolder;
 	/* -- */private JLabel saveFilePathLabel;
 	/* -- */private JButton saveExcel;
@@ -133,7 +132,6 @@ public class TestApp {
 	private JScrollPane pricingDisplay = new JScrollPane();
 	private JPanel bottomPanel;
 	private ArrayList<JButton> jobButtons;
-	// private JScrollPane legendScrollPane;
 
 	/**
 	 * Launch the application.
@@ -218,26 +216,11 @@ public class TestApp {
 		startupDisplay = getStartupDisplay();
 		changeDisplay(startupDisplay, Display.STARTUP);
 
-		// ===========================================================================
-		// Sub Panel (MP (Center)) (South) Manipulation Buttons
-		// ===========================================================================
-
-		// // ==========Data Manipulation Panel
-		// /* -- */private JPanel dataManipulationPanel;
-		// /* ------ */private JPanel jobFilterPanel;
-		// /* ---------- */private JButton filterForCheckedBoxes;
-		// /* ---------- */private JButton addPricing;
-		// /* ------ */private JPanel jobSelectionPanel;
-		// /* ---------- */private JButton previousJob;
-		// /* ---------- */private JLabel currentJob;
-		// /* ---------- */private JButton nextJob;
-
 		bottomPanel.add(dataManipulationPanel, BorderLayout.NORTH);
 		bottomPanel.add(saveFilePanel, BorderLayout.SOUTH);
 
 		dataManipulationPanel.add(jobFilterPanel, BorderLayout.WEST);
 		dataManipulationPanel.add(jobSelectionPanel, BorderLayout.CENTER);
-		// displayPanel.add(dataManipulationPanel, BorderLayout.SOUTH);
 
 		jobFilterPanel.add(filterForCheckedBoxes);
 		jobFilterPanel.add(addPricing);
