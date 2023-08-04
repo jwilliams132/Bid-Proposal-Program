@@ -1194,38 +1194,35 @@ public class TestApp {
 		ArrayList<Job> chosenJobSet = whichJobset == JOBSET.OLD ? oldJobs : newJobs;
 		ArrayList<String> outputList = new ArrayList<String>();
 
-		String buffer;
-		int maxContractors, newJobsContractorCount, oldJobsContractorCount, contractorCount;
-
-		// find the count of the larger contractor count between old and new
-		oldJobsContractorCount = oldJobs.get(jobIndex).getContractorList().size();
-		newJobsContractorCount = newJobs.get(jobIndex).getContractorList().size();
-		maxContractors = newJobsContractorCount > oldJobsContractorCount ? newJobsContractorCount
-				: oldJobsContractorCount;
+		StringBuilder buffer = new StringBuilder();
+		int maxContractors, contractorCount;
 
 		// for every Job
 		for (int jobIndex = 0; jobIndex < chosenJobSet.size(); jobIndex++) {
 
+			// find the count of the larger contractor count between old and new
+			maxContractors = Math.max(oldJobs.get(jobIndex).getContractorList().size(),
+					newJobs.get(jobIndex).getContractorList().size());
+
 			contractorCount = chosenJobSet.get(jobIndex).getContractorList().size();
 
 			// add job info to buffer
-			buffer = new String("<html>");
-			buffer = buffer.concat(String.format("%-20s%-20s%s", chosenJobSet.get(jobIndex).getCsj(),
+			buffer.append("<html>");
+			buffer.append(String.format("%-20s%-20s%s", chosenJobSet.get(jobIndex).getCsj(),
 					chosenJobSet.get(jobIndex).getCounty(), "<br>"));
 
 			// for each contractor
 			for (int contractorIndex = 0; contractorIndex < maxContractors; contractorIndex++) {
 
 				// add each contractor,
-				buffer = buffer
-						.concat(String.format("%s<br>",
+				buffer.append(String.format("%s<br>",
 								contractorCount > contractorIndex ? chosenJobSet
 										.get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
 										: "-----"));
 			}
-			buffer = buffer.concat("=".repeat(58));
-			buffer = buffer.concat("</html>");
-			outputList.add(buffer);
+			buffer.append("=".repeat(58));
+			buffer.append("</html>");
+			outputList.add(buffer.toString());
 		}
 		return outputList;
 	}
