@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.Color;
@@ -65,6 +66,10 @@ public class TestApp {
 
 	private enum Display {
 		STARTUP, FIRST, FILTERED, PRICING
+	};
+
+	private enum JOBSET {
+		OLD, NEW
 	};
 
 	private Display currentDisplay = null;
@@ -274,7 +279,9 @@ public class TestApp {
 					showWarning("Warning", "Error", "No file selected");
 					return;
 				}
-
+				// File updatedFile = new File(
+				// "C:\\Users\\School laptop(Jacob)\\Desktop\\Letting\\May\\Program
+				// Output.txt");
 				ParseFullDoc updatedDoc;
 				updatedDoc = new ParseFullDoc();
 				updatedDoc.setNewInputFile(updatedFile);
@@ -430,12 +437,16 @@ public class TestApp {
 		});
 	}
 
+	// ====================================================================================================
+	// Button Methods
+	// ====================================================================================================
 	private void chooseOpenFileButton() {
 
-		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
-		// File inputFile = fileManager.chooseFile(
-		// "BidProposalProject\\src\\main\\resources\\Test Files\\Program Output.txt",
-		// null, FileManager.fileChooserOptions.OPEN, null);
+		// File inputFile = fileManager.chooseFile(null, null,
+		// FileManager.fileChooserOptions.OPEN, txtFileFilter);
+		File inputFile = fileManager.chooseFile(
+				"C:\\Users\\School laptop(Jacob)\\Desktop\\Test\\Program Output OLD.txt", null,
+				FileManager.fileChooserOptions.OPEN, null);
 
 		if (inputFile == null) {
 			showWarning("Warning", "Error", "No file selected");
@@ -1132,6 +1143,96 @@ public class TestApp {
 		return filteredUpdatedJobs;
 	}
 
+	private void displayUpdateInfoFrame(ParseFullDoc updatedDoc) {
+
+		// set up the frame
+		JFrame updateInfoFrame = new JFrame() {
+			{
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				setTitle("Update Information");
+				getContentPane().setLayout(new GridBagLayout());
+				setSize(1250, 600);
+
+			}
+		};
+
+		ArrayList<Job> oldJobs = parseFullDoc.getJobList();
+		ArrayList<Job> newJobs = filterUpdatedJobs(updatedDoc);
+
+		JList<String> oldJobList = new JList<String>(
+				getInfoList(JOBSET.OLD, oldJobs, newJobs).toArray(new String[] {}));
+		oldJobList.setBorder(new EmptyBorder(20, 50, 10, 0));
+		oldJobList.setFont(FONT);
+
+		JList<String> newJobList = new JList<String>(
+				getInfoList(JOBSET.NEW, oldJobs, newJobs).toArray(new String[] {}));
+		newJobList.setBorder(new EmptyBorder(20, 0, 10, 50));
+		newJobList.setFont(FONT);
+
+		JScrollPane infoScrollPane = new JScrollPane();
+		infoScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+
+		JPanel infoPanel = new JPanel(new GridLayout(0, 2));
+
+		infoPanel.add(oldJobList);
+		infoPanel.add(newJobList);
+
+		GridBagConstraints infoFrameConstraints = new GridBagConstraints();
+		infoFrameConstraints.gridx = 0;
+		infoFrameConstraints.gridy = 0;
+		infoFrameConstraints.fill = GridBagConstraints.BOTH; // Fill both horizontally and vertically
+		infoFrameConstraints.weightx = 1.0; // Expand horizontally
+		infoFrameConstraints.weighty = 1.0; // Expand vertically
+
+		infoScrollPane.setViewportView(infoPanel);
+		updateInfoFrame.add(infoScrollPane, infoFrameConstraints);
+		updateInfoFrame.setVisible(true);
+	}
+
+	private ArrayList<String> getInfoList(JOBSET whichJobset, ArrayList<Job> oldJobs, ArrayList<Job> newJobs) {
+
+		ArrayList<Job> chosenJobSet = whichJobset == JOBSET.OLD ? oldJobs : newJobs;
+		ArrayList<String> outputList = new ArrayList<String>();
+
+		String buffer;
+		int maxContractors, newJobsContractorCount, oldJobsContractorCount, contractorCount;
+
+		// find the count of the larger contractor count between old and new
+		oldJobsContractorCount = oldJobs.get(jobIndex).getContractorList().size();
+		newJobsContractorCount = newJobs.get(jobIndex).getContractorList().size();
+		maxContractors = newJobsContractorCount > oldJobsContractorCount ? newJobsContractorCount
+				: oldJobsContractorCount;
+
+		// for every Job
+		for (int jobIndex = 0; jobIndex < chosenJobSet.size(); jobIndex++) {
+
+			contractorCount = chosenJobSet.get(jobIndex).getContractorList().size();
+
+			// add job info to buffer
+			buffer = new String("<html>");
+			buffer = buffer.concat(String.format("%-20s%-20s%s", chosenJobSet.get(jobIndex).getCsj(),
+					chosenJobSet.get(jobIndex).getCounty(), "<br>"));
+
+			// for each contractor
+			for (int contractorIndex = 0; contractorIndex < maxContractors; contractorIndex++) {
+
+				// add each contractor,
+				buffer = buffer
+						.concat(String.format("%s<br>",
+								contractorCount > contractorIndex ? chosenJobSet
+										.get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
+										: "-----"));
+			}
+			buffer = buffer.concat("=".repeat(58));
+			buffer = buffer.concat("</html>");
+			outputList.add(buffer);
+		}
+		return outputList;
+	}
+
+	public void changeLabel(JLabel label) {
+		label.setBackground(Color.BLUE);
+	}
 	// ===========================================================================
 	// Other Methods
 	// ===========================================================================
@@ -1187,8 +1288,8 @@ public class TestApp {
 
 	public boolean checkPricingPageTextValidity() {
 
-		boolean valid = true;
 		String invalidInput = checkTextFields(totalMobsTextField);
+		boolean valid = true;
 
 		if (invalidInput != null) {
 
