@@ -7,6 +7,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 import javax.swing.JViewport;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 
 import java.awt.BorderLayout;
@@ -1127,11 +1128,13 @@ public class TestApp {
 				getInfoList(JOBSET.OLD, oldJobs, newJobs).toArray(new String[] {}));
 		oldJobList.setBorder(new EmptyBorder(20, 50, 10, 0));
 		oldJobList.setFont(FONT);
+		oldJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
 		JList<String> newJobList = new JList<String>(
 				getInfoList(JOBSET.NEW, oldJobs, newJobs).toArray(new String[] {}));
 		newJobList.setBorder(new EmptyBorder(20, 0, 10, 50));
 		newJobList.setFont(FONT);
+		newJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
 		JScrollPane infoScrollPane = new JScrollPane();
 		infoScrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -1140,6 +1143,8 @@ public class TestApp {
 
 		infoPanel.add(oldJobList);
 		infoPanel.add(newJobList);
+
+		
 
 		GridBagConstraints infoFrameConstraints = new GridBagConstraints();
 		infoFrameConstraints.gridx = 0;
@@ -1187,6 +1192,7 @@ public class TestApp {
 			buffer.append("=".repeat(58));
 			buffer.append("</html>");
 			outputList.add(buffer.toString());
+			buffer.setLength(0);
 		}
 		return outputList;
 	}
