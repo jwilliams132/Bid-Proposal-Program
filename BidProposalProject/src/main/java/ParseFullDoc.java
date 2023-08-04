@@ -29,7 +29,6 @@ public class ParseFullDoc {
 	}
 
 	private FileManager fileManager = new FileManager();
-	private Audit audit;
 
 	private ArrayList<ArrayList<String>> arrayOfJobStrings;
 	private ArrayList<Job> jobList = new ArrayList<Job>();
@@ -51,8 +50,6 @@ public class ParseFullDoc {
 	 * `separateJobs` method.
 	 * The data for each job is extracted using the `extractJobData` method and
 	 * added to the `jobList`.
-	 * A message is added to the `audit` list indicating that all job data has been
-	 * extracted.
 	 */
 
 	public void parseData() {
@@ -64,19 +61,15 @@ public class ParseFullDoc {
 
 			jobList.add(extractJobData(job));
 		}
-		audit.add("All job data extracted.");
 	}
 
 	public void importFileData(File file) {
 
 		contentsByLine = fileManager.readFile(file);
-		audit.add("	File opened successfully.");
 	}
 
 	// creates new file and saves Job data into it
 	public void exportDataFiles(File formattedOutput, File userFriendlyOutput, File emailList) {
-
-		audit.add("Tries to save file.");
 
 		ArrayList<String> formattedOutputBuffer = new ArrayList<String>();
 		ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
@@ -95,8 +88,6 @@ public class ParseFullDoc {
 		fileManager.saveFile(formattedOutput, formattedOutputBuffer);
 		fileManager.saveFile(userFriendlyOutput, userFriendlyOutputBuffer);
 		fileManager.saveFile(emailList, emailListBuffer);
-
-		audit.add("	File saved successfully.");
 	}
 
 	/**
@@ -107,8 +98,6 @@ public class ParseFullDoc {
 	 * Otherwise, the contents are processed as a new file, and jobs are separated
 	 * based on the "==========" delimiter.
 	 * The separated jobs are stored in the `arrayOfJobStrings` list.
-	 * A message is added to the `audit` list indicating the type of file that was
-	 * loaded.
 	 * The type of file is also set using the `setBidFileType` method.
 	 */
 	public void separateJobs() {
@@ -120,7 +109,6 @@ public class ParseFullDoc {
 		final String NEW_JOB_DELIMITER = "==========";
 		if (contentsByLine.get(0).startsWith(DELIMITER)) {
 
-			audit.add("Previous file loaded.");
 			setBidFileType("Previous file");
 			for (String nextLine : contentsByLine) {
 
@@ -142,7 +130,6 @@ public class ParseFullDoc {
 
 			}
 		}
-		audit.add("New file loaded.");
 		setBidFileType("New file");
 	}
 
@@ -247,7 +234,6 @@ public class ParseFullDoc {
 			}
 
 		} // end of for(i = 0; i < job.size(); i++)
-		audit.add("Loaded job:  " + csj + " " + county);
 
 		return new Job(county, highway, csj, workingDays, lineItems, contractorList);
 	}
@@ -316,8 +302,6 @@ public class ParseFullDoc {
 			email = job.get(ListIndexString + EMAIL_OFFSET);
 			contractorList.add(new Contractor(name, phone, email));
 		}
-
-		audit.add("Loaded job:  " + csj + " " + county);
 		return new Job(county, highway, csj, workingDays, lineItems, upToMobs, totalMobs, additionalMobs,
 				contractorList);
 	}
@@ -405,14 +389,6 @@ public class ParseFullDoc {
 	// ====================================================================================================
 	// Getter/Setters
 	// ====================================================================================================
-
-	public void setAudit(Audit audit) {
-		this.audit = audit;
-	}
-
-	public Audit getAudit() {
-		return audit;
-	}
 
 	public File getNewInputFile() {
 		return inputFile;
