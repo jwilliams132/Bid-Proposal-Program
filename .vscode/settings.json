@@ -1,6 +1,8 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
     "cSpell.words": [
+        "Jobset",
+        "JOBSET",
         "SCROLLPANECOLOR",
         "TITLEFONT",
         "xslm"
