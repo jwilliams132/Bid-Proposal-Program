@@ -1081,40 +1081,6 @@ public class TestApp {
 	// "Update Job Data" Display
 	// ===========================================================================
 
-	private void displayJobInfoFrame(ParseFullDoc updatedDoc) {
-
-		JFrame updateInfoFrame = new JFrame() {
-			{
-				setIconImage(Toolkit.getDefaultToolkit().getImage(path_to_Cropped_WR_LLC_logo));
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				setTitle("Update Bidding Information");
-				getContentPane().setLayout(new BorderLayout());
-				setSize(1250, 600);
-				setBackground(BACKGROUND);
-
-			}
-		};
-
-		GridBagConstraints updateBagConstraints = new GridBagConstraints();
-
-		JScrollPane oldInfoDisplay = new JScrollPane();
-		JScrollPane newInfoDisplay = new JScrollPane();
-
-		JPanel oldView = new JPanel(new GridBagLayout());
-		JPanel newView = new JPanel(new GridBagLayout());
-
-		oldView.setBackground(SCROLLPANECOLOR);
-		newView.setBackground(SCROLLPANECOLOR);
-
-		oldInfoDisplay.setViewportView(oldView);
-		newInfoDisplay.setViewportView(newView);
-
-		ArrayList<Job> oldJobs = parseFullDoc.getJobList();
-		ArrayList<Job> newJobs = filterUpdatedJobs(updatedDoc);
-
-		updateInfoFrame.setVisible(true);
-	}
-
 	private ArrayList<Job> filterUpdatedJobs(ParseFullDoc updatedDoc) {
 
 		ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
