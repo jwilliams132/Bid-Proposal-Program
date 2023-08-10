@@ -7,11 +7,13 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 import javax.swing.JViewport;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.Color;
@@ -45,7 +47,6 @@ public class TestApp {
 
 	private String path_to_List_of_counties_in_Texas = "BidProposalProject\\src\\main\\resources\\List_of_counties_in_Texas.csv";
 	private String path_to_Cropped_WR_LLC_logo = "BidProposalProject\\src\\main\\resources\\Cropped WR LLC logo.jpg";
-	private Audit audit = new Audit();
 	private ParseFullDoc parseFullDoc;
 	private FileManager fileManager = new FileManager();
 	private TexasCityFinder cityFinder = new TexasCityFinder(path_to_List_of_counties_in_Texas);
@@ -66,6 +67,10 @@ public class TestApp {
 
 	private enum Display {
 		STARTUP, FIRST, FILTERED, PRICING
+	};
+
+	private enum JOBSET {
+		OLD, NEW
 	};
 
 	private Display currentDisplay = null;
@@ -121,7 +126,6 @@ public class TestApp {
 
 	// =====Save File Panel=====
 	/**/private JPanel saveFilePanel;
-
 	/* -- */private JButton chooseSaveFolder;
 	/* -- */private JLabel saveFilePathLabel;
 	/* -- */private JButton saveExcel;
@@ -133,7 +137,6 @@ public class TestApp {
 	private JScrollPane pricingDisplay = new JScrollPane();
 	private JPanel bottomPanel;
 	private ArrayList<JButton> jobButtons;
-	// private JScrollPane legendScrollPane;
 
 	/**
 	 * Launch the application.
@@ -169,8 +172,6 @@ public class TestApp {
 		// ===========================================================================
 		// Frame
 		// ===========================================================================
-
-		audit.add("Start");
 
 		initializeButtons();
 		initializePanesAndPanels();
@@ -218,26 +219,11 @@ public class TestApp {
 		startupDisplay = getStartupDisplay();
 		changeDisplay(startupDisplay, Display.STARTUP);
 
-		// ===========================================================================
-		// Sub Panel (MP (Center)) (South) Manipulation Buttons
-		// ===========================================================================
-
-		// // ==========Data Manipulation Panel
-		// /* -- */private JPanel dataManipulationPanel;
-		// /* ------ */private JPanel jobFilterPanel;
-		// /* ---------- */private JButton filterForCheckedBoxes;
-		// /* ---------- */private JButton addPricing;
-		// /* ------ */private JPanel jobSelectionPanel;
-		// /* ---------- */private JButton previousJob;
-		// /* ---------- */private JLabel currentJob;
-		// /* ---------- */private JButton nextJob;
-
 		bottomPanel.add(dataManipulationPanel, BorderLayout.NORTH);
 		bottomPanel.add(saveFilePanel, BorderLayout.SOUTH);
 
 		dataManipulationPanel.add(jobFilterPanel, BorderLayout.WEST);
 		dataManipulationPanel.add(jobSelectionPanel, BorderLayout.CENTER);
-		// displayPanel.add(dataManipulationPanel, BorderLayout.SOUTH);
 
 		jobFilterPanel.add(filterForCheckedBoxes);
 		jobFilterPanel.add(addPricing);
@@ -251,10 +237,6 @@ public class TestApp {
 		jobSelectionPanel.add(currentJob);
 		jobSelectionPanel.add(nextJob);
 
-		audit.add("All GUI elements added.");
-
-		// Add a log message
-		audit.add("All button functions added.");
 	}
 
 	private void addButtonListeners() {
@@ -271,7 +253,6 @@ public class TestApp {
 		 * creates ParseFullDoc instance
 		 * 
 		 * -inside PFD
-		 * sets Audit
 		 * sets input file
 		 * parses the Data
 		 * 
@@ -292,18 +273,23 @@ public class TestApp {
 
 			public void actionPerformed(ActionEvent e) {
 
-				audit.add("updateBidders Button was pressed");
-				File bidderFile = fileManager.chooseFile(null, null,
+				File updatedFile = fileManager.chooseFile(null, null,
 						FileManager.fileChooserOptions.OPEN, null);
 
-				if (bidderFile == null) {
+				if (updatedFile == null) {
 					showWarning("Warning", "Error", "No file selected");
-					audit.add("No file was selected");
 					return;
 				}
+				// File updatedFile = new File(
+				// "C:\\Users\\School laptop(Jacob)\\Desktop\\Letting\\May\\Program
+				// Output.txt");
+				ParseFullDoc updatedDoc;
+				updatedDoc = new ParseFullDoc();
+				updatedDoc.setNewInputFile(updatedFile);
+				updatedDoc.parseData();
+				updatedDoc.setFullJobList(updatedDoc.getJobList());
 
-				parseFullDoc.updateBidders(bidderFile);
-				audit.add(" Function updateBidders completed.");
+				displayUpdateInfoFrame(updatedDoc);
 			}
 		});
 
@@ -312,8 +298,6 @@ public class TestApp {
 			// When the button is pressed, perform the following actions
 			public void actionPerformed(ActionEvent e) {
 
-				// Add a log message
-				audit.add("chooseSaveFile Button was pressed.");
 				switch (currentDisplay) {
 
 					case FILTERED:
@@ -342,16 +326,10 @@ public class TestApp {
 				// Enable the save button
 				saveExcel.setEnabled(true);
 
-				// Add a log message with the chosen file's path
-				audit.add("File to save to was chosen. Directory Path:  " + lettingMonthDirectory);
-
 				parseFullDoc.exportDataFiles(formattedOutput, userFriendlyOutput, emailList);
 
 				// Disable the updateBidders button
 				updateBidders.setEnabled(false);
-
-				// Add a log message
-				audit.add("	Function chooseSaveFile completed.");
 			}
 		});
 
@@ -360,13 +338,12 @@ public class TestApp {
 
 			public void actionPerformed(ActionEvent e) {
 
-				audit.add("save Button was pressed.");
-
 				File excelInputFile = fileManager.chooseFile(
 						"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
 						null, FileManager.fileChooserOptions.OPEN, xslmFileFilter);
 
-				int startingEstimateNo = 2520;  // APR FINISHED WITH 2111 // may finished with 2310 june 2513
+				int startingEstimateNo = 2830; // APR FINISHED WITH 2111 // may finished with 2310 june 2513 july 2684
+												// private 2687 AUGUST 2823
 				ExcelManager excelManager;
 
 				for (int jobIndex = 0; jobIndex < parseFullDoc.getJobList().size(); jobIndex++) {
@@ -382,7 +359,6 @@ public class TestApp {
 				}
 
 				showWarning("Success", "Success", "Excel files were created");
-				audit.add("save	Function save completed.");
 			}
 		});
 
@@ -403,7 +379,6 @@ public class TestApp {
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.invokeLater(new Runnable() {
 					public void run() {
-						audit.add("addPricing Button was pressed.");
 						legendDisplay = getLegendPane();
 						resetLegendAndPricingPanel();
 
@@ -412,7 +387,6 @@ public class TestApp {
 							nextJob.setEnabled(true);
 						}
 						addPricing.setEnabled(false);
-						audit.add("	Function addPricing completed.");
 					}
 				});
 			}
@@ -422,8 +396,6 @@ public class TestApp {
 		previousJob.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-
-				audit.add("previousJob Button was pressed.");
 
 				if (checkPricingPageTextValidity()) {
 
@@ -438,7 +410,6 @@ public class TestApp {
 
 						previousJob.setEnabled(false);
 					}
-					audit.add("	Function previousJob completed.");
 				}
 			}
 		});
@@ -448,7 +419,6 @@ public class TestApp {
 
 			public void actionPerformed(ActionEvent e) {
 
-				audit.add("nextJob Button was pressed.");
 				if (checkPricingPageTextValidity()) {
 
 					setPrices();
@@ -464,30 +434,29 @@ public class TestApp {
 						nextJob.setEnabled(false);
 					}
 				}
-				audit.add("	Function nextJob completed.");
 			}
 		});
 	}
 
+	// ====================================================================================================
+	// Button Methods
+	// ====================================================================================================
 	private void chooseOpenFileButton() {
-		audit.add("chooseOpenFile Button was pressed.");
 
-		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
-		// File inputFile = fileManager.chooseFile(
-		// 		"BidProposalProject\\src\\main\\resources\\Test Files\\Program Output.txt",
-		// 		null, FileManager.fileChooserOptions.OPEN, null);
+		// File inputFile = fileManager.chooseFile(null, null,
+		// FileManager.fileChooserOptions.OPEN, txtFileFilter);
+		File inputFile = fileManager.chooseFile(
+				"C:\\Users\\School laptop(Jacob)\\Desktop\\Test\\Program Output OLD.txt", null,
+				FileManager.fileChooserOptions.OPEN, null);
 
 		if (inputFile == null) {
 			showWarning("Warning", "Error", "No file selected");
-			audit.add("No file was selected");
 			return;
 		}
 
 		openFilePathLabel.setText("File Path:  " + inputFile);
-		audit.add("File to open was chosen.  " + openFilePathLabel.getText());
 
 		parseFullDoc = new ParseFullDoc();
-		parseFullDoc.setAudit(audit);
 		parseFullDoc.setNewInputFile(inputFile);
 		parseFullDoc.parseData();
 		parseFullDoc.setFullJobList(parseFullDoc.getJobList());
@@ -499,12 +468,9 @@ public class TestApp {
 
 		firstDisplay = getFirstDisplay();
 		changeDisplay(firstDisplay, Display.FIRST);
-
-		audit.add("	Function chooseOpenFile completed.");
 	}
 
 	private void filterForCheckedBoxesButton() {
-		audit.add("filterForCheckedBoxes Button was pressed.");
 
 		ArrayList<Job> selectedJobList = new ArrayList<Job>(); // create a buffer list of jobs
 		boolean hasSelectedCheckBox = false;
@@ -534,7 +500,6 @@ public class TestApp {
 
 		filterForCheckedBoxes.setEnabled(false);
 		addPricing.setEnabled(true);
-		audit.add("	Function filterForCheckedBoxes completed.");
 	}
 
 	// ====================================================================================================
@@ -667,18 +632,9 @@ public class TestApp {
 
 		JScrollPane firstDisplayPane = new JScrollPane();
 		firstDisplayPane.getVerticalScrollBar().setUnitIncrement(16);
-		JPanel columnHeader = new JPanel();
 
 		GridBagConstraints displayConstraints = new GridBagConstraints();
 		JPanel firstDisplay = new JPanel(new GridBagLayout());
-
-		columnHeader.add(new JLabel() {
-			{
-				setText("Job List for ".concat(parseFullDoc.getBidFileType()));
-				setFont(FONT);
-				setForeground(FOREGROUND);
-			}
-		}, BorderLayout.WEST);
 
 		jobCheckBoxes = new ArrayList<JCheckBox>();
 		final ItemListener checkAllListener = new ItemListener() {
@@ -723,6 +679,7 @@ public class TestApp {
 
 		firstDisplayPane.setViewportView(firstDisplay);
 
+		// Top Heading =============
 		displayConstraints.gridx = 1;
 		displayConstraints.gridy = 0;
 		firstDisplay.add(new JLabel() {
@@ -734,10 +691,11 @@ public class TestApp {
 			}
 		}, displayConstraints);
 
+		// for each job
 		for (int index = 0; index < parseFullDoc.getJobList().size(); index++) {
 			Job currentJob = parseFullDoc.getJobList().get(index);
 
-			// sets all job check boxes into list here
+			// adds job check boxes into list here
 			jobCheckBoxes.add(new JCheckBox(String.format("  %2d:", index + 1)) {
 				{
 					setFont(FONT);
@@ -752,8 +710,10 @@ public class TestApp {
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = index + lineItemCount + 1;
 
+			// puts checkbox on display
 			firstDisplay.add(jobCheckBoxes.get(index), displayConstraints);
 
+			// displays job heading
 			displayConstraints.gridx = 1;
 			displayConstraints.gridy = index + lineItemCount + 1;
 			firstDisplay.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
@@ -767,6 +727,7 @@ public class TestApp {
 				}
 			}, displayConstraints);
 
+			// displays line items
 			for (LineItem lineItem : currentJob.getLineItems()) {
 				lineItemCount++;
 				displayConstraints.gridx = 1;
@@ -781,7 +742,6 @@ public class TestApp {
 
 			}
 		}
-		audit.add("	Data has been displayed.");
 		return firstDisplayPane;
 	}
 
@@ -976,7 +936,6 @@ public class TestApp {
 		addLineItemsToPricingPage(pricingDisplay, displayPricingConstraints);
 
 		totalMobsTextField.requestFocus();
-		audit.add("	Job:  " + parseFullDoc.getJobList().get(jobIndex).getCsj() + "	Pricing page has been displayed.");
 		return pricingDisplayPane;
 	}
 
@@ -1120,6 +1079,128 @@ public class TestApp {
 	}
 
 	// ===========================================================================
+	// "Update Job Data" Display
+	// ===========================================================================
+
+	private ArrayList<Job> filterUpdatedJobs(ParseFullDoc updatedDoc) {
+
+		ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
+
+		// for each updated job...
+		for (Job updatedJob : updatedDoc.getJobList()) {
+
+			// check each old job
+			for (Job oldJob : parseFullDoc.getJobList()) {
+
+				// and if the CSJ's match
+				if (oldJob.getCsj().equals(updatedJob.getCsj())) {
+
+					// add the updated job to the list
+					filteredUpdatedJobs.add(updatedJob);
+					break;
+				}
+			}
+
+			// stop once the count of jobs is correct
+			if (filteredUpdatedJobs.size() == parseFullDoc.getJobList().size())
+				break;
+		}
+		return filteredUpdatedJobs;
+	}
+
+	private void displayUpdateInfoFrame(ParseFullDoc updatedDoc) {
+
+		// set up the frame
+		JFrame updateInfoFrame = new JFrame() {
+			{
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				setTitle("Update Information");
+				getContentPane().setLayout(new GridBagLayout());
+				setSize(1250, 600);
+
+			}
+		};
+
+		ArrayList<Job> oldJobs = parseFullDoc.getJobList();
+		ArrayList<Job> newJobs = filterUpdatedJobs(updatedDoc);
+
+		JList<String> oldJobList = new JList<String>(
+				getInfoList(JOBSET.OLD, oldJobs, newJobs).toArray(new String[] {}));
+		oldJobList.setBorder(new EmptyBorder(20, 50, 10, 0));
+		oldJobList.setFont(FONT);
+		oldJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+		JList<String> newJobList = new JList<String>(
+				getInfoList(JOBSET.NEW, oldJobs, newJobs).toArray(new String[] {}));
+		newJobList.setBorder(new EmptyBorder(20, 0, 10, 50));
+		newJobList.setFont(FONT);
+		newJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+		JScrollPane infoScrollPane = new JScrollPane();
+		infoScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+
+		JPanel infoPanel = new JPanel(new GridLayout(0, 2));
+
+		infoPanel.add(oldJobList);
+		infoPanel.add(newJobList);
+
+		
+
+		GridBagConstraints infoFrameConstraints = new GridBagConstraints();
+		infoFrameConstraints.gridx = 0;
+		infoFrameConstraints.gridy = 0;
+		infoFrameConstraints.fill = GridBagConstraints.BOTH; // Fill both horizontally and vertically
+		infoFrameConstraints.weightx = 1.0; // Expand horizontally
+		infoFrameConstraints.weighty = 1.0; // Expand vertically
+
+		infoScrollPane.setViewportView(infoPanel);
+		updateInfoFrame.add(infoScrollPane, infoFrameConstraints);
+		updateInfoFrame.setVisible(true);
+	}
+
+	private ArrayList<String> getInfoList(JOBSET whichJobset, ArrayList<Job> oldJobs, ArrayList<Job> newJobs) {
+
+		ArrayList<Job> chosenJobSet = whichJobset == JOBSET.OLD ? oldJobs : newJobs;
+		ArrayList<String> outputList = new ArrayList<String>();
+
+		StringBuilder buffer = new StringBuilder();
+		int maxContractors, contractorCount;
+
+		// for every Job
+		for (int jobIndex = 0; jobIndex < chosenJobSet.size(); jobIndex++) {
+
+			// find the count of the larger contractor count between old and new
+			maxContractors = Math.max(oldJobs.get(jobIndex).getContractorList().size(),
+					newJobs.get(jobIndex).getContractorList().size());
+
+			contractorCount = chosenJobSet.get(jobIndex).getContractorList().size();
+
+			// add job info to buffer
+			buffer.append("<html>");
+			buffer.append(String.format("%-20s%-20s%s", chosenJobSet.get(jobIndex).getCsj(),
+					chosenJobSet.get(jobIndex).getCounty(), "<br>"));
+
+			// for each contractor
+			for (int contractorIndex = 0; contractorIndex < maxContractors; contractorIndex++) {
+
+				// add each contractor,
+				buffer.append(String.format("%s<br>",
+								contractorCount > contractorIndex ? chosenJobSet
+										.get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
+										: "-----"));
+			}
+			buffer.append("=".repeat(58));
+			buffer.append("</html>");
+			outputList.add(buffer.toString());
+			buffer.setLength(0);
+		}
+		return outputList;
+	}
+
+	public void changeLabel(JLabel label) {
+		label.setBackground(Color.BLUE);
+	}
+	// ===========================================================================
 	// Other Methods
 	// ===========================================================================
 
@@ -1146,8 +1227,6 @@ public class TestApp {
 			excelManager.setCellValue(sheetName, 4, 20, job.getUpTo_Mobs());
 			excelManager.setCellValue(sheetName, 0, 27,
 					String.format("%s%d", "WR-2023-", estimateNumber + contractorIndex));
-
-			audit.add(String.format("%s%d", "WR-2023-", estimateNumber + contractorIndex));
 
 			totalAmount += job.getTotalMobs();
 			excelManager.setCellValue(sheetName, 0, 18, contractor.getContractorName());
@@ -1176,8 +1255,8 @@ public class TestApp {
 
 	public boolean checkPricingPageTextValidity() {
 
-		boolean valid = true;
 		String invalidInput = checkTextFields(totalMobsTextField);
+		boolean valid = true;
 
 		if (invalidInput != null) {
 
