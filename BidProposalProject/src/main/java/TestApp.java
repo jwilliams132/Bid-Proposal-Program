@@ -763,11 +763,12 @@ public class TestApp {
 	}
 
 	private void updateScrollPaneHeader(JLabel label) {
-		StringBuilder labelString = new StringBuilder();
 
+		StringBuilder labelString = new StringBuilder();
 		Job bufferJob;
 		String bufferCounty, bufferCsj;
 		Integer count = 0;
+
 		for (int index = 0; index < jobCheckBoxes.size(); index++) {
 
 			if (jobCheckBoxes.get(index).isSelected()) {
@@ -783,7 +784,7 @@ public class TestApp {
 				labelString.append("|");
 
 				if (count % 10 == 0) {
-					labelString.append("<br>    ");
+					labelString.append("<br>");
 				}
 			}
 		}
