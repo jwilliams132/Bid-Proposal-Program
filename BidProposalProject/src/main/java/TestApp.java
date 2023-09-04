@@ -636,6 +636,13 @@ public class TestApp {
 		GridBagConstraints displayConstraints = new GridBagConstraints();
 		JPanel firstDisplay = new JPanel(new GridBagLayout());
 
+		JLabel label = new JLabel(String.format("(00 selected) %-68s", "")) {
+			{
+				setHorizontalAlignment(0);
+				setFont(FONT);
+			}
+		};
+
 		jobCheckBoxes = new ArrayList<JCheckBox>();
 		final ItemListener checkAllListener = new ItemListener() {
 
@@ -662,8 +669,12 @@ public class TestApp {
 		final ItemListener jobCheckBoxListener = new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					updateScrollPaneHeader(label);
+				}
 				if (e.getStateChange() == ItemEvent.DESELECTED) {
 
+					updateScrollPaneHeader(label);
 					checkAll.removeItemListener(checkAllListener);
 					checkAll.setSelected(false);
 					checkAll.addItemListener(checkAllListener);
@@ -742,10 +753,44 @@ public class TestApp {
 
 			}
 		}
+
+		JPanel columnHeader = new JPanel();
+		columnHeader.setBackground(SCROLLPANECOLOR);
+		columnHeader.add(label);
+		firstDisplayPane.setColumnHeaderView(columnHeader);
+
 		return firstDisplayPane;
 	}
 
+	private void updateScrollPaneHeader(JLabel label) {
+		StringBuilder labelString = new StringBuilder();
 
+		Job bufferJob;
+		String bufferCounty, bufferCsj;
+		Integer count = 0;
+		for (int index = 0; index < jobCheckBoxes.size(); index++) {
+
+			if (jobCheckBoxes.get(index).isSelected()) {
+
+				count++;
+				bufferJob = parseFullDoc.getJobList().get(index);
+				bufferCounty = bufferJob.getCounty();
+				bufferCsj = bufferJob.getCsj();
+
+				labelString.append(bufferCounty.substring(0, 3));
+				labelString.append(" ");
+				labelString.append(bufferCsj.substring(bufferCsj.length() - 3));
+				labelString.append("|");
+
+				if (count % 10 == 0) {
+					labelString.append("<br>    ");
+				}
+			}
+		}
+
+		labelString.insert(0, String.format("<html>(%02d)", count));
+		labelString.append("</html>");
+		label.setText(labelString.toString());
 	}
 
 	// ===========================================================================
