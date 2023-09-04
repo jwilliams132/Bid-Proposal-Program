@@ -1180,8 +1180,6 @@ public class TestApp {
 		infoPanel.add(oldJobList);
 		infoPanel.add(newJobList);
 
-		
-
 		GridBagConstraints infoFrameConstraints = new GridBagConstraints();
 		infoFrameConstraints.gridx = 0;
 		infoFrameConstraints.gridy = 0;
@@ -1221,9 +1219,9 @@ public class TestApp {
 
 				// add each contractor,
 				buffer.append(String.format("%s<br>",
-								contractorCount > contractorIndex ? chosenJobSet
-										.get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
-										: "-----"));
+						contractorCount > contractorIndex ? chosenJobSet
+								.get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
+								: "-----"));
 			}
 			buffer.append("=".repeat(58));
 			buffer.append("</html>");
