@@ -642,10 +642,10 @@ public class TestApp {
 			public void itemStateChanged(ItemEvent event) {
 				if (event.getStateChange() == ItemEvent.SELECTED) {
 
-					selectAllCheckBoxes(jobCheckBoxes);
+					jobCheckBoxes.forEach(checkBox -> checkBox.setSelected(true));
 				} else {
 
-					deselectAllCheckBoxes(jobCheckBoxes);
+					jobCheckBoxes.forEach(checkBox -> checkBox.setSelected(false));
 				}
 			}
 		};
@@ -745,16 +745,7 @@ public class TestApp {
 		return firstDisplayPane;
 	}
 
-	private void selectAllCheckBoxes(ArrayList<JCheckBox> checkBoxes) {
-		for (JCheckBox checkBox : checkBoxes) {
-			checkBox.setSelected(true);
-		}
-	}
 
-	private void deselectAllCheckBoxes(ArrayList<JCheckBox> checkBoxes) {
-		for (JCheckBox checkBox : checkBoxes) {
-			checkBox.setSelected(false);
-		}
 	}
 
 	// ===========================================================================
