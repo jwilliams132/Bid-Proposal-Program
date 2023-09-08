@@ -84,7 +84,6 @@ public class TestApp {
 
 	private Display currentDisplay = null;
 	private Display lastDisplay = null;
-	Point legendScrollPosition;
 	private Test ifTest = Test.REAL;
 
 	private FileFilter txtFileFilter = new FileFilter() {
@@ -97,16 +96,17 @@ public class TestApp {
 		}
 	};
 
-	private FileFilter xslmFileFilter = new FileFilter() {
-		public boolean accept(File f) {
-			return f.getName().toLowerCase().endsWith(".xlsm") || f.getName().toLowerCase().endsWith(".xlsx")
-					|| f.isDirectory();
-		}
+	// private FileFilter xslmFileFilter = new FileFilter() {
+	// public boolean accept(File f) {
+	// return f.getName().toLowerCase().endsWith(".xlsm") ||
+	// f.getName().toLowerCase().endsWith(".xlsx")
+	// || f.isDirectory();
+	// }
 
-		public String getDescription() {
-			return "Excel Files (*.xlsx or *.xlsm)";
-		}
-	};
+	// public String getDescription() {
+	// return "Excel Files (*.xlsx or *.xlsm)";
+	// }
+	// };
 
 	// =====Frame===============
 	private JFrame frmWilliamsRoadLlc;
@@ -169,9 +169,6 @@ public class TestApp {
 	 */
 	public TestApp() {
 		initialize();
-		// chooseOpenFile.doClick(); // testing purposes
-		// filterForCheckedBoxes.doClick(); // testing purposes
-		// addPricing.doClick();
 	}
 
 	/**
@@ -363,7 +360,7 @@ public class TestApp {
 
 				File excelInputFile = fileManager.chooseFile(
 						"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
-						null, FileManager.fileChooserOptions.OPEN, xslmFileFilter);
+						null, FileManager.fileChooserOptions.OPEN, null);
 
 				int startingEstimateNo = 2970; // APR FINISHED WITH 2111 // may finished with 2310 june 2513 july 2684
 												// private 2687 AUGUST 2823 sept 2964
@@ -466,11 +463,6 @@ public class TestApp {
 	// ====================================================================================================
 	private void chooseOpenFileButton() {
 
-		// File inputFile = fileManager.chooseFile(null, null,
-		// FileManager.fileChooserOptions.OPEN, txtFileFilter);
-		File inputFile = fileManager.chooseFile(
-				"C:\\Users\\School laptop(Jacob)\\Desktop\\Test\\Program Output OLD.txt", null,
-				FileManager.fileChooserOptions.OPEN, null);
 		File inputFile;
 		if (ifTest == Test.TEST) {
 			inputFile = fileManager.chooseFile(
@@ -485,7 +477,7 @@ public class TestApp {
 			showWarning("Warning", "Error", "No file selected");
 			return;
 		}
-
+		
 		openFilePathLabel.setText("File Path:  " + inputFile);
 
 		parseFullDoc = new ParseFullDoc();
@@ -560,7 +552,7 @@ public class TestApp {
 
 	private void resetLegendAndPricingPanel() {
 
-		legendScrollPosition = legendDisplay.getViewport().getViewPosition();
+		Point legendScrollPosition = legendDisplay.getViewport().getViewPosition();
 		JPanel panel = new JPanel(new BorderLayout());
 		pricingDisplay = getPricingDisplay();
 		legendDisplay = getLegendPane();
@@ -574,7 +566,6 @@ public class TestApp {
 	private void initializeButtons() {
 
 		chooseOpenFile = new JButton("Open Bidding File...");
-
 		updateBidders = new JButton("Add Updated Bidders");
 		chooseSaveFolder = new JButton("Choose a folder to save to...");
 		saveExcel = new JButton("Export Excel Files");
