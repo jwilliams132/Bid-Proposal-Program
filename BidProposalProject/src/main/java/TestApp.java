@@ -132,14 +132,12 @@ public class TestApp {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
+
 			public void run() {
-				try {
-					TestApp window = new TestApp();
-					window.frmWilliamsRoadLlc.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+
+				new TestApp();
 			}
 		});
 	}
@@ -178,6 +176,7 @@ public class TestApp {
 				getContentPane().add(openFilePanel, BorderLayout.NORTH);
 				getContentPane().add(displayPanel, BorderLayout.CENTER);
 				getContentPane().add(bottomPanel, BorderLayout.SOUTH);
+				setVisible(true);
 			}
 		};
 
