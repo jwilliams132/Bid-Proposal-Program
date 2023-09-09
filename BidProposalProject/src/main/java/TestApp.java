@@ -88,7 +88,6 @@ public class TestApp {
 		}
 	};
 
-
 	// =====Frame===============
 	private JFrame frmWilliamsRoadLlc;
 
