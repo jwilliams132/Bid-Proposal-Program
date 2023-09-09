@@ -14,13 +14,14 @@ import java.util.Map;
 public class TexasCityFinder {
 	private Map<String, String> countyToCity;
 
-	public TexasCityFinder(String filePath) {
+	public TexasCityFinder() {
 
 		// Initialize the map
 		countyToCity = new HashMap<String, String>();
 		// Read the CSV file
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(filePath));
+			BufferedReader reader = new BufferedReader(
+					new FileReader("BidProposalProject\\src\\main\\resources\\List_of_counties_in_Texas.csv"));
 			String line;
 			while ((line = reader.readLine()) != null) {
 
@@ -38,7 +39,7 @@ public class TexasCityFinder {
 	}
 
 	public String getLargestCity(String county) {
-		
+
 		if (county.length() > 5 && county.substring(county.length() - 5).equals(", ETC"))
 			county = county.substring(0, county.length() - 5);
 		return countyToCity.get(county);
