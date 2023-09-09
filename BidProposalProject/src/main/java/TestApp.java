@@ -1,61 +1,58 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.EventQueue;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Point;
+import java.awt.Toolkit;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JViewport;
 import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 
-import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-
-import java.awt.Color;
-import java.awt.Dimension;
-
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.filechooser.FileFilter;
 
-import java.awt.FlowLayout;
-import java.awt.ComponentOrientation;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.InputEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.ItemEvent;
 import java.io.File;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-import java.awt.Toolkit;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
-import java.awt.GridLayout;
-
 public class TestApp {
 
-	private String path_to_List_of_counties_in_Texas = "BidProposalProject\\src\\main\\resources\\List_of_counties_in_Texas.csv";
-	private String path_to_Cropped_WR_LLC_logo = "BidProposalProject\\src\\main\\resources\\Cropped WR LLC logo.jpg";
 	private ParseFullDoc parseFullDoc;
 	private FileManager fileManager = new FileManager();
-	private TexasCityFinder cityFinder = new TexasCityFinder(path_to_List_of_counties_in_Texas);
 	private String lettingMonthDirectory;
+
 	private final Font TITLEFONT = new Font("Monospaced", Font.BOLD, 50);
 	private final Font FONT = new Font("Monospaced", Font.PLAIN, 16);
 	private final Color BACKGROUND = Color.WHITE;
@@ -65,10 +62,6 @@ public class TestApp {
 	private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
 	private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
 	private int jobIndex = 0;
-	boolean ifFirstJob;
-	boolean ifLastJob;
-
-	private GridBagConstraints frameConstraints = new GridBagConstraints();
 
 	private enum Display {
 		STARTUP, FIRST, FILTERED, PRICING
@@ -83,7 +76,6 @@ public class TestApp {
 	};
 
 	private Display currentDisplay = null;
-	private Display lastDisplay = null;
 	private Test ifTest = Test.REAL;
 
 	private FileFilter txtFileFilter = new FileFilter() {
@@ -96,17 +88,6 @@ public class TestApp {
 		}
 	};
 
-	// private FileFilter xslmFileFilter = new FileFilter() {
-	// public boolean accept(File f) {
-	// return f.getName().toLowerCase().endsWith(".xlsm") ||
-	// f.getName().toLowerCase().endsWith(".xlsx")
-	// || f.isDirectory();
-	// }
-
-	// public String getDescription() {
-	// return "Excel Files (*.xlsx or *.xlsm)";
-	// }
-	// };
 
 	// =====Frame===============
 	private JFrame frmWilliamsRoadLlc;
@@ -180,6 +161,8 @@ public class TestApp {
 		// Frame
 		// ===========================================================================
 
+		String path_to_Cropped_WR_LLC_logo = "BidProposalProject\\src\\main\\resources\\Cropped WR LLC logo.jpg";
+
 		initializeButtons();
 		initializePanesAndPanels();
 		addBackgrounds();
@@ -193,8 +176,6 @@ public class TestApp {
 				getContentPane().setLayout(new BorderLayout());
 				setSize(1250, 600);
 				setBackground(BACKGROUND);
-				frameConstraints.gridx = 0;
-				frameConstraints.gridy = 0;
 				getContentPane().add(openFilePanel, BorderLayout.NORTH);
 				getContentPane().add(displayPanel, BorderLayout.CENTER);
 				getContentPane().add(bottomPanel, BorderLayout.SOUTH);
@@ -425,7 +406,7 @@ public class TestApp {
 					resetLegendAndPricingPanel();
 
 					nextJob.setEnabled(true);
-					ifFirstJob = (jobIndex == 0);
+					boolean ifFirstJob = (jobIndex == 0);
 					if (ifFirstJob) {
 
 						previousJob.setEnabled(false);
@@ -448,7 +429,7 @@ public class TestApp {
 
 					previousJob.setEnabled(true);
 
-					ifLastJob = (jobIndex == parseFullDoc.getJobList().size() - 1);
+					boolean ifLastJob = (jobIndex == parseFullDoc.getJobList().size() - 1);
 					if (ifLastJob) {
 
 						nextJob.setEnabled(false);
@@ -477,7 +458,7 @@ public class TestApp {
 			showWarning("Warning", "Error", "No file selected");
 			return;
 		}
-		
+
 		openFilePathLabel.setText("File Path:  " + inputFile);
 
 		parseFullDoc = new ParseFullDoc();
@@ -536,7 +517,6 @@ public class TestApp {
 		displayPanel.revalidate();
 		displayPanel.repaint();
 		displayPanel.add(panel);
-		this.lastDisplay = this.currentDisplay;
 		this.currentDisplay = currentDisplay;
 	}
 
@@ -546,7 +526,6 @@ public class TestApp {
 		displayPanel.revalidate();
 		displayPanel.repaint();
 		displayPanel.add(scrollPane);
-		this.lastDisplay = this.currentDisplay;
 		this.currentDisplay = currentDisplay;
 	}
 
@@ -959,6 +938,7 @@ public class TestApp {
 	public JScrollPane getPricingDisplay() {
 
 		JScrollPane pricingDisplayPane = new JScrollPane();
+		TexasCityFinder cityFinder = new TexasCityFinder();
 
 		GridBagConstraints displayPricingConstraints = new GridBagConstraints();
 		currentJob.setText(String.format("(%02d/%02d)", jobIndex + 1, parseFullDoc.getJobList().size()));
