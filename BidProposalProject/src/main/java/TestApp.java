@@ -88,9 +88,6 @@ public class TestApp {
 		}
 	};
 
-	// =====Frame===============
-	private JFrame frmWilliamsRoadLlc;
-
 	// =====Open File Panel=====
 	/**/private JPanel openFilePanel;
 
@@ -166,7 +163,7 @@ public class TestApp {
 		addBackgrounds();
 		addButtonListeners();
 
-		frmWilliamsRoadLlc = new JFrame() {
+		new JFrame() {
 			{
 				setIconImage(Toolkit.getDefaultToolkit().getImage(path_to_Cropped_WR_LLC_logo));
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -216,11 +213,8 @@ public class TestApp {
 		jobFilterPanel.add(addPricing);
 
 		jobSelectionPanel.add(previousJob);
-		currentJob = new JLabel("(00/00)") {
-			{
-				setFont(FONT);
-			}
-		};
+		currentJob = new JLabel("(00/00)");
+		currentJob.setFont(FONT);
 		jobSelectionPanel.add(currentJob);
 		jobSelectionPanel.add(nextJob);
 
