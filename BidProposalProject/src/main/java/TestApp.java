@@ -1226,10 +1226,7 @@ public class TestApp {
 		}
 		return outputList;
 	}
-
-	public void changeLabel(JLabel label) {
-		label.setBackground(Color.BLUE);
-	}
+	
 	// ===========================================================================
 	// Other Methods
 	// ===========================================================================
@@ -1237,7 +1234,6 @@ public class TestApp {
 	public void populateExcel(ExcelManager excelManager, Job job, int estimateNumber) {
 
 		String sheetName;
-
 		Contractor contractor;
 		LineItem lineItem;
 		float lineItemAmount;
@@ -1324,12 +1320,5 @@ public class TestApp {
 			return textField.getText();
 		}
 		return null;
-	}
-
-	public Color randomColor() {
-
-		Random random = new Random();
-
-		return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
 	}
 }
