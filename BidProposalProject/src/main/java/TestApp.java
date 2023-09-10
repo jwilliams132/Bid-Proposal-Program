@@ -146,6 +146,7 @@ public class TestApp {
 	 * Create the application.
 	 */
 	public TestApp() {
+
 		initialize();
 	}
 
@@ -279,9 +280,7 @@ public class TestApp {
 					showWarning("Warning", "Error", "No file selected");
 					return;
 				}
-				// File updatedFile = new File(
-				// "C:\\Users\\School laptop(Jacob)\\Desktop\\Letting\\May\\Program
-				// Output.txt");
+
 				ParseFullDoc updatedDoc;
 				updatedDoc = new ParseFullDoc();
 				updatedDoc.setNewInputFile(updatedFile);
@@ -440,6 +439,7 @@ public class TestApp {
 	// ====================================================================================================
 	// Button Methods
 	// ====================================================================================================
+
 	private void chooseOpenFileButton() {
 
 		File inputFile;
