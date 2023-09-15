@@ -12,19 +12,19 @@ public class ParseFullDoc {
 		FileManager manager = new FileManager();
 		File file1 = manager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
 		File file2 = manager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
-		
+
 		List<String> l1 = manager.readFile(file1);
 		List<String> l2 = manager.readFile(file2);
-		
+
 		for (int i = 0; i < (l1.size() < l2.size() ? l2.size() : l1.size()); i++) {
-		if (l1.get(i).equals(l2.get(i))) {
-		System.out.println("match");
-		} else {
-		System.out.println();
-		System.out.println(l1.get(i));
-		System.out.println(l2.get(i));
-		System.out.println();
-		}
+			if (l1.get(i).equals(l2.get(i))) {
+				System.out.println("match");
+			} else {
+				System.out.println();
+				System.out.println(l1.get(i));
+				System.out.println(l2.get(i));
+				System.out.println();
+			}
 		}
 	}
 
@@ -106,7 +106,9 @@ public class ParseFullDoc {
 		ArrayList<String> job = new ArrayList<String>();
 
 		final String DELIMITER = "|";
-		final String NEW_JOB_DELIMITER = "==========";
+		final String END_OF_JOB_DELIMITER = "==========";
+
+		// if the file is one already used, separate the jobs, using the delimiters
 		if (contentsByLine.get(0).startsWith(DELIMITER)) {
 
 			setBidFileType("Previous file");
@@ -118,9 +120,11 @@ public class ParseFullDoc {
 			return;
 		}
 
+		// for new file, separate by END_OF_JOB_DELIMITER. when delimiter hit, add Job
+		// to arrayOfJobStrings then create reset buffer job array
 		for (String nextLine : contentsByLine) {
 
-			if (nextLine.startsWith(NEW_JOB_DELIMITER)) {
+			if (nextLine.startsWith(END_OF_JOB_DELIMITER)) {
 
 				arrayOfJobStrings.add(job);
 				job = new ArrayList<String>();
