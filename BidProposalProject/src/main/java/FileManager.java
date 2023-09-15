@@ -75,9 +75,10 @@ public class FileManager {
 		directoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		directoryChooser.setCurrentDirectory(new File(currentDirectory));
 		int response = directoryChooser.showOpenDialog(null);
-		if (response == JFileChooser.APPROVE_OPTION) {
+		if (response == JFileChooser.APPROVE_OPTION)
+
 			return directoryChooser.getSelectedFile().getAbsolutePath();
-		}
+
 		return null;
 	}
 
@@ -112,13 +113,16 @@ public class FileManager {
 		// If the file cannot be created, print an error message.
 		Formatter formatter = null;
 		try {
+
 			formatter = new Formatter(file);
 		} catch (Exception e) {
+
 			System.err.println("File not Created");
 		}
 
 		// Write each element of the ArrayList to the file, followed by a newline.
 		for (String line : content) {
+
 			formatter.format("%s%n", line);
 		}
 
