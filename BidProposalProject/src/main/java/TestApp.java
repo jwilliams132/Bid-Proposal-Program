@@ -45,7 +45,6 @@ import java.io.File;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 public class TestApp {
 
@@ -219,6 +218,194 @@ public class TestApp {
 		jobSelectionPanel.add(nextJob);
 
 		createTestKeyStroke();
+	}
+
+	// ====================================================================================================
+	// Initialization Methods
+	// ====================================================================================================
+
+	private void initializeButtons() {
+
+		chooseOpenFile = new JButton("Open Bidding File...");
+		updateBidders = new JButton("Add Updated Bidders");
+		chooseSaveFolder = new JButton("Choose a folder to save to...");
+		saveExcel = new JButton("Export Excel Files");
+		filterForCheckedBoxes = new JButton("Confirm Selected Jobs");
+		addPricing = new JButton("Add Pricing to Jobs");
+		previousJob = new JButton("<< Previous Job");
+		nextJob = new JButton("Next Job >>");
+
+		updateBidders.setEnabled(false);
+		chooseSaveFolder.setEnabled(false);
+		saveExcel.setEnabled(false);
+		filterForCheckedBoxes.setEnabled(false);
+		addPricing.setEnabled(false);
+		previousJob.setEnabled(false);
+		nextJob.setEnabled(false);
+	}
+
+	private void initializePanesAndPanels() {
+
+		openFilePanel = new JPanel();
+		openFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		openFilePanel.setLayout(new BorderLayout(10, 10));
+
+		saveFilePanel = new JPanel();
+		saveFilePanel.setLayout(new BorderLayout(10, 10));
+		saveFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+		displayPanel = new JPanel();
+		displayPanel.setLayout(new BorderLayout());
+
+		bottomPanel = new JPanel();
+		bottomPanel.setLayout(new BorderLayout());
+
+		dataManipulationPanel = new JPanel();
+		dataManipulationPanel.setLayout(new BorderLayout(0, 0));
+
+		jobFilterPanel = new JPanel();
+		jobFilterPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+		jobSelectionPanel = new JPanel();
+		jobSelectionPanel.setLayout(new FlowLayout());
+	}
+
+	private void addBackgrounds() {
+		ArrayList<JComponent> backgroundColorPanesAndPanels = new ArrayList<JComponent>(
+				Arrays.asList(openFilePanel, saveFilePanel, dataManipulationPanel,
+						jobFilterPanel, jobSelectionPanel, displayPanel, bottomPanel));
+
+		for (JComponent component : backgroundColorPanesAndPanels) {
+			component.setBackground(BACKGROUND);
+		}
+	}
+
+	private void addButtonListeners() {
+
+		chooseOpenFile.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						openChosenStartFile();
+					}
+				});
+			}
+		});
+
+		updateBidders.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						getUpdatedDoc();
+					}
+				});
+			}
+		});
+
+		chooseSaveFolder.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						createOutputFiles();
+					}
+				});
+			}
+		});
+
+		saveExcel.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						createExcelFiles();
+					}
+				});
+			}
+		});
+
+		filterForCheckedBoxes.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						filterJobSelection();
+					}
+				});
+			}
+		});
+
+		addPricing.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						switchToPricingPage();
+					}
+				});
+			}
+		});
+
+		previousJob.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						showPreviousJob();
+					}
+				});
+			}
+		});
+
+		nextJob.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						showNextJob();
+					}
+				});
+			}
+		});
+	}
+
+	private void createTestKeyStroke() {
+		Action myAction = new AbstractAction("My Action") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ifTest = Test.TEST;
+				openChosenStartFile();
+			}
+		};
+
+		KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_DOWN_MASK);
+		chooseOpenFile.getInputMap(JComponent.WHEN_FOCUSED).put(keyStroke, "myAction");
+		chooseOpenFile.getActionMap().put("myAction", myAction);
 	}
 
 	// ====================================================================================================
@@ -447,190 +634,6 @@ public class TestApp {
 		changeDisplay(panel, Display.PRICING);
 		totalMobsTextField.requestFocus();
 		legendDisplay.getViewport().setViewPosition(legendScrollPosition);
-	}
-
-	private void initializeButtons() {
-
-		chooseOpenFile = new JButton("Open Bidding File...");
-		updateBidders = new JButton("Add Updated Bidders");
-		chooseSaveFolder = new JButton("Choose a folder to save to...");
-		saveExcel = new JButton("Export Excel Files");
-		filterForCheckedBoxes = new JButton("Confirm Selected Jobs");
-		addPricing = new JButton("Add Pricing to Jobs");
-		previousJob = new JButton("<< Previous Job");
-		nextJob = new JButton("Next Job >>");
-
-		updateBidders.setEnabled(false);
-		chooseSaveFolder.setEnabled(false);
-		saveExcel.setEnabled(false);
-		filterForCheckedBoxes.setEnabled(false);
-		addPricing.setEnabled(false);
-		previousJob.setEnabled(false);
-		nextJob.setEnabled(false);
-	}
-
-	private void initializePanesAndPanels() {
-
-		openFilePanel = new JPanel();
-		openFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-		openFilePanel.setLayout(new BorderLayout(10, 10));
-
-		saveFilePanel = new JPanel();
-		saveFilePanel.setLayout(new BorderLayout(10, 10));
-		saveFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-
-		displayPanel = new JPanel();
-		displayPanel.setLayout(new BorderLayout());
-
-		bottomPanel = new JPanel();
-		bottomPanel.setLayout(new BorderLayout());
-
-		dataManipulationPanel = new JPanel();
-		dataManipulationPanel.setLayout(new BorderLayout(0, 0));
-
-		jobFilterPanel = new JPanel();
-		jobFilterPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-		jobSelectionPanel = new JPanel();
-		jobSelectionPanel.setLayout(new FlowLayout());
-	}
-
-	private void addBackgrounds() {
-		ArrayList<JComponent> backgroundColorPanesAndPanels = new ArrayList<JComponent>(
-				Arrays.asList(openFilePanel, saveFilePanel, dataManipulationPanel,
-						jobFilterPanel, jobSelectionPanel, displayPanel, bottomPanel));
-
-		for (JComponent component : backgroundColorPanesAndPanels) {
-			component.setBackground(BACKGROUND);
-		}
-	}
-
-	private void addButtonListeners() {
-
-		chooseOpenFile.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						openChosenStartFile();
-					}
-				});
-			}
-		});
-
-		updateBidders.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						getUpdatedDoc();
-					}
-				});
-			}
-		});
-
-		chooseSaveFolder.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						createOutputFiles();
-					}
-				});
-			}
-		});
-
-		saveExcel.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						createExcelFiles();
-					}
-				});
-			}
-		});
-
-		filterForCheckedBoxes.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						filterJobSelection();
-					}
-				});
-			}
-		});
-
-		addPricing.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						switchToPricingPage();
-					}
-				});
-			}
-		});
-
-		previousJob.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						showPreviousJob();
-					}
-				});
-			}
-		});
-
-		nextJob.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						showNextJob();
-					}
-				});
-			}
-		});
-	}
-
-	private void createTestKeyStroke() {
-		Action myAction = new AbstractAction("My Action") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ifTest = Test.TEST;
-				openChosenStartFile();
-			}
-		};
-
-		KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_DOWN_MASK);
-		chooseOpenFile.getInputMap(JComponent.WHEN_FOCUSED).put(keyStroke, "myAction");
-		chooseOpenFile.getActionMap().put("myAction", myAction);
 	}
 
 	// ===========================================================================
@@ -1270,9 +1273,9 @@ public class TestApp {
 		return outputList;
 	}
 
-	// ===========================================================================
+	// ====================================================================================================
 	// Other Methods
-	// ===========================================================================
+	// ====================================================================================================
 
 	public void populateExcel(ExcelManager excelManager, Job job, int estimateNumber) {
 
@@ -1283,6 +1286,7 @@ public class TestApp {
 		float totalAmount = 0;
 
 		for (int contractorIndex = 0; contractorIndex < job.getContractorList().size(); contractorIndex++) {
+
 			totalAmount = 0;
 
 			sheetName = String.valueOf(contractorIndex + 1);
@@ -1345,10 +1349,14 @@ public class TestApp {
 	}
 
 	public String checkTextFields(ArrayList<JTextField> textField) {
+
 		for (int i = 0; i < textField.size(); i++) {
+
 			try {
+
 				Float.parseFloat(textField.get(i).getText());
 			} catch (NumberFormatException e) {
+
 				return textField.get(i).getText();
 			}
 		}
@@ -1358,8 +1366,10 @@ public class TestApp {
 	public String checkTextFields(JTextField textField) {
 
 		try {
+
 			Float.parseFloat(textField.getText());
 		} catch (NumberFormatException e) {
+
 			return textField.getText();
 		}
 		return null;
