@@ -30,7 +30,7 @@ public class ParseFullDoc {
 
 	private FileManager fileManager = new FileManager();
 
-	private ArrayList<ArrayList<String>> arrayOfJobStrings;
+	
 	private ArrayList<Job> jobList = new ArrayList<Job>();
 	private ArrayList<Job> fullJobList = new ArrayList<Job>();
 	private ArrayList<String> contentsByLine;
@@ -56,7 +56,8 @@ public class ParseFullDoc {
 
 		contentsByLine = fileManager.readFile(inputFile);
 
-		separateJobs();
+		ArrayList<ArrayList<String>> arrayOfJobStrings = separateJobs();
+		
 		for (ArrayList<String> job : arrayOfJobStrings) {
 
 			jobList.add(extractJobData(job));
@@ -100,9 +101,9 @@ public class ParseFullDoc {
 	 * The separated jobs are stored in the `arrayOfJobStrings` list.
 	 * The type of file is also set using the `setBidFileType` method.
 	 */
-	public void separateJobs() {
+	public ArrayList<ArrayList<String>> separateJobs() {
 
-		arrayOfJobStrings = new ArrayList<ArrayList<String>>();
+		ArrayList<ArrayList<String>> arrayOfJobStrings = new ArrayList<ArrayList<String>>();
 		ArrayList<String> job = new ArrayList<String>();
 
 		final String DELIMITER = "|";
@@ -117,7 +118,7 @@ public class ParseFullDoc {
 				arrayOfJobStrings.add(
 						new ArrayList<String>(Arrays.asList(nextLine.substring(1, nextLine.length()).split("\\|"))));
 			}
-			return;
+			return arrayOfJobStrings;
 		}
 
 		// for new file, separate by END_OF_JOB_DELIMITER. when delimiter hit, add Job
@@ -135,6 +136,7 @@ public class ParseFullDoc {
 			}
 		}
 		setBidFileType("New file");
+		return arrayOfJobStrings;
 	}
 
 	public Job extractJobData(ArrayList<String> job) {
