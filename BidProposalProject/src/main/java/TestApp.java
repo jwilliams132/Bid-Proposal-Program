@@ -218,223 +218,14 @@ public class TestApp {
 		jobSelectionPanel.add(currentJob);
 		jobSelectionPanel.add(nextJob);
 
-	}
-
-	private void addButtonListeners() {
-		// ====================================================================================================
-		// Button Functions
-		// ====================================================================================================
-
-		/*
-		 * popup for a fileChooser
-		 * if null, shows a warning popup
-		 * 
-		 * updates file path label
-		 * 
-		 * creates ParseFullDoc instance
-		 * 
-		 * -inside PFD
-		 * sets input file
-		 * parses the Data
-		 * 
-		 * enables buttons
-		 * sets data window label
-		 * displayData()
-		 */
-		chooseOpenFile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						chooseOpenFileButton();
-					}
-				});
-			}
-		});
-
-		Action myAction = new AbstractAction("My Action") {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ifTest = Test.TEST;
-				chooseOpenFileButton();
-			}
-		};
-
-		KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_DOWN_MASK);
-		chooseOpenFile.getInputMap(JComponent.WHEN_FOCUSED).put(keyStroke, "myAction");
-		chooseOpenFile.getActionMap().put("myAction", myAction);
-
-		updateBidders.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				File updatedFile = fileManager.chooseFile(null, null,
-						FileManager.fileChooserOptions.OPEN, null);
-
-				if (updatedFile == null) {
-					showWarning("Warning", "Error", "No file selected");
-					return;
-				}
-
-				ParseFullDoc updatedDoc;
-				updatedDoc = new ParseFullDoc();
-				updatedDoc.setNewInputFile(updatedFile);
-				updatedDoc.parseData();
-				updatedDoc.setFullJobList(updatedDoc.getJobList());
-
-				displayUpdateInfoFrame(updatedDoc);
-			}
-		});
-
-		// Add an action listener to the choose save file button
-		chooseSaveFolder.addActionListener(new ActionListener() {
-			// When the button is pressed, perform the following actions
-			public void actionPerformed(ActionEvent e) {
-
-				switch (currentDisplay) {
-
-					case FILTERED:
-						break;
-					case PRICING:
-						if (!checkPricingPageTextValidity())
-							return;
-					default:
-				}
-
-				lettingMonthDirectory = fileManager.chooseDirectory(null);
-				// Get the selected file
-				File formattedOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Program Output.txt", null,
-						FileManager.fileChooserOptions.SAVE, null);
-				File userFriendlyOutput = fileManager.chooseFile(
-						lettingMonthDirectory + "\\Program Output (User Friendly).txt", null,
-						FileManager.fileChooserOptions.SAVE, null);
-				File emailList = fileManager.chooseFile(lettingMonthDirectory + "\\Email List.txt", null,
-						FileManager.fileChooserOptions.SAVE, null);
-
-				// // Set the prices for the current job
-				// setPrices();
-				// Set the file path label to show the chosen file
-				saveFilePathLabel.setText("Directory Path:  " + lettingMonthDirectory);
-
-				// Enable the save button
-				saveExcel.setEnabled(true);
-
-				parseFullDoc.exportDataFiles(formattedOutput, userFriendlyOutput, emailList);
-
-				// Disable the updateBidders button
-				updateBidders.setEnabled(false);
-			}
-		});
-
-		// save button
-		saveExcel.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				File excelInputFile = fileManager.chooseFile(
-						"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
-						null, FileManager.fileChooserOptions.OPEN, null);
-
-				int startingEstimateNo = 2970; // APR FINISHED WITH 2111 // may finished with 2310 june 2513 july 2684
-												// private 2687 AUGUST 2823 sept 2964
-				ExcelManager excelManager;
-
-				for (int jobIndex = 0; jobIndex < parseFullDoc.getJobList().size(); jobIndex++) {
-
-					excelManager = new ExcelManager();
-					excelManager.createWorkBook(excelInputFile.getAbsolutePath());
-
-					populateExcel(excelManager, parseFullDoc.getJobList().get(jobIndex), startingEstimateNo);
-					startingEstimateNo += 10;
-					excelManager.saveWorkbook(String.format("%s\\%S %s%s", lettingMonthDirectory,
-							parseFullDoc.getJobList().get(jobIndex).getCounty(),
-							parseFullDoc.getJobList().get(jobIndex).getCsj(), ".xlsm"));
-				}
-
-				showWarning("Success", "Success", "Excel files were created");
-			}
-		});
-
-		// filter for selection button
-		filterForCheckedBoxes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						filterForCheckedBoxesButton();
-					}
-				});
-			}
-		});
-
-		// add pricing button. sets up data panel to allow input from user
-		addPricing.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.invokeLater(new Runnable() {
-					public void run() {
-						legendDisplay = getLegendPane();
-						resetLegendAndPricingPanel();
-
-						if (parseFullDoc.getJobList().size() > 1) {
-
-							nextJob.setEnabled(true);
-						}
-						addPricing.setEnabled(false);
-					}
-				});
-			}
-		});
-
-		// Add an action listener to the previous job button
-		previousJob.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				if (checkPricingPageTextValidity()) {
-
-					setPrices();
-					jobIndex--;
-					legendAutoFollow(legendDisplay);
-					resetLegendAndPricingPanel();
-
-					nextJob.setEnabled(true);
-					boolean ifFirstJob = (jobIndex == 0);
-					if (ifFirstJob) {
-
-						previousJob.setEnabled(false);
-					}
-				}
-			}
-		});
-
-		// Add an action listener to the next job button
-		nextJob.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				if (checkPricingPageTextValidity()) {
-
-					setPrices();
-					jobIndex++;
-					legendAutoFollow(legendDisplay);
-					resetLegendAndPricingPanel();
-
-					previousJob.setEnabled(true);
-
-					boolean ifLastJob = (jobIndex == parseFullDoc.getJobList().size() - 1);
-					if (ifLastJob) {
-
-						nextJob.setEnabled(false);
-					}
-				}
-			}
-		});
+		createTestKeyStroke();
 	}
 
 	// ====================================================================================================
 	// Button Methods
 	// ====================================================================================================
 
-	private void chooseOpenFileButton() {
+	private void openChosenStartFile() {
 
 		File inputFile;
 		if (ifTest == Test.TEST) {
@@ -467,7 +258,25 @@ public class TestApp {
 		changeDisplay(firstDisplay, Display.FIRST);
 	}
 
-	private void filterForCheckedBoxesButton() {
+	private void getUpdatedDoc() {
+		File updatedFile = fileManager.chooseFile(null, null,
+				FileManager.fileChooserOptions.OPEN, null);
+
+		if (updatedFile == null) {
+			showWarning("Warning", "Error", "No file selected");
+			return;
+		}
+
+		ParseFullDoc updatedDoc;
+		updatedDoc = new ParseFullDoc();
+		updatedDoc.setNewInputFile(updatedFile);
+		updatedDoc.parseData();
+		updatedDoc.setFullJobList(updatedDoc.getJobList());
+
+		displayUpdateInfoFrame(updatedDoc);
+	}
+
+	private void filterJobSelection() {
 
 		ArrayList<Job> selectedJobList = new ArrayList<Job>(); // create a buffer list of jobs
 		boolean hasSelectedCheckBox = false;
@@ -497,6 +306,112 @@ public class TestApp {
 
 		filterForCheckedBoxes.setEnabled(false);
 		addPricing.setEnabled(true);
+	}
+
+	private void createOutputFiles() {
+
+		switch (currentDisplay) {
+
+			case FILTERED:
+				break;
+			case PRICING:
+				if (!isPricingValid())
+					return;
+			default:
+		}
+
+		lettingMonthDirectory = fileManager.chooseDirectory(null);
+		// Get the selected file
+		File formattedOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Program Output.txt", null,
+				FileManager.fileChooserOptions.SAVE, null);
+		File userFriendlyOutput = fileManager.chooseFile(
+				lettingMonthDirectory + "\\Program Output (User Friendly).txt", null,
+				FileManager.fileChooserOptions.SAVE, null);
+		File emailList = fileManager.chooseFile(lettingMonthDirectory + "\\Email List.txt", null,
+				FileManager.fileChooserOptions.SAVE, null);
+
+		// // Set the prices for the current job
+		// setPrices();
+		// Set the file path label to show the chosen file
+		saveFilePathLabel.setText("Directory Path:  " + lettingMonthDirectory);
+
+		// Enable the save button
+		saveExcel.setEnabled(true);
+
+		parseFullDoc.exportDataFiles(formattedOutput, userFriendlyOutput, emailList);
+
+		// Disable the updateBidders button
+		updateBidders.setEnabled(false);
+	}
+
+	private void createExcelFiles() {
+		File excelInputFile = fileManager.chooseFile(
+				"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
+				null, FileManager.fileChooserOptions.OPEN, null);
+
+		int startingEstimateNo = 2970; // APR FINISHED WITH 2111 // may finished with 2310 june 2513 july 2684
+										// private 2687 AUGUST 2823 sept 2964
+		ExcelManager excelManager;
+
+		for (int jobIndex = 0; jobIndex < parseFullDoc.getJobList().size(); jobIndex++) {
+
+			excelManager = new ExcelManager();
+			excelManager.createWorkBook(excelInputFile.getAbsolutePath());
+
+			populateExcel(excelManager, parseFullDoc.getJobList().get(jobIndex), startingEstimateNo);
+			startingEstimateNo += 10;
+			excelManager.saveWorkbook(String.format("%s\\%S %s%s", lettingMonthDirectory,
+					parseFullDoc.getJobList().get(jobIndex).getCounty(),
+					parseFullDoc.getJobList().get(jobIndex).getCsj(), ".xlsm"));
+		}
+
+		showWarning("Success", "Success", "Excel files were created");
+	}
+
+	private void switchToPricingPage() {
+		legendDisplay = getLegendPane();
+		resetLegendAndPricingPanel();
+
+		if (parseFullDoc.getJobList().size() > 1) {
+
+			nextJob.setEnabled(true);
+		}
+		addPricing.setEnabled(false);
+	}
+
+	private void showPreviousJob() {
+		if (isPricingValid()) {
+
+			setPrices();
+			jobIndex--;
+			legendAutoFollow(legendDisplay);
+			resetLegendAndPricingPanel();
+
+			nextJob.setEnabled(true);
+			boolean ifFirstJob = (jobIndex == 0);
+			if (ifFirstJob) {
+
+				previousJob.setEnabled(false);
+			}
+		}
+	}
+
+	private void showNextJob() {
+		if (isPricingValid()) {
+
+			setPrices();
+			jobIndex++;
+			legendAutoFollow(legendDisplay);
+			resetLegendAndPricingPanel();
+
+			previousJob.setEnabled(true);
+
+			boolean ifLastJob = (jobIndex == parseFullDoc.getJobList().size() - 1);
+			if (ifLastJob) {
+
+				nextJob.setEnabled(false);
+			}
+		}
 	}
 
 	// ====================================================================================================
@@ -588,6 +503,134 @@ public class TestApp {
 		for (JComponent component : backgroundColorPanesAndPanels) {
 			component.setBackground(BACKGROUND);
 		}
+	}
+
+	private void addButtonListeners() {
+
+		chooseOpenFile.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						openChosenStartFile();
+					}
+				});
+			}
+		});
+
+		updateBidders.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						getUpdatedDoc();
+					}
+				});
+			}
+		});
+
+		chooseSaveFolder.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						createOutputFiles();
+					}
+				});
+			}
+		});
+
+		saveExcel.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						createExcelFiles();
+					}
+				});
+			}
+		});
+
+		filterForCheckedBoxes.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						filterJobSelection();
+					}
+				});
+			}
+		});
+
+		addPricing.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						switchToPricingPage();
+					}
+				});
+			}
+		});
+
+		previousJob.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						showPreviousJob();
+					}
+				});
+			}
+		});
+
+		nextJob.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						showNextJob();
+					}
+				});
+			}
+		});
+	}
+
+	private void createTestKeyStroke() {
+		Action myAction = new AbstractAction("My Action") {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ifTest = Test.TEST;
+				openChosenStartFile();
+			}
+		};
+
+		KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_DOWN_MASK);
+		chooseOpenFile.getInputMap(JComponent.WHEN_FOCUSED).put(keyStroke, "myAction");
+		chooseOpenFile.getActionMap().put("myAction", myAction);
 	}
 
 	// ===========================================================================
@@ -1226,7 +1269,7 @@ public class TestApp {
 		}
 		return outputList;
 	}
-	
+
 	// ===========================================================================
 	// Other Methods
 	// ===========================================================================
@@ -1279,7 +1322,7 @@ public class TestApp {
 		JOptionPane.showMessageDialog(null, warningMessage + ": " + argument, header, JOptionPane.WARNING_MESSAGE);
 	}
 
-	public boolean checkPricingPageTextValidity() {
+	public boolean isPricingValid() {
 
 		String invalidInput = checkTextFields(totalMobsTextField);
 		boolean valid = true;
