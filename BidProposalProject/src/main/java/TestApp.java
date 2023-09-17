@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.EventQueue;
 import java.awt.Dimension;
@@ -589,21 +590,12 @@ public class TestApp {
 	// Methods
 	// ====================================================================================================
 
-	private void changeDisplay(JPanel panel, Display currentDisplay) {
+	private void changeDisplay(JComponent panel, Display currentDisplay) {
 
 		displayPanel.removeAll();
 		displayPanel.revalidate();
 		displayPanel.repaint();
 		displayPanel.add(panel);
-		this.currentDisplay = currentDisplay;
-	}
-
-	private void changeDisplay(JScrollPane scrollPane, Display currentDisplay) {
-
-		displayPanel.removeAll();
-		displayPanel.revalidate();
-		displayPanel.repaint();
-		displayPanel.add(scrollPane);
 		this.currentDisplay = currentDisplay;
 	}
 
