@@ -573,13 +573,7 @@ public class TestApp {
 			jobIndex--;
 			legendAutoFollow(legendDisplay);
 			resetLegendAndPricingPanel();
-
-			nextJob.setEnabled(true);
-			boolean ifFirstJob = (jobIndex == 0);
-			if (ifFirstJob) {
-
-				previousJob.setEnabled(false);
-			}
+			enableIterationButtons();
 		}
 	}
 
@@ -590,14 +584,7 @@ public class TestApp {
 			jobIndex++;
 			legendAutoFollow(legendDisplay);
 			resetLegendAndPricingPanel();
-
-			previousJob.setEnabled(true);
-
-			boolean ifLastJob = (jobIndex == parseFullDoc.getJobList().size() - 1);
-			if (ifLastJob) {
-
-				nextJob.setEnabled(false);
-			}
+			enableIterationButtons();
 		}
 	}
 
@@ -634,6 +621,27 @@ public class TestApp {
 		changeDisplay(panel, Display.PRICING);
 		totalMobsTextField.requestFocus();
 		legendDisplay.getViewport().setViewPosition(legendScrollPosition);
+	}
+
+	private void enableIterationButtons() {
+		
+		if (jobIndex == 0) {
+
+			previousJob.setEnabled(false);
+			nextJob.setEnabled(true);
+		}
+
+		if (jobIndex == parseFullDoc.getJobList().size() - 1) {
+
+			previousJob.setEnabled(true);
+			nextJob.setEnabled(false);
+		}
+		
+		if(jobIndex > 0 && jobIndex < parseFullDoc.getJobList().size() - 1) {
+
+			previousJob.setEnabled(true);
+			nextJob.setEnabled(true);
+		}
 	}
 
 	// ===========================================================================
@@ -937,6 +945,7 @@ public class TestApp {
 									jobIndex = JOB_INDEX;
 									legendAutoFollow(legendDisplay);
 									resetLegendAndPricingPanel();
+									enableIterationButtons();
 								}
 							});
 						}
