@@ -71,12 +71,12 @@ public class TestApp {
 		OLD, NEW
 	};
 
-	private enum Test {
+	private enum TEST {
 		TEST, REAL
 	};
 
 	private Display currentDisplay = null;
-	private Test ifTest = Test.REAL;
+	private TEST ifTest = TEST.REAL;
 
 	private FileFilter txtFileFilter = new FileFilter() {
 		public boolean accept(File f) {
@@ -310,33 +310,6 @@ public class TestApp {
 			}
 		});
 
-		chooseSaveFolder.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						createOutputFiles();
-					}
-				});
-			}
-		});
-
-		saveExcel.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				SwingUtilities.invokeLater(new Runnable() {
-
-					public void run() {
-
-						createExcelFiles();
-					}
-				});
-			}
-		});
-
 		filterForCheckedBoxes.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -346,6 +319,19 @@ public class TestApp {
 					public void run() {
 
 						filterJobSelection();
+					}
+				});
+			}
+		});
+
+		chooseSaveFolder.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						createOutputFiles();
 					}
 				});
 			}
@@ -392,14 +378,32 @@ public class TestApp {
 				});
 			}
 		});
+
+		saveExcel.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						createExcelFiles();
+					}
+				});
+			}
+		});
 	}
 
 	private void createTestKeyStroke() {
+
 		Action myAction = new AbstractAction("My Action") {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ifTest = Test.TEST;
+
+				ifTest = TEST.TEST;
 				openChosenStartFile();
+				ifTest = TEST.REAL;
 			}
 		};
 
@@ -415,7 +419,8 @@ public class TestApp {
 	private void openChosenStartFile() {
 
 		File inputFile;
-		if (ifTest == Test.TEST) {
+		if (ifTest == TEST.TEST) {
+
 			inputFile = fileManager.chooseFile(
 					"BidProposalProject\\src\\main\\resources\\Testing\\CombinedOld.txt",
 					null, FileManager.fileChooserOptions.OPEN, null);
@@ -425,6 +430,7 @@ public class TestApp {
 		}
 
 		if (inputFile == null) {
+
 			showWarning("Warning", "Error", "No file selected");
 			return;
 		}
@@ -529,6 +535,42 @@ public class TestApp {
 		updateBidders.setEnabled(false);
 	}
 
+	private void switchToPricingPage() {
+
+		legendDisplay = getLegendPane();
+		resetLegendAndPricingPanel();
+
+		if (parseFullDoc.getJobList().size() > 1) {
+
+			nextJob.setEnabled(true);
+		}
+		addPricing.setEnabled(false);
+	}
+
+	private void showPreviousJob() {
+
+		if (isPricingValid()) {
+
+			setPrices();
+			jobIndex--;
+			legendAutoFollow(legendDisplay);
+			resetLegendAndPricingPanel();
+			enableIterationButtons();
+		}
+	}
+
+	private void showNextJob() {
+
+		if (isPricingValid()) {
+
+			setPrices();
+			jobIndex++;
+			legendAutoFollow(legendDisplay);
+			resetLegendAndPricingPanel();
+			enableIterationButtons();
+		}
+	}
+
 	private void createExcelFiles() {
 		File excelInputFile = fileManager.chooseFile(
 				"BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
@@ -551,39 +593,6 @@ public class TestApp {
 		}
 
 		showWarning("Success", "Success", "Excel files were created");
-	}
-
-	private void switchToPricingPage() {
-		legendDisplay = getLegendPane();
-		resetLegendAndPricingPanel();
-
-		if (parseFullDoc.getJobList().size() > 1) {
-
-			nextJob.setEnabled(true);
-		}
-		addPricing.setEnabled(false);
-	}
-
-	private void showPreviousJob() {
-		if (isPricingValid()) {
-
-			setPrices();
-			jobIndex--;
-			legendAutoFollow(legendDisplay);
-			resetLegendAndPricingPanel();
-			enableIterationButtons();
-		}
-	}
-
-	private void showNextJob() {
-		if (isPricingValid()) {
-
-			setPrices();
-			jobIndex++;
-			legendAutoFollow(legendDisplay);
-			resetLegendAndPricingPanel();
-			enableIterationButtons();
-		}
 	}
 
 	// ====================================================================================================
@@ -625,8 +634,8 @@ public class TestApp {
 			previousJob.setEnabled(true);
 			nextJob.setEnabled(false);
 		}
-		
-		if(jobIndex > 0 && jobIndex < parseFullDoc.getJobList().size() - 1) {
+
+		if (jobIndex > 0 && jobIndex < parseFullDoc.getJobList().size() - 1) {
 
 			previousJob.setEnabled(true);
 			nextJob.setEnabled(true);
@@ -1148,17 +1157,20 @@ public class TestApp {
 	}
 
 	public void legendAutoFollow(JScrollPane scrollPane) {
+
 		int heightOfButton = jobButtons.get(jobIndex).getHeight();
 		int currentButton = jobIndex + 1;
 		int currentPosition = (int) scrollPane.getViewport().getViewRect().getY();
 		int heightOfSlider = (int) scrollPane.getViewport().getViewRect().getHeight();
 
-		if (currentButton * heightOfButton > currentPosition + heightOfSlider) {
+		if (currentButton * heightOfButton > currentPosition + heightOfSlider)
+
 			scrollPane.getViewport().setViewPosition(new Point(0, currentButton * heightOfButton - heightOfSlider));
-		}
-		if (currentButton * heightOfButton - heightOfButton < currentPosition) {
+
+		if (currentButton * heightOfButton - heightOfButton < currentPosition)
+
 			scrollPane.getViewport().setViewPosition(new Point(0, currentButton * heightOfButton - heightOfButton));
-		}
+
 	}
 
 	// ===========================================================================
