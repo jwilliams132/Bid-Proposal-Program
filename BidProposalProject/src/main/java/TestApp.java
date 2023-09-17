@@ -120,7 +120,6 @@ public class TestApp {
 	private JScrollPane firstDisplay = new JScrollPane();
 	private JScrollPane filteredDisplay = new JScrollPane();
 	private JScrollPane legendDisplay = new JScrollPane();
-	private JScrollPane pricingDisplay = new JScrollPane();
 	private JPanel bottomPanel;
 	private ArrayList<JButton> jobButtons;
 
@@ -614,7 +613,7 @@ public class TestApp {
 
 		Point legendScrollPosition = legendDisplay.getViewport().getViewPosition();
 		JPanel panel = new JPanel(new BorderLayout());
-		pricingDisplay = getPricingDisplay();
+		JScrollPane pricingDisplay = getPricingDisplay();
 		legendDisplay = getLegendPane();
 		panel.add(legendDisplay, BorderLayout.WEST);
 		panel.add(pricingDisplay, BorderLayout.CENTER);
