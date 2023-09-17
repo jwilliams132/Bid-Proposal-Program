@@ -922,9 +922,11 @@ public class TestApp {
 		for (int jobIndexForLegendButtons = 0; jobIndexForLegendButtons < parseFullDoc.getJobList()
 				.size(); jobIndexForLegendButtons++) {
 
+			// create Job and Index object for button creation
 			Job job = parseFullDoc.getJobList().get(jobIndexForLegendButtons);
 			final int JOB_INDEX = jobIndexForLegendButtons;
 
+			// create county buffer and take off possible ", ETC"
 			String bufferCounty = job.getCounty();
 			if (bufferCounty.length() > 5 && bufferCounty.substring(bufferCounty.length() - 5).equals(", ETC"))
 				bufferCounty = bufferCounty.substring(0, bufferCounty.length() - 5);
@@ -938,13 +940,18 @@ public class TestApp {
 					setFont(FONT);
 
 					addActionListener(new ActionListener() {
+
 						public void actionPerformed(ActionEvent e) {
+
 							SwingUtilities.invokeLater(new Runnable() {
+
 								public void run() {
+
 									setPrices();
 									jobIndex = JOB_INDEX;
 									legendAutoFollow(legendDisplay);
 									resetLegendAndPricingPanel();
+
 									enableIterationButtons();
 								}
 							});
