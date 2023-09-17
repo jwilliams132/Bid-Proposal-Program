@@ -486,8 +486,6 @@ public class TestApp {
 		parseFullDoc.setJobList(selectedJobList); // set the job list to the selected jobs
 
 		filteredDisplay = getFilteredDisplay();
-		displayPanel.removeAll();
-		// displayPanel.add(filteredDisplay);
 		changeDisplay(filteredDisplay, Display.FILTERED);
 
 		filterForCheckedBoxes.setEnabled(false);
