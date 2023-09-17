@@ -539,11 +539,7 @@ public class TestApp {
 
 		legendDisplay = getLegendPane();
 		resetLegendAndPricingPanel();
-
-		if (parseFullDoc.getJobList().size() > 1) {
-
-			nextJob.setEnabled(true);
-		}
+		enableIterationButtons();
 		addPricing.setEnabled(false);
 	}
 
@@ -622,7 +618,13 @@ public class TestApp {
 	}
 
 	private void enableIterationButtons() {
-		
+
+		if (parseFullDoc.getJobList().size() == 1) {
+
+			previousJob.setEnabled(false);
+			nextJob.setEnabled(false);
+		}
+
 		if (jobIndex == 0) {
 
 			previousJob.setEnabled(false);
