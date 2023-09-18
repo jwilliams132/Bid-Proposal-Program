@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.EventQueue;
 import java.awt.Dimension;
@@ -118,7 +117,6 @@ public class TestApp {
 	/* -- */private JButton saveExcel;
 
 	private JPanel startupDisplay = new JPanel();
-	private JScrollPane firstDisplay = new JScrollPane();
 	private JScrollPane filteredDisplay = new JScrollPane();
 	private JScrollPane legendDisplay = new JScrollPane();
 	private JPanel bottomPanel;
@@ -447,8 +445,7 @@ public class TestApp {
 		addPricing.setEnabled(false);
 		updateBidders.setEnabled(true);
 
-		firstDisplay = getFirstDisplay();
-		changeDisplay(firstDisplay, Display.FIRST);
+		changeDisplay(getFirstDisplay(), Display.FIRST);
 	}
 
 	private void getUpdatedDoc() {
@@ -492,8 +489,7 @@ public class TestApp {
 		}
 		parseFullDoc.setJobList(selectedJobList); // set the job list to the selected jobs
 
-		filteredDisplay = getFilteredDisplay();
-		changeDisplay(filteredDisplay, Display.FILTERED);
+		changeDisplay(getFilteredDisplay(), Display.FILTERED);
 
 		filterForCheckedBoxes.setEnabled(false);
 		addPricing.setEnabled(true);
@@ -590,7 +586,7 @@ public class TestApp {
 
 		showWarning("Success", "Success", "Excel files were created");
 	}
-
+	
 	// ====================================================================================================
 	// Methods
 	// ====================================================================================================
@@ -609,6 +605,7 @@ public class TestApp {
 		Point legendScrollPosition = legendDisplay.getViewport().getViewPosition();
 		JPanel panel = new JPanel(new BorderLayout());
 		JScrollPane pricingDisplay = getPricingDisplay();
+
 		legendDisplay = getLegendPane();
 		panel.add(legendDisplay, BorderLayout.WEST);
 		panel.add(pricingDisplay, BorderLayout.CENTER);
@@ -695,6 +692,7 @@ public class TestApp {
 		final ItemListener checkAllListener = new ItemListener() {
 
 			public void itemStateChanged(ItemEvent event) {
+
 				if (event.getStateChange() == ItemEvent.SELECTED) {
 
 					jobCheckBoxes.forEach(checkBox -> checkBox.setSelected(true));
