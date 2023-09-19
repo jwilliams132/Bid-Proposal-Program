@@ -117,7 +117,6 @@ public class TestApp {
 	/* -- */private JButton saveExcel;
 
 	private JPanel startupDisplay = new JPanel();
-	private JScrollPane filteredDisplay = new JScrollPane();
 	private JScrollPane legendDisplay = new JScrollPane();
 	private JPanel bottomPanel;
 	private ArrayList<JButton> jobButtons;
@@ -444,15 +443,19 @@ public class TestApp {
 		filterForCheckedBoxes.setEnabled(true);
 		addPricing.setEnabled(false);
 		updateBidders.setEnabled(true);
+		previousJob.setEnabled(false);
+		nextJob.setEnabled(false);
 
 		changeDisplay(getFirstDisplay(), Display.FIRST);
 	}
 
 	private void getUpdatedDoc() {
+
 		File updatedFile = fileManager.chooseFile(null, null,
 				FileManager.fileChooserOptions.OPEN, null);
 
 		if (updatedFile == null) {
+			
 			showWarning("Warning", "Error", "No file selected");
 			return;
 		}
@@ -533,7 +536,7 @@ public class TestApp {
 
 	private void switchToPricingPage() {
 
-		legendDisplay = getLegendPane();
+		// legendDisplay = getLegendPane();
 		resetLegendAndPricingPanel();
 		enableIterationButtons();
 		addPricing.setEnabled(false);
