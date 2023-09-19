@@ -1094,6 +1094,7 @@ public class TestApp {
 
 	public void addLineItemsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
+		lineItemPrices.clear();
 		for (int index = 0; index < parseFullDoc.getJobList().get(jobIndex).getLineItems().size(); index++) {
 
 			final int indexForActionListener = index;
