@@ -415,6 +415,8 @@ public class TestApp {
 
 	private void openChosenStartFile() {
 
+		currentJob.setText("(00/00)");
+		jobIndex = 0;
 		File inputFile;
 		if (ifTest == TEST.TEST) {
 
@@ -455,7 +457,7 @@ public class TestApp {
 				FileManager.fileChooserOptions.OPEN, null);
 
 		if (updatedFile == null) {
-			
+
 			showWarning("Warning", "Error", "No file selected");
 			return;
 		}
@@ -589,7 +591,7 @@ public class TestApp {
 
 		showWarning("Success", "Success", "Excel files were created");
 	}
-	
+
 	// ====================================================================================================
 	// Methods
 	// ====================================================================================================
@@ -1154,7 +1156,10 @@ public class TestApp {
 
 		for (int index = 0; index < lineItemPrices.size(); index++) {
 
-			parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index)
+			parseFullDoc.getJobList()
+					.get(jobIndex)
+					.getLineItems()
+					.get(index)
 					.setPrice(Float.valueOf(lineItemPrices.get(index).getText()));
 		}
 		lineItemPrices.clear();
