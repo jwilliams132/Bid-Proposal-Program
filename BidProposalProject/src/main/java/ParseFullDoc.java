@@ -408,7 +408,7 @@ public class ParseFullDoc {
 		return jobList;
 	}
 
-	public ArrayList<Job> FullJobList() {
+	public ArrayList<Job> getFullJobList() {
 		return fullJobList;
 	}
 
