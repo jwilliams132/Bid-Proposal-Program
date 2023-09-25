@@ -59,11 +59,12 @@ public class TestApp {
 	private final Color SCROLLPANECOLOR = Color.LIGHT_GRAY;
 
 	private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
+	private ArrayList<Integer> currentJobFilterIndexes = new ArrayList<Integer>();
 	private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
 	private int jobIndex = 0;
 
 	private enum Display {
-		STARTUP, FIRST, FILTERED, PRICING
+		STARTUP, UNFILTERED, FILTERED, PRICING
 	};
 
 	private enum JOBSET {
@@ -103,7 +104,8 @@ public class TestApp {
 	// ==========Data Manipulation Panel
 	/* -- */private JPanel dataManipulationPanel;
 	/* ------ */private JPanel jobFilterPanel;
-	/* ---------- */private JButton filterForCheckedBoxes;
+	/* ---------- */private JButton filterJobs;
+	/* ---------- */private JButton undoFiltering;
 	/* ---------- */private JButton addPricing;
 	/* ------ */private JPanel jobSelectionPanel;
 	/* ---------- */private JButton previousJob;
@@ -205,7 +207,7 @@ public class TestApp {
 		dataManipulationPanel.add(jobFilterPanel, BorderLayout.WEST);
 		dataManipulationPanel.add(jobSelectionPanel, BorderLayout.CENTER);
 
-		jobFilterPanel.add(filterForCheckedBoxes);
+		jobFilterPanel.add(filterJobs); // TODO
 		jobFilterPanel.add(addPricing);
 
 		jobSelectionPanel.add(previousJob);
@@ -227,7 +229,8 @@ public class TestApp {
 		updateBidders = new JButton("Add Updated Bidders");
 		chooseSaveFolder = new JButton("Choose a folder to save to...");
 		saveExcel = new JButton("Export Excel Files");
-		filterForCheckedBoxes = new JButton("Confirm Selected Jobs");
+		filterJobs = new JButton("Confirm Selected Jobs");
+		undoFiltering = new JButton("Undo Filtering");
 		addPricing = new JButton("Add Pricing to Jobs");
 		previousJob = new JButton("<< Previous Job");
 		nextJob = new JButton("Next Job >>");
@@ -235,7 +238,7 @@ public class TestApp {
 		updateBidders.setEnabled(false);
 		chooseSaveFolder.setEnabled(false);
 		saveExcel.setEnabled(false);
-		filterForCheckedBoxes.setEnabled(false);
+		filterJobs.setEnabled(false);
 		addPricing.setEnabled(false);
 		previousJob.setEnabled(false);
 		nextJob.setEnabled(false);
@@ -307,7 +310,7 @@ public class TestApp {
 			}
 		});
 
-		filterForCheckedBoxes.addActionListener(new ActionListener() {
+		filterJobs.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
@@ -316,6 +319,20 @@ public class TestApp {
 					public void run() {
 
 						filterJobSelection();
+					}
+				});
+			}
+		});
+
+		undoFiltering.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				SwingUtilities.invokeLater(new Runnable() {
+
+					public void run() {
+
+						removeFilter();
 					}
 				});
 			}
@@ -416,6 +433,7 @@ public class TestApp {
 	private void openChosenStartFile() {
 
 		currentJob.setText("(00/00)");
+		currentJobFilterIndexes.clear();
 		jobIndex = 0;
 		File inputFile;
 		if (ifTest == TEST.TEST) {
@@ -442,13 +460,13 @@ public class TestApp {
 		parseFullDoc.setFullJobList(parseFullDoc.getJobList());
 
 		chooseSaveFolder.setEnabled(true);
-		filterForCheckedBoxes.setEnabled(true);
+		filterJobs.setEnabled(true);
 		addPricing.setEnabled(false);
 		updateBidders.setEnabled(true);
 		previousJob.setEnabled(false);
 		nextJob.setEnabled(false);
 
-		changeDisplay(getFirstDisplay(), Display.FIRST);
+		changeDisplay(getUnfilteredDisplay(), Display.UNFILTERED);
 	}
 
 	private void getUpdatedDoc() {
@@ -474,6 +492,7 @@ public class TestApp {
 	private void filterJobSelection() {
 
 		ArrayList<Job> selectedJobList = new ArrayList<Job>(); // create a buffer list of jobs
+		ArrayList<Integer> selectedJobIndexes = new ArrayList<Integer>(); // create a buffer list of jobs
 		boolean hasSelectedCheckBox = false;
 
 		// for every check box, add job to buffer job list
@@ -486,6 +505,7 @@ public class TestApp {
 				hasSelectedCheckBox = true;
 				selectedJobList.add(parseFullDoc.getJobList().get(currentJobCheckBox)); // add job to
 																						// buffer
+				selectedJobIndexes.add(currentJobCheckBox); // save job indexes of filter
 			}
 		}
 
@@ -496,8 +516,24 @@ public class TestApp {
 
 		changeDisplay(getFilteredDisplay(), Display.FILTERED);
 
-		filterForCheckedBoxes.setEnabled(false);
-		addPricing.setEnabled(true);
+		filterJobs.setEnabled(false);
+		addPricing.setEnabled(true); // TODO
+
+		currentJobFilterIndexes = selectedJobIndexes;
+		jobFilterPanel.remove(0); // replaces filter button with removeFilter button
+		jobFilterPanel.add(undoFiltering, 0);
+	}
+
+	private void removeFilter() {
+
+		parseFullDoc.setJobList(parseFullDoc.getFullJobList());
+		changeDisplay(getUnfilteredDisplay(), Display.UNFILTERED);
+
+		filterJobs.setEnabled(true);
+		addPricing.setEnabled(false);
+
+		jobFilterPanel.remove(0); // replaces filter button with removeFilter button
+		jobFilterPanel.add(filterJobs, 0);
 	}
 
 	private void createOutputFiles() {
@@ -675,16 +711,16 @@ public class TestApp {
 	}
 
 	// ===========================================================================
-	// First Display
+	// Unfiltered Display
 	// ===========================================================================
 
-	public JScrollPane getFirstDisplay() {
+	public JScrollPane getUnfilteredDisplay() {
 
-		JScrollPane firstDisplayPane = new JScrollPane();
-		firstDisplayPane.getVerticalScrollBar().setUnitIncrement(16);
+		JScrollPane unfilteredDisplayPane = new JScrollPane();
+		unfilteredDisplayPane.getVerticalScrollBar().setUnitIncrement(16);
 
 		GridBagConstraints displayConstraints = new GridBagConstraints();
-		JPanel firstDisplay = new JPanel(new GridBagLayout());
+		JPanel unfilteredDisplay = new JPanel(new GridBagLayout());
 
 		JLabel label = new JLabel(String.format("(00 selected) %-68s", "")) {
 			{
@@ -694,6 +730,7 @@ public class TestApp {
 		};
 
 		jobCheckBoxes = new ArrayList<JCheckBox>();
+
 		final ItemListener checkAllListener = new ItemListener() {
 
 			public void itemStateChanged(ItemEvent event) {
@@ -735,16 +772,16 @@ public class TestApp {
 
 		int lineItemCount = 0;
 
-		firstDisplay = new JPanel(new GridBagLayout());
-		firstDisplay.setBackground(SCROLLPANECOLOR);
-		// viewportContainer.add(firstDisplay, BorderLayout.NORTH);
+		unfilteredDisplay = new JPanel(new GridBagLayout());
+		unfilteredDisplay.setBackground(SCROLLPANECOLOR);
+		// viewportContainer.add(unfilteredDisplay, BorderLayout.NORTH);
 
-		firstDisplayPane.setViewportView(firstDisplay);
+		unfilteredDisplayPane.setViewportView(unfilteredDisplay);
 
 		// Top Heading =============
 		displayConstraints.gridx = 1;
 		displayConstraints.gridy = 0;
-		firstDisplay.add(new JLabel() {
+		unfilteredDisplay.add(new JLabel() {
 			{
 				setText(String.format("%-20s%-20s%-20s%16s", "CSJ", "County", "Highway", "Total Quantities"));
 				setFont(FONT);
@@ -768,17 +805,17 @@ public class TestApp {
 			});
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = 0;
-			firstDisplay.add(checkAll, displayConstraints);
+			unfilteredDisplay.add(checkAll, displayConstraints);
 			displayConstraints.gridx = 0;
 			displayConstraints.gridy = index + lineItemCount + 1;
 
 			// puts checkbox on display
-			firstDisplay.add(jobCheckBoxes.get(index), displayConstraints);
+			unfilteredDisplay.add(jobCheckBoxes.get(index), displayConstraints);
 
 			// displays job heading
 			displayConstraints.gridx = 1;
 			displayConstraints.gridy = index + lineItemCount + 1;
-			firstDisplay.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
+			unfilteredDisplay.add(new JLabel(String.format("%n%-20s%-20s%-20s     %,11.2f",
 					currentJob.getCsj(),
 					currentJob.getCounty(),
 					currentJob.getHighway(),
@@ -794,7 +831,7 @@ public class TestApp {
 				lineItemCount++;
 				displayConstraints.gridx = 1;
 				displayConstraints.gridy = index + lineItemCount + 1;
-				firstDisplay.add(new JLabel(
+				unfilteredDisplay.add(new JLabel(
 						String.format("%-40s     %,10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(), "")) {
 					{
 						setFont(FONT);
@@ -808,9 +845,16 @@ public class TestApp {
 		JPanel columnHeader = new JPanel();
 		columnHeader.setBackground(SCROLLPANECOLOR);
 		columnHeader.add(label);
-		firstDisplayPane.setColumnHeaderView(columnHeader);
+		unfilteredDisplayPane.setColumnHeaderView(columnHeader);
 
-		return firstDisplayPane;
+		if (currentJobFilterIndexes.size() != 0) { // if there were previous filters used, match the checkboxes to that filter
+
+			for (Integer integer : currentJobFilterIndexes) {
+
+				jobCheckBoxes.get(integer).setSelected(true);
+			}
+		}
+		return unfilteredDisplayPane;
 	}
 
 	private void updateScrollPaneHeader(JLabel label) {
