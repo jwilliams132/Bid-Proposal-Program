@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.stream.Collectors;
 import java.io.File;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContractorStorage {
@@ -34,13 +33,14 @@ public class ContractorStorage {
         return contractorList;
     }
 
-    public void addToContractList(Contractor contractor) { //TODO its not getting rid of duplicates.
+    public void addToContractList(Contractor contractor) {
 
+        for (Contractor knownContractor : contractorList) {
+            
+            if (contractor.getContractorName().equals(knownContractor.getContractorName()))
+                return;
+        }
         contractorList.add(contractor);
-        HashSet<Contractor> uniqueContractors = new HashSet<>(contractorList); // ensures no duplicates
-        System.out.println(contractorList.size() + " " + uniqueContractors.size());
-        contractorList.clear();
-        contractorList.addAll(uniqueContractors); // resets contractorList
         Collections.sort(contractorList);
     }
 
