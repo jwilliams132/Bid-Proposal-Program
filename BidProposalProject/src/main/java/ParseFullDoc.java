@@ -9,6 +9,7 @@ public class ParseFullDoc {
 	
 
 	private FileManager fileManager = new FileManager();
+	private ContractorStorage storage = new ContractorStorage();
 
 	
 	private ArrayList<Job> jobList = new ArrayList<Job>();
@@ -56,7 +57,7 @@ public class ParseFullDoc {
 		ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
 		ArrayList<String> emailListBuffer = new ArrayList<String>();
 
-		ContractorStorage storage = new ContractorStorage();
+		
 
 		// add all job data to fileContentBuffer
 		for (Job job : jobList) {
