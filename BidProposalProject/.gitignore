@@ -25,9 +25,4 @@ BidProposalProject\src\main\resources\Audit.txt
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-BidProposalProject/src/main/resources/Audit.txt
-BidProposalProject/src/main/resources/List_of_counties_in_Texas.csv
-BidProposalProject/src/main/resources/Test Template.xlsm
 *.txt
-*.xlsm
-*.csv
