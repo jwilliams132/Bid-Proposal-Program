@@ -76,6 +76,8 @@ public class ParseFullDoc {
 		ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
 		ArrayList<String> emailListBuffer = new ArrayList<String>();
 
+		ContractorStorage storage = new ContractorStorage();
+
 		// add all job data to fileContentBuffer
 		for (Job job : jobList) {
 
@@ -85,10 +87,13 @@ public class ParseFullDoc {
 			userFriendlyOutputBuffer.add("-".repeat(100));
 
 			emailListBuffer.addAll(job.formatEmailList());
+			storage.addToContractList(job.getContractorList());
 		}
 		fileManager.saveFile(formattedOutput, formattedOutputBuffer);
 		fileManager.saveFile(userFriendlyOutput, userFriendlyOutputBuffer);
 		fileManager.saveFile(emailList, emailListBuffer);
+
+		storage.formatContractorList();
 	}
 
 	/**
