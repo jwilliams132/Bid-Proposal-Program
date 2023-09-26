@@ -8,7 +8,7 @@ public class ContractorStorage {
 
     private FileManager fileManager = new FileManager();
     private ArrayList<Contractor> contractorList = new ArrayList<Contractor>();
-    File contractorsFile;
+    private File contractorsFile;
     private String contractorFilePath = "BidProposalProject\\src\\main\\resources\\Contractor List.csv";
 
     public ContractorStorage() {
@@ -58,5 +58,17 @@ public class ContractorStorage {
                 .collect(Collectors.toList());
 
         fileManager.saveFile(contractorsFile, contentToSave);
+    }
+
+    public String getEmail(String contractorName) {
+
+        for (Contractor knownContractor : contractorList) {
+            
+            if (contractorName.equals(knownContractor.getContractorName())) {
+                
+                return knownContractor.getContractorEmail();
+            }
+        }
+        return "===fuck======No Email Found=============";
     }
 }
