@@ -1,7 +1,7 @@
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class Contractor {
+public class Contractor  implements Comparable<Contractor> {
 
 	private String contractorName;
 	private String contractorPhoneNumber;
@@ -108,6 +108,12 @@ public class Contractor {
 	public void setContractorEmail(String contractorEmail) {
 		
 		this.contractorEmail = contractorEmail;
+	}
+
+	@Override
+	public int compareTo(Contractor other) {
+		
+		return this.contractorName.compareTo(other.contractorName);
 	}
 
 }
