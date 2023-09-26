@@ -42,7 +42,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileFilter;
 
 import java.io.File;
-
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -452,6 +453,12 @@ public class TestApp {
 			return;
 		}
 
+		// Create a Path object from the file path string
+        Path path = Paths.get(inputFile.getAbsolutePath());
+        
+        // Get the directory path as a string
+        lettingMonthDirectory = path.getParent().toString();
+
 		openFilePathLabel.setText("File Path:  " + inputFile);
 
 		parseFullDoc = new ParseFullDoc();
@@ -461,10 +468,14 @@ public class TestApp {
 
 		chooseSaveFolder.setEnabled(true);
 		filterJobs.setEnabled(true);
+		undoFiltering.setEnabled(true);
 		addPricing.setEnabled(false);
 		updateBidders.setEnabled(true);
 		previousJob.setEnabled(false);
 		nextJob.setEnabled(false);
+
+		jobFilterPanel.remove(0); // replaces removefilter button with Filter button
+		jobFilterPanel.add(filterJobs, 0);
 
 		changeDisplay(getUnfilteredDisplay(), Display.UNFILTERED);
 	}
@@ -532,7 +543,7 @@ public class TestApp {
 		filterJobs.setEnabled(true);
 		addPricing.setEnabled(false);
 
-		jobFilterPanel.remove(0); // replaces filter button with removeFilter button
+		jobFilterPanel.remove(0); // replaces removefilter button with Filter button
 		jobFilterPanel.add(filterJobs, 0);
 	}
 
@@ -548,7 +559,7 @@ public class TestApp {
 			default:
 		}
 
-		lettingMonthDirectory = fileManager.chooseDirectory(null);
+		lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
 		// Get the selected file
 		File formattedOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Program Output.txt", null,
 				FileManager.fileChooserOptions.SAVE, null);
@@ -578,6 +589,7 @@ public class TestApp {
 		resetLegendAndPricingPanel();
 		enableIterationButtons();
 		addPricing.setEnabled(false);
+		undoFiltering.setEnabled(false);
 	}
 
 	private void showPreviousJob() {
