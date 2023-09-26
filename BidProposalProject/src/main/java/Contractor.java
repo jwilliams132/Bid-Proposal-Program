@@ -16,6 +16,7 @@ public class Contractor  implements Comparable<Contractor> {
 	}
 	
 	public Contractor(String contractorName, String contractorPhoneNumber, String contractorEmail) {
+
 		this.contractorName = contractorName;
 		this.contractorPhoneNumber = contractorPhoneNumber;
 		this.contractorEmail = contractorEmail;
@@ -44,7 +45,8 @@ public class Contractor  implements Comparable<Contractor> {
 			email = emailMatcher.group(); // assign found email to the buffer
 			return email;
 		}
-		return "=============No Email Found============="; // returns a message if no email is found
+		ContractorStorage storage = new ContractorStorage();
+		return storage.getEmail(contractorName); // returns a message if no email is found
 	}
 
 	// uses regex to find phone number from infoLine
