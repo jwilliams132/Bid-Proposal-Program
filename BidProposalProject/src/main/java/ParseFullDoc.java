@@ -6,12 +6,9 @@ import java.util.regex.Pattern;
 
 public class ParseFullDoc {
 
-	
-
 	private FileManager fileManager = new FileManager();
 	private ContractorStorage storage = new ContractorStorage();
 
-	
 	private ArrayList<Job> jobList = new ArrayList<Job>();
 	private ArrayList<Job> fullJobList = new ArrayList<Job>();
 	private ArrayList<String> contentsByLine;
@@ -38,7 +35,7 @@ public class ParseFullDoc {
 		contentsByLine = fileManager.readFile(inputFile);
 
 		ArrayList<ArrayList<String>> arrayOfJobStrings = separateJobs();
-		
+
 		for (ArrayList<String> job : arrayOfJobStrings) {
 
 			jobList.add(extractJobData(job));
@@ -56,8 +53,6 @@ public class ParseFullDoc {
 		ArrayList<String> formattedOutputBuffer = new ArrayList<String>();
 		ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
 		ArrayList<String> emailListBuffer = new ArrayList<String>();
-
-		
 
 		// add all job data to fileContentBuffer
 		for (Job job : jobList) {
@@ -292,6 +287,10 @@ public class ParseFullDoc {
 			name = job.get(ListIndexString);
 			phone = job.get(ListIndexString + PHONE_OFFSET);
 			email = job.get(ListIndexString + EMAIL_OFFSET);
+			System.out.println(email);
+			email = email.equals("=============No Email Found=============")
+					? storage.getEmail(name)
+					: email;
 			contractorList.add(new Contractor(name, phone, email));
 		}
 		return new Job(county, highway, csj, workingDays, lineItems, upToMobs, totalMobs, additionalMobs,
