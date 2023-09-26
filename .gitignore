@@ -24,5 +24,6 @@ BidProposalProject\src\main\resources\Audit.txt
 hs_err_pid*
 replay_pid*
 BidProposalProject/src/main/resources/Audit.txt
-BidProposalProject/src/main/resources/Audit.txt
 *.txt
+*.xlsm
+*.csv
