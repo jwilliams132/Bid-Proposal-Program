@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Formatter;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
@@ -107,7 +108,7 @@ public class FileManager {
 		return fileContents;
 	}
 
-	public void saveFile(File file, ArrayList<String> content) {
+	public void saveFile(File file, List<String> content) {
 
 		// Create a Formatter object to write to the output file.
 		// If the file cannot be created, print an error message.
