@@ -24,6 +24,8 @@ BidProposalProject\src\main\resources\Audit.txt
 hs_err_pid*
 replay_pid*
 BidProposalProject/src/main/resources/Audit.txt
+BidProposalProject/src/main/resources/List_of_counties_in_Texas.csv
+BidProposalProject/src/main/resources/Test Template.xlsm
 *.txt
 *.xlsm
 *.csv
