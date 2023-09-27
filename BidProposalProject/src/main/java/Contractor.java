@@ -21,6 +21,11 @@ public class Contractor implements Comparable<Contractor> {
 		this.contractorEmail = contractorEmail;
 	}
 
+	public Contractor(String contractorName, String contractorPhoneNumber, String contractorEmail, String ContractorEstimateNo){
+		
+		// TODO
+	}
+
 	// ====================================================================================================
 	// Parsing Data
 	// ====================================================================================================
@@ -119,6 +124,11 @@ public class Contractor implements Comparable<Contractor> {
 	public void setContractorEmail(String contractorEmail) {
 
 		this.contractorEmail = contractorEmail;
+	}
+
+	public String getContractorEstimateNo() {
+
+		return null;
 	}
 
 	@Override
