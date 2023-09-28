@@ -104,21 +104,28 @@ public class V2Format extends Format {
         for (int lineItem = 0; lineItem < LINE_ITEM_COUNT; lineItem++) {
 
             lineItems.add(new LineItem(
-                    tokens[START_OF_LINE_ITEMS + LINE_ITEM_DESCRIPTION_OFFSET + lineItem * LINE_ITEM_COUNT],
+                    tokens[START_OF_LINE_ITEMS + LINE_ITEM_DESCRIPTION_OFFSET
+                            + lineItem * LINE_ITEM_COUNT],
                     Float.parseFloat(
-                            tokens[START_OF_LINE_ITEMS + LINE_ITEM_QUANTITY_OFFSET + lineItem * LINE_ITEM_COUNT]),
+                            tokens[START_OF_LINE_ITEMS + LINE_ITEM_QUANTITY_OFFSET
+                                    + lineItem * LINE_ITEM_COUNT]),
                     Float.parseFloat(
-                            tokens[START_OF_LINE_ITEMS + LINE_ITEM_PRICE_OFFSET + lineItem * LINE_ITEM_COUNT])));
+                            tokens[START_OF_LINE_ITEMS + LINE_ITEM_PRICE_OFFSET
+                                    + lineItem * LINE_ITEM_COUNT])));
         }
 
         ArrayList<Contractor> contractors = new ArrayList<>();
         for (int contractor = 0; contractor < CONTRACTOR_COUNT; contractor++) {
 
             contractors.add(new Contractor(
-                    tokens[START_OF_CONTRACTORS + CONTRACTOR_NAME_OFFSET + contractor * CONTRACTOR_COUNT],
-                    tokens[START_OF_CONTRACTORS + CONTRACTOR_PHONE_OFFSET + contractor * CONTRACTOR_COUNT],
-                    tokens[START_OF_CONTRACTORS + CONTRACTOR_EMAIL_OFFSET + contractor * CONTRACTOR_COUNT],
-                    tokens[START_OF_CONTRACTORS + ESTIMATE_NO_OF_JOB_OFFSET + contractor * CONTRACTOR_COUNT]));
+                    tokens[START_OF_CONTRACTORS + CONTRACTOR_NAME_OFFSET
+                            + contractor * CONTRACTOR_COUNT],
+                    tokens[START_OF_CONTRACTORS + CONTRACTOR_PHONE_OFFSET
+                            + contractor * CONTRACTOR_COUNT],
+                    tokens[START_OF_CONTRACTORS + CONTRACTOR_EMAIL_OFFSET
+                            + contractor * CONTRACTOR_COUNT],
+                    tokens[START_OF_CONTRACTORS + ESTIMATE_NO_OF_JOB_OFFSET
+                            + contractor * CONTRACTOR_COUNT]));
         }
 
         return new Job(
