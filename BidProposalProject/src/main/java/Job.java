@@ -116,12 +116,14 @@ public class Job {
 			System.out.printf("%-40s%-45s%40s%n", contractor.getContractorName(), contractor.getContractorPhoneNumber(),
 					contractor.getContractorEmail());
 		}
+		System.out.println("=".repeat(125));
+		System.out.println("=".repeat(125));
 	}
 
 	public String formatJobInfo() {
 
 		String buffer = "";
-//		buffer = String.format("|%s|%s|%s", getCounty(), getHighway(), getCsj());
+		// buffer = String.format("|%s|%s|%s", getCounty(), getHighway(), getCsj());
 		buffer = String.format("|%s|%s|%s|%d|%d|%4f|%4f", getCounty(), getHighway(), getCsj(), getWorkingDays(),
 				getUpTo_Mobs(), getTotalMobs(), getAdditionalMobs());
 		if (getLineItems() != null) {
