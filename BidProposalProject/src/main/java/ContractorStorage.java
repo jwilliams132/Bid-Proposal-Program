@@ -69,6 +69,6 @@ public class ContractorStorage {
                 return knownContractor.getContractorEmail();
             }
         }
-        return "===fuck======No Email Found=============";
+        return "=============No Email Found=============";
     }
 }
