@@ -47,6 +47,18 @@ public class Job {
 		removeBlacklistedContractors();
 	}
 
+	public Job(
+			String county, //
+			String highway, //
+			String csj, //
+			int workingDays, //
+			int upTo_Mobs, //
+			float totalMobs, //
+			float additionalMobs, //
+			ArrayList<LineItem> lineItems, //
+			ArrayList<Contractor> contractorList) {
+	}
+
 	// ====================================================================================================
 	// Blacklisting
 	// ====================================================================================================
