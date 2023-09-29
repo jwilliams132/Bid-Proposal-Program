@@ -10,6 +10,7 @@ public class V2Format extends Format {
 	final int UP_TO_MOBS_INDEX = 4;
 	final int TOTAL_MOBS_INDEX = 5;
 	final int ADDITIONAL_MOBS_INDEX = 6;
+    
 	final int LINE_ITEM_COUNT_INDEX = 7;
 	final int CONTRACTOR_COUNT_INDEX = 8;
 	final int START_OF_LINE_ITEMS = 9;
@@ -32,10 +33,22 @@ public class V2Format extends Format {
 	public V2Format(Test test) {
 
 		FileManager fileManager = new FileManager();
-		File file = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
-		ArrayList<String> fileContents = fileManager.readFile(file);
-		ArrayList<Job> jobs = jobsFromFormat(fileContents);
-		jobs.forEach(job -> job.printJobInfo());
+        File file = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
+        ArrayList<String> fileContents = fileManager.readFile(file);
+
+        ArrayList<Job> jobs = jobsFromFormat(fileContents);
+        ArrayList<String> jobStrings = jobsToFormat(jobs);
+
+        for (int i = 0; i < fileContents.size(); i++) {
+
+            if (fileContents.get(i).equals(jobStrings.get(i))) {
+
+                System.out.println("job: " + i + " :good");
+            } else {
+                System.out.println(fileContents.get(i));
+                System.out.println(jobStrings.get(i));
+            }
+        }
 	}
 
 	@Override
@@ -56,6 +69,7 @@ public class V2Format extends Format {
 
 		final int LINE_ITEM_COUNT = lineItems.size();
 		final int CONTRACTOR_COUNT = contractors.size();
+
 		final int START_OF_CONTRACTORS = START_OF_LINE_ITEMS + LINE_ITEM_COUNT * LENGTH_OF_LINE_ITEM;
 
 		result.add(LINE_ITEM_COUNT_INDEX, String.valueOf(LINE_ITEM_COUNT));
@@ -63,23 +77,23 @@ public class V2Format extends Format {
 
 		for (int lineItem = 0; lineItem < LINE_ITEM_COUNT; lineItem++) {
 
-			result.add(START_OF_LINE_ITEMS + LINE_ITEM_DESCRIPTION_OFFSET + lineItem * LINE_ITEM_COUNT,
+			result.add(START_OF_LINE_ITEMS + LINE_ITEM_DESCRIPTION_OFFSET + lineItem * LENGTH_OF_LINE_ITEM,
 					lineItems.get(lineItem).getDescription());
-			result.add(START_OF_LINE_ITEMS + LINE_ITEM_QUANTITY_OFFSET + lineItem * LINE_ITEM_COUNT,
+			result.add(START_OF_LINE_ITEMS + LINE_ITEM_QUANTITY_OFFSET + lineItem * LENGTH_OF_LINE_ITEM,
 					String.valueOf(lineItems.get(lineItem).getQuantity()));
-			result.add(START_OF_LINE_ITEMS + LINE_ITEM_PRICE_OFFSET + lineItem * LINE_ITEM_COUNT,
+			result.add(START_OF_LINE_ITEMS + LINE_ITEM_PRICE_OFFSET + lineItem * LENGTH_OF_LINE_ITEM,
 					String.valueOf(lineItems.get(lineItem).getPrice()));
 		}
 
 		for (int contractor = 0; contractor < CONTRACTOR_COUNT; contractor++) {
 
-			result.add(START_OF_CONTRACTORS + CONTRACTOR_NAME_OFFSET + contractor * CONTRACTOR_COUNT,
+			result.add(START_OF_CONTRACTORS + CONTRACTOR_NAME_OFFSET + contractor * LENGTH_OF_CONTRACTORS,
 					contractors.get(contractor).getContractorName());
-			result.add(START_OF_CONTRACTORS + CONTRACTOR_PHONE_OFFSET + contractor * CONTRACTOR_COUNT,
+			result.add(START_OF_CONTRACTORS + CONTRACTOR_PHONE_OFFSET + contractor * LENGTH_OF_CONTRACTORS,
 					contractors.get(contractor).getContractorPhoneNumber());
-			result.add(START_OF_CONTRACTORS + CONTRACTOR_EMAIL_OFFSET + contractor * CONTRACTOR_COUNT,
+			result.add(START_OF_CONTRACTORS + CONTRACTOR_EMAIL_OFFSET + contractor * LENGTH_OF_CONTRACTORS,
 					contractors.get(contractor).getContractorEmail());
-			result.add(START_OF_CONTRACTORS + ESTIMATE_NO_OF_JOB_OFFSET + contractor * CONTRACTOR_COUNT,
+			result.add(START_OF_CONTRACTORS + ESTIMATE_NO_OF_JOB_OFFSET + contractor * LENGTH_OF_CONTRACTORS,
 					contractors.get(contractor).getContractorEstimateNo());
 		}
 
@@ -88,6 +102,7 @@ public class V2Format extends Format {
 
 			resultString.append(infoLine).append('|');
 		}
+        resultString.deleteCharAt(resultString.length() - 1);
 		return resultString.toString();
 	}
 
@@ -105,13 +120,13 @@ public class V2Format extends Format {
 
 			lineItems.add(new LineItem(
 					tokens[START_OF_LINE_ITEMS + LINE_ITEM_DESCRIPTION_OFFSET
-							+ lineItem * LINE_ITEM_COUNT],
+							+ lineItem * LENGTH_OF_LINE_ITEM],
 					Float.parseFloat(
 							tokens[START_OF_LINE_ITEMS + LINE_ITEM_QUANTITY_OFFSET
-									+ lineItem * LINE_ITEM_COUNT]),
+									+ lineItem * LENGTH_OF_LINE_ITEM]),
 					Float.parseFloat(
 							tokens[START_OF_LINE_ITEMS + LINE_ITEM_PRICE_OFFSET
-									+ lineItem * LINE_ITEM_COUNT])));
+									+ lineItem * LENGTH_OF_LINE_ITEM])));
 		}
 
 		ArrayList<Contractor> contractors = new ArrayList<>();
@@ -119,13 +134,13 @@ public class V2Format extends Format {
 
 			contractors.add(new Contractor(
 					tokens[START_OF_CONTRACTORS + CONTRACTOR_NAME_OFFSET
-							+ contractor * CONTRACTOR_COUNT],
+							+ contractor * LENGTH_OF_CONTRACTORS],
 					tokens[START_OF_CONTRACTORS + CONTRACTOR_PHONE_OFFSET
-							+ contractor * CONTRACTOR_COUNT],
+							+ contractor * LENGTH_OF_CONTRACTORS],
 					tokens[START_OF_CONTRACTORS + CONTRACTOR_EMAIL_OFFSET
-							+ contractor * CONTRACTOR_COUNT],
+							+ contractor * LENGTH_OF_CONTRACTORS],
 					tokens[START_OF_CONTRACTORS + ESTIMATE_NO_OF_JOB_OFFSET
-							+ contractor * CONTRACTOR_COUNT]));
+							+ contractor * LENGTH_OF_CONTRACTORS]));
 		}
 
 		return new Job(
