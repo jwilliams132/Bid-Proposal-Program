@@ -8,12 +8,14 @@ public abstract class Format implements FormatInterface {
 
     @Override
     public Job jobFromFormat(String jobLineString) {
+        
         throw new UnsupportedOperationException("Subclasses must override jobFromFormat method.");
     
     }
 
     @Override
     public String jobToFormat(Job job) {
+
         throw new UnsupportedOperationException("Subclasses must override jobToFormat method.");
     }
 
