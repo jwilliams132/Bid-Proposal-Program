@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 public class CombinedFormat extends Format {
 
+    public static final String fileHeader = "COUNTY";
+
     public CombinedFormat() {
 
     }

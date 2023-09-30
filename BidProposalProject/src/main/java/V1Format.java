@@ -4,6 +4,8 @@ import java.util.List;
 
 public class V1Format extends Format {
 
+    public static final String fileHeader = "|";
+
     public V1Format() {
 
     }

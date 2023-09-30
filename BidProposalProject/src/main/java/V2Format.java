@@ -27,6 +27,8 @@ public class V2Format extends Format {
 	final int CONTRACTOR_EMAIL_OFFSET = 2;
 	final int ESTIMATE_NO_OF_JOB_OFFSET = 3;
 
+    public static final String fileHeader = "----V2 FORMAT----";
+
 	public V2Format() {
 
 	}
