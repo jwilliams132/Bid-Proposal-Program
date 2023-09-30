@@ -208,7 +208,7 @@ public class TestApp {
         dataManipulationPanel.add(jobFilterPanel, BorderLayout.WEST);
         dataManipulationPanel.add(jobSelectionPanel, BorderLayout.CENTER);
 
-        jobFilterPanel.add(filterJobs); // TODO
+        jobFilterPanel.add(filterJobs);
         jobFilterPanel.add(addPricing);
 
         jobSelectionPanel.add(previousJob);
@@ -474,7 +474,7 @@ public class TestApp {
         previousJob.setEnabled(false);
         nextJob.setEnabled(false);
 
-        jobFilterPanel.remove(0); // replaces removefilter button with Filter button
+        jobFilterPanel.remove(0); // replaces removeFilter button with Filter button
         jobFilterPanel.add(filterJobs, 0);
 
         changeDisplay(getUnfilteredDisplay(), Display.UNFILTERED);
@@ -528,7 +528,7 @@ public class TestApp {
         changeDisplay(getFilteredDisplay(), Display.FILTERED);
 
         filterJobs.setEnabled(false);
-        addPricing.setEnabled(true); // TODO
+        addPricing.setEnabled(true);
 
         currentJobFilterIndexes = selectedJobIndexes;
         jobFilterPanel.remove(0); // replaces filter button with removeFilter button
@@ -543,7 +543,7 @@ public class TestApp {
         filterJobs.setEnabled(true);
         addPricing.setEnabled(false);
 
-        jobFilterPanel.remove(0); // replaces removefilter button with Filter button
+        jobFilterPanel.remove(0); // replaces removeFilter button with Filter button
         jobFilterPanel.add(filterJobs, 0);
     }
 
