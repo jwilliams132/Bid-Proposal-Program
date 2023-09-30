@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public abstract class Format implements FormatInterface {
@@ -20,7 +21,7 @@ public abstract class Format implements FormatInterface {
     }
 
     @Override
-    public ArrayList<Job> jobsFromFormat(ArrayList<String> jobLineStrings) {
+    public List<Job> jobsFromFormat(List<String> jobLineStrings) {
 
         ArrayList<Job> jobs = new ArrayList<Job>();
         for (String jobLineString : jobLineStrings) {
@@ -30,7 +31,7 @@ public abstract class Format implements FormatInterface {
         return jobs;
     }
 
-    public ArrayList<String> jobsToFormat(ArrayList<Job> jobs) {
+    public List<String> jobsToFormat(List<Job> jobs) {
 
         ArrayList<String> jobLineStrings = new ArrayList<String>();
         for (Job job : jobs) {

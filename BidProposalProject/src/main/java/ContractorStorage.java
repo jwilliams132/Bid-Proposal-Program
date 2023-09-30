@@ -7,7 +7,7 @@ import java.util.List;
 public class ContractorStorage {
 
     private FileManager fileManager = new FileManager();
-    private ArrayList<Contractor> contractorList = new ArrayList<Contractor>();
+    private List<Contractor> contractorList = new ArrayList<Contractor>();
     private File contractorsFile;
     private String contractorFilePath = "BidProposalProject\\src\\main\\resources\\Contractor List.csv";
 
@@ -28,7 +28,7 @@ public class ContractorStorage {
         }
     }
 
-    public ArrayList<Contractor> getContractorList() {
+    public List<Contractor> getContractorList() {
 
         return contractorList;
     }

@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class V2Format extends Format {
 
@@ -36,8 +37,8 @@ public class V2Format extends Format {
         File file = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
         ArrayList<String> fileContents = fileManager.readFile(file);
 
-        ArrayList<Job> jobs = jobsFromFormat(fileContents);
-        ArrayList<String> jobStrings = jobsToFormat(jobs);
+        List<Job> jobs = jobsFromFormat(fileContents);
+        List<String> jobStrings = jobsToFormat(jobs);
 
         for (int i = 0; i < fileContents.size(); i++) {
 
@@ -64,8 +65,8 @@ public class V2Format extends Format {
 		result.add(TOTAL_MOBS_INDEX, String.valueOf(job.getTotalMobs()));
 		result.add(ADDITIONAL_MOBS_INDEX, String.valueOf(job.getAdditionalMobs()));
 
-		ArrayList<LineItem> lineItems = job.getLineItems();
-		ArrayList<Contractor> contractors = job.getContractorList();
+		List<LineItem> lineItems = job.getLineItems();
+		List<Contractor> contractors = job.getContractorList();
 
 		final int LINE_ITEM_COUNT = lineItems.size();
 		final int CONTRACTOR_COUNT = contractors.size();
@@ -115,7 +116,7 @@ public class V2Format extends Format {
 		final int CONTRACTOR_COUNT = Integer.parseInt(tokens[CONTRACTOR_COUNT_INDEX]);
 		final int START_OF_CONTRACTORS = START_OF_LINE_ITEMS + LINE_ITEM_COUNT * LENGTH_OF_LINE_ITEM;
 
-		ArrayList<LineItem> lineItems = new ArrayList<>();
+		List<LineItem> lineItems = new ArrayList<>();
 		for (int lineItem = 0; lineItem < LINE_ITEM_COUNT; lineItem++) {
 
 			lineItems.add(new LineItem(
@@ -129,7 +130,7 @@ public class V2Format extends Format {
 									+ lineItem * LENGTH_OF_LINE_ITEM])));
 		}
 
-		ArrayList<Contractor> contractors = new ArrayList<>();
+		List<Contractor> contractors = new ArrayList<>();
 		for (int contractor = 0; contractor < CONTRACTOR_COUNT; contractor++) {
 
 			contractors.add(new Contractor(

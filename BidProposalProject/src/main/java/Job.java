@@ -1,16 +1,17 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public class Job {
 
-    private ArrayList<Contractor> contractorList = new ArrayList<Contractor>();
-    private ArrayList<LineItem> lineItems = new ArrayList<LineItem>();
+    private List<Contractor> contractorList = new ArrayList<Contractor>();
+    private List<LineItem> lineItems = new ArrayList<LineItem>();
     private String county, highway, csj;
     private int workingDays = 0, upTo_Mobs = 1;
     private float totalMobs = 0, additionalMobs = 0;
 
     // used for no pricing added
-    public Job(String county, String highway, String csj, int workingDays, ArrayList<LineItem> lineItems,
-            ArrayList<Contractor> contractorList) {
+    public Job(String county, String highway, String csj, int workingDays, List<LineItem> lineItems,
+            List<Contractor> contractorList) {
 
         setCounty(county);
         setHighway(highway);
@@ -26,8 +27,8 @@ public class Job {
         removeBlacklistedContractors();
     }
 
-    public Job(String county, String highway, String csj, int workingDays, ArrayList<LineItem> lineItems, int upTo_Mobs,
-            float totalMobs, float additionalMobs, ArrayList<Contractor> contractorList) {
+    public Job(String county, String highway, String csj, int workingDays, List<LineItem> lineItems, int upTo_Mobs,
+            float totalMobs, float additionalMobs, List<Contractor> contractorList) {
 
         setCounty(county);
         setHighway(highway);
@@ -48,7 +49,7 @@ public class Job {
     }
 
     public Job(String county, String highway, String csj, int workingDays, int upTo_Mobs, float totalMobs,
-            float additionalMobs, ArrayList<LineItem> lineItems, ArrayList<Contractor> contractorList) {
+            float additionalMobs, List<LineItem> lineItems, List<Contractor> contractorList) {
                 
         setCounty(county);
         setHighway(highway);
@@ -69,8 +70,8 @@ public class Job {
     // Star, Texas Materials
     public void removeBlacklistedContractors() {
 
-        ArrayList<String> blacklistedContractorNames = new ArrayList<String>();
-        ArrayList<Contractor> blacklistedContractors = new ArrayList<Contractor>();
+        List<String> blacklistedContractorNames = new ArrayList<String>();
+        List<Contractor> blacklistedContractors = new ArrayList<Contractor>();
 
         // populate the blacklist ArrayList with names
         blacklistedContractorNames.add("Angel Brothers");
@@ -159,9 +160,9 @@ public class Job {
         return buffer;
     }
 
-    public ArrayList<String> formatUserFriendlyJobInfo() {
+    public List<String> formatUserFriendlyJobInfo() {
 
-        ArrayList<String> job = new ArrayList<String>();
+        List<String> job = new ArrayList<String>();
 
         job.add("County:		      " + getCounty());
         job.add("Highway:	      " + getHighway());
@@ -179,9 +180,9 @@ public class Job {
         return job;
     }
 
-    public ArrayList<String> formatEmailList() {
+    public List<String> formatEmailList() {
 
-        ArrayList<String> emails = new ArrayList<String>();
+        List<String> emails = new ArrayList<String>();
 
         emails.add(getCounty() + "   " + getCsj());
         emails.add(String.format("Bid Proposal for %s - %s (%s)", getCounty(), getHighway(), getCsj()));
@@ -197,23 +198,33 @@ public class Job {
         return emails;
     }
 
+    public List<String> formatJobStorage() {
+
+        List<String> estimateNumberContentLine = new ArrayList<String>();
+        for (Contractor contractor : contractorList) {
+            
+            estimateNumberContentLine.add(String.format("%-17s%-40s%-45s%40s%n", contractor.getContractorEstimateNo(), contractor.getContractorName(), contractor.getContractorPhoneNumber(),
+                    contractor.getContractorEmail()));
+        }
+        return estimateNumberContentLine;
+    }
     // ====================================================================================================
     // Getter Setters
     // ====================================================================================================
 
-    public ArrayList<Contractor> getContractorList() {
+    public List<Contractor> getContractorList() {
         return contractorList;
     }
 
-    public void setContractorList(ArrayList<Contractor> contractorList) {
+    public void setContractorList(List<Contractor> contractorList) {
         this.contractorList = contractorList;
     }
 
-    public ArrayList<LineItem> getLineItems() {
+    public List<LineItem> getLineItems() {
         return lineItems;
     }
 
-    public void setLineItems(ArrayList<LineItem> lineItems) {
+    public void setLineItems(List<LineItem> lineItems) {
         this.lineItems = lineItems;
     }
 

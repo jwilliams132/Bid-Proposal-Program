@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public interface FormatInterface {
 
@@ -6,7 +6,7 @@ public interface FormatInterface {
 
     Job jobFromFormat(String jobLineString);
 
-    ArrayList<String> jobsToFormat(ArrayList<Job> jobs);
+    List<String> jobsToFormat(List<Job> jobs);
 
-    ArrayList<Job> jobsFromFormat(ArrayList<String> jobLineStrings);
+    List<Job> jobsFromFormat(List<String> jobLineStrings);
 }

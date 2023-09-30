@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class V1Format extends Format {
 
@@ -13,8 +14,8 @@ public class V1Format extends Format {
         File file = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
         ArrayList<String> fileContents = fileManager.readFile(file);
 
-        ArrayList<Job> jobs = jobsFromFormat(fileContents);
-        ArrayList<String> jobStrings = jobsToFormat(jobs);
+        List<Job> jobs = jobsFromFormat(fileContents);
+        List<String> jobStrings = jobsToFormat(jobs);
 
         for (int i = 0; i < fileContents.size(); i++) {
 
@@ -64,8 +65,8 @@ public class V1Format extends Format {
         result.add(TOTAL_MOBS_INDEX, String.format("%.6f", job.getTotalMobs()));
         result.add(ADDITIONAL_MOBS_INDEX, String.format("%.6f", job.getAdditionalMobs()));
 
-        ArrayList<LineItem> lineItems = job.getLineItems();
-        ArrayList<Contractor> contractors = job.getContractorList();
+        List<LineItem> lineItems = job.getLineItems();
+        List<Contractor> contractors = job.getContractorList();
 
         final int LINE_ITEM_COUNT = lineItems.size();
         final int CONTRACTOR_COUNT = contractors.size();

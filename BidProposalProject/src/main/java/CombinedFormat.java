@@ -1,6 +1,7 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,8 +15,8 @@ public class CombinedFormat extends Format {
 
         FileManager fileManager = new FileManager();
         File file = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
-        ArrayList<String> fileContents = fileManager.readFile(file);
-        ArrayList<Job> jobs = jobsFromFormat(fileContents);
+        List<String> fileContents = fileManager.readFile(file);
+        List<Job> jobs = jobsFromFormat(fileContents);
         jobs.forEach(job -> job.printJobInfo());
     }
 
@@ -29,10 +30,10 @@ public class CombinedFormat extends Format {
     @Override
     public Job jobFromFormat(String jobLineString) {
 
-        ArrayList<String> job = new ArrayList<String>(Arrays.asList(jobLineString.split("\\|")));
+        List<String> job = new ArrayList<String>(Arrays.asList(jobLineString.split("\\|")));
 
-        ArrayList<Contractor> contractorList = new ArrayList<Contractor>();
-        ArrayList<LineItem> lineItems = new ArrayList<LineItem>();
+        List<Contractor> contractorList = new ArrayList<Contractor>();
+        List<LineItem> lineItems = new ArrayList<LineItem>();
         String county = "", highway = "", csj = "";
         int workingDays = 0;
         boolean lineItemStart = false, contractorStart = false;
@@ -122,12 +123,12 @@ public class CombinedFormat extends Format {
     }
 
     @Override
-    public ArrayList<Job> jobsFromFormat(ArrayList<String> contentsByLine) {
+    public List<Job> jobsFromFormat(List<String> contentsByLine) {
 
         final String END_OF_JOB_DELIMITER = "=".repeat(80);
 
         StringBuilder jobLineString = new StringBuilder();
-        ArrayList<Job> jobs = new ArrayList<Job>();
+        List<Job> jobs = new ArrayList<Job>();
 
         for (String nextLine : contentsByLine) {
 
