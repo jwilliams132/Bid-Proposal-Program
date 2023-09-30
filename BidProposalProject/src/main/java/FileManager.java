@@ -123,7 +123,7 @@ public class FileManager {
 
 		// Write each element of the ArrayList to the file, followed by a newline.
 		for (String line : content) {
-
+            
 			formatter.format("%s%n", line);
 		}
 
