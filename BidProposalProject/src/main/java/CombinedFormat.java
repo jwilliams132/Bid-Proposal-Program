@@ -5,14 +5,30 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * A concrete implementation of the Format interface for handling data in the
+ * Combined Format.
+ * This format is specific to data from the Whitley Siddons site.
+ */
 public class CombinedFormat extends Format {
 
+    /**
+     * The file header specific to the Combined Format.
+     */
     public static final String fileHeader = "COUNTY";
 
+    /**
+     * Default constructor for CombinedFormat.
+     */
     public CombinedFormat() {
 
     }
 
+    /**
+     * Constructor for CombinedFormat that takes a Test enum.
+     *
+     * @param test A Test enum value (not used in this constructor).
+     */
     public CombinedFormat(Test test) {
 
         FileManager fileManager = new FileManager();
@@ -22,6 +38,21 @@ public class CombinedFormat extends Format {
         jobs.forEach(job -> job.printJobInfo());
     }
 
+    /**
+     * Converts a Job object into a formatted job data string in the CombinedFormat.
+     *
+     * <p>
+     * This method is specific to the CombinedFormat and should not be overridden by
+     * subclasses. It converts a Job object into a formatted string that adheres to
+     * the
+     * CombinedFormat structure.
+     *
+     * @param job A Job object to be converted into a CombinedFormat formatted
+     *            string.
+     * @return A formatted string representing the job data in CombinedFormat.
+     * @throws UnsupportedOperationException if an attempt is made to override this
+     *                                       method.
+     */
     @Override
     public String jobToFormat(Job job) {
 
@@ -29,6 +60,19 @@ public class CombinedFormat extends Format {
                 "Files using CombinedFormat are from the Whitley Siddons site and will only ever have info taken from this format, never to.");
     }
 
+    /**
+     * Parses a formatted job data string in the CombinedFormat and creates a Job
+     * object.
+     *
+     * <p>
+     * This method is specific to the CombinedFormat and is used to parse a job data
+     * string
+     * in CombinedFormat format and construct a Job object from it.
+     *
+     * @param jobLineString A formatted string representing job data in
+     *                      CombinedFormat.
+     * @return A Job object parsed from the input jobLineString.
+     */
     @Override
     public Job jobFromFormat(String jobLineString) {
 
@@ -124,6 +168,20 @@ public class CombinedFormat extends Format {
         return new Job(county, highway, csj, workingDays, lineItems, contractorList);
     }
 
+    /**
+     * Parses a list of formatted job data strings in the CombinedFormat and creates
+     * a list of Job objects.
+     *
+     * <p>
+     * This method is specific to the CombinedFormat and is used to parse a list of
+     * job data strings
+     * in CombinedFormat format and construct a list of Job objects from them.
+     *
+     * @param contentsByLine A list of formatted strings representing job data in
+     *                       CombinedFormat, where each
+     *                       string represents a single job entry.
+     * @return A list of Job objects parsed from the input job data strings.
+     */
     @Override
     public List<Job> jobsFromFormat(List<String> contentsByLine) {
 

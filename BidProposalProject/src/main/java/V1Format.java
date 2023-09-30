@@ -2,34 +2,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A concrete implementation of the Format interface for handling data in the V1
+ * Format.
+ */
 public class V1Format extends Format {
-
-    public static final String fileHeader = "|";
-
-    public V1Format() {
-
-    }
-
-    public V1Format(Test test) {
-
-        FileManager fileManager = new FileManager();
-        File file = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
-        ArrayList<String> fileContents = fileManager.readFile(file);
-
-        List<Job> jobs = jobsFromFormat(fileContents);
-        List<String> jobStrings = jobsToFormat(jobs);
-
-        for (int i = 0; i < fileContents.size(); i++) {
-
-            if (fileContents.get(i).equals(jobStrings.get(i))) {
-
-                System.out.println("job: " + i + " :good");
-            } else {
-                System.out.println(fileContents.get(i));
-                System.out.println(jobStrings.get(i));
-            }
-        }
-    }
 
     final int COUNTY_INDEX = 0;
     final int HIGHWAY_INDEX = 1;
@@ -54,6 +31,57 @@ public class V1Format extends Format {
     final int CONTRACTOR_PHONE_OFFSET = 1;
     final int CONTRACTOR_EMAIL_OFFSET = 2;
 
+    /**
+     * The file header specific to the V1 Format.
+     */
+    public static final String fileHeader = "|";
+
+    /**
+     * Default constructor for V1Format.
+     */
+    public V1Format() {
+
+    }
+
+    /**
+     * Constructor for V1Format that takes a Test enum.
+     *
+     * @param test A Test enum value (not used in this constructor).
+     */
+    public V1Format(Test test) {
+
+        FileManager fileManager = new FileManager();
+        File file = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
+        ArrayList<String> fileContents = fileManager.readFile(file);
+
+        List<Job> jobs = jobsFromFormat(fileContents);
+        List<String> jobStrings = jobsToFormat(jobs);
+
+        for (int i = 0; i < fileContents.size(); i++) {
+
+            if (fileContents.get(i).equals(jobStrings.get(i))) {
+
+                System.out.println("job: " + i + " :good");
+            } else {
+                System.out.println(fileContents.get(i));
+                System.out.println(jobStrings.get(i));
+            }
+        }
+    }
+
+    /**
+     * Converts a Job object into a formatted string using the V1Format.
+     *
+     * <p>
+     * This method takes a Job object and converts it into a formatted string that
+     * adheres
+     * to the V1Format structure. It includes county information, highway
+     * information, line items,
+     * and contractor details.
+     *
+     * @param job The Job object to be converted into a V1Format string.
+     * @return A formatted string in V1Format representing the provided Job object.
+     */
     @Override
     public String jobToFormat(Job job) {
 
@@ -112,6 +140,19 @@ public class V1Format extends Format {
         return resultString.toString();
     }
 
+    /**
+     * Parses a formatted string in V2Format and converts it into a Job object.
+     *
+     * <p>
+     * This method takes a formatted string in the V2Format and parses it to create
+     * a
+     * corresponding Job object. It expects the input string to follow the V2Format
+     * structure.
+     *
+     * @param jobLineString The formatted string in V2Format to be parsed into a Job
+     *                      object.
+     * @return A Job object representing the data parsed from the input string.
+     */
     @Override
     public Job jobFromFormat(String jobLineString) {
 
