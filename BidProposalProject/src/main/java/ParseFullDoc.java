@@ -69,7 +69,7 @@ public class ParseFullDoc {
         fileManager.saveFile(userFriendlyOutput, userFriendlyOutputBuffer);
         fileManager.saveFile(emailList, emailListBuffer);
 
-        storage.formatContractorList();
+        // storage.formatContractorList();
     }
 
     /**
