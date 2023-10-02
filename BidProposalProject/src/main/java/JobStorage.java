@@ -11,7 +11,7 @@ public class JobStorage {
 
     private FileManager fileManager = new FileManager();
     public List<String> filePaths = new ArrayList<>(); // Output
-    
+
     public JobStorage() {
 
     }
@@ -118,20 +118,18 @@ public class JobStorage {
         File directory = new File(directoryPath);
         File[] directoryContents = directory.listFiles();
 
-        if (directoryContents != null) { // if folder isn't empty
+        if (directoryContents == null)
+            return filePaths;
 
-            for (File file : directoryContents) { // iterate through: if its a folder ? recurse : add file to List
+        for (File file : directoryContents) {
 
-                if (file.isDirectory()) {
+            if (file.isDirectory() && !file.getName().equals("Testing"))
 
-                    // Recursive call for subdirectories
-                    findFilePaths(file.getAbsolutePath());
-                } else if (file.isFile() && file.getName().equals(fileLookUpTargetName)) {
+                findFilePaths(file.getAbsolutePath());
 
-                    // Found the target file
-                    filePaths.add(file.getAbsolutePath());
-                }
-            }
+            if (file.isFile() && file.getName().equals(fileLookUpTargetName))
+
+                filePaths.add(file.getAbsolutePath());
         }
         return filePaths;
     }
