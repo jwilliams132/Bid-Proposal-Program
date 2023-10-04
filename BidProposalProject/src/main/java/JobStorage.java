@@ -10,10 +10,13 @@ public class JobStorage {
     private final String fileLookUpTargetName = "Program Output.txt";
 
     private FileManager fileManager = new FileManager();
-    public List<String> filePaths = new ArrayList<>(); // Output
+    public List<String> filePaths = new ArrayList<>();
+    public List<String> savedFilePaths = new ArrayList<>();
+    public List<Job> savedJobStorage;
 
     public JobStorage() {
 
+        savedJobStorage = parseFile(lettingFolder.getAbsolutePath() + "/Job Storage.txt");
     }
 
     /**
@@ -88,16 +91,26 @@ public class JobStorage {
      */
     public void updateJobStorageFile() {
 
-        List<String> filesPaths = findFilePaths(lettingFolder.getAbsolutePath()); // gets list of path strings
-        List<List<Job>> list = new ArrayList<List<Job>>(); // creates new list of joblists
+        List<String> filePaths = findFilePaths(lettingFolder.getAbsolutePath()); // gets list of path strings
+        List<Job> jobs = new ArrayList<Job>(); // creates new list of joblists
+        List<String> jobStorageContents = new ArrayList<>();
+
         FormatInterface v2Output = new V2Format();
 
-        filesPaths.forEach(path -> list.add(parseFile(path))); // adds each joblist to list
-        List<String> jobStorageContents = new ArrayList<>();
-        for (List<Job> job : list) {
+        for (String path : filePaths) {
 
-            jobStorageContents.addAll(v2Output.jobsToFormat(job)); // adds each joblist item to storage content
+            for (String savedPath : savedFilePaths) {
+
+                if (path.equals(savedPath))
+
+                    break;
+                filePaths.add(path);
+                jobs.addAll(parseFile(path));
+            }
         }
+        jobs.forEach(job -> jobStorageContents.add(v2Output.jobToFormat(job))); // adds each formatted output for each
+                                                                                // job to jobStorageContents
+
         File jobStorageFile = fileManager.chooseFile(lettingFolder.getAbsolutePath() + "/Job Storage.txt", null,
                 FileManager.fileChooserOptions.SAVE, null);
 
