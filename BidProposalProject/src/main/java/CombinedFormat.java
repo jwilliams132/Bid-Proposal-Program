@@ -76,7 +76,7 @@ public class CombinedFormat extends Format {
     @Override
     public Job jobFromFormat(String jobLineString) {
 
-        List<String> job = new ArrayList<String>(Arrays.asList(jobLineString.split("\\|")));
+        List<String> job = new ArrayList<String>(Arrays.asList(jobLineString.split("\\|", -1)));
 
         List<Contractor> contractorList = new ArrayList<Contractor>();
         List<LineItem> lineItems = new ArrayList<LineItem>();
@@ -185,13 +185,11 @@ public class CombinedFormat extends Format {
     @Override
     public List<Job> jobsFromFormat(List<String> contentsByLine) {
 
-        final String END_OF_JOB_DELIMITER = "=".repeat(80);
+        final String END_OF_JOB_DELIMITER = "================================================================================";
 
         StringBuilder jobLineString = new StringBuilder();
         List<Job> jobs = new ArrayList<Job>();
-
         for (String nextLine : contentsByLine) {
-
             if (nextLine.startsWith(END_OF_JOB_DELIMITER)) {
 
                 jobs.add(jobFromFormat(jobLineString.toString()));
@@ -202,6 +200,7 @@ public class CombinedFormat extends Format {
                 jobLineString.append(nextLine).append("|");
             }
         }
+        jobs.forEach(job -> job.printJobInfo());
         return jobs;
     }
 }

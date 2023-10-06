@@ -2,58 +2,31 @@ import java.util.List;
 
 public class V2ExcelFormat extends ExcelFormat {
 
-    private final String templateFileName = "";
+    private final String templateFileName = "BidProposalProject\\src\\main\\resources\\Test Template (9-30-23).xlsm";
 
-    private final int CSJCOLUMN = 6;
-    private final int CSJROW = 3;
-
-    private final int HIGHWAYCOLUMN = 0;
-    private final int HIGHWAYROW = 30;
-
-    private final int COUNTYCOLUMN = 0;
-    private final int COUNTYROW = 33;
-
-    private final int ADDMOBSCOLUMN = 3;
-    private final int ADDMOBSROW = 23;
-
-    private final int TOTALMOBSCOLUMN = 6;
-    private final int TOTALMOBSROW = 20;
-
-    private final int UPTOMOBSCOLUMN = 4;
-    private final int UPTOMOBSROW = 20;
-
-    private final int ESTIMATENOCOLUMN = 27;
-    private final int ESTIMATENOROW = 0;
-
-    private final int CONTNAMECOLUMN = 0;
-    private final int CONTNAMEROW = 18;
-
-    private final int CONTPHONECOLUMN = 0;
-    private final int CONTPHONEROW = 22;
-
-    private final int CONTEMAILCOLUMN = 0;
-    private final int CONTEMAILROW = 24;
-
-    private final int SENTTOCOLUMN = 4;
-    private final int SENTTOROW = 3;
-
-    private final int LIQUANTITYCOLUMN = 3;
-    private final int LIQUANTITYROW = 7;
-
-    private final int LIDESCRIPTIONCOLUMN = 4;
-    private final int LIDISCRIPTIONROW = 7;
-
-    private final int LIPRICECOLUMN = 5;
-    private final int LIPRICEROW = 7;
-
-    private final int LITOTALCOLUMN = 6;
-    private final int LITOTALROW = 7;
-
-    private final int TOTALAMOUNTCOLUMN = 6;
-    private final int TOTALAMOUNTROW = 36;
+    private final CellCoordinates CSJ = new CellCoordinates(7, 2);
+    private final CellCoordinates HIGHWAY = new CellCoordinates(0, 34);
+    private final CellCoordinates COUNTY = new CellCoordinates(7, 4);
+    private final CellCoordinates ADDMOBS = new CellCoordinates(1, 43);
+    private final CellCoordinates ADDMOBS2 = new CellCoordinates(1, 44);
+    private final CellCoordinates TOTALMOBS = new CellCoordinates(6, 20);
+    private final CellCoordinates UPTOMOBS = new CellCoordinates(7, 23);
+    private final CellCoordinates ESTIMATENO = new CellCoordinates(0, 22);
+    private final CellCoordinates CONTNAME = new CellCoordinates(0, 22);
+    private final CellCoordinates CONTPHONE = new CellCoordinates(0, 27);
+    private final CellCoordinates CONTEMAIL = new CellCoordinates(0, 29);
+    private final CellCoordinates SENTTO = new CellCoordinates(5, 2);
+    private final CellCoordinates LIDESCRIPTION = new CellCoordinates(4, 8);
+    private final CellCoordinates LIQUANTITY = new CellCoordinates(5, 8);
+    private final CellCoordinates LIPRICE = new CellCoordinates(6, 8);
+    private final CellCoordinates LITOTAL = new CellCoordinates(7, 8);
+    private final CellCoordinates TOTALAMOUNT = new CellCoordinates(7, 27);
+    private final CellCoordinates DAYSOFPRODUCTION = new CellCoordinates(1, 42);
+    private final CellCoordinates STANDBYDAYPRICE = new CellCoordinates(1, 49);
+    private final CellCoordinates PRICEAPPLICABLEDATE = new CellCoordinates(1, 51);
 
     @Override
-    public void createExcelFile() {
+    public void createExcelFile(List<Job> jobs) {
         // TODO Auto-generated method stub
         
     }
@@ -65,9 +38,51 @@ public class V2ExcelFormat extends ExcelFormat {
     }
 
     @Override
-    public void populateExcel(Job job) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'populateExcel'");
+    public void populateExcel(Job job, String estimateNumber) {
+
+        String sheetName;
+        Contractor contractor;
+        LineItem lineItem;
+        float lineItemAmount;
+        float totalAmount = 0;
+
+        for (int contractorIndex = 0; contractorIndex < job.getContractorList().size(); contractorIndex++) {
+
+            totalAmount = 0;
+
+            sheetName = String.valueOf(contractorIndex + 1);
+            contractor = job.getContractorList().get(contractorIndex);
+
+            setCellValue(sheetName, CSJ.column, CSJ.row, job.getCsj());
+            setCellValue(sheetName, HIGHWAY.column, HIGHWAY.row, job.getHighway());
+            setCellValue(sheetName, COUNTY.column, COUNTY.row, job.getCounty());
+            setCellValue(sheetName, ADDMOBS.column, ADDMOBS.row, job.getAdditionalMobs());
+            setCellValue(sheetName, TOTALMOBS.column, TOTALMOBS.row, job.getTotalMobs());
+            setCellValue(sheetName, UPTOMOBS.column, UPTOMOBS.row, job.getUpTo_Mobs());
+            setCellValue(sheetName, ESTIMATENO.column, ESTIMATENO.row,
+                    String.format("%s%d", "WR-2023-", estimateNumber + contractorIndex));
+
+            totalAmount += job.getTotalMobs();
+            setCellValue(sheetName, CONTNAME.column, CONTNAME.row, contractor.getContractorName());
+            setCellValue(sheetName, CONTEMAIL.column, CONTEMAIL.row, contractor.getContractorEmail());
+            setCellValue(sheetName, SENTTO.column, SENTTO.row, contractor.getContractorEmail());
+            setCellValue(sheetName, CONTPHONE.column, CONTPHONE.row, contractor.getContractorPhoneNumber());
+
+            for (int lineItemIndex = 0; lineItemIndex < job.getLineItems().size(); lineItemIndex++) {
+
+                lineItem = job.getLineItems().get(lineItemIndex);
+                lineItemAmount = lineItem.getQuantity() * lineItem.getPrice();
+                totalAmount += lineItemAmount;
+
+                setCellValue(sheetName, LIQUANTITY.column, LIQUANTITY.row + lineItemIndex, lineItem.getQuantity());
+                setCellValue(sheetName, LIDESCRIPTION.column, LIDESCRIPTION.row + lineItemIndex,
+                        lineItem.getDescription());
+                setCellValue(sheetName, LIPRICE.column, LIPRICE.row + lineItemIndex, lineItem.getPrice());
+                setCellValue(sheetName, LITOTAL.column, LITOTAL.row + lineItemIndex,
+                        String.format("$%,1.2f", lineItemAmount));
+            }
+            setCellValue(sheetName, TOTALAMOUNT.column, TOTALAMOUNT.row, String.format("$%,1.2f", totalAmount));
+        }
     }
     
 }

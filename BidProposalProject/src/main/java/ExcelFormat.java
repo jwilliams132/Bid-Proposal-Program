@@ -1,6 +1,10 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.Month;
+
+import javax.swing.JOptionPane;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
@@ -61,5 +65,42 @@ public abstract class ExcelFormat implements ExcelFormatInterface {
             // Unsupported value type
             throw new IllegalArgumentException("Invalid value type: " + value.getClass().getName());
         }
+    }
+
+    public void saveWorkbook(String filePath) {
+        try {
+
+            // Write the workbook to a file
+            FileOutputStream file = new FileOutputStream(filePath);
+            workbook.write(file);
+
+            // Close the file
+            file.close();
+        } catch (FileNotFoundException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    public String getEstimateNo(String lettingMonthDirectory) {
+
+        String[] path = lettingMonthDirectory.split("\\\\");
+        int lettingIndex = 0;
+
+        for (int parent = 0; parent < path.length; parent++) {
+
+            if (path[parent].equals("Letting")) {
+                lettingIndex = parent;
+            }
+        }
+
+        String year = path[lettingIndex + 1];
+        Month month = Month.valueOf(path[lettingIndex + 2].toUpperCase());
+        int monthNumber = month.getValue();
+
+        return String.format("WR_%s_%2d_", year, monthNumber);
     }
 }
