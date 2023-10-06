@@ -46,6 +46,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class TestApp {
 
@@ -125,15 +126,28 @@ public class TestApp {
     private ArrayList<JButton> jobButtons;
 
     /**
-     * Launch the application.
+     * Launch the application. TODO
      */
     public static void main(String[] args) {
 
         EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                JobStorage jS = new JobStorage();
-                jS.updateJobStorageFile();
+
+                FileManager fileManager = new FileManager();
+                File file = fileManager.chooseFile("C:\\Users\\Jacob\\Desktop\\Letting\\Testing\\March\\Program Output.txt",
+                        null, FileManager.fileChooserOptions.OPEN, null);
+                ArrayList<String> fileContents = fileManager.readFile(file);
+                FormatInterface v1 = new V1Format();
+                List<Job> jobs = v1.jobsFromFormat(fileContents);
+
+                String lettingMonthDirectory = file.getParent().toString();
+                System.out.println(lettingMonthDirectory);
+
+                ExcelFormatInterface v1Excel = new V1ExcelFormat();
+                v1Excel.createExcelFile(jobs, lettingMonthDirectory);
+
+                
                 // new TestApp();
             }
         });
@@ -459,6 +473,7 @@ public class TestApp {
 
         // Get the directory path as a string
         lettingMonthDirectory = path.getParent().toString();
+        System.out.println(lettingMonthDirectory);
 
         openFilePathLabel.setText("File Path:  " + inputFile);
 
