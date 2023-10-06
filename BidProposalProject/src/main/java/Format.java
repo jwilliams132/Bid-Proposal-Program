@@ -1,6 +1,10 @@
 import java.util.List;
 import java.util.ArrayList;
 
+enum Test {
+    TEST;
+}
+
 /**
  * An abstract base class for implementing data formatting using the
  * FormatInterface.
@@ -8,10 +12,6 @@ import java.util.ArrayList;
  * formatting logic.
  */
 public abstract class Format implements FormatInterface {
-
-    public enum Test {
-        TEST
-    }
 
     /**
      * Converts a formatted job data string into a Job object.
