@@ -1,10 +1,23 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
     "cSpell.words": [
+        "ADDMOBS",
+        "CONTEMAIL",
+        "CONTNAME",
+        "CONTPHONE",
+        "ESTIMATENO",
         "Jobset",
         "JOBSET",
+        "LIDESCRIPTION",
+        "LIPRICE",
+        "LIQUANTITY",
+        "LITOTAL",
         "SCROLLPANECOLOR",
+        "SENTTO",
         "TITLEFONT",
+        "TOTALAMOUNT",
+        "TOTALMOBS",
+        "UPTOMOBS",
         "xslm"
     ],
     "java.debug.settings.onBuildFailureProceed": true
