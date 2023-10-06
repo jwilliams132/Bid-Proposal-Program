@@ -142,7 +142,6 @@ public class TestApp {
                 List<Job> jobs = v1.jobsFromFormat(fileContents);
 
                 String lettingMonthDirectory = file.getParent().toString();
-                System.out.println(lettingMonthDirectory);
 
                 ExcelFormatInterface v1Excel = new V1ExcelFormat();
                 v1Excel.createExcelFile(jobs, lettingMonthDirectory);
