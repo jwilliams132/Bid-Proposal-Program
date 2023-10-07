@@ -1,4 +1,5 @@
 import java.util.List;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Job {
@@ -7,7 +8,7 @@ public class Job {
     private List<LineItem> lineItems = new ArrayList<LineItem>();
     private String county, highway, csj;
     private int workingDays = 0, upTo_Mobs = 1;
-    private float totalMobs = 0, additionalMobs = 0;
+    private BigDecimal totalMobs = new BigDecimal(0), additionalMobs = new BigDecimal(0);
 
     // used for no pricing added
     public Job(String county, String highway, String csj, int workingDays, List<LineItem> lineItems,
@@ -28,7 +29,7 @@ public class Job {
     }
 
     public Job(String county, String highway, String csj, int workingDays, List<LineItem> lineItems, int upTo_Mobs,
-            float totalMobs, float additionalMobs, List<Contractor> contractorList) {
+            BigDecimal totalMobs, BigDecimal additionalMobs, List<Contractor> contractorList) {
 
         setCounty(county);
         setHighway(highway);
@@ -48,8 +49,8 @@ public class Job {
         removeBlacklistedContractors();
     }
 
-    public Job(String county, String highway, String csj, int workingDays, int upTo_Mobs, float totalMobs,
-            float additionalMobs, List<LineItem> lineItems, List<Contractor> contractorList) {
+    public Job(String county, String highway, String csj, int workingDays, int upTo_Mobs, BigDecimal totalMobs,
+            BigDecimal additionalMobs, List<LineItem> lineItems, List<Contractor> contractorList) {
                 
         setCounty(county);
         setHighway(highway);
@@ -268,27 +269,39 @@ public class Job {
         this.upTo_Mobs = upTo_Mobs;
     }
 
-    public float getTotalMobs() {
+    public BigDecimal getTotalMobs() {
         return totalMobs;
     }
 
-    public void setTotalMobs(float totalMobs) {
+    public void setTotalMobs(BigDecimal totalMobs) {
         this.totalMobs = totalMobs;
     }
 
-    public float getAdditionalMobs() {
+    public BigDecimal getAdditionalMobs() {
         return additionalMobs;
     }
 
-    public void setAdditionalMobs(float additionalMobs) {
+    public void setAdditionalMobs(BigDecimal additionalMobs) {
         this.additionalMobs = additionalMobs;
     }
 
-    public float getSumOfQuantities() {
-        float sum = 0;
+    public BigDecimal getSumOfQuantities() {
+        BigDecimal sum = new BigDecimal(0);
         for (LineItem lineItem : getLineItems()) {
-            sum += lineItem.getQuantity();
+            sum.add(lineItem.getQuantity());
         }
         return sum;
+    }
+
+    public int getProductionDays() {
+        return 5;
+    }
+
+    public BigDecimal getStandbyPrice() {
+        return new BigDecimal(2500);
+    }
+
+    public BigDecimal getMinimumDayCharge() {
+        return new BigDecimal(7500);
     }
 }

@@ -1,4 +1,5 @@
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -125,7 +126,7 @@ public class CombinedFormat extends Format {
 
                 if (!job.get(index).startsWith("+ DELETED ->"))
                     lineItems.add(new LineItem(job.get(index).substring(13, 53).trim(),
-                            Float.valueOf(job.get(index).substring(55, 72).trim().replaceAll(",", "")), 0));
+                            new BigDecimal(job.get(index).substring(55, 72).trim().replaceAll(",", "")), new BigDecimal(0)));
 
                 if (job.get(index + 1).isBlank()) {
                     lineItemStart = false;

@@ -42,6 +42,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileFilter;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -1219,12 +1220,12 @@ public class TestApp {
     public void setPrices() {
 
         // pFD.getJobList().get(jobIndex).setUpTo_Mobs(Integer.valueOf(upToMobsTextField.getText()));
-        parseFullDoc.getJobList().get(jobIndex).setTotalMobs(Float.valueOf(totalMobsTextField.getText()));
-        // pFD.getJobList().get(jobIndex).setAdditionalMobs(Float.valueOf(additionalMobsTextField.getText()));
+        parseFullDoc.getJobList().get(jobIndex).setTotalMobs(new BigDecimal(totalMobsTextField.getText()));
+        // pFD.getJobList().get(jobIndex).setAdditionalMobs(new BigDecimal(additionalMobsTextField.getText()));
 
         // use this if additional mobs is the same as total mobs (add in check boxes to
         // allow the choice
-        parseFullDoc.getJobList().get(jobIndex).setAdditionalMobs(Float.valueOf(totalMobsTextField.getText()));
+        parseFullDoc.getJobList().get(jobIndex).setAdditionalMobs(new BigDecimal(totalMobsTextField.getText()));
 
         for (int index = 0; index < lineItemPrices.size(); index++) {
 
@@ -1232,7 +1233,7 @@ public class TestApp {
                     .get(jobIndex)
                     .getLineItems()
                     .get(index)
-                    .setPrice(Float.valueOf(lineItemPrices.get(index).getText()));
+                    .setPrice(new BigDecimal(lineItemPrices.get(index).getText()));
         }
         lineItemPrices.clear();
     }
@@ -1380,12 +1381,12 @@ public class TestApp {
         String sheetName;
         Contractor contractor;
         LineItem lineItem;
-        float lineItemAmount;
-        float totalAmount = 0;
+        BigDecimal lineItemAmount;
+        BigDecimal totalAmount = new BigDecimal(0);
 
         for (int contractorIndex = 0; contractorIndex < job.getContractorList().size(); contractorIndex++) {
 
-            totalAmount = 0;
+            totalAmount = new BigDecimal(0);
 
             sheetName = String.valueOf(contractorIndex + 1);
             contractor = job.getContractorList().get(contractorIndex);
@@ -1399,7 +1400,7 @@ public class TestApp {
             excelManager.setCellValue(sheetName, 0, 27,
                     String.format("%s%d", "WR-2023-", estimateNumber + contractorIndex));
 
-            totalAmount += job.getTotalMobs();
+            totalAmount.add(job.getTotalMobs());
             excelManager.setCellValue(sheetName, 0, 18, contractor.getContractorName());
             excelManager.setCellValue(sheetName, 0, 24, contractor.getContractorEmail());
             excelManager.setCellValue(sheetName, 4, 3, contractor.getContractorEmail());
@@ -1408,8 +1409,8 @@ public class TestApp {
             for (int lineItemIndex = 0; lineItemIndex < job.getLineItems().size(); lineItemIndex++) {
 
                 lineItem = job.getLineItems().get(lineItemIndex);
-                lineItemAmount = lineItem.getQuantity() * lineItem.getPrice();
-                totalAmount += lineItemAmount;
+                lineItemAmount = lineItem.getQuantity().multiply(lineItem.getPrice());
+                totalAmount.add(lineItemAmount);
 
                 excelManager.setCellValue(sheetName, 3, 7 + lineItemIndex, lineItem.getQuantity());
                 excelManager.setCellValue(sheetName, 4, 7 + lineItemIndex, lineItem.getDescription());
@@ -1426,7 +1427,7 @@ public class TestApp {
 
     public boolean isPricingValid() {
 
-        String invalidInput = checkTextFields(totalMobsTextField);
+        String invalidInput = checkTextField(totalMobsTextField);
         boolean valid = true;
 
         if (invalidInput != null) {
@@ -1446,27 +1447,27 @@ public class TestApp {
         return valid;
     }
 
-    public String checkTextFields(ArrayList<JTextField> textField) {
+    public String checkTextFields(ArrayList<JTextField> textFields) {
 
-        for (int i = 0; i < textField.size(); i++) {
+        for (JTextField textField : textFields) {
 
             try {
+                
+                new BigDecimal(textField.getText());
+            } catch (NumberFormatException | NullPointerException e) {
 
-                Float.parseFloat(textField.get(i).getText());
-            } catch (NumberFormatException e) {
-
-                return textField.get(i).getText();
+                return textField.getText();
             }
         }
         return null;
     }
-
-    public String checkTextFields(JTextField textField) {
+    
+    public String checkTextField(JTextField textField) {
 
         try {
 
-            Float.parseFloat(textField.getText());
-        } catch (NumberFormatException e) {
+            new BigDecimal(textField.getText());
+        } catch (NumberFormatException | NullPointerException e) {
 
             return textField.getText();
         }

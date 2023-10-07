@@ -1,4 +1,5 @@
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -159,10 +160,10 @@ public class V2Format extends Format {
             lineItems.add(new LineItem(
                     tokens[START_OF_LINE_ITEMS + LINE_ITEM_DESCRIPTION_OFFSET
                             + lineItem * LENGTH_OF_LINE_ITEM],
-                    Float.parseFloat(
+                    new BigDecimal(
                             tokens[START_OF_LINE_ITEMS + LINE_ITEM_QUANTITY_OFFSET
                                     + lineItem * LENGTH_OF_LINE_ITEM]),
-                    Float.parseFloat(
+                    new BigDecimal(
                             tokens[START_OF_LINE_ITEMS + LINE_ITEM_PRICE_OFFSET
                                     + lineItem * LENGTH_OF_LINE_ITEM])));
         }
@@ -187,8 +188,8 @@ public class V2Format extends Format {
                 tokens[CSJ_INDEX], // String csj
                 Integer.parseInt(tokens[WORKING_DAYS_INDEX]), // int workingDays
                 Integer.parseInt(tokens[UP_TO_MOBS_INDEX]), // int upTo_Mobs
-                Float.parseFloat(tokens[TOTAL_MOBS_INDEX]), // float totalMobs
-                Float.parseFloat(tokens[ADDITIONAL_MOBS_INDEX]), // float additionalMobs
+                new BigDecimal(tokens[TOTAL_MOBS_INDEX]), // BigDecimal totalMobs
+                new BigDecimal(tokens[ADDITIONAL_MOBS_INDEX]), // BigDecimal additionalMobs
                 lineItems, // ArrayList<LineItem> lineItems
                 contractors);
     }

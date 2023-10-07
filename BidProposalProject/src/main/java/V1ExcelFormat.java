@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.List;
 
 public class V1ExcelFormat extends ExcelFormat {
@@ -56,12 +57,12 @@ public class V1ExcelFormat extends ExcelFormat {
         String sheetName;
         Contractor contractor;
         LineItem lineItem;
-        float lineItemAmount;
-        float totalAmount = 0;
+        BigDecimal lineItemAmount = new BigDecimal(0);
+        BigDecimal totalAmount = new BigDecimal(0);
 
         for (int contractorIndex = 0; contractorIndex < job.getContractorList().size(); contractorIndex++) {
 
-            totalAmount = 0;
+            totalAmount = new BigDecimal(0);
 
             sheetName = String.valueOf(contractorIndex + 1);
             contractor = job.getContractorList().get(contractorIndex);
@@ -84,8 +85,8 @@ public class V1ExcelFormat extends ExcelFormat {
             for (int lineItemIndex = 0; lineItemIndex < job.getLineItems().size(); lineItemIndex++) {
 
                 lineItem = job.getLineItems().get(lineItemIndex);
-                lineItemAmount = lineItem.getQuantity() * lineItem.getPrice();
-                totalAmount += lineItemAmount;
+                lineItemAmount = lineItem.getQuantity().multiply(lineItem.getPrice());
+                totalAmount.add(lineItemAmount);
 
                 setCellValue(sheetName, LIQUANTITY.column, LIQUANTITY.row + lineItemIndex, lineItem.getQuantity());
                 setCellValue(sheetName, LIDESCRIPTION.column, LIDESCRIPTION.row + lineItemIndex,

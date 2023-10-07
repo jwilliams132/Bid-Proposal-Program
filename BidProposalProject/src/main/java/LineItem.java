@@ -1,12 +1,13 @@
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class LineItem {
 
     private String description;
-    private float quantity;
-    private float price = 0;
+    private BigDecimal quantity;
+    private BigDecimal price = new BigDecimal(0);
 
-    public LineItem(String description, float quantity, float price) {
+    public LineItem(String description, BigDecimal quantity, BigDecimal price) {
 
         setDescription(description);
         setQuantity(quantity);
@@ -19,7 +20,7 @@ public class LineItem {
 
     public String returnLineItems() {
 
-        return String.format("%-40s%,11.0f    %1.2f%n", getDescription(), Float.valueOf(getQuantity()), getPrice());
+        return String.format("%-40s%,11.0f    %1.2f%n", getDescription(), getQuantity(), getPrice());
     }
 
     public String formatLineItems() {
@@ -39,19 +40,19 @@ public class LineItem {
         this.description = description;
     }
 
-    public float getQuantity() {
+    public BigDecimal getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(float quantity) {
+    public void setQuantity(BigDecimal quantity) {
         this.quantity = quantity;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -64,7 +65,7 @@ public class LineItem {
         }
 
         if (obj == null || getClass() != obj.getClass()) {
-            
+
             return false;
         }
 
@@ -72,6 +73,6 @@ public class LineItem {
 
         return Objects.equals(description, otherLineItem.description) &&
                 quantity == otherLineItem.quantity &&
-                Float.compare(otherLineItem.price, price) == 0;
+                price.compareTo(otherLineItem.price) == 0;
     }
 }

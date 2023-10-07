@@ -1,4 +1,5 @@
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -180,7 +181,7 @@ public class ParseFullDoc {
 
                 if (!job.get(index).startsWith("+ DELETED ->"))
                     lineItems.add(new LineItem(job.get(index).substring(13, 53).trim(),
-                            Float.valueOf(job.get(index).substring(55, 72).trim().replaceAll(",", "")), 0));
+                            new BigDecimal(job.get(index).substring(55, 72).trim().replaceAll(",", "")), new BigDecimal(0)));
 
                 if (job.get(index + 1).isBlank()) {
                     lineItemStart = false;
@@ -231,23 +232,23 @@ public class ParseFullDoc {
         ArrayList<LineItem> lineItems = new ArrayList<LineItem>();
         String county = "", highway = "", csj = "";
         int workingDays = 0, upToMobs = 0;
-        float totalMobs = 0, additionalMobs = 0;
+        BigDecimal totalMobs = new BigDecimal(0), additionalMobs = new BigDecimal(0);
 
         county = job.get(0);
         highway = job.get(1);
         csj = job.get(2);
         workingDays = Integer.valueOf(job.get(3));
         upToMobs = Integer.valueOf(job.get(4));
-        totalMobs = Float.valueOf(job.get(5));
-        additionalMobs = Float.valueOf(job.get(6));
+        totalMobs = new BigDecimal(job.get(5));
+        additionalMobs = new BigDecimal(job.get(6));
 
         final int START_OF_LINEITEMS_SECTION_INDEX = 7;
         int numOfLineItems = Integer.valueOf(job.get(START_OF_LINEITEMS_SECTION_INDEX));
         int ListIndexString;
 
         String description;
-        float quantity;
-        float price;
+        BigDecimal quantity;
+        BigDecimal price;
 
         final int LENGTH_OF_LINE_ITEM = 3;
         final int LINE_ITEM_COUNT_LINE = 1;
@@ -260,8 +261,8 @@ public class ParseFullDoc {
                     + LINE_ITEM_COUNT_LINE;
 
             description = job.get(ListIndexString);
-            quantity = Float.valueOf(job.get(ListIndexString + QUANTITY_OFFSET));
-            price = Float.valueOf(job.get(ListIndexString + PRICE_OFFSET));
+            quantity = new BigDecimal(job.get(ListIndexString + QUANTITY_OFFSET));
+            price = new BigDecimal(job.get(ListIndexString + PRICE_OFFSET));
 
             lineItems.add(new LineItem(description, quantity, price));
         }
