@@ -135,17 +135,25 @@ public class TestApp {
 
             public void run() {
 
+                //reads file
                 FileManager fileManager = new FileManager();
                 File file = fileManager.chooseFile("C:\\Users\\Jacob\\Desktop\\Letting\\Testing\\March\\Program Output.txt",
                         null, FileManager.fileChooserOptions.OPEN, null);
                 ArrayList<String> fileContents = fileManager.readFile(file);
+
+                // puts file into job format
                 FormatInterface v1 = new V1Format();
                 List<Job> jobs = v1.jobsFromFormat(fileContents);
 
+                jobs.forEach(job -> job.getLineItems().forEach(lineItem -> System.out.println(String.format("%.30f", lineItem.getPrice()))));
+
                 String lettingMonthDirectory = file.getParent().toString();
 
-                ExcelFormatInterface v1Excel = new V1ExcelFormat();
-                v1Excel.createExcelFile(jobs, lettingMonthDirectory);
+                // puts jobs into excel
+                // ExcelFormatInterface v1Excel = new V1ExcelFormat();
+                // v1Excel.createExcelFile(jobs, lettingMonthDirectory);
+                ExcelFormatInterface v2Excel = new V2ExcelFormat();
+                v2Excel.createExcelFile(jobs, lettingMonthDirectory);
 
                 
                 // new TestApp();
