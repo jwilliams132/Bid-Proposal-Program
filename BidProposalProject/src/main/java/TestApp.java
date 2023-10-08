@@ -43,7 +43,6 @@ import javax.swing.filechooser.FileFilter;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -460,9 +459,11 @@ public class TestApp {
         currentJobFilterIndexes.clear();
         jobIndex = 0;
 
+        // ====CHOOSE FILE====
+
         File inputFile = fileManager.chooseFile(
                 ifTest == TEST.TEST ? "BidProposalProject\\src\\main\\resources\\Testing\\CombinedOld.txt" : null,
-                null, FileManager.fileChooserOptions.OPEN, null);
+                null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
 
         if (inputFile == null) {
 
@@ -470,21 +471,21 @@ public class TestApp {
             return;
         }
 
-        JobStorage jobStorage = new JobStorage(); // TODO
-        fileManager.readFile(inputFile);
-        
-        // Create a Path object from the file path string
-        Path path = Paths.get(inputFile.getAbsolutePath());
-        
-        // Get the directory path as a string
-        lettingMonthDirectory = path.getParent().toString();
+        // ====PARSE FILE CONTENTS====
 
-        openFilePathLabel.setText("File Path:  " + inputFile);
+        JobStorage jobStorage = new JobStorage();
+        currentJobList = jobStorage.parseFile(inputFile.getAbsolutePath());
+
+        // SET OPENED FILE PATH
+
+        lettingMonthDirectory = Paths.get(inputFile.getAbsolutePath()).getParent().toString();
 
         parseFullDoc = new ParseFullDoc();
         parseFullDoc.setNewInputFile(inputFile);
         parseFullDoc.parseData();
         parseFullDoc.setFullJobList(parseFullDoc.getJobList());
+
+        openFilePathLabel.setText("File Path:  " + inputFile);
 
         chooseSaveFolder.setEnabled(true);
         filterJobs.setEnabled(true);
@@ -500,7 +501,7 @@ public class TestApp {
         changeDisplay(getUnfilteredDisplay(), Display.UNFILTERED);
     }
 
-    private void getUpdatedDoc() {
+    private void getUpdatedDoc() { // TODO
 
         File updatedFile = fileManager.chooseFile(null, null,
                 FileManager.fileChooserOptions.OPEN, null);
@@ -601,7 +602,7 @@ public class TestApp {
         // Enable the save button
         saveExcel.setEnabled(true);
 
-        parseFullDoc.exportDataFiles(formattedOutput, userFriendlyOutput, emailList);
+        parseFullDoc.exportDataFiles(formattedOutput, userFriendlyOutput, emailList); // TODO
 
         // Disable the updateBidders button
         updateBidders.setEnabled(false);
