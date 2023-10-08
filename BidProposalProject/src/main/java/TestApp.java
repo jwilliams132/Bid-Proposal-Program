@@ -135,26 +135,26 @@ public class TestApp {
 
             public void run() {
 
-                //reads file
-                FileManager fileManager = new FileManager();
-                File file = fileManager.chooseFile("C:\\Users\\Jacob\\Desktop\\Letting\\Testing\\March\\Program Output.txt",
-                        null, FileManager.fileChooserOptions.OPEN, null);
-                ArrayList<String> fileContents = fileManager.readFile(file);
+                // reads file
+                // FileManager fileManager = new FileManager();
+                // File file = fileManager.chooseFile(
+                // "C:\\Users\\Jacob\\Desktop\\Letting\\Testing\\March\\Program Output.txt",
+                // null, FileManager.fileChooserOptions.OPEN, null);
+                // ArrayList<String> fileContents = fileManager.readFile(file);
 
-                // puts file into job format
-                FormatInterface v1 = new V1Format();
-                List<Job> jobs = v1.jobsFromFormat(fileContents);
+                // // puts file into job format
+                // FormatInterface v1 = new V1Format();
+                // List<Job> jobs = v1.jobsFromFormat(fileContents);
 
-                String lettingMonthDirectory = file.getParent().toString();
+                // String lettingMonthDirectory = file.getParent().toString();
 
-                // puts jobs into excel
-                // ExcelFormatInterface v1Excel = new V1ExcelFormat();
-                // v1Excel.createExcelFile(jobs, lettingMonthDirectory);
-                ExcelFormatInterface v2Excel = new V2ExcelFormat();
-                v2Excel.createExcelFile(jobs, lettingMonthDirectory);
+                // // puts jobs into excel
+                // // ExcelFormatInterface v1Excel = new V1ExcelFormat();
+                // // v1Excel.createExcelFile(jobs, lettingMonthDirectory);
+                // ExcelFormatInterface v2Excel = new V2ExcelFormat();
+                // v2Excel.createExcelFile(jobs, lettingMonthDirectory);
 
-                
-                // new TestApp();
+                new TestApp();
             }
         });
     }
@@ -457,17 +457,10 @@ public class TestApp {
         currentJob.setText("(00/00)");
         currentJobFilterIndexes.clear();
         jobIndex = 0;
-        
-        File inputFile;
-        if (ifTest == TEST.TEST) {
 
-            inputFile = fileManager.chooseFile(
-                    "BidProposalProject\\src\\main\\resources\\Testing\\CombinedOld.txt",
-                    null, FileManager.fileChooserOptions.OPEN, null);
-        } else {
-
-            inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFileFilter);
-        }
+        File inputFile = fileManager.chooseFile(
+                ifTest == TEST.TEST ? "BidProposalProject\\src\\main\\resources\\Testing\\CombinedOld.txt" : null,
+                null, FileManager.fileChooserOptions.OPEN, null);
 
         if (inputFile == null) {
 
@@ -475,12 +468,14 @@ public class TestApp {
             return;
         }
 
+        JobStorage jobStorage = new JobStorage(); // TODO
+        fileManager.readFile(inputFile);
+        
         // Create a Path object from the file path string
         Path path = Paths.get(inputFile.getAbsolutePath());
-
+        
         // Get the directory path as a string
         lettingMonthDirectory = path.getParent().toString();
-        System.out.println(lettingMonthDirectory);
 
         openFilePathLabel.setText("File Path:  " + inputFile);
 
@@ -1228,7 +1223,8 @@ public class TestApp {
 
         // pFD.getJobList().get(jobIndex).setUpTo_Mobs(Integer.valueOf(upToMobsTextField.getText()));
         parseFullDoc.getJobList().get(jobIndex).setTotalMobs(new BigDecimal(totalMobsTextField.getText()));
-        // pFD.getJobList().get(jobIndex).setAdditionalMobs(new BigDecimal(additionalMobsTextField.getText()));
+        // pFD.getJobList().get(jobIndex).setAdditionalMobs(new
+        // BigDecimal(additionalMobsTextField.getText()));
 
         // use this if additional mobs is the same as total mobs (add in check boxes to
         // allow the choice
@@ -1459,7 +1455,7 @@ public class TestApp {
         for (JTextField textField : textFields) {
 
             try {
-                
+
                 new BigDecimal(textField.getText());
             } catch (NumberFormatException | NullPointerException e) {
 
@@ -1468,7 +1464,7 @@ public class TestApp {
         }
         return null;
     }
-    
+
     public String checkTextField(JTextField textField) {
 
         try {

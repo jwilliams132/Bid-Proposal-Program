@@ -39,20 +39,6 @@ public class JobStorage {
     }
 
     /**
-     * Displays a warning message dialog box with the specified header and warning
-     * message.
-     *
-     * @param header         The header or title of the warning dialog.
-     * @param warningMessage The warning message to be displayed.
-     * @param argument       Additional information or an argument to be included in
-     *                       the warning message.
-     */
-    public void showWarning(String header, String warningMessage, String argument) {
-
-        JOptionPane.showMessageDialog(null, warningMessage + ": " + argument, header, JOptionPane.WARNING_MESSAGE);
-    }
-
-    /**
      * Parses a file located at the specified path and returns a list of Job
      * objects.
      *
@@ -68,21 +54,29 @@ public class JobStorage {
         FormatInterface fileFormat = null;
 
         if (fileContents.get(0).startsWith(CombinedFormat.fileHeader))
+
             fileFormat = new CombinedFormat();
 
         if (fileContents.get(0).startsWith(V1Format.fileHeader))
+
             fileFormat = new V1Format();
 
         if (fileContents.get(0).startsWith(V2Format.fileHeader))
+
             fileFormat = new V2Format();
 
         if (fileFormat == null) {
+
             showWarning("Warning", "Error", "The File (" + knownFilePath + ") Opened Does Not Match Known Formats");
             throw new UnsupportedOperationException("File Does Not Match Known Formats");
         }
 
         return fileFormat.jobsFromFormat(fileContents);
     }
+
+    // ====================================================================================================
+    // Bulk Storage Methods
+    // ====================================================================================================
 
     /**
      * Updates the job storage file by collecting job data from multiple files in a
@@ -145,5 +139,23 @@ public class JobStorage {
                 filePaths.add(file.getAbsolutePath());
         }
         return filePaths;
+    }
+
+    // ====================================================================================================
+    // Misc. Methods
+    // ====================================================================================================
+
+    /**
+     * Displays a warning message dialog box with the specified header and warning
+     * message.
+     *
+     * @param header         The header or title of the warning dialog.
+     * @param warningMessage The warning message to be displayed.
+     * @param argument       Additional information or an argument to be included in
+     *                       the warning message.
+     */
+    public void showWarning(String header, String warningMessage, String argument) {
+
+        JOptionPane.showMessageDialog(null, warningMessage + ": " + argument, header, JOptionPane.WARNING_MESSAGE);
     }
 }
