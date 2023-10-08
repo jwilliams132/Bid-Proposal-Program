@@ -66,6 +66,8 @@ public class TestApp {
     private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
     private int jobIndex = 0;
 
+    private List<Job> currentJobList, filteredJobList; // OVERHAUL CHANGE 
+
     private enum Display {
         STARTUP, UNFILTERED, FILTERED, PRICING
     };
@@ -532,6 +534,7 @@ public class TestApp {
             if (jobCheckBoxes.get(currentJobCheckBox).isSelected()) {
 
                 hasSelectedCheckBox = true;
+                // OVERHAUL CHANGE selectedJobList.add(currentJobList.get(currentJobCheckBox));
                 selectedJobList.add(parseFullDoc.getJobList().get(currentJobCheckBox)); // add job to
                                                                                         // buffer
                 selectedJobIndexes.add(currentJobCheckBox); // save job indexes of filter
@@ -539,8 +542,10 @@ public class TestApp {
         }
 
         if (!hasSelectedCheckBox) {
+            // OVERHAUL CHANGE selectedJobList.addAll(currentJobList);
             selectedJobList.addAll(parseFullDoc.getJobList());
         }
+        // OVERHAUL CHANGE filteredJobList = selectedJobList; // TODO
         parseFullDoc.setJobList(selectedJobList); // set the job list to the selected jobs
 
         changeDisplay(getFilteredDisplay(), Display.FILTERED);
@@ -555,6 +560,7 @@ public class TestApp {
 
     private void removeFilter() {
 
+        // OVERHAUL CHANGE filteredJobList = currentJobList;
         parseFullDoc.setJobList(parseFullDoc.getFullJobList());
         changeDisplay(getUnfilteredDisplay(), Display.UNFILTERED);
 
@@ -643,13 +649,21 @@ public class TestApp {
                                        // private 2687 AUGUST 2823 sept 2964
         ExcelManager excelManager;
 
+        // OVERHAUL CHANGE for (int jobIndex = 0; jobIndex < filteredJobList.size();
+        // jobIndex++) {
         for (int jobIndex = 0; jobIndex < parseFullDoc.getJobList().size(); jobIndex++) {
 
             excelManager = new ExcelManager();
             excelManager.createWorkBook(excelInputFile.getAbsolutePath());
 
-            populateExcel(excelManager, parseFullDoc.getJobList().get(jobIndex), startingEstimateNo);
+            // OVERHAUL CHANGE populateExcel(excelManager, filteredJobList.get(jobIndex),
+            // startingEstimateNo);
+            populateExcel(excelManager, parseFullDoc.getJobList().get(jobIndex), startingEstimateNo); // TODO
             startingEstimateNo += 10;
+            // OVERHAUL CHANGE excelManager.saveWorkbook(String.format("%s\\%S %s%s",
+            // lettingMonthDirectory,
+            // OVERHAUL CHANGE filteredJobList.get(jobIndex).getCounty(),
+            // OVERHAUL CHANGE filteredJobList.get(jobIndex).getCsj(), ".xlsm"));
             excelManager.saveWorkbook(String.format("%s\\%S %s%s", lettingMonthDirectory,
                     parseFullDoc.getJobList().get(jobIndex).getCounty(),
                     parseFullDoc.getJobList().get(jobIndex).getCsj(), ".xlsm"));
@@ -686,7 +700,7 @@ public class TestApp {
     }
 
     private void enableIterationButtons() {
-
+        // OVERHAUL CHANGE if (filteredJobList.size() == 1) {
         if (parseFullDoc.getJobList().size() == 1) {
 
             previousJob.setEnabled(false);
@@ -698,13 +712,13 @@ public class TestApp {
             previousJob.setEnabled(false);
             nextJob.setEnabled(true);
         }
-
+        // OVERHAUL CHANGE if (jobIndex == filteredJobList.size() - 1) {
         if (jobIndex == parseFullDoc.getJobList().size() - 1) {
 
             previousJob.setEnabled(true);
             nextJob.setEnabled(false);
         }
-
+        // OVERHAUL CHANGE if (jobIndex > 0 && jobIndex < filteredJobList.size() - 1) {
         if (jobIndex > 0 && jobIndex < parseFullDoc.getJobList().size() - 1) {
 
             previousJob.setEnabled(true);
@@ -821,7 +835,9 @@ public class TestApp {
         }, displayConstraints);
 
         // for each job
+        // OVERHAUL CHANGE for (int index = 0; index < currentJobList.size(); index++) {
         for (int index = 0; index < parseFullDoc.getJobList().size(); index++) {
+            // OVERHAUL CHANGE Job currentJob = currentJobList.get(index);
             Job currentJob = parseFullDoc.getJobList().get(index);
 
             // adds job check boxes into list here
@@ -900,6 +916,7 @@ public class TestApp {
             if (jobCheckBoxes.get(index).isSelected()) {
 
                 count++;
+                // OVERHAUL CHANGE bufferJob = currentJobList.get(index);
                 bufferJob = parseFullDoc.getJobList().get(index);
                 bufferCounty = bufferJob.getCounty();
                 bufferCsj = bufferJob.getCsj();
@@ -948,8 +965,10 @@ public class TestApp {
         }, filteredDisplayConstraints);
 
         int filteredLineItemCount = 0;
+        // OVERHAUL CHANGE for (int jobCount = 0; jobCount < filteredJobList.size();
+        // jobCount++) {
         for (int jobCount = 0; jobCount < parseFullDoc.getJobList().size(); jobCount++) {
-
+            // OVERHAUL CHANGE Job currentJob = filteredJobList.get(jobCount);
             Job currentJob = parseFullDoc.getJobList().get(jobCount);
 
             filteredDisplayConstraints.gridy = jobCount + filteredLineItemCount + 1;
@@ -997,10 +1016,13 @@ public class TestApp {
         JLabel leftLocatorLabel = new JLabel(">");
 
         jobButtons = new ArrayList<JButton>();
+        // OVERHAUL CHANGE for (int jobIndexForLegendButtons = 0;
+        // jobIndexForLegendButtons < filteredJobList
         for (int jobIndexForLegendButtons = 0; jobIndexForLegendButtons < parseFullDoc.getJobList()
                 .size(); jobIndexForLegendButtons++) {
 
             // create Job and Index object for button creation
+            // OVERHAUL CHANGE Job job = filteredJobList.get(jobIndexForLegendButtons);
             Job job = parseFullDoc.getJobList().get(jobIndexForLegendButtons);
             final int JOB_INDEX = jobIndexForLegendButtons;
 
@@ -1073,7 +1095,10 @@ public class TestApp {
         TexasCityFinder cityFinder = new TexasCityFinder();
 
         GridBagConstraints displayPricingConstraints = new GridBagConstraints();
+        // OVERHAUL CHANGE currentJob.setText(String.format("(%02d/%02d)", jobIndex + 1,
+        // filteredJobList.size()));
         currentJob.setText(String.format("(%02d/%02d)", jobIndex + 1, parseFullDoc.getJobList().size()));
+        // OVERHAUL CHANGE final Job currentJob = filteredJobList.get(jobIndex);
         final Job currentJob = parseFullDoc.getJobList().get(jobIndex);
         pricingDisplayPane.setColumnHeaderView(new JLabel() {
             {
@@ -1114,6 +1139,8 @@ public class TestApp {
     public void addUpTo_MobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
         upToMobsTextField = new JTextField();
+        // OVERHAUL CHANGE upToMobsTextField.setText(String.format("%d",
+        // filteredJobList.get(jobIndex).getUpTo_Mobs()));
         upToMobsTextField.setText(String.format("%d", parseFullDoc.getJobList().get(jobIndex).getUpTo_Mobs()));
         upToMobsTextField.setPreferredSize(new Dimension(50, 20));
         upToMobsTextField.addFocusListener(new FocusListener() {
@@ -1134,6 +1161,8 @@ public class TestApp {
         additionalMobsTextField = new JTextField();
         additionalMobsTextField
                 .setText(String.format("%.0f", parseFullDoc.getJobList().get(jobIndex).getAdditionalMobs()));
+        // OVERHAUL CHANGE .setText(String.format("%.0f",
+        // filteredJobList.get(jobIndex).getAdditionalMobs()));
         additionalMobsTextField.setPreferredSize(new Dimension(50, 20));
         additionalMobsTextField.addFocusListener(new FocusListener() {
 
@@ -1153,6 +1182,7 @@ public class TestApp {
         pricingDisplay.add(new JLabel("$"), displayPricingConstraints);
         displayPricingConstraints.gridx = 2;
         totalMobsTextField = new JTextField();
+        // OVERHAUL CHANGE totalMobsTextField.setText(String.format("%.0f", filteredJobList.get(jobIndex).getTotalMobs()));
         totalMobsTextField.setText(String.format("%.0f", parseFullDoc.getJobList().get(jobIndex).getTotalMobs()));
         totalMobsTextField.setPreferredSize(new Dimension(50, 20));
         totalMobsTextField.addFocusListener(new FocusListener() {
@@ -1172,11 +1202,14 @@ public class TestApp {
     public void addLineItemsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
         lineItemPrices.clear();
+       // OVERHAUL CHANGE for (int index = 0; index < filteredJobList.get(jobIndex).getLineItems().size(); index++) {
         for (int index = 0; index < parseFullDoc.getJobList().get(jobIndex).getLineItems().size(); index++) {
 
             final int indexForActionListener = index;
             displayPricingConstraints.gridx = 0;
             displayPricingConstraints.gridy = index + 4;
+            // OVERHAUL CHANGE filteredJobList.get(jobIndex).getLineItems().get(index).getDescription(),
+            // OVERHAUL CHANGE filteredJobList.get(jobIndex).getLineItems().get(index).getQuantity(),
             pricingDisplay.add(new JLabel(String.format("%-40s%s%,12.2f%s",
                     parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getDescription(),
                     "    Quantity: ",
@@ -1192,6 +1225,7 @@ public class TestApp {
             lineItemPrices.get(index).setPreferredSize(new Dimension(50, 20));
             lineItemPrices.get(index).setText(String.format("%1.2f",
                     parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getPrice()));
+                    // OVERHAUL CHANGE filteredJobList.get(jobIndex).getLineItems().get(index).getPrice()));
 
             lineItemPrices.get(index).addFocusListener(new FocusListener() {
 
@@ -1222,16 +1256,18 @@ public class TestApp {
     public void setPrices() {
 
         // pFD.getJobList().get(jobIndex).setUpTo_Mobs(Integer.valueOf(upToMobsTextField.getText()));
+        // OVERHAUL CHANGE filteredJobList.get(jobIndex).setTotalMobs(new BigDecimal(totalMobsTextField.getText()));
         parseFullDoc.getJobList().get(jobIndex).setTotalMobs(new BigDecimal(totalMobsTextField.getText()));
         // pFD.getJobList().get(jobIndex).setAdditionalMobs(new
         // BigDecimal(additionalMobsTextField.getText()));
 
         // use this if additional mobs is the same as total mobs (add in check boxes to
         // allow the choice
+        // OVERHAUL CHANGE filteredJobList.get(jobIndex).setAdditionalMobs(new BigDecimal(totalMobsTextField.getText()));
         parseFullDoc.getJobList().get(jobIndex).setAdditionalMobs(new BigDecimal(totalMobsTextField.getText()));
 
         for (int index = 0; index < lineItemPrices.size(); index++) {
-
+            // OVERHAUL CHANGE filteredJobList
             parseFullDoc.getJobList()
                     .get(jobIndex)
                     .getLineItems()
@@ -1270,6 +1306,7 @@ public class TestApp {
         for (Job updatedJob : updatedDoc.getJobList()) {
 
             // check each old job
+            // OVERHAUL CHANGE for (Job oldJob : currentJobList) {
             for (Job oldJob : parseFullDoc.getJobList()) {
 
                 // and if the CSJ's match
@@ -1282,6 +1319,7 @@ public class TestApp {
             }
 
             // stop once the count of jobs is correct
+            // OVERHAUL CHANGE if (filteredUpdatedJobs.size() == currentJobList.size())
             if (filteredUpdatedJobs.size() == parseFullDoc.getJobList().size())
                 break;
         }
@@ -1300,7 +1338,7 @@ public class TestApp {
 
             }
         };
-
+        // OVERHAUL CHANGE ArrayList<Job> oldJobs = currentJobList;
         ArrayList<Job> oldJobs = parseFullDoc.getJobList();
         ArrayList<Job> newJobs = filterUpdatedJobs(updatedDoc);
 
