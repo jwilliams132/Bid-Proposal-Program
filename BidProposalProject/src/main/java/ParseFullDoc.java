@@ -382,9 +382,7 @@ public class ParseFullDoc {
     // Getter/Setters
     // ====================================================================================================
 
-    public File getNewInputFile() {
-        return inputFile;
-    }
+    
 
     public void setNewInputFile(File file) {
         inputFile = file;
