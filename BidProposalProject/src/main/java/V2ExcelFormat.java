@@ -120,6 +120,7 @@ public class V2ExcelFormat extends ExcelFormat {
 
             setCellValue(sheetName, SPECIALCONDITION2.getCol(), SPECIALCONDITION2.getRow(),
                     String.format("Price is applicable through %s.", "October 12, 2023")); // ex: "October 12, 2023"
+                    
             setCellValue(sheetName, MINIMUMDAYCHARGE.getCol(), MINIMUMDAYCHARGE.getRow(),
                     String.format(
                             "Low production caused by lack of trucking or phasing/planning will result in a $%,.0f minimum day charge (Charge by yard or minimum day rate; whichever is greater). Cannot attain reasonable production if mill is consistently idle due to lack of trucks at mill.",

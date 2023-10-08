@@ -43,19 +43,24 @@ public abstract class ExcelFormat implements ExcelFormatInterface {
 
         Row row = sheet.getRow(rowNum);
         if (row == null) {
+
             row = sheet.createRow(rowNum);
         }
         Cell cell = row.getCell(colNum);
         if (cell == null) {
+
             cell = row.createCell(colNum);
         }
 
         // Set the cell value based on the type of the input value
         if (value instanceof String) {
+
             cell.setCellValue((String) value);
         } else if (value instanceof Integer) {
+
             cell.setCellValue((Integer) value);
         } else if (value instanceof BigDecimal) {
+
             cell.setCellValue(((BigDecimal) value).doubleValue()); // Convert BigDecimal to double
         } else {
             // Unsupported value type
@@ -104,7 +109,7 @@ public abstract class ExcelFormat implements ExcelFormatInterface {
 
         if (workbook instanceof XSSFWorkbook) {
 
-            XSSFSheet firstSheet = (XSSFSheet) workbook.getSheetAt(0); // Assuming you want the first sheet
+            // XSSFSheet firstSheet = (XSSFSheet) workbook.getSheetAt(0); // Assuming you want the first sheet
 
             // Create a new sheet by cloning the first sheet
             XSSFSheet newSheet = ((XSSFWorkbook) workbook).cloneSheet(0);

@@ -145,8 +145,6 @@ public class TestApp {
                 FormatInterface v1 = new V1Format();
                 List<Job> jobs = v1.jobsFromFormat(fileContents);
 
-                jobs.forEach(job -> job.getLineItems().forEach(lineItem -> System.out.println(String.format("%.30f", lineItem.getPrice()))));
-
                 String lettingMonthDirectory = file.getParent().toString();
 
                 // puts jobs into excel
@@ -459,6 +457,7 @@ public class TestApp {
         currentJob.setText("(00/00)");
         currentJobFilterIndexes.clear();
         jobIndex = 0;
+        
         File inputFile;
         if (ifTest == TEST.TEST) {
 
