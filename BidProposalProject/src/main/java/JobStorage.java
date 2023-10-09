@@ -52,7 +52,7 @@ public class JobStorage {
 
         List<String> fileContents = getFileContents(knownFilePath);
         FormatInterface fileFormat = null;
-
+        System.out.println(fileContents.get(0));
         if (fileContents.get(0).startsWith(CombinedFormat.fileHeader))
 
             fileFormat = new CombinedFormat();
