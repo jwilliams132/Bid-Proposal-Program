@@ -1,4 +1,9 @@
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -23,11 +28,10 @@ public class V2ExcelFormat extends ExcelFormat {
     private final CellReference LIPRICE = new CellReference("G9");
     private final CellReference LITOTAL = new CellReference("H9");
     private final CellReference TOTALAMOUNT = new CellReference("H28");
-    private final CellReference GENERALCONDITION3 = new CellReference("B43"); // USES DAYSOFPRODUCTION
-    private final CellReference GENERALCONDITION4 = new CellReference("B44"); // USES UPTOMOBS, ADDMOBS
-    private final CellReference SPECIALCONDITION1 = new CellReference("B49"); // USES STANDBYDAYPRICE
-    private final CellReference SPECIALCONDITION2 = new CellReference("B51"); // USES PRICEAPPLICABLEDATE
-    private final CellReference MINIMUMDAYCHARGE = new CellReference("B57"); // USES PRICEAPPLICABLEDATE
+    private final CellReference GENERALCONDITION3 = new CellReference("B43"); // USES UPTOMOBS, ADDMOBS
+    private final CellReference SPECIALCONDITION1 = new CellReference("B48"); // USES STANDBYDAYPRICE
+    private final CellReference SPECIALCONDITION2 = new CellReference("B50"); // USES PRICEAPPLICABLEDATE
+    private final CellReference MINIMUMDAYCHARGE = new CellReference("B56"); // USES PRICEAPPLICABLEDATE
 
     @Override
     public void createExcelFile(List<Job> jobs, String lettingMonthDirectory) {
@@ -54,7 +58,7 @@ public class V2ExcelFormat extends ExcelFormat {
 
     @Override
     public List<Job> getInfoFromExcelFile() {
-        // TODO Auto-generated method stub
+
         throw new UnsupportedOperationException("Unimplemented method 'getInfoFromExcelFile'");
     }
 
@@ -70,6 +74,7 @@ public class V2ExcelFormat extends ExcelFormat {
         for (int contractorIndex = 0; contractorIndex < job.getContractorList().size(); contractorIndex++) {
 
             totalAmount = new BigDecimal(0);
+            System.out.println(String.format("78 total amount: $%,1.2f", totalAmount));
 
             sheetName = String.valueOf(contractorIndex + 1);
             contractor = job.getContractorList().get(contractorIndex);
@@ -82,6 +87,7 @@ public class V2ExcelFormat extends ExcelFormat {
                     String.format("%s%03d", estimateString, contractorNumber + contractorIndex));
 
             totalAmount.add(job.getTotalMobs());
+            System.out.println(String.format("91 total amount: $%,1.2f", totalAmount));
             setCellValue(sheetName, CONTNAME.getCol(), CONTNAME.getRow(), contractor.getContractorName());
             setCellValue(sheetName, CONTEMAIL.getCol(), CONTEMAIL.getRow(), contractor.getContractorEmail());
             setCellValue(sheetName, SENTTO.getCol(), SENTTO.getRow(), contractor.getContractorEmail());
@@ -92,6 +98,7 @@ public class V2ExcelFormat extends ExcelFormat {
                 lineItem = job.getLineItems().get(lineItemIndex);
                 lineItemAmount = lineItem.getQuantity().multiply(lineItem.getPrice());
                 totalAmount.add(lineItemAmount);
+                System.out.println(String.format("102li%d total amount: $%,1.2f", lineItemIndex, totalAmount));
 
                 setCellValue(sheetName, LIQUANTITY.getCol(), LIQUANTITY.getRow() + lineItemIndex,
                         lineItem.getQuantity());
@@ -101,6 +108,7 @@ public class V2ExcelFormat extends ExcelFormat {
                 setCellValue(sheetName, LITOTAL.getCol(), LITOTAL.getRow() + lineItemIndex,
                         String.format("$%,1.2f", lineItemAmount));
             }
+            System.out.println(String.format("total amount: $%,1.2f", totalAmount));
             setCellValue(sheetName, TOTALAMOUNT.getCol(), TOTALAMOUNT.getRow(), String.format("$%,1.2f", totalAmount));
 
             setCellValue(sheetName, GENERALCONDITION3.getCol(), GENERALCONDITION3.getRow(),
@@ -109,7 +117,7 @@ public class V2ExcelFormat extends ExcelFormat {
                             job.getProductionDays()));
 
             BigDecimalToWordsConverter converter = new BigDecimalToWordsConverter();
-            setCellValue(sheetName, GENERALCONDITION4.getCol(), GENERALCONDITION4.getRow(), String.format(
+            setCellValue(sheetName, GENERALCONDITION3.getCol(), GENERALCONDITION3.getRow(), String.format(
                     "One (1) Mobilization included in initial proposal. Additional Mobilizations shall be %s each.",
                     converter.convertToWords(job.getAdditionalMobs())));
 
@@ -118,9 +126,24 @@ public class V2ExcelFormat extends ExcelFormat {
                             "Any stand by days not caused by Williams Road, LLC shall be assessed at $%,.2f per day.",
                             job.getStandbyPrice()));
 
+            // TODO need to grab bid date from combined. and add 60 days later for the price
+            // applicable.
+
+            // ================================================================================
+            // CODE TO GET PRICE EXPIRATION DATE
+            // ================================================================================
+
+            LocalDate originalLocalDate = job.getBiddingDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate newLocalDate = originalLocalDate.plus(60, ChronoUnit.DAYS);
+            Date priceExpirationDate = Date.from(newLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
+            String priceExpirationDateString = dateFormat.format(priceExpirationDate);
+
+            // ================================================================================
+
             setCellValue(sheetName, SPECIALCONDITION2.getCol(), SPECIALCONDITION2.getRow(),
-                    String.format("Price is applicable through %s.", "October 12, 2023")); // ex: "October 12, 2023"
-                    
+                    String.format("Price is applicable through %s.", priceExpirationDateString)); // ex: "October 12, 2023"
+
             setCellValue(sheetName, MINIMUMDAYCHARGE.getCol(), MINIMUMDAYCHARGE.getRow(),
                     String.format(
                             "Low production caused by lack of trucking or phasing/planning will result in a $%,.0f minimum day charge (Charge by yard or minimum day rate; whichever is greater). Cannot attain reasonable production if mill is consistently idle due to lack of trucks at mill.",
