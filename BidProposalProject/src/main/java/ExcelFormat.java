@@ -97,19 +97,26 @@ public abstract class ExcelFormat implements ExcelFormatInterface {
                 lettingIndex = parent;
             }
         }
-
-        String year = path[lettingIndex + 1];
-        Month month = Month.valueOf(path[lettingIndex + 2].toUpperCase());
+        String year = null;
+        Month month = null;
+        try {
+            year = path[lettingIndex + 1];
+            month = Month.valueOf(path[lettingIndex + 2].toUpperCase());
+        } catch (Exception e) {
+            throw new UnsupportedOperationException(
+                    "Letting file might not have year and month directories set up properly.");
+        }
         int monthNumber = month.getValue();
 
-        return String.format("WR_%s_%02d_", year, monthNumber);
+        return String.format("WR-%s-%02d-", year, monthNumber);
     }
 
     public void createNewSheet(String sheetName) {
 
         if (workbook instanceof XSSFWorkbook) {
 
-            // XSSFSheet firstSheet = (XSSFSheet) workbook.getSheetAt(0); // Assuming you want the first sheet
+            // XSSFSheet firstSheet = (XSSFSheet) workbook.getSheetAt(0); // Assuming you
+            // want the first sheet
 
             // Create a new sheet by cloning the first sheet
             XSSFSheet newSheet = ((XSSFWorkbook) workbook).cloneSheet(0);
