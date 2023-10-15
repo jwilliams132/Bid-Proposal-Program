@@ -2,6 +2,7 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -14,13 +15,15 @@ public class V2Format extends Format {
     final int UP_TO_MOBS_INDEX = 4;
     final int TOTAL_MOBS_INDEX = 5;
     final int ADDITIONAL_MOBS_INDEX = 6;
-
     final int BIDDING_DATE_INDEX = 7;
     final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     final int LINE_ITEM_COUNT_INDEX = 8;
     final int CONTRACTOR_COUNT_INDEX = 9;
-    final int START_OF_LINE_ITEMS = 10;
+
+    final int FORMAT_SEPARATOR1 = 10;
+
+    final int START_OF_LINE_ITEMS = 11;
 
     final int LENGTH_OF_LINE_ITEM = 3;
     final int LINE_ITEM_DESCRIPTION_OFFSET = 0;
@@ -97,17 +100,17 @@ public class V2Format extends Format {
         result.add(TOTAL_MOBS_INDEX, String.valueOf(job.getTotalMobs()));
         result.add(ADDITIONAL_MOBS_INDEX, String.valueOf(job.getAdditionalMobs()));
         result.add(BIDDING_DATE_INDEX, dateFormat.format(job.getBiddingDate()));
-
         List<LineItem> lineItems = job.getLineItems();
         List<Contractor> contractors = job.getContractorList();
 
         final int LINE_ITEM_COUNT = lineItems.size();
         final int CONTRACTOR_COUNT = contractors.size();
 
-        final int START_OF_CONTRACTORS = START_OF_LINE_ITEMS + LINE_ITEM_COUNT * LENGTH_OF_LINE_ITEM;
+        final int START_OF_CONTRACTORS = START_OF_LINE_ITEMS + LINE_ITEM_COUNT * LENGTH_OF_LINE_ITEM + 1; // 1 = separator
 
         result.add(LINE_ITEM_COUNT_INDEX, String.valueOf(LINE_ITEM_COUNT));
         result.add(CONTRACTOR_COUNT_INDEX, String.valueOf(CONTRACTOR_COUNT));
+        result.add(FORMAT_SEPARATOR1, "~");
 
         for (int lineItem = 0; lineItem < LINE_ITEM_COUNT; lineItem++) {
 
@@ -122,7 +125,8 @@ public class V2Format extends Format {
             result.add(starOfThisLineItem + LINE_ITEM_PRICE_OFFSET,
                     String.format("%.2f", lineItems.get(lineItem).getPrice()));
         }
-
+        final int FORMAT_SEPARATOR2 = FORMAT_SEPARATOR1 + LINE_ITEM_COUNT * LENGTH_OF_LINE_ITEM + 1;
+        result.add(FORMAT_SEPARATOR2, "~");
         for (int contractor = 0; contractor < CONTRACTOR_COUNT; contractor++) {
 
             int startOfThisContractor = START_OF_CONTRACTORS + contractor * LENGTH_OF_CONTRACTORS;
@@ -214,11 +218,33 @@ public class V2Format extends Format {
     public List<String> jobsToFormat(List<Job> jobs) {
 
         ArrayList<String> jobLineStrings = new ArrayList<String>();
+        String buffer;
         jobLineStrings.add(fileHeader);
         for (Job job : jobs) {
 
-            jobLineStrings.add(jobToFormat(job));
+            buffer = jobToFormat(job);
+            String[] contents = buffer.split("~");
+            jobLineStrings.addAll(Arrays.asList(contents));
         }
         return jobLineStrings;
+    }
+
+    @Override
+    public List<Job> jobsFromFormat(List<String> jobLineStrings) {
+
+        ArrayList<Job> jobs = new ArrayList<Job>();
+        StringBuilder jobString;
+
+        for (int index = 0; index < jobLineStrings.size(); index++) {
+            
+            jobString = new StringBuilder();
+            jobString.append(jobLineStrings.get(index));
+            jobString.append(jobLineStrings.get(index + 1));
+            jobString.append(jobLineStrings.get(index + 2));
+            index += 2;
+            jobs.add(jobFromFormat(jobString.toString()));
+        }
+
+        return jobs;
     }
 }
