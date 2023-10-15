@@ -204,14 +204,14 @@ public class Job {
     }
 
     public List<String> formatEmailList() {
-
+        
         List<String> emails = new ArrayList<String>();
 
         emails.add(getCounty() + "   " + getCsj());
         emails.add(String.format("Bid Proposal for %s - %s (%s)", getCounty(), getHighway(), getCsj()));
         emails.add("-".repeat(80));
         for (Contractor contractor : getContractorList()) {
-            if (!contractor.getContractorEmail().equalsIgnoreCase("=============No Email Found=============")) {
+            if (!contractor.getContractorEmail().equalsIgnoreCase("==No Email Found==")) {
                 emails.add(contractor.getContractorEmail());
             } else {
                 emails.add(contractor.getContractorEmail() + "   " + contractor.getContractorName());

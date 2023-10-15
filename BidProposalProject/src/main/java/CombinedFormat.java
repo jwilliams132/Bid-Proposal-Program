@@ -192,7 +192,7 @@ public class CombinedFormat extends Format {
                  */
                 contractorList.add(new Contractor(
                         line + "  " + (job.get(index + 1).trim().startsWith("EMAIL") ? job.get(index + 1)
-                                : "=============No Email Found=============")));
+                                : "==No Email Found==")));
 
                 // if the next or next-to-next element in the job list is blank, set
                 // contractorStart to false

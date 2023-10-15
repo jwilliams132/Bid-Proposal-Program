@@ -210,7 +210,7 @@ public class ParseFullDoc {
     //              */
     //             contractorList.add(new Contractor(
     //                     job.get(index) + "  " + (job.get(index + 1).trim().startsWith("EMAIL") ? job.get(index + 1)
-    //                             : "=============No Email Found=============")));
+    //                             : "==No Email Found==")));
 
     //             // if the next or next-to-next element in the job list is blank, set
     //             // contractorStart to false
@@ -290,7 +290,7 @@ public class ParseFullDoc {
     //         phone = job.get(ListIndexString + PHONE_OFFSET);
     //         email = job.get(ListIndexString + EMAIL_OFFSET);
     //         System.out.println(email);
-    //         email = email.equals("=============No Email Found=============")
+    //         email = email.equals("==No Email Found==")
     //                 ? storage.getEmail(name)
     //                 : email;
     //         contractorList.add(new Contractor(name, phone, email));

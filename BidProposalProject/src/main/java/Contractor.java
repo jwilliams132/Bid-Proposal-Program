@@ -81,7 +81,7 @@ public class Contractor implements Comparable<Contractor> {
             phone = phoneNumberMatcher.group(); // assign found phone number to the buffer
             return phone;
         }
-        return "=============No Phone Found============="; // returns a message if no phone number is found
+        return "==No Phone Found=="; // returns a message if no phone number is found
     }
 
     // ====================================================================================================
