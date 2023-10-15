@@ -1,21 +1,21 @@
-import java.io.File;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+// import java.io.File;
+// import java.math.BigDecimal;
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.regex.Matcher;
+// import java.util.regex.Pattern;
 
 public class ParseFullDoc {
 
-    private FileManager fileManager = new FileManager();
-    private ContractorStorage storage = new ContractorStorage();
+    // private FileManager fileManager = new FileManager();
+    // private ContractorStorage storage = new ContractorStorage();
 
-    private ArrayList<Job> jobList = new ArrayList<Job>();
-    private ArrayList<Job> fullJobList = new ArrayList<Job>();
-    private ArrayList<String> contentsByLine;
-    private File inputFile = null;
+    // private ArrayList<Job> jobList = new ArrayList<Job>();
+    // private ArrayList<Job> fullJobList = new ArrayList<Job>();
+    // private ArrayList<String> contentsByLine;
+    // private File inputFile = null;
 
-    private String bidFileType;
+    // private String bidFileType;
 
     public ParseFullDoc() {
 
@@ -31,384 +31,383 @@ public class ParseFullDoc {
      * added to the `jobList`.
      */
 
-    public void parseData() {
+    // public void parseData() {
 
-        contentsByLine = fileManager.readFile(inputFile);
+    //     contentsByLine = fileManager.readFile(inputFile);
 
-        ArrayList<ArrayList<String>> arrayOfJobStrings = separateJobs();
+    //     ArrayList<ArrayList<String>> arrayOfJobStrings = separateJobs();
 
-        for (ArrayList<String> job : arrayOfJobStrings) {
+    //     for (ArrayList<String> job : arrayOfJobStrings) {
 
-            jobList.add(extractJobData(job));
-        }
-    }
+    //         jobList.add(extractJobData(job));
+    //     }
+    // }
 
-    public void importFileData(File file) {
+    // public void importFileData(File file) {
 
-        contentsByLine = fileManager.readFile(file);
-    }
+    //     contentsByLine = fileManager.readFile(file);
+    // }
 
-    // creates new file and saves Job data into it
-    public void exportDataFiles(File formattedOutput, File userFriendlyOutput, File emailList) {
+    // // creates new file and saves Job data into it
+    // public void exportDataFiles(File formattedOutput, File userFriendlyOutput, File emailList) {
 
-        ArrayList<String> formattedOutputBuffer = new ArrayList<String>();
-        ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
-        ArrayList<String> emailListBuffer = new ArrayList<String>();
+    //     ArrayList<String> formattedOutputBuffer = new ArrayList<String>();
+    //     ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
+    //     ArrayList<String> emailListBuffer = new ArrayList<String>();
 
-        // add all job data to fileContentBuffer
-        for (Job job : jobList) {
+    //     // add all job data to fileContentBuffer
+    //     for (Job job : jobList) {
 
-            formattedOutputBuffer.add(job.formatJobInfo()); // add data to file
+    //         formattedOutputBuffer.add(job.formatJobInfo()); // add data to file
 
-            userFriendlyOutputBuffer.addAll(job.formatUserFriendlyJobInfo());
-            userFriendlyOutputBuffer.add("-".repeat(100));
+    //         userFriendlyOutputBuffer.addAll(job.formatUserFriendlyJobInfo());
+    //         userFriendlyOutputBuffer.add("-".repeat(100));
 
-            emailListBuffer.addAll(job.formatEmailList());
-            job.getContractorList().forEach(contractor -> storage.addToContractList(contractor));
-        }
-        fileManager.saveFile(formattedOutput, formattedOutputBuffer);
-        fileManager.saveFile(userFriendlyOutput, userFriendlyOutputBuffer);
-        fileManager.saveFile(emailList, emailListBuffer);
+    //         emailListBuffer.addAll(job.formatEmailList());
+    //         job.getContractorList().forEach(contractor -> storage.addToContractList(contractor));
+    //     }
+    //     fileManager.saveFile(formattedOutput, formattedOutputBuffer);
+    //     fileManager.saveFile(userFriendlyOutput, userFriendlyOutputBuffer);
+    //     fileManager.saveFile(emailList, emailListBuffer);
 
-        // storage.formatContractorList();
-    }
+    //     // storage.formatContractorList();
+    // }
 
-    /**
-     * Separates the contents of the file into jobs based on the delimiter.
-     * The contents of the file are stored in the `contentsByLine` list.
-     * If the first line starts with a `|` character, the contents are processed as
-     * a previous file.
-     * Otherwise, the contents are processed as a new file, and jobs are separated
-     * based on the "==========" delimiter.
-     * The separated jobs are stored in the `arrayOfJobStrings` list.
-     * The type of file is also set using the `setBidFileType` method.
-     */
-    public ArrayList<ArrayList<String>> separateJobs() {
+    // /**
+    //  * Separates the contents of the file into jobs based on the delimiter.
+    //  * The contents of the file are stored in the `contentsByLine` list.
+    //  * If the first line starts with a `|` character, the contents are processed as
+    //  * a previous file.
+    //  * Otherwise, the contents are processed as a new file, and jobs are separated
+    //  * based on the "==========" delimiter.
+    //  * The separated jobs are stored in the `arrayOfJobStrings` list.
+    //  * The type of file is also set using the `setBidFileType` method.
+    //  */
+    // public ArrayList<ArrayList<String>> separateJobs() {
 
-        ArrayList<ArrayList<String>> arrayOfJobStrings = new ArrayList<ArrayList<String>>();
-        ArrayList<String> job = new ArrayList<String>();
+    //     ArrayList<ArrayList<String>> arrayOfJobStrings = new ArrayList<ArrayList<String>>();
+    //     ArrayList<String> job = new ArrayList<String>();
 
-        final String DELIMITER = "|";
-        final String END_OF_JOB_DELIMITER = "==========";
+    //     final String DELIMITER = "|";
+    //     final String END_OF_JOB_DELIMITER = "==========";
 
-        // if the file is one already used, separate the jobs, using the delimiters
-        if (contentsByLine.get(0).startsWith(DELIMITER)) {
+    //     // if the file is one already used, separate the jobs, using the delimiters
+    //     if (contentsByLine.get(0).startsWith(DELIMITER)) {
 
-            setBidFileType("Previous file");
-            for (String nextLine : contentsByLine) {
+    //         setBidFileType("Previous file");
+    //         for (String nextLine : contentsByLine) {
 
-                arrayOfJobStrings.add(
-                        new ArrayList<String>(Arrays.asList(nextLine.substring(1, nextLine.length()).split("\\|"))));
-            }
-            return arrayOfJobStrings;
-        }
+    //             arrayOfJobStrings.add(
+    //                     new ArrayList<String>(Arrays.asList(nextLine.substring(1, nextLine.length()).split("\\|"))));
+    //         }
+    //         return arrayOfJobStrings;
+    //     }
 
-        // for new file, separate by END_OF_JOB_DELIMITER. when delimiter hit, add Job
-        // to arrayOfJobStrings then create reset buffer job array
-        for (String nextLine : contentsByLine) {
+    //     // for new file, separate by END_OF_JOB_DELIMITER. when delimiter hit, add Job
+    //     // to arrayOfJobStrings then create reset buffer job array
+    //     for (String nextLine : contentsByLine) {
 
-            if (nextLine.startsWith(END_OF_JOB_DELIMITER)) {
+    //         if (nextLine.startsWith(END_OF_JOB_DELIMITER)) {
 
-                arrayOfJobStrings.add(job);
-                job = new ArrayList<String>();
-            } else {
+    //             arrayOfJobStrings.add(job);
+    //             job = new ArrayList<String>();
+    //         } else {
 
-                job.add(nextLine);
+    //             job.add(nextLine);
 
-            }
-        }
-        setBidFileType("New file");
-        return arrayOfJobStrings;
-    }
+    //         }
+    //     }
+    //     setBidFileType("New file");
+    //     return arrayOfJobStrings;
+    // }
 
-    public Job extractJobData(ArrayList<String> job) {
+    // public Job extractJobData(ArrayList<String> job) {
 
-        final String FORMATTED_FILE_IDENTIFIER = "|";
+    //     final String FORMATTED_FILE_IDENTIFIER = "|";
 
-        if (contentsByLine.get(0).startsWith(FORMATTED_FILE_IDENTIFIER))
-            return separateJobInfoFromPrevious(job);
+    //     if (contentsByLine.get(0).startsWith(FORMATTED_FILE_IDENTIFIER))
+    //         return separateJobInfoFromPrevious(job);
 
-        return separateJobInfoFromNew(job);
-    } // end of public Job extractJobData(ArrayList<String> job)
+    //     return separateJobInfoFromNew(job);
+    // } // end of public Job extractJobData(ArrayList<String> job)
 
-    public Job separateJobInfoFromNew(ArrayList<String> job) {
+    // public Job separateJobInfoFromNew(ArrayList<String> job) {
 
-        ArrayList<Contractor> contractorList = new ArrayList<Contractor>();
-        ArrayList<LineItem> lineItems = new ArrayList<LineItem>();
-        String county = "", highway = "", csj = "";
-        int workingDays = 0;
-        boolean lineItemStart = false, contractorStart = false;
+    //     ArrayList<Contractor> contractorList = new ArrayList<Contractor>();
+    //     ArrayList<LineItem> lineItems = new ArrayList<LineItem>();
+    //     String county = "", highway = "", csj = "";
+    //     int workingDays = 0;
+    //     boolean lineItemStart = false, contractorStart = false;
 
-        for (int index = 0; index < job.size(); index++) {
-
-            // get data from county line
-            if (job.get(index).startsWith("COUNTY")) {
+    //     for (int index = 0; index < job.size(); index++) {
+
+    //         // get data from county line
+    //         if (job.get(index).startsWith("COUNTY")) {
 
-                county = job.get(index).substring(8, 32).trim();
-                highway = job.get(index).substring(41, 59).trim();
-            }
+    //             county = job.get(index).substring(8, 32).trim();
+    //             highway = job.get(index).substring(41, 59).trim();
+    //         }
 
-            // get data from control line
-            if (job.get(index).startsWith("CONTROL")) {
+    //         // get data from control line
+    //         if (job.get(index).startsWith("CONTROL")) {
+
+    //             csj = job.get(index).substring(16, 27);
+    //         }
+
+    //         // get data from working days
+    //         if (job.get(index).startsWith("TIME FOR COMPLETION")) {
+
+    //             Matcher workingDaysMatcher = Pattern.compile(": [0-9]* WORKING DAYS").matcher(job.get(index));
+    //             if (workingDaysMatcher.find()) {
 
-                csj = job.get(index).substring(16, 27);
-            }
-
-            // get data from working days
-            if (job.get(index).startsWith("TIME FOR COMPLETION")) {
-
-                Matcher workingDaysMatcher = Pattern.compile(": [0-9]* WORKING DAYS").matcher(job.get(index));
-                if (workingDaysMatcher.find()) {
+    //                 String buffer = workingDaysMatcher.group();
+    //                 buffer = buffer.substring(2, buffer.length() - 13).trim();
 
-                    String buffer = workingDaysMatcher.group();
-                    buffer = buffer.substring(2, buffer.length() - 13).trim();
+    //                 if (buffer.length() != 0) {
+    //                     workingDays = Integer.valueOf(buffer);
+    //                 }
+    //             }
+    //         }
 
-                    if (buffer.length() != 0) {
-                        workingDays = Integer.valueOf(buffer);
-                    }
-                }
-            }
+    //         // start the line item count
+    //         if (job.get(index).startsWith("ITEM DES")) {
 
-            // start the line item count
-            if (job.get(index).startsWith("ITEM DES")) {
+    //             lineItemStart = true;
+    //             index = index + 3;
+    //         }
 
-                lineItemStart = true;
-                index = index + 3;
-            }
+    //         // add each line item to ArrayList
+    //         if (lineItemStart) {
 
-            // add each line item to ArrayList
-            if (lineItemStart) {
+    //             if (!job.get(index).startsWith("+ DELETED ->"))
+    //                 lineItems.add(new LineItem(job.get(index).substring(13, 53).trim(),
+    //                         new BigDecimal(job.get(index).substring(55, 72).trim().replaceAll(",", "")),
+    //                         new BigDecimal(0)));
 
-                if (!job.get(index).startsWith("+ DELETED ->"))
-                    lineItems.add(new LineItem(job.get(index).substring(13, 53).trim(),
-                            new BigDecimal(job.get(index).substring(55, 72).trim().replaceAll(",", "")), new BigDecimal(0)));
+    //             if (job.get(index + 1).isBlank()) {
+    //                 lineItemStart = false;
+    //             }
+    //         }
 
-                if (job.get(index + 1).isBlank()) {
-                    lineItemStart = false;
-                }
-            }
+    //         // start the contractor count
+    //         if (job.get(index).startsWith("PLANHOLDERS")) {
 
-            // start the contractor count
-            if (job.get(index).startsWith("PLANHOLDERS")) {
+    //             contractorStart = true;
+    //             index = index + 2;
+    //         }
+
+    //         if (contractorStart) { // add each contractor to array
+
+    //             if (job.get(index).startsWith("*****")) // if the current element in the job list starts with "*****",
+    //                                                     // increment the index
+    //                 index++;
+
+    //             /*
+    //              * create a new Contractor object with the current element in the job list and
+    //              * either the next element in the job list if it starts with "EMAIL", or a
+    //              * string indicating that no email was found then add the contractor to the
+    //              * contractorList array
+    //              */
+    //             contractorList.add(new Contractor(
+    //                     job.get(index) + "  " + (job.get(index + 1).trim().startsWith("EMAIL") ? job.get(index + 1)
+    //                             : "=============No Email Found=============")));
+
+    //             // if the next or next-to-next element in the job list is blank, set
+    //             // contractorStart to false
+    //             if (job.get(index + 1).isBlank() || job.get(index + 2).isBlank())
+    //                 contractorStart = false;
+
+    //             // if the next element in the job list starts with "EMAIL", increment the index
+    //             if (job.get(index + 1).trim().startsWith("EMAIL"))
+    //                 index++;
+    //         }
+
+    //     } // end of for(i = 0; i < job.size(); i++)
+
+    //     // return new Job(county, highway, csj, workingDays, lineItems, contractorList);
+    // }
 
-                contractorStart = true;
-                index = index + 2;
-            }
-
-            if (contractorStart) { // add each contractor to array
-
-                if (job.get(index).startsWith("*****")) // if the current element in the job list starts with "*****",
-                                                        // increment the index
-                    index++;
-
-                /*
-                 * create a new Contractor object with the current element in the job list and
-                 * either the next element in the job list if it starts with "EMAIL", or a
-                 * string indicating that no email was found then add the contractor to the
-                 * contractorList array
-                 */
-                contractorList.add(new Contractor(
-                        job.get(index) + "  " + (job.get(index + 1).trim().startsWith("EMAIL") ? job.get(index + 1)
-                                : "=============No Email Found=============")));
-
-                // if the next or next-to-next element in the job list is blank, set
-                // contractorStart to false
-                if (job.get(index + 1).isBlank() || job.get(index + 2).isBlank())
-                    contractorStart = false;
-
-                // if the next element in the job list starts with "EMAIL", increment the index
-                if (job.get(index + 1).trim().startsWith("EMAIL"))
-                    index++;
-            }
-
-        } // end of for(i = 0; i < job.size(); i++)
-
-        return new Job(county, highway, csj, workingDays, lineItems, contractorList);
-    }
+    // public Job separateJobInfoFromPrevious(ArrayList<String> job) {
+
+    //     ArrayList<Contractor> contractorList = new ArrayList<Contractor>();
+    //     ArrayList<LineItem> lineItems = new ArrayList<LineItem>();
+    //     String county = "", highway = "", csj = "";
+    //     int workingDays = 0, upToMobs = 0;
+    //     BigDecimal totalMobs = new BigDecimal(0), additionalMobs = new BigDecimal(0);
+
+    //     county = job.get(0);
+    //     highway = job.get(1);
+    //     csj = job.get(2);
+    //     workingDays = Integer.valueOf(job.get(3));
+    //     upToMobs = Integer.valueOf(job.get(4));
+    //     totalMobs = new BigDecimal(job.get(5));
+    //     additionalMobs = new BigDecimal(job.get(6));
 
-    public Job separateJobInfoFromPrevious(ArrayList<String> job) {
+    //     final int START_OF_LINEITEMS_SECTION_INDEX = 7;
+    //     int numOfLineItems = Integer.valueOf(job.get(START_OF_LINEITEMS_SECTION_INDEX));
+    //     int ListIndexString;
 
-        ArrayList<Contractor> contractorList = new ArrayList<Contractor>();
-        ArrayList<LineItem> lineItems = new ArrayList<LineItem>();
-        String county = "", highway = "", csj = "";
-        int workingDays = 0, upToMobs = 0;
-        BigDecimal totalMobs = new BigDecimal(0), additionalMobs = new BigDecimal(0);
-
-        county = job.get(0);
-        highway = job.get(1);
-        csj = job.get(2);
-        workingDays = Integer.valueOf(job.get(3));
-        upToMobs = Integer.valueOf(job.get(4));
-        totalMobs = new BigDecimal(job.get(5));
-        additionalMobs = new BigDecimal(job.get(6));
+    //     String description;
+    //     BigDecimal quantity;
+    //     BigDecimal price;
 
-        final int START_OF_LINEITEMS_SECTION_INDEX = 7;
-        int numOfLineItems = Integer.valueOf(job.get(START_OF_LINEITEMS_SECTION_INDEX));
-        int ListIndexString;
+    //     final int LENGTH_OF_LINE_ITEM = 3;
+    //     final int LINE_ITEM_COUNT_LINE = 1;
+    //     final int QUANTITY_OFFSET = 1;
+    //     final int PRICE_OFFSET = 2;
 
-        String description;
-        BigDecimal quantity;
-        BigDecimal price;
+    //     for (int lineItemIndex = 0; lineItemIndex < numOfLineItems; lineItemIndex++) {
 
-        final int LENGTH_OF_LINE_ITEM = 3;
-        final int LINE_ITEM_COUNT_LINE = 1;
-        final int QUANTITY_OFFSET = 1;
-        final int PRICE_OFFSET = 2;
+    //         ListIndexString = START_OF_LINEITEMS_SECTION_INDEX + lineItemIndex * LENGTH_OF_LINE_ITEM
+    //                 + LINE_ITEM_COUNT_LINE;
 
-        for (int lineItemIndex = 0; lineItemIndex < numOfLineItems; lineItemIndex++) {
+    //         description = job.get(ListIndexString);
+    //         quantity = new BigDecimal(job.get(ListIndexString + QUANTITY_OFFSET));
+    //         price = new BigDecimal(job.get(ListIndexString + PRICE_OFFSET));
 
-            ListIndexString = START_OF_LINEITEMS_SECTION_INDEX + lineItemIndex * LENGTH_OF_LINE_ITEM
-                    + LINE_ITEM_COUNT_LINE;
+    //         lineItems.add(new LineItem(description, quantity, price));
+    //     }
 
-            description = job.get(ListIndexString);
-            quantity = new BigDecimal(job.get(ListIndexString + QUANTITY_OFFSET));
-            price = new BigDecimal(job.get(ListIndexString + PRICE_OFFSET));
+    //     String name;
+    //     String email;
+    //     String phone;
 
-            lineItems.add(new LineItem(description, quantity, price));
-        }
+    //     final int LENGTH_OF_CONTRACTORS = 3;
+    //     final int CONTRACTOR_COUNT_LINE = 1;
+    //     final int PHONE_OFFSET = 1;
+    //     final int EMAIL_OFFSET = 2;
 
-        String name;
-        String email;
-        String phone;
+    //     int startOfContractorsSectionIndex = START_OF_LINEITEMS_SECTION_INDEX + LINE_ITEM_COUNT_LINE
+    //             + numOfLineItems * LENGTH_OF_LINE_ITEM;
+    //     int numOfContractors = Integer.valueOf(job.get(startOfContractorsSectionIndex));
 
-        final int LENGTH_OF_CONTRACTORS = 3;
-        final int CONTRACTOR_COUNT_LINE = 1;
-        final int PHONE_OFFSET = 1;
-        final int EMAIL_OFFSET = 2;
+    //     for (int contractorIndex = 0; contractorIndex < numOfContractors; contractorIndex++) {
 
-        int startOfContractorsSectionIndex = START_OF_LINEITEMS_SECTION_INDEX + LINE_ITEM_COUNT_LINE
-                + numOfLineItems * LENGTH_OF_LINE_ITEM;
-        int numOfContractors = Integer.valueOf(job.get(startOfContractorsSectionIndex));
+    //         ListIndexString = startOfContractorsSectionIndex + contractorIndex * LENGTH_OF_CONTRACTORS
+    //                 + CONTRACTOR_COUNT_LINE;
 
-        for (int contractorIndex = 0; contractorIndex < numOfContractors; contractorIndex++) {
+    //         name = job.get(ListIndexString);
+    //         phone = job.get(ListIndexString + PHONE_OFFSET);
+    //         email = job.get(ListIndexString + EMAIL_OFFSET);
+    //         System.out.println(email);
+    //         email = email.equals("=============No Email Found=============")
+    //                 ? storage.getEmail(name)
+    //                 : email;
+    //         contractorList.add(new Contractor(name, phone, email));
+    //     }
+    //     return new Job(county, highway, csj, workingDays, lineItems, upToMobs, totalMobs, additionalMobs,
+    //             contractorList);
+    // }
 
-            ListIndexString = startOfContractorsSectionIndex + contractorIndex * LENGTH_OF_CONTRACTORS
-                    + CONTRACTOR_COUNT_LINE;
+    // // ====================================================================================================
+    // // Updating the Bidders
+    // // ====================================================================================================
 
-            name = job.get(ListIndexString);
-            phone = job.get(ListIndexString + PHONE_OFFSET);
-            email = job.get(ListIndexString + EMAIL_OFFSET);
-            System.out.println(email);
-            email = email.equals("=============No Email Found=============")
-                    ? storage.getEmail(name)
-                    : email;
-            contractorList.add(new Contractor(name, phone, email));
-        }
-        return new Job(county, highway, csj, workingDays, lineItems, upToMobs, totalMobs, additionalMobs,
-                contractorList);
-    }
+    // /*
+    //  * This function separates a list of strings into jobs and adds them to an array
+    //  * of job strings
+    //  */
+    // public ArrayList<Job> separateBidderFile(File bidderFile) {
 
-    // ====================================================================================================
-    // Updating the Bidders
-    // ====================================================================================================
+    //     ArrayList<String> bidderContentsByLine = fileManager.readFile(bidderFile);
+    //     ArrayList<Job> jobs = new ArrayList<Job>();
+    //     ArrayList<Contractor> contractors = new ArrayList<Contractor>();
+    //     String county = "", highway = "", csj = "";
+    //     String NEW_JOB_DELIMITER = "#";
 
-    /*
-     * This function separates a list of strings into jobs and adds them to an array
-     * of job strings
-     */
-    public ArrayList<Job> separateBidderFile(File bidderFile) {
+    //     int lineIndex = 0;
 
-        ArrayList<String> bidderContentsByLine = fileManager.readFile(bidderFile);
-        ArrayList<Job> jobs = new ArrayList<Job>();
-        ArrayList<Contractor> contractors = new ArrayList<Contractor>();
-        String county = "", highway = "", csj = "";
-        String NEW_JOB_DELIMITER = "#";
+    //     boolean firstJob = bidderContentsByLine.get(lineIndex).startsWith(NEW_JOB_DELIMITER);
 
-        int lineIndex = 0;
+    //     while (firstJob)
+    //         lineIndex++;
 
-        boolean firstJob = bidderContentsByLine.get(lineIndex).startsWith(NEW_JOB_DELIMITER);
+    //     for (; lineIndex < bidderContentsByLine.size(); lineIndex++) {
 
-        while (firstJob)
-            lineIndex++;
+    //         if (bidderContentsByLine.get(lineIndex).startsWith(NEW_JOB_DELIMITER)) {
 
-        for (; lineIndex < bidderContentsByLine.size(); lineIndex++) {
+    //             String[] tokens = bidderContentsByLine.get(lineIndex).split(",");
+    //             county = tokens[0].substring(7, tokens[0].length());
+    //             csj = tokens[1].substring(3, 14);
+    //             highway = tokens[2].trim();
+    //             continue;
+    //         }
 
-            if (bidderContentsByLine.get(lineIndex).startsWith(NEW_JOB_DELIMITER)) {
+    //         if (bidderContentsByLine.get(lineIndex).startsWith("*****"))
+    //             continue;
 
-                String[] tokens = bidderContentsByLine.get(lineIndex).split(",");
-                county = tokens[0].substring(7, tokens[0].length());
-                csj = tokens[1].substring(3, 14);
-                highway = tokens[2].trim();
-                continue;
-            }
+    //         boolean lineIsEmpty = bidderContentsByLine.get(lineIndex).isEmpty();
+    //         boolean isLastLine = lineIndex + 1 == bidderContentsByLine.size();
 
-            if (bidderContentsByLine.get(lineIndex).startsWith("*****"))
-                continue;
+    //         if (lineIsEmpty || isLastLine) {
 
-            boolean lineIsEmpty = bidderContentsByLine.get(lineIndex).isEmpty();
-            boolean isLastLine = lineIndex + 1 == bidderContentsByLine.size();
+    //             // jobs.add(new Job(county, highway, csj, 0, null, contractors));
+    //             contractors = new ArrayList<Contractor>();
+    //             continue;
+    //         }
 
-            if (lineIsEmpty || isLastLine) {
+    //         if (bidderContentsByLine.get(lineIndex).startsWith("Email"))
+    //             continue;
 
-                jobs.add(new Job(county, highway, csj, 0, null, contractors));
-                contractors = new ArrayList<Contractor>();
-                continue;
-            }
+    //         boolean ifLastContractor = bidderContentsByLine.size() - lineIndex == 1;
+    //         boolean ifContractorHasEmail = bidderContentsByLine.get(lineIndex + 1).startsWith("Email");
 
-            if (bidderContentsByLine.get(lineIndex).startsWith("Email"))
-                continue;
+    //         if (ifLastContractor || ifContractorHasEmail) {
 
-            boolean ifLastContractor = bidderContentsByLine.size() - lineIndex == 1;
-            boolean ifContractorHasEmail = bidderContentsByLine.get(lineIndex + 1).startsWith("Email");
+    //             contractors.add(new Contractor(
+    //                     bidderContentsByLine.get(lineIndex) + " " + bidderContentsByLine.get(lineIndex + 1)));
+    //         } else {
 
-            if (ifLastContractor || ifContractorHasEmail) {
+    //             contractors.add(new Contractor(bidderContentsByLine.get(lineIndex)));
+    //         }
+    //     }
 
-                contractors.add(new Contractor(
-                        bidderContentsByLine.get(lineIndex) + " " + bidderContentsByLine.get(lineIndex + 1)));
-            } else {
+    //     // return ArrayList<Job>
+    //     return new ArrayList<Job>(jobs);
+    // }
 
-                contractors.add(new Contractor(bidderContentsByLine.get(lineIndex)));
-            }
-        }
+    // public void updateBidders(File bidderFile) {
 
-        // return ArrayList<Job>
-        return new ArrayList<Job>(jobs);
-    }
+    //     ArrayList<Job> updatedBiddersJobs = separateBidderFile(bidderFile);
 
-    public void updateBidders(File bidderFile) {
+    //     for (Job updatedBiddersJob : updatedBiddersJobs)
 
-        ArrayList<Job> updatedBiddersJobs = separateBidderFile(bidderFile);
+    //         for (Job job : jobList)
 
-        for (Job updatedBiddersJob : updatedBiddersJobs)
+    //             if (job.getCsj().equals(updatedBiddersJob.getCsj()))
 
-            for (Job job : jobList)
+    //                 job.setContractorList(updatedBiddersJob.getContractorList());
+    // }
 
-                if (job.getCsj().equals(updatedBiddersJob.getCsj()))
+    // // ====================================================================================================
+    // // Getter/Setters
+    // // ====================================================================================================
 
-                    job.setContractorList(updatedBiddersJob.getContractorList());
-    }
+    // public void setNewInputFile(File file) {
+    //     inputFile = file;
+    // }
 
-    // ====================================================================================================
-    // Getter/Setters
-    // ====================================================================================================
+    // public ArrayList<Job> getJobList() {
+    //     return jobList;
+    // }
 
-    
+    // public ArrayList<Job> getFullJobList() {
+    //     return fullJobList;
+    // }
 
-    public void setNewInputFile(File file) {
-        inputFile = file;
-    }
+    // public void setJobList(ArrayList<Job> selectedJobList) {
+    //     this.jobList = selectedJobList;
+    // }
 
-    public ArrayList<Job> getJobList() {
-        return jobList;
-    }
+    // public void setFullJobList(ArrayList<Job> fullJobList) {
+    //     this.fullJobList = fullJobList;
+    // }
 
-    public ArrayList<Job> getFullJobList() {
-        return fullJobList;
-    }
+    // public String getBidFileType() {
+    //     return bidFileType;
+    // }
 
-    public void setJobList(ArrayList<Job> selectedJobList) {
-        this.jobList = selectedJobList;
-    }
-
-    public void setFullJobList(ArrayList<Job> fullJobList) {
-        this.fullJobList = fullJobList;
-    }
-
-    public String getBidFileType() {
-        return bidFileType;
-    }
-
-    public void setBidFileType(String bidFileType) {
-        this.bidFileType = bidFileType;
-    }
+    // public void setBidFileType(String bidFileType) {
+    //     this.bidFileType = bidFileType;
+    // }
 }
