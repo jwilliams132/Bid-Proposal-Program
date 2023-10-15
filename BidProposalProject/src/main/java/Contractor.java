@@ -26,7 +26,10 @@ public class Contractor implements Comparable<Contractor> {
     public Contractor(String contractorName, String contractorPhoneNumber, String contractorEmail,
             String contractorEstimateNumber) {
 
-        // TODO
+        this.contractorName = contractorName;
+        this.contractorPhoneNumber = contractorPhoneNumber;
+        this.contractorEmail = contractorEmail;
+        this.contractorEstimateNumber = contractorEstimateNumber;
     }
 
     // ====================================================================================================
