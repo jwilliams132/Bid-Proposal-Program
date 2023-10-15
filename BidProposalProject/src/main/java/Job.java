@@ -1,23 +1,30 @@
 import java.util.List;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Job {
 
     private List<Contractor> contractorList = new ArrayList<Contractor>();
     private List<LineItem> lineItems = new ArrayList<LineItem>();
     private String county, highway, csj;
+    private Date biddingDate;
     private int workingDays = 0, upTo_Mobs = 1;
     private BigDecimal totalMobs = new BigDecimal(0), additionalMobs = new BigDecimal(0);
+    
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Adjust the format as needed
 
     // used for no pricing added
-    public Job(String county, String highway, String csj, int workingDays, List<LineItem> lineItems,
+    public Job(String county, String highway, String csj, int workingDays, Date biddingDate, List<LineItem> lineItems,
             List<Contractor> contractorList) {
 
         setCounty(county);
         setHighway(highway);
         setCsj(csj);
         setWorkingDays(workingDays);
+        setBiddingDate(biddingDate);
 
         if (lineItems != null) {
             setLineItems(lineItems);
@@ -51,7 +58,7 @@ public class Job {
 
     public Job(String county, String highway, String csj, int workingDays, int upTo_Mobs, BigDecimal totalMobs,
             BigDecimal additionalMobs, List<LineItem> lineItems, List<Contractor> contractorList) {
-                
+
         setCounty(county);
         setHighway(highway);
         setCsj(csj);
@@ -59,6 +66,21 @@ public class Job {
         setUpTo_Mobs(upTo_Mobs);
         setTotalMobs(totalMobs);
         setAdditionalMobs(additionalMobs);
+        setLineItems(lineItems);
+        setContractorList(contractorList);
+    }
+
+    public Job(String county, String highway, String csj, int workingDays, int upTo_Mobs, BigDecimal totalMobs,
+            BigDecimal additionalMobs, Date biddingDate, List<LineItem> lineItems, List<Contractor> contractorList) {
+
+        setCounty(county);
+        setHighway(highway);
+        setCsj(csj);
+        setWorkingDays(workingDays);
+        setUpTo_Mobs(upTo_Mobs);
+        setTotalMobs(totalMobs);
+        setAdditionalMobs(additionalMobs);
+        setBiddingDate(biddingDate);
         setLineItems(lineItems);
         setContractorList(contractorList);
     }
@@ -203,8 +225,9 @@ public class Job {
 
         List<String> estimateNumberContentLine = new ArrayList<String>();
         for (Contractor contractor : contractorList) {
-            
-            estimateNumberContentLine.add(String.format("%-17s%-40s%-45s%40s%n", contractor.getContractorEstimateNo(), contractor.getContractorName(), contractor.getContractorPhoneNumber(),
+
+            estimateNumberContentLine.add(String.format("%-17s%-40s%-45s%40s%n", contractor.getContractorEstimateNo(),
+                    contractor.getContractorName(), contractor.getContractorPhoneNumber(),
                     contractor.getContractorEmail()));
         }
         return estimateNumberContentLine;
@@ -212,6 +235,14 @@ public class Job {
     // ====================================================================================================
     // Getter Setters
     // ====================================================================================================
+
+    public Date getBiddingDate() {
+        return biddingDate;
+    }
+
+    public void setBiddingDate(Date biddingDate) {
+        this.biddingDate = biddingDate;
+    }
 
     public List<Contractor> getContractorList() {
         return contractorList;
@@ -303,5 +334,21 @@ public class Job {
 
     public BigDecimal getMinimumDayCharge() {
         return new BigDecimal(7500);
+    }
+
+    public String getBiddingDateString() {
+
+        return dateFormat.format(biddingDate);
+    }
+    public void setBiddingDateFromString(String biddingDateString) {
+
+        try {
+
+            biddingDate = dateFormat.parse(biddingDateString);
+        } catch (ParseException e) {
+            
+            // Handle parsing errors if the string is not in the expected format
+            e.printStackTrace();
+        }
     }
 }
