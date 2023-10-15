@@ -111,11 +111,15 @@ public class V1Format extends Format {
 
         for (int lineItem = 0; lineItem < LINE_ITEM_COUNT; lineItem++) {
 
-            result.add(START_OF_LINE_ITEMS + LINE_ITEM_DESCRIPTION_OFFSET + lineItem * LENGTH_OF_LINE_ITEM,
+            int starOfThisLineItem = START_OF_LINE_ITEMS + lineItem * LENGTH_OF_LINE_ITEM;
+
+            result.add(starOfThisLineItem + LINE_ITEM_DESCRIPTION_OFFSET,
                     lineItems.get(lineItem).getDescription());
-            result.add(START_OF_LINE_ITEMS + LINE_ITEM_QUANTITY_OFFSET + lineItem * LENGTH_OF_LINE_ITEM,
+
+            result.add(starOfThisLineItem + LINE_ITEM_QUANTITY_OFFSET,
                     String.valueOf(lineItems.get(lineItem).getQuantity()));
-            result.add(START_OF_LINE_ITEMS + LINE_ITEM_PRICE_OFFSET + lineItem * LENGTH_OF_LINE_ITEM,
+
+            result.add(starOfThisLineItem + LINE_ITEM_PRICE_OFFSET,
                     String.format("%.2f", lineItems.get(lineItem).getPrice()));
         }
 
@@ -123,11 +127,15 @@ public class V1Format extends Format {
 
         for (int contractor = 0; contractor < CONTRACTOR_COUNT; contractor++) {
 
-            result.add(START_OF_CONTRACTORS + CONTRACTOR_NAME_OFFSET + contractor * LENGTH_OF_CONTRACTORS,
+            int startOfThisContractor = START_OF_CONTRACTORS + contractor * LENGTH_OF_CONTRACTORS;
+
+            result.add(startOfThisContractor + CONTRACTOR_NAME_OFFSET,
                     contractors.get(contractor).getContractorName());
-            result.add(START_OF_CONTRACTORS + CONTRACTOR_PHONE_OFFSET + contractor * LENGTH_OF_CONTRACTORS,
+
+            result.add(startOfThisContractor + CONTRACTOR_PHONE_OFFSET,
                     contractors.get(contractor).getContractorPhoneNumber());
-            result.add(START_OF_CONTRACTORS + CONTRACTOR_EMAIL_OFFSET + contractor * LENGTH_OF_CONTRACTORS,
+
+            result.add(startOfThisContractor + CONTRACTOR_EMAIL_OFFSET,
                     contractors.get(contractor).getContractorEmail());
         }
 
@@ -171,28 +179,23 @@ public class V1Format extends Format {
 
         ArrayList<LineItem> lineItems = new ArrayList<>();
         for (int lineItem = 0; lineItem < LINE_ITEM_COUNT; lineItem++) {
-            
+
+            int starOfThisLineItem = START_OF_LINE_ITEMS + lineItem * LENGTH_OF_LINE_ITEM;
             lineItems.add(new LineItem(
-                    tokens[START_OF_LINE_ITEMS + LINE_ITEM_DESCRIPTION_OFFSET
-                            + lineItem * LENGTH_OF_LINE_ITEM],
-                    new BigDecimal(
-                            tokens[START_OF_LINE_ITEMS + LINE_ITEM_QUANTITY_OFFSET
-                                    + lineItem * LENGTH_OF_LINE_ITEM]),
-                    new BigDecimal(
-                            tokens[START_OF_LINE_ITEMS + LINE_ITEM_PRICE_OFFSET
-                                    + lineItem * LENGTH_OF_LINE_ITEM])));
+                    tokens[starOfThisLineItem + LINE_ITEM_DESCRIPTION_OFFSET],
+                    new BigDecimal(tokens[starOfThisLineItem + LINE_ITEM_QUANTITY_OFFSET]),
+                    new BigDecimal(tokens[starOfThisLineItem + LINE_ITEM_PRICE_OFFSET])));
         }
 
         ArrayList<Contractor> contractors = new ArrayList<>();
         for (int contractor = 0; contractor < CONTRACTOR_COUNT; contractor++) {
 
+            int startOfThisContractor = START_OF_CONTRACTORS + contractor * LENGTH_OF_CONTRACTORS;
+
             contractors.add(new Contractor(
-                    tokens[START_OF_CONTRACTORS + CONTRACTOR_NAME_OFFSET
-                            + contractor * LENGTH_OF_CONTRACTORS],
-                    tokens[START_OF_CONTRACTORS + CONTRACTOR_PHONE_OFFSET
-                            + contractor * LENGTH_OF_CONTRACTORS],
-                    tokens[START_OF_CONTRACTORS + CONTRACTOR_EMAIL_OFFSET
-                            + contractor * LENGTH_OF_CONTRACTORS]));
+                    tokens[startOfThisContractor + CONTRACTOR_NAME_OFFSET],
+                    tokens[startOfThisContractor + CONTRACTOR_PHONE_OFFSET],
+                    tokens[startOfThisContractor + CONTRACTOR_EMAIL_OFFSET]));
         }
 
         return new Job(
