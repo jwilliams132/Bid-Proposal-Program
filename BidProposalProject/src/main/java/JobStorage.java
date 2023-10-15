@@ -4,7 +4,13 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+
 public class JobStorage {
+
+    public enum FileFormat {
+
+        COMBINED, V1, V2
+    }
 
     private final File lettingFolder = new File(System.getProperty("user.home") + "/Desktop/Letting");
     private final String fileLookUpTargetName = "Program Output.txt";
@@ -16,7 +22,8 @@ public class JobStorage {
 
     public JobStorage() {
 
-        savedJobStorage = parseFile(lettingFolder.getAbsolutePath() + "/Job Storage.txt");
+        // savedJobStorage = parseFile(lettingFolder.getAbsolutePath() + "/Job
+        // Storage.txt");
     }
 
     /**
@@ -52,7 +59,6 @@ public class JobStorage {
 
         List<String> fileContents = getFileContents(knownFilePath);
         FormatInterface fileFormat = null;
-        System.out.println(fileContents.get(0));
         if (fileContents.get(0).startsWith(CombinedFormat.fileHeader))
 
             fileFormat = new CombinedFormat();
@@ -61,9 +67,11 @@ public class JobStorage {
 
             fileFormat = new V1Format();
 
-        if (fileContents.get(0).startsWith(V2Format.fileHeader))
+        if (fileContents.get(0).startsWith(V2Format.fileHeader)) {
 
             fileFormat = new V2Format();
+            fileContents.remove(0); // removes file header
+        }
 
         if (fileFormat == null) {
 
@@ -72,6 +80,28 @@ public class JobStorage {
         }
 
         return fileFormat.jobsFromFormat(fileContents);
+    }
+
+    public void saveFileFormat(List<Job> jobs, String filePath, FileFormat format) {
+        
+        FormatInterface fileFormat;
+        switch (format) {
+
+            case V1:
+                fileFormat = new V1Format();
+                break;
+
+            case V2:
+                fileFormat = new V2Format();
+                break;
+
+            default:
+                fileFormat = new V2Format();
+                break;
+        }
+
+        File outputFile = fileManager.chooseFile(filePath, null, FileManager.fileChooserOptions.SAVE, null);
+        fileManager.saveFile(outputFile, fileFormat.jobsToFormat(jobs));
     }
 
     // ====================================================================================================
