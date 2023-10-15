@@ -1,8 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
-import java.awt.EventQueue;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -10,37 +10,14 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Toolkit;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.InputEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JViewport;
-import javax.swing.KeyStroke;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
-
-import javax.swing.border.EmptyBorder;
-
-import javax.swing.filechooser.FileFilter;
-
 import java.io.File;
 import java.math.BigDecimal;
 import java.nio.file.Paths;
@@ -48,10 +25,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+// import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JViewport;
+import javax.swing.KeyStroke;
+// import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileFilter;
+
 public class TestApp {
 
-    private ParseFullDoc parseFullDoc;
     private FileManager fileManager = new FileManager();
+    private JobStorage jobStorage = new JobStorage();
     private String lettingMonthDirectory;
 
     private final Font TITLEFONT = new Font("Monospaced", Font.BOLD, 50);
@@ -65,22 +61,27 @@ public class TestApp {
     private ArrayList<JTextField> lineItemPrices = new ArrayList<JTextField>();
     private int jobIndex = 0;
 
-    private List<Job> currentJobList, filteredJobList; // OVERHAUL CHANGE
+    private List<Job> currentJobList, filteredJobList;
 
     private enum Display {
         STARTUP, UNFILTERED, FILTERED, PRICING
     };
 
-    private enum JOBSET {
-        OLD, NEW
-    };
+    // private enum JOBSET {
+    //     OLD, NEW
+    // };
 
     private enum TEST {
         TEST, REAL
     };
 
+    private enum ExcelFormat {
+        V1, V2
+    }
+
     private Display currentDisplay = null;
     private TEST ifTest = TEST.REAL;
+    private ExcelFormat preferredExcelFormat = ExcelFormat.V2;
 
     private FileFilter txtFileFilter = new FileFilter() {
         public boolean accept(File f) {
@@ -136,7 +137,7 @@ public class TestApp {
 
             public void run() {
 
-                // reads file
+                // // reads file
                 // FileManager fileManager = new FileManager();
                 // File file = fileManager.chooseFile(
                 // "C:\\Users\\Jacob\\Desktop\\Letting\\Testing\\March\\Program Output.txt",
@@ -314,6 +315,7 @@ public class TestApp {
                     public void run() {
 
                         openChosenStartFile();
+
                     }
                 });
             }
@@ -473,17 +475,11 @@ public class TestApp {
 
         // ====PARSE FILE CONTENTS====
 
-        JobStorage jobStorage = new JobStorage();
         currentJobList = jobStorage.parseFile(inputFile.getAbsolutePath());
 
         // SET OPENED FILE PATH
 
         lettingMonthDirectory = Paths.get(inputFile.getAbsolutePath()).getParent().toString();
-
-        parseFullDoc = new ParseFullDoc();
-        parseFullDoc.setNewInputFile(inputFile);
-        parseFullDoc.parseData();
-        parseFullDoc.setFullJobList(parseFullDoc.getJobList());
 
         openFilePathLabel.setText("File Path:  " + inputFile);
 
@@ -503,22 +499,22 @@ public class TestApp {
 
     private void getUpdatedDoc() { // TODO
 
-        File updatedFile = fileManager.chooseFile(null, null,
-                FileManager.fileChooserOptions.OPEN, null);
+        // File updatedFile = fileManager.chooseFile(null, null,
+        //         FileManager.fileChooserOptions.OPEN, null);
 
-        if (updatedFile == null) {
+        // if (updatedFile == null) {
 
-            showWarning("Warning", "Error", "No file selected");
-            return;
-        }
+        //     showWarning("Warning", "Error", "No file selected");
+        //     return;
+        // }
 
-        ParseFullDoc updatedDoc;
-        updatedDoc = new ParseFullDoc();
-        updatedDoc.setNewInputFile(updatedFile);
-        updatedDoc.parseData();
-        updatedDoc.setFullJobList(updatedDoc.getJobList());
+        // ParseFullDoc updatedDoc;
+        // updatedDoc = new ParseFullDoc();
+        // updatedDoc.setNewInputFile(updatedFile);
+        // updatedDoc.parseData();
+        // updatedDoc.setFullJobList(updatedDoc.getJobList());
 
-        displayUpdateInfoFrame(updatedDoc);
+        // displayUpdateInfoFrame(updatedDoc);
     }
 
     private void filterJobSelection() {
@@ -544,6 +540,7 @@ public class TestApp {
         if (!hasSelectedCheckBox) {
             selectedJobList.addAll(currentJobList);
         }
+
         filteredJobList = selectedJobList; // set the job list to the selected jobs
 
         changeDisplay(getFilteredDisplay(), Display.FILTERED);
@@ -559,7 +556,6 @@ public class TestApp {
     private void removeFilter() {
 
         filteredJobList = currentJobList;
-        parseFullDoc.setJobList(parseFullDoc.getFullJobList());
         changeDisplay(getUnfilteredDisplay(), Display.UNFILTERED);
 
         filterJobs.setEnabled(true);
@@ -583,23 +579,40 @@ public class TestApp {
 
         lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
         // Get the selected file
-        File formattedOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Program Output.txt", null,
-                FileManager.fileChooserOptions.SAVE, null);
         File userFriendlyOutput = fileManager.chooseFile(
                 lettingMonthDirectory + "\\Program Output (User Friendly).txt", null,
                 FileManager.fileChooserOptions.SAVE, null);
         File emailList = fileManager.chooseFile(lettingMonthDirectory + "\\Email List.txt", null,
                 FileManager.fileChooserOptions.SAVE, null);
 
+        ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
+        ArrayList<String> emailListBuffer = new ArrayList<String>();
+
+        jobStorage.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Program Ouput.txt",
+                JobStorage.FileFormat.V2);
+        // add all job data to fileContentBuffer
+        for (Job job : filteredJobList) {
+            
+            userFriendlyOutputBuffer.addAll(job.formatUserFriendlyJobInfo());
+            userFriendlyOutputBuffer.add("-".repeat(100));
+
+            emailListBuffer.addAll(job.formatEmailList());
+
+            // TODO re-implement the contractor storage
+            // job.getContractorList().forEach(contractor ->
+            // storage.addToContractList(contractor));
+        }
+        fileManager.saveFile(userFriendlyOutput, userFriendlyOutputBuffer);
+        fileManager.saveFile(emailList, emailListBuffer);
+
         // // Set the prices for the current job
         // setPrices();
+
         // Set the file path label to show the chosen file
         saveFilePathLabel.setText("Directory Path:  " + lettingMonthDirectory);
 
         // Enable the save button
         saveExcel.setEnabled(true);
-
-        parseFullDoc.exportDataFiles(formattedOutput, userFriendlyOutput, emailList); // TODO
 
         // Disable the updateBidders button
         updateBidders.setEnabled(false);
@@ -639,30 +652,48 @@ public class TestApp {
     }
 
     private void createExcelFiles() {
-        File excelInputFile = fileManager.chooseFile(
-                "BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
-                null, FileManager.fileChooserOptions.OPEN, null);
 
-        int startingEstimateNo = 2970; // APR FINISHED WITH 2111 // may finished with 2310 june 2513 july 2684
-                                       // private 2687 AUGUST 2823 sept 2964
-        ExcelManager excelManager;
+        ExcelFormatInterface excelOutput;
+        switch (preferredExcelFormat) {
+            case V1:
+                excelOutput = new V1ExcelFormat();
+                break;
 
-        for (int jobIndex = 0; jobIndex < filteredJobList.size(); jobIndex++) {
+            case V2:
+                excelOutput = new V2ExcelFormat();
+                break;
 
-            excelManager = new ExcelManager();
-            excelManager.createWorkBook(excelInputFile.getAbsolutePath());
-
-            populateExcel(excelManager, filteredJobList.get(jobIndex),
-                    startingEstimateNo);
-            startingEstimateNo += 10;
-            excelManager.saveWorkbook(String.format("%s\\%S %s%s",
-                    lettingMonthDirectory,
-                    filteredJobList.get(jobIndex).getCounty(),
-                    filteredJobList.get(jobIndex).getCsj(), ".xlsm"));
-
+            default:
+                excelOutput = new V2ExcelFormat();
+                break;
         }
+        excelOutput.createExcelFile(filteredJobList, lettingMonthDirectory);
 
-        showWarning("Success", "Success", "Excel files were created");
+        // File excelInputFile = fileManager.chooseFile(
+        // "BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
+        // null, FileManager.fileChooserOptions.OPEN, null);
+
+        // int startingEstimateNo = 2970; // APR FINISHED WITH 2111 // may finished with
+        // 2310 june 2513 july 2684
+        // // private 2687 AUGUST 2823 sept 2964
+        // ExcelManager excelManager;
+
+        // for (int jobIndex = 0; jobIndex < filteredJobList.size(); jobIndex++) {
+
+        // excelManager = new ExcelManager();
+        // excelManager.createWorkBook(excelInputFile.getAbsolutePath());
+
+        // populateExcel(excelManager, filteredJobList.get(jobIndex),
+        // startingEstimateNo);
+        // startingEstimateNo += 10;
+        // excelManager.saveWorkbook(String.format("%s\\%S %s%s",
+        // lettingMonthDirectory,
+        // filteredJobList.get(jobIndex).getCounty(),
+        // filteredJobList.get(jobIndex).getCsj(), ".xlsm"));
+
+        // }
+
+        // showWarning("Success", "Success", "Excel files were created");
     }
 
     // ====================================================================================================
@@ -1188,13 +1219,11 @@ public class TestApp {
             displayPricingConstraints.gridx = 0;
             displayPricingConstraints.gridy = index + 4;
             // OVERHAUL CHANGE
-            // filteredJobList.get(jobIndex).getLineItems().get(index).getDescription(),
             // OVERHAUL CHANGE
-            // filteredJobList.get(jobIndex).getLineItems().get(index).getQuantity(),
             pricingDisplay.add(new JLabel(String.format("%-40s%s%,12.2f%s",
-                    parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getDescription(),
+                    filteredJobList.get(jobIndex).getLineItems().get(index).getDescription(),
                     "    Quantity: ",
-                    parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getQuantity(),
+                    filteredJobList.get(jobIndex).getLineItems().get(index).getQuantity(),
                     " (Sq. Yds.)")) {
                 {
                     setFont(FONT);
@@ -1205,9 +1234,7 @@ public class TestApp {
             lineItemPrices.add(new JTextField());
             lineItemPrices.get(index).setPreferredSize(new Dimension(50, 20));
             lineItemPrices.get(index).setText(String.format("%1.2f",
-                    parseFullDoc.getJobList().get(jobIndex).getLineItems().get(index).getPrice()));
-            // OVERHAUL CHANGE
-            // filteredJobList.get(jobIndex).getLineItems().get(index).getPrice()));
+                    filteredJobList.get(jobIndex).getLineItems().get(index).getPrice()));
 
             lineItemPrices.get(index).addFocusListener(new FocusListener() {
 
@@ -1277,117 +1304,117 @@ public class TestApp {
     // "Update Job Data" Display
     // ===========================================================================
 
-    private ArrayList<Job> filterUpdatedJobs(ParseFullDoc updatedDoc) {
+    // private ArrayList<Job> filterUpdatedJobs(ParseFullDoc updatedDoc) {
 
-        ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
+    //     ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
 
-        // for each updated job...
-        for (Job updatedJob : updatedDoc.getJobList()) {
+    //     // for each updated job...
+    //     for (Job updatedJob : updatedDoc.getJobList()) {
 
-            // check each old job
-            for (Job oldJob : currentJobList) {
-            
-                // and if the CSJ's match
-                if (oldJob.getCsj().equals(updatedJob.getCsj())) {
+    //         // check each old job
+    //         for (Job oldJob : currentJobList) {
 
-                    // add the updated job to the list
-                    filteredUpdatedJobs.add(updatedJob);
-                    break;
-                }
-            }
+    //             // and if the CSJ's match
+    //             if (oldJob.getCsj().equals(updatedJob.getCsj())) {
 
-            // stop once the count of jobs is correct
-            if (filteredUpdatedJobs.size() == currentJobList.size())
-                break;
-        }
-        return filteredUpdatedJobs;
-    }
+    //                 // add the updated job to the list
+    //                 filteredUpdatedJobs.add(updatedJob);
+    //                 break;
+    //             }
+    //         }
 
-    private void displayUpdateInfoFrame(ParseFullDoc updatedDoc) {
+    //         // stop once the count of jobs is correct
+    //         if (filteredUpdatedJobs.size() == currentJobList.size())
+    //             break;
+    //     }
+    //     return filteredUpdatedJobs;
+    // }
 
-        // set up the frame
-        JFrame updateInfoFrame = new JFrame() {
-            {
-                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                setTitle("Update Information");
-                getContentPane().setLayout(new GridBagLayout());
-                setSize(1250, 600);
+    // private void displayUpdateInfoFrame(ParseFullDoc updatedDoc) { TODO 
 
-            }
-        };
-        List<Job> oldJobs = currentJobList;//TODO
-        List<Job> newJobs = filterUpdatedJobs(updatedDoc);
+    //     // set up the frame
+    //     JFrame updateInfoFrame = new JFrame() {
+    //         {
+    //             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    //             setTitle("Update Information");
+    //             getContentPane().setLayout(new GridBagLayout());
+    //             setSize(1250, 600);
 
-        JList<String> oldJobList = new JList<String>(
-                getInfoList(JOBSET.OLD, oldJobs, newJobs).toArray(new String[] {}));
-        oldJobList.setBorder(new EmptyBorder(20, 50, 10, 0));
-        oldJobList.setFont(FONT);
-        oldJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+    //         }
+    //     };
+    //     List<Job> oldJobs = currentJobList;// TODO
+    //     List<Job> newJobs = filterUpdatedJobs(updatedDoc);
 
-        JList<String> newJobList = new JList<String>(
-                getInfoList(JOBSET.NEW, oldJobs, newJobs).toArray(new String[] {}));
-        newJobList.setBorder(new EmptyBorder(20, 0, 10, 50));
-        newJobList.setFont(FONT);
-        newJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+    //     JList<String> oldJobList = new JList<String>(
+    //             getInfoList(JOBSET.OLD, oldJobs, newJobs).toArray(new String[] {}));
+    //     oldJobList.setBorder(new EmptyBorder(20, 50, 10, 0));
+    //     oldJobList.setFont(FONT);
+    //     oldJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        JScrollPane infoScrollPane = new JScrollPane();
-        infoScrollPane.getVerticalScrollBar().setUnitIncrement(16);
+    //     JList<String> newJobList = new JList<String>(
+    //             getInfoList(JOBSET.NEW, oldJobs, newJobs).toArray(new String[] {}));
+    //     newJobList.setBorder(new EmptyBorder(20, 0, 10, 50));
+    //     newJobList.setFont(FONT);
+    //     newJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        JPanel infoPanel = new JPanel(new GridLayout(0, 2));
+    //     JScrollPane infoScrollPane = new JScrollPane();
+    //     infoScrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
-        infoPanel.add(oldJobList);
-        infoPanel.add(newJobList);
+    //     JPanel infoPanel = new JPanel(new GridLayout(0, 2));
 
-        GridBagConstraints infoFrameConstraints = new GridBagConstraints();
-        infoFrameConstraints.gridx = 0;
-        infoFrameConstraints.gridy = 0;
-        infoFrameConstraints.fill = GridBagConstraints.BOTH; // Fill both horizontally and vertically
-        infoFrameConstraints.weightx = 1.0; // Expand horizontally
-        infoFrameConstraints.weighty = 1.0; // Expand vertically
+    //     infoPanel.add(oldJobList);
+    //     infoPanel.add(newJobList);
 
-        infoScrollPane.setViewportView(infoPanel);
-        updateInfoFrame.add(infoScrollPane, infoFrameConstraints);
-        updateInfoFrame.setVisible(true);
-    }
+    //     GridBagConstraints infoFrameConstraints = new GridBagConstraints();
+    //     infoFrameConstraints.gridx = 0;
+    //     infoFrameConstraints.gridy = 0;
+    //     infoFrameConstraints.fill = GridBagConstraints.BOTH; // Fill both horizontally and vertically
+    //     infoFrameConstraints.weightx = 1.0; // Expand horizontally
+    //     infoFrameConstraints.weighty = 1.0; // Expand vertically
 
-    private List<String> getInfoList(JOBSET whichJobset, List<Job> oldJobs, List<Job> newJobs) {
+    //     infoScrollPane.setViewportView(infoPanel);
+    //     updateInfoFrame.add(infoScrollPane, infoFrameConstraints);
+    //     updateInfoFrame.setVisible(true);
+    // }
 
-        List<Job> chosenJobSet = whichJobset == JOBSET.OLD ? oldJobs : newJobs;
-        List<String> outputList = new ArrayList<String>();
+    // private List<String> getInfoList(JOBSET whichJobset, List<Job> oldJobs, List<Job> newJobs) { TODO
 
-        StringBuilder buffer = new StringBuilder();
-        int maxContractors, contractorCount;
+    //     List<Job> chosenJobSet = whichJobset == JOBSET.OLD ? oldJobs : newJobs;
+    //     List<String> outputList = new ArrayList<String>();
 
-        // for every Job
-        for (int jobIndex = 0; jobIndex < chosenJobSet.size(); jobIndex++) {
+    //     StringBuilder buffer = new StringBuilder();
+    //     int maxContractors, contractorCount;
 
-            // find the count of the larger contractor count between old and new
-            maxContractors = Math.max(oldJobs.get(jobIndex).getContractorList().size(),
-                    newJobs.get(jobIndex).getContractorList().size());
+    //     // for every Job
+    //     for (int jobIndex = 0; jobIndex < chosenJobSet.size(); jobIndex++) {
 
-            contractorCount = chosenJobSet.get(jobIndex).getContractorList().size();
+    //         // find the count of the larger contractor count between old and new
+    //         maxContractors = Math.max(oldJobs.get(jobIndex).getContractorList().size(),
+    //                 newJobs.get(jobIndex).getContractorList().size());
 
-            // add job info to buffer
-            buffer.append("<html>");
-            buffer.append(String.format("%-20s%-20s%s", chosenJobSet.get(jobIndex).getCsj(),
-                    chosenJobSet.get(jobIndex).getCounty(), "<br>"));
+    //         contractorCount = chosenJobSet.get(jobIndex).getContractorList().size();
 
-            // for each contractor
-            for (int contractorIndex = 0; contractorIndex < maxContractors; contractorIndex++) {
+    //         // add job info to buffer
+    //         buffer.append("<html>");
+    //         buffer.append(String.format("%-20s%-20s%s", chosenJobSet.get(jobIndex).getCsj(),
+    //                 chosenJobSet.get(jobIndex).getCounty(), "<br>"));
 
-                // add each contractor,
-                buffer.append(String.format("%s<br>",
-                        contractorCount > contractorIndex ? chosenJobSet
-                                .get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
-                                : "-----"));
-            }
-            buffer.append("=".repeat(58));
-            buffer.append("</html>");
-            outputList.add(buffer.toString());
-            buffer.setLength(0);
-        }
-        return outputList;
-    }
+    //         // for each contractor
+    //         for (int contractorIndex = 0; contractorIndex < maxContractors; contractorIndex++) {
+
+    //             // add each contractor,
+    //             buffer.append(String.format("%s<br>",
+    //                     contractorCount > contractorIndex ? chosenJobSet
+    //                             .get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
+    //                             : "-----"));
+    //         }
+    //         buffer.append("=".repeat(58));
+    //         buffer.append("</html>");
+    //         outputList.add(buffer.toString());
+    //         buffer.setLength(0);
+    //     }
+    //     return outputList;
+    // }
 
     // ====================================================================================================
     // Other Methods
