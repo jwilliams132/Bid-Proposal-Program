@@ -1,7 +1,10 @@
 import java.io.File;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -82,27 +85,29 @@ public class CombinedFormat extends Format {
         List<Contractor> contractorList = new ArrayList<Contractor>();
         List<LineItem> lineItems = new ArrayList<LineItem>();
         String county = "", highway = "", csj = "";
+        Date biddingDate = null;
         int workingDays = 0;
         boolean lineItemStart = false, contractorStart = false;
         for (int index = 0; index < job.size(); index++) {
 
+            String line = job.get(index);
             // get data from county line
-            if (job.get(index).startsWith("COUNTY")) {
+            if (line.startsWith("COUNTY")) {
 
-                county = job.get(index).substring(8, 32).trim();
-                highway = job.get(index).substring(41, 59).trim();
+                county = line.substring(8, 32).trim();
+                highway = line.substring(41, 59).trim();
             }
 
             // get data from control line
-            if (job.get(index).startsWith("CONTROL")) {
+            if (line.startsWith("CONTROL")) {
 
-                csj = job.get(index).substring(16, 27);
+                csj = line.substring(16, 27);
             }
 
             // get data from working days
-            if (job.get(index).startsWith("TIME FOR COMPLETION")) {
+            if (line.startsWith("TIME FOR COMPLETION")) {
 
-                Matcher workingDaysMatcher = Pattern.compile(": [0-9]* WORKING DAYS").matcher(job.get(index));
+                Matcher workingDaysMatcher = Pattern.compile(": [0-9]* WORKING DAYS").matcher(line);
                 if (workingDaysMatcher.find()) {
 
                     String buffer = workingDaysMatcher.group();
@@ -114,19 +119,51 @@ public class CombinedFormat extends Format {
                 }
             }
 
+            // Check if the line starts with "BIDS RECEIVED UNTIL: "
+            if (line.startsWith("BIDS RECEIVED UNTIL:  ")) {
+                // Define a regular expression pattern to match the date and time
+                String datePattern = "\\d{1,2}:\\d{2}\\s[a-zA-Z]{2}\\s[a-zA-Z]+\\s\\d{1,2},\\s\\d{4}";
+
+                // Create a Pattern object
+                Pattern pattern = Pattern.compile(datePattern);
+
+                // Create a Matcher object to find the date and time
+                Matcher matcher = pattern.matcher(line);
+
+                // Check if the pattern is found in the line
+                if (matcher.find()) {
+                    // Extract and save the date and time
+                    String extractedDateTime = matcher.group();
+
+                    // Define a SimpleDateFormat to parse the extracted date and time
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a MMMM dd, yyyy");
+
+                    try {
+                        biddingDate = dateFormat.parse(extractedDateTime);
+                        // dateObject now contains the Date representation of the extracted date and
+                        // time
+                    } catch (ParseException e) {
+                        // Handle parsing errors, e.g., if the date format is not as expected
+                        e.printStackTrace();
+                    }
+                }
+            }
+
             // start the line item count
-            if (job.get(index).startsWith("ITEM DES")) {
+            if (line.startsWith("ITEM DES")) {
 
                 lineItemStart = true;
-                index = index + 3;
+                index += 3;
+                line = job.get(index);
             }
 
             // add each line item to ArrayList
             if (lineItemStart) {
 
-                if (!job.get(index).startsWith("+ DELETED ->"))
-                    lineItems.add(new LineItem(job.get(index).substring(13, 53).trim(),
-                            new BigDecimal(job.get(index).substring(55, 72).trim().replaceAll(",", "")), new BigDecimal(0)));
+                if (!line.startsWith("+ DELETED ->"))
+                    lineItems.add(new LineItem(line.substring(13, 53).trim(),
+                            new BigDecimal(line.substring(55, 72).trim().replaceAll(",", "")),
+                            new BigDecimal(0)));
 
                 if (job.get(index + 1).isBlank()) {
                     lineItemStart = false;
@@ -134,15 +171,16 @@ public class CombinedFormat extends Format {
             }
 
             // start the contractor count
-            if (job.get(index).startsWith("PLANHOLDERS")) {
+            if (line.startsWith("PLANHOLDERS")) {
 
                 contractorStart = true;
-                index = index + 2;
+                index += 2;
+                line = job.get(index);
             }
 
             if (contractorStart) { // add each contractor to array
 
-                if (job.get(index).startsWith("*****")) // if the current element in the job list starts with "*****",
+                if (line.startsWith("*****")) // if the current element in the job list starts with "*****",
                                                         // increment the index
                     index++;
 
@@ -153,7 +191,7 @@ public class CombinedFormat extends Format {
                  * contractorList array
                  */
                 contractorList.add(new Contractor(
-                        job.get(index) + "  " + (job.get(index + 1).trim().startsWith("EMAIL") ? job.get(index + 1)
+                        line + "  " + (job.get(index + 1).trim().startsWith("EMAIL") ? job.get(index + 1)
                                 : "=============No Email Found=============")));
 
                 // if the next or next-to-next element in the job list is blank, set
@@ -166,7 +204,7 @@ public class CombinedFormat extends Format {
                     index++;
             }
         }
-        return new Job(county, highway, csj, workingDays, lineItems, contractorList);
+        return new Job(county, highway, csj, workingDays, biddingDate, lineItems, contractorList);
     }
 
     /**
@@ -201,7 +239,6 @@ public class CombinedFormat extends Format {
                 jobLineString.append(nextLine).append("|");
             }
         }
-        jobs.forEach(job -> job.printJobInfo());
         return jobs;
     }
 }
