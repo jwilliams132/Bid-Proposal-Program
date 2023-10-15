@@ -1,6 +1,8 @@
 import java.io.File;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class V2Format extends Format {
@@ -13,9 +15,12 @@ public class V2Format extends Format {
     final int TOTAL_MOBS_INDEX = 5;
     final int ADDITIONAL_MOBS_INDEX = 6;
 
-    final int LINE_ITEM_COUNT_INDEX = 7;
-    final int CONTRACTOR_COUNT_INDEX = 8;
-    final int START_OF_LINE_ITEMS = 9;
+    final int BIDDING_DATE_INDEX = 7;
+    final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    final int LINE_ITEM_COUNT_INDEX = 8;
+    final int CONTRACTOR_COUNT_INDEX = 9;
+    final int START_OF_LINE_ITEMS = 10;
 
     final int LENGTH_OF_LINE_ITEM = 3;
     final int LINE_ITEM_DESCRIPTION_OFFSET = 0;
@@ -91,6 +96,7 @@ public class V2Format extends Format {
         result.add(UP_TO_MOBS_INDEX, String.valueOf(job.getUpTo_Mobs()));
         result.add(TOTAL_MOBS_INDEX, String.valueOf(job.getTotalMobs()));
         result.add(ADDITIONAL_MOBS_INDEX, String.valueOf(job.getAdditionalMobs()));
+        result.add(BIDDING_DATE_INDEX, dateFormat.format(job.getBiddingDate()));
 
         List<LineItem> lineItems = job.getLineItems();
         List<Contractor> contractors = job.getContractorList();
@@ -181,7 +187,14 @@ public class V2Format extends Format {
                     tokens[START_OF_CONTRACTORS + ESTIMATE_NO_OF_JOB_OFFSET
                             + contractor * LENGTH_OF_CONTRACTORS]));
         }
+        Date biddingDate = null;
+        try {
 
+            dateFormat.parse(tokens[BIDDING_DATE_INDEX]);
+        } catch (Exception e) {
+
+            // TODO: handle exception
+        }
         return new Job(
                 tokens[COUNTY_INDEX], // String county
                 tokens[HIGHWAY_INDEX], // String highway
@@ -190,6 +203,7 @@ public class V2Format extends Format {
                 Integer.parseInt(tokens[UP_TO_MOBS_INDEX]), // int upTo_Mobs
                 new BigDecimal(tokens[TOTAL_MOBS_INDEX]), // BigDecimal totalMobs
                 new BigDecimal(tokens[ADDITIONAL_MOBS_INDEX]), // BigDecimal additionalMobs
+                biddingDate,
                 lineItems, // ArrayList<LineItem> lineItems
                 contractors);
     }
