@@ -29,6 +29,8 @@ public class Contractor implements Comparable<Contractor> {
         this.contractorName = contractorName;
         this.contractorPhoneNumber = contractorPhoneNumber;
         this.contractorEmail = contractorEmail;
+        // System.out.println(contractorEmailLookup(contractorEmail));
+        // setContractorEmail(); // sets email from a regex search of infoLine
         this.contractorEstimateNumber = contractorEstimateNumber;
     }
 
@@ -65,6 +67,11 @@ public class Contractor implements Comparable<Contractor> {
         }
         ContractorStorage storage = new ContractorStorage();
         return storage.getEmail(contractorName); // returns a message if no email is found
+    }
+
+    private String contractorEmailLookup(String contractorEmail) {
+
+        return "";
     }
 
     // uses regex to find phone number from infoLine

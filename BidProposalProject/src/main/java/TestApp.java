@@ -576,6 +576,7 @@ public class TestApp {
                     return;
             default:
         }
+        setPrices();
 
         lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
         // Get the selected file
