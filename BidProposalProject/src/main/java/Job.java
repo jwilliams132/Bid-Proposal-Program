@@ -329,7 +329,7 @@ public class Job {
     }
 
     public BigDecimal getStandbyPrice() {
-        return new BigDecimal(2500);
+        return new BigDecimal(1500);
     }
 
     public BigDecimal getMinimumDayCharge() {
