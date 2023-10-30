@@ -192,7 +192,7 @@ public class V2Format extends Format {
         Date biddingDate = null;
         try {
 
-            dateFormat.parse(tokens[BIDDING_DATE_INDEX]);
+            biddingDate = dateFormat.parse(tokens[BIDDING_DATE_INDEX]);
         } catch (Exception e) {
 
             // TODO: handle exception
@@ -219,7 +219,6 @@ public class V2Format extends Format {
         for (Job job : jobs) {
 
             buffer = jobToFormat(job);
-            System.out.println(buffer.length());
             if (buffer.length() > 500) {
 
                 jobLineStrings.add(buffer.substring(0, 500));
@@ -239,13 +238,10 @@ public class V2Format extends Format {
 
         ArrayList<Job> jobs = new ArrayList<Job>();
         StringBuilder jobString;
-        System.out.println(jobLineStrings.size());
-        jobLineStrings.forEach(x -> System.out.println(x));
         for (int index = 0; index < jobLineStrings.size(); index += 2) {
 
             jobString = new StringBuilder(jobLineStrings.get(index));
             jobString.append(jobLineStrings.get(index + 1).equals("PLACEHOLDER") ? "" : jobLineStrings.get(index + 1));
-            // System.out.println(jobString.toString());
             jobs.add(jobFromFormat(jobString.toString()));
         }
 
