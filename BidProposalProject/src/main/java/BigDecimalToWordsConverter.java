@@ -35,7 +35,7 @@ public class BigDecimalToWordsConverter {
         return result;
     }
 
-    private String convertToWords(int number) {
+    public String convertToWords(int number) {
 
         if (number < 10) {
 
