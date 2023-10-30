@@ -180,9 +180,11 @@ public class CombinedFormat extends Format {
 
             if (contractorStart) { // add each contractor to array
 
-                if (line.startsWith("*****")) // if the current element in the job list starts with "*****",
-                                                        // increment the index
+                if (line.startsWith("*****")) {// if the current element in the job list starts with "*****",
+                                               // increment the index
                     index++;
+                    line = job.get(index);
+                }
 
                 /*
                  * create a new Contractor object with the current element in the job list and
@@ -200,8 +202,10 @@ public class CombinedFormat extends Format {
                     contractorStart = false;
 
                 // if the next element in the job list starts with "EMAIL", increment the index
-                if (job.get(index + 1).trim().startsWith("EMAIL"))
+                if (job.get(index + 1).trim().startsWith("EMAIL")) {
                     index++;
+                    line = job.get(index);
+                }
             }
         }
         return new Job(county, highway, csj, workingDays, biddingDate, lineItems, contractorList);
