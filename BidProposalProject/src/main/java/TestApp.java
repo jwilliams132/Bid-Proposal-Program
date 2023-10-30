@@ -68,7 +68,7 @@ public class TestApp {
     };
 
     // private enum JOBSET {
-    //     OLD, NEW
+    // OLD, NEW
     // };
 
     private enum TEST {
@@ -500,12 +500,12 @@ public class TestApp {
     private void getUpdatedDoc() { // TODO
 
         // File updatedFile = fileManager.chooseFile(null, null,
-        //         FileManager.fileChooserOptions.OPEN, null);
+        // FileManager.fileChooserOptions.OPEN, null);
 
         // if (updatedFile == null) {
 
-        //     showWarning("Warning", "Error", "No file selected");
-        //     return;
+        // showWarning("Warning", "Error", "No file selected");
+        // return;
         // }
 
         // ParseFullDoc updatedDoc;
@@ -593,7 +593,7 @@ public class TestApp {
                 JobStorage.FileFormat.V2);
         // add all job data to fileContentBuffer
         for (Job job : filteredJobList) {
-            
+
             userFriendlyOutputBuffer.addAll(job.formatUserFriendlyJobInfo());
             userFriendlyOutputBuffer.add("-".repeat(100));
 
@@ -669,32 +669,6 @@ public class TestApp {
                 break;
         }
         excelOutput.createExcelFile(filteredJobList, lettingMonthDirectory);
-
-        // File excelInputFile = fileManager.chooseFile(
-        // "BidProposalProject\\src\\main\\resources\\Test Template.xlsm",
-        // null, FileManager.fileChooserOptions.OPEN, null);
-
-        // int startingEstimateNo = 2970; // APR FINISHED WITH 2111 // may finished with
-        // 2310 june 2513 july 2684
-        // // private 2687 AUGUST 2823 sept 2964
-        // ExcelManager excelManager;
-
-        // for (int jobIndex = 0; jobIndex < filteredJobList.size(); jobIndex++) {
-
-        // excelManager = new ExcelManager();
-        // excelManager.createWorkBook(excelInputFile.getAbsolutePath());
-
-        // populateExcel(excelManager, filteredJobList.get(jobIndex),
-        // startingEstimateNo);
-        // startingEstimateNo += 10;
-        // excelManager.saveWorkbook(String.format("%s\\%S %s%s",
-        // lettingMonthDirectory,
-        // filteredJobList.get(jobIndex).getCounty(),
-        // filteredJobList.get(jobIndex).getCsj(), ".xlsm"));
-
-        // }
-
-        // showWarning("Success", "Success", "Excel files were created");
     }
 
     // ====================================================================================================
@@ -1132,65 +1106,30 @@ public class TestApp {
         displayPricingConstraints.ipadx = 10;
         displayPricingConstraints.ipady = 10;
 
-        displayPricingConstraints.gridx = 0;
-        displayPricingConstraints.gridy = 1;
-        pricingDisplay.add(new JLabel("Total Mobilizations Price?  ") {
-            {
-                setFont(FONT);
-                setForeground(FOREGROUND);
-            }
-        }, displayPricingConstraints);
-        displayPricingConstraints.gridx = 1;
-        displayPricingConstraints.gridy = 1;
         addTotalMobsToPricingPage(pricingDisplay, displayPricingConstraints);
+        addUpTo_MobsToPricingPage(pricingDisplay, displayPricingConstraints);
+        addAdditionalMobsToPricingPage(pricingDisplay, displayPricingConstraints);
         addLineItemsToPricingPage(pricingDisplay, displayPricingConstraints);
 
         totalMobsTextField.requestFocus();
         return pricingDisplayPane;
     }
 
-    public void addUpTo_MobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
-
-        upToMobsTextField = new JTextField();
-        upToMobsTextField.setText(String.format("%d",
-                filteredJobList.get(jobIndex).getUpTo_Mobs()));
-        upToMobsTextField.setPreferredSize(new Dimension(50, 20));
-        upToMobsTextField.addFocusListener(new FocusListener() {
-
-            public void focusGained(FocusEvent e) {
-
-                upToMobsTextField.selectAll();
-            }
-
-            public void focusLost(FocusEvent e) {
-            }
-        });
-        pricingDisplay.add(upToMobsTextField, displayPricingConstraints);
-    }
-
-    public void addAdditionalMobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
-
-        additionalMobsTextField = new JTextField();
-        additionalMobsTextField
-                .setText(String.format("%.0f",
-                        filteredJobList.get(jobIndex).getAdditionalMobs()));
-        additionalMobsTextField.setPreferredSize(new Dimension(50, 20));
-        additionalMobsTextField.addFocusListener(new FocusListener() {
-
-            public void focusGained(FocusEvent e) {
-
-                additionalMobsTextField.selectAll();
-            }
-
-            public void focusLost(FocusEvent e) {
-            }
-        });
-        pricingDisplay.add(additionalMobsTextField, displayPricingConstraints);
-    }
-
     public void addTotalMobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
+        displayPricingConstraints.gridy = 1;
+
+        displayPricingConstraints.gridx = 0;
+        pricingDisplay.add(new JLabel("Total Mobilizations Price?  ") {
+            {
+                setFont(FONT);
+                setForeground(FOREGROUND);
+            }
+        }, displayPricingConstraints);
+
+        displayPricingConstraints.gridx = 1;
         pricingDisplay.add(new JLabel("$"), displayPricingConstraints);
+
         displayPricingConstraints.gridx = 2;
         totalMobsTextField = new JTextField();
         totalMobsTextField.setText(String.format("%.0f",
@@ -1211,6 +1150,71 @@ public class TestApp {
         pricingDisplay.add(totalMobsTextField, displayPricingConstraints);
     }
 
+    public void addUpTo_MobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
+
+        displayPricingConstraints.gridy = 2;
+
+        displayPricingConstraints.gridx = 0;
+        pricingDisplay.add(new JLabel("Amount of mobilizations included?  ") {
+            {
+                setFont(FONT);
+                setForeground(FOREGROUND);
+            }
+        }, displayPricingConstraints);
+
+        displayPricingConstraints.gridx = 2;
+        upToMobsTextField = new JTextField();
+        upToMobsTextField.setText(String.format("%d",
+                filteredJobList.get(jobIndex).getUpTo_Mobs()));
+
+        upToMobsTextField.setPreferredSize(new Dimension(50, 20));
+        upToMobsTextField.addFocusListener(new FocusListener() {
+
+            public void focusGained(FocusEvent e) {
+
+                upToMobsTextField.selectAll();
+            }
+
+            public void focusLost(FocusEvent e) {
+            }
+        });
+        pricingDisplay.add(upToMobsTextField, displayPricingConstraints);
+    }
+
+    public void addAdditionalMobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
+
+        displayPricingConstraints.gridy = 3;
+
+        displayPricingConstraints.gridx = 0;
+        pricingDisplay.add(new JLabel("Additional Mobilization Price?  ") {
+            {
+                setFont(FONT);
+                setForeground(FOREGROUND);
+            }
+        }, displayPricingConstraints);
+
+        displayPricingConstraints.gridx = 1;
+        pricingDisplay.add(new JLabel("$"), displayPricingConstraints);
+
+        displayPricingConstraints.gridx = 2;
+        additionalMobsTextField = new JTextField();
+        additionalMobsTextField.setText(String.format("%.0f",
+                filteredJobList.get(jobIndex).getAdditionalMobs()));
+
+        additionalMobsTextField.setPreferredSize(new Dimension(50, 20));
+        additionalMobsTextField.addFocusListener(new FocusListener() {
+
+            public void focusGained(FocusEvent e) {
+
+                additionalMobsTextField.selectAll();
+            }
+
+            public void focusLost(FocusEvent e) {
+            }
+        });
+        pricingDisplay.add(additionalMobsTextField, displayPricingConstraints);
+    }
+
     public void addLineItemsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
 
         lineItemPrices.clear();
@@ -1219,8 +1223,7 @@ public class TestApp {
             final int indexForActionListener = index;
             displayPricingConstraints.gridx = 0;
             displayPricingConstraints.gridy = index + 4;
-            // OVERHAUL CHANGE
-            // OVERHAUL CHANGE
+
             pricingDisplay.add(new JLabel(String.format("%-40s%s%,12.2f%s",
                     filteredJobList.get(jobIndex).getLineItems().get(index).getDescription(),
                     "    Quantity: ",
@@ -1265,14 +1268,9 @@ public class TestApp {
 
     public void setPrices() {
 
-        // pFD.getJobList().get(jobIndex).setUpTo_Mobs(Integer.valueOf(upToMobsTextField.getText()));
         filteredJobList.get(jobIndex).setTotalMobs(new BigDecimal(totalMobsTextField.getText()));
-        // pFD.getJobList().get(jobIndex).setAdditionalMobs(new
-        // BigDecimal(additionalMobsTextField.getText()));
-
-        // use this if additional mobs is the same as total mobs (add in check boxes to
-        // allow the choice
-        filteredJobList.get(jobIndex).setAdditionalMobs(new BigDecimal(totalMobsTextField.getText()));
+        filteredJobList.get(jobIndex).setUpTo_Mobs(Integer.valueOf(upToMobsTextField.getText()));
+        filteredJobList.get(jobIndex).setAdditionalMobs(new BigDecimal(additionalMobsTextField.getText()));
 
         for (int index = 0; index < lineItemPrices.size(); index++) {
             filteredJobList
@@ -1307,114 +1305,118 @@ public class TestApp {
 
     // private ArrayList<Job> filterUpdatedJobs(ParseFullDoc updatedDoc) {
 
-    //     ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
+    // ArrayList<Job> filteredUpdatedJobs = new ArrayList<Job>();
 
-    //     // for each updated job...
-    //     for (Job updatedJob : updatedDoc.getJobList()) {
+    // // for each updated job...
+    // for (Job updatedJob : updatedDoc.getJobList()) {
 
-    //         // check each old job
-    //         for (Job oldJob : currentJobList) {
+    // // check each old job
+    // for (Job oldJob : currentJobList) {
 
-    //             // and if the CSJ's match
-    //             if (oldJob.getCsj().equals(updatedJob.getCsj())) {
+    // // and if the CSJ's match
+    // if (oldJob.getCsj().equals(updatedJob.getCsj())) {
 
-    //                 // add the updated job to the list
-    //                 filteredUpdatedJobs.add(updatedJob);
-    //                 break;
-    //             }
-    //         }
-
-    //         // stop once the count of jobs is correct
-    //         if (filteredUpdatedJobs.size() == currentJobList.size())
-    //             break;
-    //     }
-    //     return filteredUpdatedJobs;
+    // // add the updated job to the list
+    // filteredUpdatedJobs.add(updatedJob);
+    // break;
+    // }
     // }
 
-    // private void displayUpdateInfoFrame(ParseFullDoc updatedDoc) { TODO 
-
-    //     // set up the frame
-    //     JFrame updateInfoFrame = new JFrame() {
-    //         {
-    //             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    //             setTitle("Update Information");
-    //             getContentPane().setLayout(new GridBagLayout());
-    //             setSize(1250, 600);
-
-    //         }
-    //     };
-    //     List<Job> oldJobs = currentJobList;// TODO
-    //     List<Job> newJobs = filterUpdatedJobs(updatedDoc);
-
-    //     JList<String> oldJobList = new JList<String>(
-    //             getInfoList(JOBSET.OLD, oldJobs, newJobs).toArray(new String[] {}));
-    //     oldJobList.setBorder(new EmptyBorder(20, 50, 10, 0));
-    //     oldJobList.setFont(FONT);
-    //     oldJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-
-    //     JList<String> newJobList = new JList<String>(
-    //             getInfoList(JOBSET.NEW, oldJobs, newJobs).toArray(new String[] {}));
-    //     newJobList.setBorder(new EmptyBorder(20, 0, 10, 50));
-    //     newJobList.setFont(FONT);
-    //     newJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-
-    //     JScrollPane infoScrollPane = new JScrollPane();
-    //     infoScrollPane.getVerticalScrollBar().setUnitIncrement(16);
-
-    //     JPanel infoPanel = new JPanel(new GridLayout(0, 2));
-
-    //     infoPanel.add(oldJobList);
-    //     infoPanel.add(newJobList);
-
-    //     GridBagConstraints infoFrameConstraints = new GridBagConstraints();
-    //     infoFrameConstraints.gridx = 0;
-    //     infoFrameConstraints.gridy = 0;
-    //     infoFrameConstraints.fill = GridBagConstraints.BOTH; // Fill both horizontally and vertically
-    //     infoFrameConstraints.weightx = 1.0; // Expand horizontally
-    //     infoFrameConstraints.weighty = 1.0; // Expand vertically
-
-    //     infoScrollPane.setViewportView(infoPanel);
-    //     updateInfoFrame.add(infoScrollPane, infoFrameConstraints);
-    //     updateInfoFrame.setVisible(true);
+    // // stop once the count of jobs is correct
+    // if (filteredUpdatedJobs.size() == currentJobList.size())
+    // break;
+    // }
+    // return filteredUpdatedJobs;
     // }
 
-    // private List<String> getInfoList(JOBSET whichJobset, List<Job> oldJobs, List<Job> newJobs) { TODO
+    // private void displayUpdateInfoFrame(ParseFullDoc updatedDoc) { TODO
 
-    //     List<Job> chosenJobSet = whichJobset == JOBSET.OLD ? oldJobs : newJobs;
-    //     List<String> outputList = new ArrayList<String>();
+    // // set up the frame
+    // JFrame updateInfoFrame = new JFrame() {
+    // {
+    // setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    // setTitle("Update Information");
+    // getContentPane().setLayout(new GridBagLayout());
+    // setSize(1250, 600);
 
-    //     StringBuilder buffer = new StringBuilder();
-    //     int maxContractors, contractorCount;
+    // }
+    // };
+    // List<Job> oldJobs = currentJobList;// TODO
+    // List<Job> newJobs = filterUpdatedJobs(updatedDoc);
 
-    //     // for every Job
-    //     for (int jobIndex = 0; jobIndex < chosenJobSet.size(); jobIndex++) {
+    // JList<String> oldJobList = new JList<String>(
+    // getInfoList(JOBSET.OLD, oldJobs, newJobs).toArray(new String[] {}));
+    // oldJobList.setBorder(new EmptyBorder(20, 50, 10, 0));
+    // oldJobList.setFont(FONT);
+    // oldJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-    //         // find the count of the larger contractor count between old and new
-    //         maxContractors = Math.max(oldJobs.get(jobIndex).getContractorList().size(),
-    //                 newJobs.get(jobIndex).getContractorList().size());
+    // JList<String> newJobList = new JList<String>(
+    // getInfoList(JOBSET.NEW, oldJobs, newJobs).toArray(new String[] {}));
+    // newJobList.setBorder(new EmptyBorder(20, 0, 10, 50));
+    // newJobList.setFont(FONT);
+    // newJobList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-    //         contractorCount = chosenJobSet.get(jobIndex).getContractorList().size();
+    // JScrollPane infoScrollPane = new JScrollPane();
+    // infoScrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
-    //         // add job info to buffer
-    //         buffer.append("<html>");
-    //         buffer.append(String.format("%-20s%-20s%s", chosenJobSet.get(jobIndex).getCsj(),
-    //                 chosenJobSet.get(jobIndex).getCounty(), "<br>"));
+    // JPanel infoPanel = new JPanel(new GridLayout(0, 2));
 
-    //         // for each contractor
-    //         for (int contractorIndex = 0; contractorIndex < maxContractors; contractorIndex++) {
+    // infoPanel.add(oldJobList);
+    // infoPanel.add(newJobList);
 
-    //             // add each contractor,
-    //             buffer.append(String.format("%s<br>",
-    //                     contractorCount > contractorIndex ? chosenJobSet
-    //                             .get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
-    //                             : "-----"));
-    //         }
-    //         buffer.append("=".repeat(58));
-    //         buffer.append("</html>");
-    //         outputList.add(buffer.toString());
-    //         buffer.setLength(0);
-    //     }
-    //     return outputList;
+    // GridBagConstraints infoFrameConstraints = new GridBagConstraints();
+    // infoFrameConstraints.gridx = 0;
+    // infoFrameConstraints.gridy = 0;
+    // infoFrameConstraints.fill = GridBagConstraints.BOTH; // Fill both
+    // horizontally and vertically
+    // infoFrameConstraints.weightx = 1.0; // Expand horizontally
+    // infoFrameConstraints.weighty = 1.0; // Expand vertically
+
+    // infoScrollPane.setViewportView(infoPanel);
+    // updateInfoFrame.add(infoScrollPane, infoFrameConstraints);
+    // updateInfoFrame.setVisible(true);
+    // }
+
+    // private List<String> getInfoList(JOBSET whichJobset, List<Job> oldJobs,
+    // List<Job> newJobs) { TODO
+
+    // List<Job> chosenJobSet = whichJobset == JOBSET.OLD ? oldJobs : newJobs;
+    // List<String> outputList = new ArrayList<String>();
+
+    // StringBuilder buffer = new StringBuilder();
+    // int maxContractors, contractorCount;
+
+    // // for every Job
+    // for (int jobIndex = 0; jobIndex < chosenJobSet.size(); jobIndex++) {
+
+    // // find the count of the larger contractor count between old and new
+    // maxContractors = Math.max(oldJobs.get(jobIndex).getContractorList().size(),
+    // newJobs.get(jobIndex).getContractorList().size());
+
+    // contractorCount = chosenJobSet.get(jobIndex).getContractorList().size();
+
+    // // add job info to buffer
+    // buffer.append("<html>");
+    // buffer.append(String.format("%-20s%-20s%s",
+    // chosenJobSet.get(jobIndex).getCsj(),
+    // chosenJobSet.get(jobIndex).getCounty(), "<br>"));
+
+    // // for each contractor
+    // for (int contractorIndex = 0; contractorIndex < maxContractors;
+    // contractorIndex++) {
+
+    // // add each contractor,
+    // buffer.append(String.format("%s<br>",
+    // contractorCount > contractorIndex ? chosenJobSet
+    // .get(jobIndex).getContractorList().get(contractorIndex).getContractorName()
+    // : "-----"));
+    // }
+    // buffer.append("=".repeat(58));
+    // buffer.append("</html>");
+    // outputList.add(buffer.toString());
+    // buffer.setLength(0);
+    // }
+    // return outputList;
     // }
 
     // ====================================================================================================
