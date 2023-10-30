@@ -17,6 +17,7 @@ public class V2ExcelFormat extends ExcelFormat {
     private final CellReference CSJ = new CellReference("H3");
     private final CellReference HIGHWAY = new CellReference("A35");
     private final CellReference COUNTY = new CellReference("H5");
+    private final CellReference PERMOBS = new CellReference("F24");
     private final CellReference TOTALMOBS = new CellReference("H24");
     private final CellReference ESTIMATENO = new CellReference("A33");
     private final CellReference CONTNAME = new CellReference("A23");
@@ -74,7 +75,6 @@ public class V2ExcelFormat extends ExcelFormat {
         for (int contractorIndex = 0; contractorIndex < job.getContractorList().size(); contractorIndex++) {
 
             totalAmount = new BigDecimal(0);
-            System.out.println(String.format("78 total amount: $%,1.2f", totalAmount));
 
             sheetName = String.valueOf(contractorIndex + 1);
             contractor = job.getContractorList().get(contractorIndex);
@@ -82,12 +82,13 @@ public class V2ExcelFormat extends ExcelFormat {
             setCellValue(sheetName, CSJ.getCol(), CSJ.getRow(), job.getCsj());
             setCellValue(sheetName, HIGHWAY.getCol(), HIGHWAY.getRow(), job.getHighway());
             setCellValue(sheetName, COUNTY.getCol(), COUNTY.getRow(), job.getCounty());
-            setCellValue(sheetName, TOTALMOBS.getCol(), TOTALMOBS.getRow(), job.getTotalMobs());
+            setCellValue(sheetName, PERMOBS.getCol(), PERMOBS.getRow(), job.getTotalMobs());
+            setCellValue(sheetName, TOTALMOBS.getCol(), TOTALMOBS.getRow(), job.getTotalMobs().multiply(BigDecimal.valueOf(job.getUpTo_Mobs())));
             setCellValue(sheetName, ESTIMATENO.getCol(), ESTIMATENO.getRow(),
                     String.format("%s%03d", estimateString, contractorNumber + contractorIndex));
 
-            totalAmount.add(job.getTotalMobs());
-            System.out.println(String.format("91 total amount: $%,1.2f", totalAmount));
+            totalAmount = totalAmount.add(job.getTotalMobs().multiply(BigDecimal.valueOf(job.getUpTo_Mobs())));
+
             setCellValue(sheetName, CONTNAME.getCol(), CONTNAME.getRow(), contractor.getContractorName());
             setCellValue(sheetName, CONTEMAIL.getCol(), CONTEMAIL.getRow(), contractor.getContractorEmail());
             setCellValue(sheetName, SENTTO.getCol(), SENTTO.getRow(), contractor.getContractorEmail());
@@ -97,8 +98,7 @@ public class V2ExcelFormat extends ExcelFormat {
 
                 lineItem = job.getLineItems().get(lineItemIndex);
                 lineItemAmount = lineItem.getQuantity().multiply(lineItem.getPrice());
-                totalAmount.add(lineItemAmount);
-                System.out.println(String.format("102li%d total amount: $%,1.2f", lineItemIndex, totalAmount));
+                totalAmount = totalAmount.add(lineItemAmount);
 
                 setCellValue(sheetName, LIQUANTITY.getCol(), LIQUANTITY.getRow() + lineItemIndex,
                         lineItem.getQuantity());
@@ -108,26 +108,18 @@ public class V2ExcelFormat extends ExcelFormat {
                 setCellValue(sheetName, LITOTAL.getCol(), LITOTAL.getRow() + lineItemIndex,
                         String.format("$%,1.2f", lineItemAmount));
             }
-            System.out.println(String.format("total amount: $%,1.2f", totalAmount));
             setCellValue(sheetName, TOTALAMOUNT.getCol(), TOTALAMOUNT.getRow(), String.format("$%,1.2f", totalAmount));
-
-            setCellValue(sheetName, GENERALCONDITION3.getCol(), GENERALCONDITION3.getRow(),
-                    String.format(
-                            "Williams Road, LLC's proposal is based on no more than %d days of production (milling).",
-                            job.getProductionDays()));
 
             BigDecimalToWordsConverter converter = new BigDecimalToWordsConverter();
             setCellValue(sheetName, GENERALCONDITION3.getCol(), GENERALCONDITION3.getRow(), String.format(
-                    "One (1) Mobilization included in initial proposal. Additional Mobilizations shall be %s each.",
+                    "%s (%d) Mobilization included in initial proposal. Additional Mobilizations shall be %s each.",
+                    converter.convertToWords(job.getUpTo_Mobs()), job.getUpTo_Mobs(),
                     converter.convertToWords(job.getAdditionalMobs())));
 
             setCellValue(sheetName, SPECIALCONDITION1.getCol(), SPECIALCONDITION1.getRow(),
                     String.format(
                             "Any stand by days not caused by Williams Road, LLC shall be assessed at $%,.2f per day.",
                             job.getStandbyPrice()));
-
-            // TODO need to grab bid date from combined. and add 60 days later for the price
-            // applicable.
 
             // ================================================================================
             // CODE TO GET PRICE EXPIRATION DATE
@@ -142,7 +134,8 @@ public class V2ExcelFormat extends ExcelFormat {
             // ================================================================================
 
             setCellValue(sheetName, SPECIALCONDITION2.getCol(), SPECIALCONDITION2.getRow(),
-                    String.format("Price is applicable through %s.", priceExpirationDateString)); // ex: "October 12, 2023"
+                    String.format("Price is applicable through %s.", priceExpirationDateString)); // ex: "October 12,
+                                                                                                  // 2023"
 
             setCellValue(sheetName, MINIMUMDAYCHARGE.getCol(), MINIMUMDAYCHARGE.getRow(),
                     String.format(
