@@ -2,7 +2,6 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -195,7 +194,6 @@ public class V2Format extends Format {
             biddingDate = dateFormat.parse(tokens[BIDDING_DATE_INDEX]);
         } catch (Exception e) {
 
-            // TODO: handle exception
         }
         return new Job(
                 tokens[COUNTY_INDEX], // String county

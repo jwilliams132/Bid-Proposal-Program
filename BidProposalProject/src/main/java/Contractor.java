@@ -69,11 +69,6 @@ public class Contractor implements Comparable<Contractor> {
         return storage.getEmail(contractorName); // returns a message if no email is found
     }
 
-    private String contractorEmailLookup(String contractorEmail) {
-
-        return "";
-    }
-
     // uses regex to find phone number from infoLine
     private String findContractorPhoneNumber(String infoLine) {
 
