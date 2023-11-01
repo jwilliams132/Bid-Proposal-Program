@@ -47,7 +47,7 @@ import javax.swing.filechooser.FileFilter;
 public class TestApp {
 
     private FileManager fileManager = new FileManager();
-    private JobStorage jobStorage = new JobStorage();
+    private InputFileProcesser jobStorage = new InputFileProcesser();
     private String lettingMonthDirectory;
 
     private final Font TITLEFONT = new Font("Monospaced", Font.BOLD, 50);
@@ -589,8 +589,10 @@ public class TestApp {
         ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
         ArrayList<String> emailListBuffer = new ArrayList<String>();
 
-        jobStorage.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Program Ouput.txt",
-                JobStorage.FileFormat.V2);
+        jobStorage.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Program Output.txt",
+                InputFileProcesser.FileFormat.V2);
+
+        ContractorStorage storage = new ContractorStorage();
         // add all job data to fileContentBuffer
         for (Job job : filteredJobList) {
 
@@ -599,10 +601,9 @@ public class TestApp {
 
             emailListBuffer.addAll(job.formatEmailList());
 
-            // TODO re-implement the contractor storage
-            // job.getContractorList().forEach(contractor ->
-            // storage.addToContractList(contractor));
+            job.getContractorList().forEach(contractor -> storage.addToContractList(contractor));
         }
+        storage.formatContractorList();
         fileManager.saveFile(userFriendlyOutput, userFriendlyOutputBuffer);
         fileManager.saveFile(emailList, emailListBuffer);
 
