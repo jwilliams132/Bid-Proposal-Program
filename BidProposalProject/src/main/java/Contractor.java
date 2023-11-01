@@ -9,6 +9,7 @@ public class Contractor implements Comparable<Contractor> {
     private String contractorEmail;
     private String contractorEstimateNumber;
 
+    // used by CombinedFormat
     public Contractor(String infoLine) {
 
         setContractorName(findContractorName(infoLine)); // sets name from a trimmed substring of infoLine
@@ -16,6 +17,7 @@ public class Contractor implements Comparable<Contractor> {
         setContractorEmail(findContractorEmail(infoLine)); // sets email from a regex search of infoLine
     }
 
+    // used by ContractorStorage and V1Format
     public Contractor(String contractorName, String contractorPhoneNumber, String contractorEmail) {
 
         this.contractorName = contractorName;
@@ -23,6 +25,7 @@ public class Contractor implements Comparable<Contractor> {
         this.contractorEmail = contractorEmail;
     }
 
+    // used by V2Format
     public Contractor(String contractorName, String contractorPhoneNumber, String contractorEmail,
             String contractorEstimateNumber) {
 
@@ -90,14 +93,9 @@ public class Contractor implements Comparable<Contractor> {
     // Outputting Data
     // ====================================================================================================
 
-    public void printContractorInfo() {
+    public String toString() {
 
-        System.out.printf("%-40s%-45s%40s%n", getContractorName(), getContractorPhoneNumber(), getContractorEmail());
-    }
-
-    public String formatContractorInfo() {
-
-        return String.format("|%s|%s|%s", getContractorName(), getContractorPhoneNumber(), getContractorEmail());
+        return String.format("%-40s%-45s%40s%n", getContractorName(), getContractorPhoneNumber(), getContractorEmail());
     }
 
     // ====================================================================================================
@@ -134,9 +132,14 @@ public class Contractor implements Comparable<Contractor> {
         this.contractorEmail = contractorEmail;
     }
 
+    public void setContractorEstimateNo(String contractorEstimateNumber) {
+
+        this.contractorEstimateNumber = contractorEstimateNumber;
+    }
+
     public String getContractorEstimateNo() {
 
-        return null;
+        return contractorEstimateNumber;
     }
 
     @Override
@@ -164,5 +167,4 @@ public class Contractor implements Comparable<Contractor> {
                 Objects.equals(contractorEmail, otherContractor.contractorEmail) &&
                 Objects.equals(contractorEstimateNumber, otherContractor.contractorEstimateNumber);
     }
-
 }
