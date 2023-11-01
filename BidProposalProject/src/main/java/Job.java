@@ -158,31 +158,6 @@ public class Job {
         System.out.println("=".repeat(125));
     }
 
-    public String formatJobInfo() {
-
-        String buffer = "";
-        // buffer = String.format("|%s|%s|%s", getCounty(), getHighway(), getCsj());
-        buffer = String.format("|%s|%s|%s|%d|%d|%4f|%4f", getCounty(), getHighway(), getCsj(), getWorkingDays(),
-                getUpTo_Mobs(), getTotalMobs(), getAdditionalMobs());
-        if (getLineItems() != null) {
-
-            buffer = String.format("%s|%s", buffer, String.valueOf(getLineItems().size()));
-
-            for (int index = 0; index < getLineItems().size(); index++) {
-
-                buffer = String.format("%s%s", buffer, getLineItems().get(index).formatLineItems());
-            }
-        }
-
-        buffer = String.format("%s|%s", buffer, String.valueOf(getContractorList().size()));
-
-        for (int index = 0; index < getContractorList().size(); index++) {
-
-            buffer = String.format("%s%s", buffer, getContractorList().get(index).formatContractorInfo());
-        }
-        return buffer;
-    }
-
     public List<String> formatUserFriendlyJobInfo() {
 
         List<String> job = new ArrayList<String>();
