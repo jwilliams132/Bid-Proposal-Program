@@ -1,60 +1,50 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.stream.Collectors;
 import java.io.File;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class ContractorStorage {
 
     private FileManager fileManager = new FileManager();
-    private List<Contractor> contractorList = new ArrayList<Contractor>();
+    private Map<String, Contractor> contractorList = new TreeMap<String, Contractor>();
     private File contractorsFile;
     private String contractorFilePath = "BidProposalProject\\src\\main\\resources\\Contractor List.csv";
 
     public ContractorStorage() {
 
         contractorsFile = fileManager.chooseFile(contractorFilePath, null,
-				FileManager.fileChooserOptions.OPEN, null);
+                FileManager.fileChooserOptions.OPEN, null);
 
         ArrayList<String> fileContents = null;
         if (contractorsFile != null) {
-            
+
             fileContents = fileManager.readFile(contractorsFile);
         }
         for (String string : fileContents) {
-            
+
             String[] tokens = string.split("\\|");
-            contractorList.add(new Contractor(tokens[0], tokens[1], tokens[2]));
+            contractorList.put(tokens[0], new Contractor(tokens[0], tokens[1], tokens[2]));
         }
-    }
-
-    public List<Contractor> getContractorList() {
-
-        return contractorList;
     }
 
     public void addToContractList(Contractor contractor) {
 
-        for (Contractor knownContractor : contractorList) {
-            
-            if (contractor.getContractorName().equals(knownContractor.getContractorName()))
-                return;
-        }
-        contractorList.add(contractor);
-        Collections.sort(contractorList);
+        contractorList.put(contractor.getContractorName(), contractor);
     }
 
     public void addToContractList(ArrayList<Contractor> contractors) {
-        
+
         contractors.forEach(this::addToContractList);
     }
 
     public void formatContractorList() {
 
-        List<String> contentToSave = contractorList.stream()
+        List<String> contentToSave = contractorList.values().stream()
                 .map(contractor -> contractor.getContractorName() + "|" +
-                                    contractor.getContractorPhoneNumber() + "|" +
-                                    contractor.getContractorEmail())
+                        contractor.getContractorPhoneNumber() + "|" +
+                        contractor.getContractorEmail())
                 .collect(Collectors.toList());
 
         fileManager.saveFile(contractorsFile, contentToSave);
@@ -62,13 +52,7 @@ public class ContractorStorage {
 
     public String getEmail(String contractorName) {
 
-        for (Contractor knownContractor : contractorList) {
-            
-            if (contractorName.equals(knownContractor.getContractorName())) {
-                
-                return knownContractor.getContractorEmail();
-            }
-        }
-        return "==No Email Found==";
+        return contractorList.containsKey(contractorName) ? contractorList.get(contractorName).getContractorEmail()
+                : "==No Email Found==";
     }
 }
