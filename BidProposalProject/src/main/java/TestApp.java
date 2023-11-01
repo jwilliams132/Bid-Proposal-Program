@@ -47,7 +47,7 @@ import javax.swing.filechooser.FileFilter;
 public class TestApp {
 
     private FileManager fileManager = new FileManager();
-    private InputFileProcesser jobStorage = new InputFileProcesser();
+    private InputFileProcessor jobStorage = new InputFileProcessor();
     private String lettingMonthDirectory;
 
     private final Font TITLEFONT = new Font("Monospaced", Font.BOLD, 50);
@@ -137,26 +137,8 @@ public class TestApp {
 
             public void run() {
 
-                // // reads file
-                // FileManager fileManager = new FileManager();
-                // File file = fileManager.chooseFile(
-                // "C:\\Users\\Jacob\\Desktop\\Letting\\Testing\\March\\Program Output.txt",
-                // null, FileManager.fileChooserOptions.OPEN, null);
-                // ArrayList<String> fileContents = fileManager.readFile(file);
-
-                // // puts file into job format
-                // FormatInterface v1 = new V1Format();
-                // List<Job> jobs = v1.jobsFromFormat(fileContents);
-
-                // String lettingMonthDirectory = file.getParent().toString();
-
-                // // puts jobs into excel
-                // // ExcelFormatInterface v1Excel = new V1ExcelFormat();
-                // // v1Excel.createExcelFile(jobs, lettingMonthDirectory);
-                // ExcelFormatInterface v2Excel = new V2ExcelFormat();
-                // v2Excel.createExcelFile(jobs, lettingMonthDirectory);
-
-                new TestApp();
+                // new TestApp();
+                JobStorage js = new JobStorage();
             }
         });
     }
@@ -590,7 +572,7 @@ public class TestApp {
         ArrayList<String> emailListBuffer = new ArrayList<String>();
 
         jobStorage.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Program Output.txt",
-                InputFileProcesser.FileFormat.V2);
+                InputFileProcessor.FileFormat.V2);
 
         ContractorStorage storage = new ContractorStorage();
         // add all job data to fileContentBuffer

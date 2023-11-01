@@ -5,25 +5,18 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 
-public class InputFileProcesser {
+public class InputFileProcessor {
+
+    private FileManager fileManager = new FileManager();
+    public List<Job> savedJobStorage;
 
     public enum FileFormat {
 
         COMBINED, V1, V2
     }
 
-    private final File lettingFolder = new File(System.getProperty("user.home") + "/Desktop/Letting");
-    private final String fileLookUpTargetName = "Program Output.txt";
-
-    private FileManager fileManager = new FileManager();
-    public List<String> filePaths = new ArrayList<>();
-    public List<String> savedFilePaths = new ArrayList<>();
-    public List<Job> savedJobStorage;
-
-    public InputFileProcesser() {
-
-        // savedJobStorage = parseFile(lettingFolder.getAbsolutePath() + "/Job
-        // Storage.txt");
+    public InputFileProcessor() {
+        
     }
 
     /**
@@ -102,73 +95,6 @@ public class InputFileProcesser {
 
         File outputFile = fileManager.chooseFile(filePath, null, FileManager.fileChooserOptions.SAVE, null);
         fileManager.saveFile(outputFile, fileFormat.jobsToFormat(jobs));
-    }
-
-    // ====================================================================================================
-    // Bulk Storage Methods
-    // ====================================================================================================
-
-    /**
-     * Updates the job storage file by collecting job data from multiple files in a
-     * specified folder
-     * and saving it in a consolidated format.
-     */
-    public void updateJobStorageFile() {
-
-        List<String> filePaths = findFilePaths(lettingFolder.getAbsolutePath()); // gets list of path strings
-        List<Job> jobs = new ArrayList<Job>(); // creates new list of joblists
-        List<String> jobStorageContents = new ArrayList<>();
-
-        FormatInterface v2Output = new V2Format();
-
-        for (String path : filePaths) {
-
-            for (String savedPath : savedFilePaths) {
-
-                if (path.equals(savedPath))
-
-                    break;
-                filePaths.add(path);
-                jobs.addAll(parseFile(path));
-            }
-        }
-        jobs.forEach(job -> jobStorageContents.add(v2Output.jobToFormat(job))); // adds each formatted output for each
-                                                                                // job to jobStorageContents
-
-        File jobStorageFile = fileManager.chooseFile(lettingFolder.getAbsolutePath() + "/Job Storage.txt", null,
-                FileManager.fileChooserOptions.SAVE, null);
-
-        fileManager.saveFile(jobStorageFile, jobStorageContents); // saves txt file of V2Format of all letting Program
-                                                                  // Output.txt files
-    }
-
-    /**
-     * Recursively searches for files with a specific target name in the specified
-     * directory
-     * and its subdirectories and returns a list of their absolute paths.
-     *
-     * @param directoryPath The path to the directory to start searching from.
-     * @return A list of absolute file paths that match the specified target name.
-     */
-    public List<String> findFilePaths(String directoryPath) {
-
-        File directory = new File(directoryPath);
-        File[] directoryContents = directory.listFiles();
-
-        if (directoryContents == null)
-            return filePaths;
-
-        for (File file : directoryContents) {
-
-            if (file.isDirectory() && !file.getName().equals("Testing"))
-
-                findFilePaths(file.getAbsolutePath());
-
-            if (file.isFile() && file.getName().equals(fileLookUpTargetName))
-
-                filePaths.add(file.getAbsolutePath());
-        }
-        return filePaths;
     }
 
     // ====================================================================================================
