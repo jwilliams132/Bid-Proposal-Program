@@ -10,7 +10,7 @@ public class Job {
     private List<Contractor> contractorList = new ArrayList<Contractor>();
     private List<LineItem> lineItems = new ArrayList<LineItem>();
     private String county, highway, csj;
-    private Date biddingDate;
+    private Date biddingDate = new Date(946684800000L); // January 1, 2000, 00:00:00 UTC
     private int workingDays = 0, upTo_Mobs = 1;
     private BigDecimal totalMobs = new BigDecimal(0), additionalMobs = new BigDecimal(0);
     
