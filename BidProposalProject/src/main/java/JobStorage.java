@@ -8,74 +8,74 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class JobStorage {
-    
+
     private final File lettingFolder = new File(System.getProperty("user.home") + "/Desktop/Letting");
     private final String fileLookUpTargetName = "Program Output.txt";
     private final String fileLookUpTargetName2 = "Program Ouput.txt";
-    
+
     private FileManager fileManager = new FileManager();
-    private InputFileProcessor IFP = new InputFileProcessor();
-    
+
     public List<String> filePaths = new ArrayList<>();
     public List<String> savedFilePaths = new ArrayList<>();
     private List<IFPThread> threads = new ArrayList<IFPThread>();
     private List<Job> jobs = new ArrayList<Job>(), jobs2 = new ArrayList<Job>();
 
+    private enum MultiThreading {
+        YES, NO;
+    }
+
+    MultiThreading ifMultithreading = MultiThreading.NO;
 
     public JobStorage() {
 
         List<String> filePaths = findFilePaths(lettingFolder.getAbsolutePath()); // gets list of path strings
 
-        
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        long startTime = System.currentTimeMillis();
+        switch (ifMultithreading) {
+            case YES:
+                processFilesInParallel(jobs, filePaths);
+            case NO:
+                processFilesInSequence(jobs, filePaths);
+        }
+
+        Collections.sort(jobs, Comparator.comparing(Job::getCsj));
+
+        updateJobStorageFile();
+    }
+
+    private void processFilesInSequence(List<Job> jobs, List<String> filePaths) {
+
+        IFPThread thread;
         for (String filePath : filePaths) {
-            
+
+            thread = new IFPThread(filePath);
+            thread.run();
+            jobs2.addAll(thread.getJobList());
+        }
+    }
+
+    private void processFilesInParallel(List<Job> jobs, List<String> filePaths) {
+
+        ExecutorService executorService = Executors.newCachedThreadPool();
+
+        for (String filePath : filePaths) {
+
             threads.add(new IFPThread(filePath));
             threads.forEach(thread -> executorService.execute(thread));
         }
+
         executorService.shutdown();
+
         try {
-            
+
             boolean ifTasksEnded = executorService.awaitTermination(1, TimeUnit.MINUTES);
             if (ifTasksEnded) {
-                
+
                 threads.forEach(thread -> jobs.addAll(thread.getJobList()));
             }
         } catch (InterruptedException e) {
-            
+
             e.printStackTrace();
         }
-        long endTime = System.currentTimeMillis();
-        long elapsedTime = endTime - startTime;
-        System.out.println("Time: " + elapsedTime + " ms.");
-    Collections.sort(jobs, Comparator.comparing(Job::getCsj));
-        
-        IFPThread x;
-        jobs2 = new ArrayList<Job>();
-        startTime = System.currentTimeMillis();
-        for (String filePath : filePaths) {
-            
-            x = new IFPThread(filePath);
-            x.run();
-            jobs2.addAll(x.getJobList());
-        }
-        endTime = System.currentTimeMillis();
-        elapsedTime = endTime - startTime;
-        System.out.println("Time: " + elapsedTime + " ms.");
-
-        Collections.sort(jobs2, Comparator.comparing(Job::getCsj));
-
-        for (int i = 0; i < jobs.size(); i++) {
-            System.out.println(jobs.get(i).equals(jobs2.get(i)));
-        }
-        jobs.get(0).printJobInfo();
-        jobs2.get(0).printJobInfo();
-        // System.out.println();
-        // System.out.println(jobs.equals(jobs2));
-        // System.out.println(jobs.size() + " " + jobs2.size());
-
-        // updateJobStorageFile();
     }
 
     /**
@@ -120,7 +120,8 @@ public class JobStorage {
 
                 findFilePaths(file.getAbsolutePath());
 
-            if (file.isFile() && (file.getName().equals(fileLookUpTargetName) || file.getName().equals(fileLookUpTargetName2)))
+            if (file.isFile()
+                    && (file.getName().equals(fileLookUpTargetName) || file.getName().equals(fileLookUpTargetName2)))
 
                 filePaths.add(file.getAbsolutePath());
         }
