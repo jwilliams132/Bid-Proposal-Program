@@ -21,8 +21,11 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.math.BigDecimal;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.AbstractAction;
@@ -137,8 +140,7 @@ public class TestApp {
 
             public void run() {
 
-                // new TestApp();
-                JobStorage js = new JobStorage();
+                new TestApp();
             }
         });
     }

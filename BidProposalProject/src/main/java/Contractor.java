@@ -154,4 +154,10 @@ public class Contractor {
                 Objects.equals(contractorEmail, otherContractor.contractorEmail) &&
                 Objects.equals(contractorEstimateNumber, otherContractor.contractorEstimateNumber);
     }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(contractorName, contractorPhoneNumber, contractorEmail, contractorEstimateNumber);
+    }
 }

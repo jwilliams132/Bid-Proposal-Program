@@ -72,7 +72,13 @@ public class LineItem {
         LineItem otherLineItem = (LineItem) obj;
 
         return Objects.equals(description, otherLineItem.description) &&
-                quantity == otherLineItem.quantity &&
-                price.compareTo(otherLineItem.price) == 0;
+                Objects.equals(quantity, otherLineItem.quantity) &&
+                Objects.equals(price, otherLineItem.price);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(description, quantity, price);
     }
 }

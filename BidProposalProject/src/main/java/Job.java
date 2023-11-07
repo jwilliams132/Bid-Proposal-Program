@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Objects;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +11,7 @@ public class Job {
     private List<Contractor> contractorList = new ArrayList<Contractor>();
     private List<LineItem> lineItems = new ArrayList<LineItem>();
     private String county, highway, csj;
-    private Date biddingDate = new Date(946684800000L); // January 1, 2000, 00:00:00 UTC
+    private Date biddingDate = new Date(946684800000L); // January 1, 2000, 00:00:00 UTC == default case
     private int workingDays = 0, upTo_Mobs = 1;
     private BigDecimal totalMobs = new BigDecimal(0), additionalMobs = new BigDecimal(0);
 
@@ -327,5 +328,40 @@ public class Job {
             // Handle parsing errors if the string is not in the expected format
             e.printStackTrace();
         }
+    }
+
+    // ====================================================================================================
+    // Equals
+    // ====================================================================================================
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o)
+
+            return true;
+
+        if (o == null || getClass() != o.getClass())
+
+            return false;
+            
+        Job job = (Job) o;
+
+        return Objects.equals(county, job.county) &&
+                Objects.equals(highway, job.highway) &&
+                Objects.equals(csj, job.csj) &&
+                Objects.equals(biddingDate, job.biddingDate) &&
+                workingDays == job.workingDays &&
+                upTo_Mobs == job.upTo_Mobs &&
+                Objects.equals(totalMobs, job.totalMobs) &&
+                Objects.equals(additionalMobs, job.additionalMobs) &&
+                Objects.equals(contractorList, job.contractorList) &&
+                Objects.equals(lineItems, job.lineItems);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(county, highway, csj, biddingDate, workingDays, upTo_Mobs, totalMobs, additionalMobs,
+                contractorList, lineItems);
     }
 }
