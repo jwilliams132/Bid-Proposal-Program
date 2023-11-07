@@ -13,7 +13,7 @@ public class Job {
     private Date biddingDate = new Date(946684800000L); // January 1, 2000, 00:00:00 UTC
     private int workingDays = 0, upTo_Mobs = 1;
     private BigDecimal totalMobs = new BigDecimal(0), additionalMobs = new BigDecimal(0);
-    
+
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Adjust the format as needed
 
     // used for no pricing added
@@ -179,7 +179,7 @@ public class Job {
     }
 
     public List<String> formatEmailList() {
-        
+
         List<String> emails = new ArrayList<String>();
 
         emails.add(getCounty() + "   " + getCsj());
@@ -207,6 +207,7 @@ public class Job {
         }
         return estimateNumberContentLine;
     }
+
     // ====================================================================================================
     // Getter Setters
     // ====================================================================================================
@@ -315,13 +316,14 @@ public class Job {
 
         return dateFormat.format(biddingDate);
     }
+
     public void setBiddingDateFromString(String biddingDateString) {
 
         try {
 
             biddingDate = dateFormat.parse(biddingDateString);
         } catch (ParseException e) {
-            
+
             // Handle parsing errors if the string is not in the expected format
             e.printStackTrace();
         }

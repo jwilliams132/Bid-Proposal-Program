@@ -2,7 +2,7 @@ import java.util.regex.Pattern;
 import java.util.Objects;
 import java.util.regex.Matcher;
 
-public class Contractor implements Comparable<Contractor> {
+public class Contractor {
 
     private String contractorName;
     private String contractorPhoneNumber;
@@ -32,8 +32,6 @@ public class Contractor implements Comparable<Contractor> {
         this.contractorName = contractorName;
         this.contractorPhoneNumber = contractorPhoneNumber;
         this.contractorEmail = contractorEmail;
-        // System.out.println(contractorEmailLookup(contractorEmail));
-        // setContractorEmail(); // sets email from a regex search of infoLine
         this.contractorEstimateNumber = contractorEstimateNumber;
     }
 
@@ -54,14 +52,9 @@ public class Contractor implements Comparable<Contractor> {
     private String findContractorEmail(String infoLine) {
 
         String email = ""; // buffer
-        Matcher emailMatcher = Pattern.compile("[A-Za-z0-9\\.]+@[A-Za-z-]+\\.[A-Za-z]+").matcher(infoLine); // uses
-                                                                                                            // Pattern/Matcher
-                                                                                                            // to search
-                                                                                                            // through
-                                                                                                            // the
-                                                                                                            // string
-                                                                                                            // using
-                                                                                                            // regex.
+
+        // uses Pattern/Matcher to search through the string using regex.
+        Matcher emailMatcher = Pattern.compile("[A-Za-z0-9\\.]+@[A-Za-z-]+\\.[A-Za-z]+").matcher(infoLine); 
 
         // if regex finds the email, assign it to the buffer
         if (emailMatcher.find()) {
@@ -76,9 +69,9 @@ public class Contractor implements Comparable<Contractor> {
     private String findContractorPhoneNumber(String infoLine) {
 
         String phone = ""; // buffer
-        Matcher phoneNumberMatcher = Pattern.compile("\\(*\\d{3}\\)*.{8}").matcher(infoLine); // uses Pattern/Matcher to
-                                                                                              // search through the
-                                                                                              // string using regex.
+
+        // uses Pattern/Matcher to search through the string using regex.
+        Matcher phoneNumberMatcher = Pattern.compile("\\(*\\d{3}\\)*.{8}").matcher(infoLine); 
 
         // if regex finds the phone number, assign it to the buffer
         if (phoneNumberMatcher.find()) {
@@ -140,12 +133,6 @@ public class Contractor implements Comparable<Contractor> {
     public String getContractorEstimateNo() {
 
         return contractorEstimateNumber;
-    }
-
-    @Override
-    public int compareTo(Contractor other) {
-
-        return this.contractorName.compareTo(other.contractorName);
     }
 
     public boolean equals(Object obj) {

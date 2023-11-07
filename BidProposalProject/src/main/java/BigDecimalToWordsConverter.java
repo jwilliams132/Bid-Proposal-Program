@@ -16,6 +16,7 @@ public class BigDecimalToWordsConverter {
     };
 
     public String convertToWords(BigDecimal number) {
+        
         // Separate the number into integer and fraction parts
         BigDecimal[] parts = number.divideAndRemainder(BigDecimal.ONE);
         int dollars = parts[0].intValue();
