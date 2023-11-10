@@ -21,11 +21,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.math.BigDecimal;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.AbstractAction;
@@ -42,22 +39,36 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JViewport;
 import javax.swing.KeyStroke;
-// import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileFilter;
 
-public class TestApp {
+public class Application {
 
     private FileManager fileManager = new FileManager();
     private InputFileProcessor jobStorage = new InputFileProcessor();
     private String lettingMonthDirectory;
 
-    private final Font TITLEFONT = new Font("Monospaced", Font.BOLD, 50);
+    private final Font TITLE_FONT = new Font("Monospaced", Font.BOLD, 50);
     private final Font FONT = new Font("Monospaced", Font.PLAIN, 16);
-    private final Color BACKGROUND = Color.WHITE;
-    private final Color FOREGROUND = Color.BLACK;
-    private final Color SCROLLPANECOLOR = Color.LIGHT_GRAY;
+
+    // Dark Theme Colors
+    // private final Color PRIMARY_FONT_COLOR = new Color(0, 179, 189);
+    // private final Color SECONDARY_FONT_COLOR = new Color(55, 136, 186);
+    // private final Color TERTIARY_FONT_COLOR = new Color(192, 155, 82);
+    // private final Color QUATERNARY_FONT_COLOR = new Color(201, 62, 113);
+    // private final Color PRIMARY_BACKGROUND = new Color(13, 21, 33);
+    // private final Color SECONDARY_BACKGROUND = new Color(16, 26, 41);
+
+    // Light Theme Colors
+    private final Color PRIMARY_FONT_COLOR = Color.BLACK;
+    private final Color SECONDARY_FONT_COLOR = Color.BLACK;
+    private final Color TERTIARY_FONT_COLOR = Color.BLACK;
+    private final Color QUATERNARY_FONT_COLOR = Color.BLACK;
+    private final Color PRIMARY_BACKGROUND = Color.WHITE;
+    private final Color SECONDARY_BACKGROUND = Color.LIGHT_GRAY;
+
+    private final Color TITLE_FONT_COLOR = TERTIARY_FONT_COLOR;
 
     private ArrayList<JCheckBox> jobCheckBoxes = new ArrayList<JCheckBox>();
     private ArrayList<Integer> currentJobFilterIndexes = new ArrayList<Integer>();
@@ -96,6 +107,7 @@ public class TestApp {
         }
     };
 
+    
     // =====Open File Panel=====
     /**/private JPanel openFilePanel;
 
@@ -140,7 +152,7 @@ public class TestApp {
 
             public void run() {
 
-                new TestApp();
+                new Application();
             }
         });
     }
@@ -148,7 +160,7 @@ public class TestApp {
     /**
      * Create the application.
      */
-    public TestApp() {
+    public Application() {
 
         initialize();
     }
@@ -175,11 +187,12 @@ public class TestApp {
                 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 setTitle("Williams Road LLC Bid Form Program");
                 getContentPane().setLayout(new BorderLayout());
-                setSize(1250, 600);
-                setBackground(BACKGROUND);
+                setSize(1300, 600);
+                setBackground(PRIMARY_BACKGROUND);
                 getContentPane().add(openFilePanel, BorderLayout.NORTH);
                 getContentPane().add(displayPanel, BorderLayout.CENTER);
                 getContentPane().add(bottomPanel, BorderLayout.SOUTH);
+                setLocationRelativeTo(null);
                 setVisible(true);
             }
         };
@@ -189,6 +202,8 @@ public class TestApp {
         // ===========================================================================
 
         openFilePathLabel = new JLabel("File Path:  ");
+        openFilePathLabel.setFont(FONT);
+        openFilePathLabel.setForeground(QUATERNARY_FONT_COLOR);
         openFilePanel.add(chooseOpenFile, BorderLayout.WEST);
         openFilePanel.add(openFilePathLabel, BorderLayout.CENTER);
         openFilePanel.add(updateBidders, BorderLayout.EAST);
@@ -198,6 +213,8 @@ public class TestApp {
         // ===========================================================================
 
         saveFilePathLabel = new JLabel("Directory Path:  ");
+        saveFilePathLabel.setFont(FONT);
+        saveFilePathLabel.setForeground(QUATERNARY_FONT_COLOR);
         saveFilePanel.add(chooseSaveFolder, BorderLayout.WEST);
         saveFilePanel.add(saveFilePathLabel, BorderLayout.CENTER);
         saveFilePanel.add(saveExcel, BorderLayout.EAST);
@@ -221,6 +238,7 @@ public class TestApp {
         jobSelectionPanel.add(previousJob);
         currentJob = new JLabel("(00/00)");
         currentJob.setFont(FONT);
+        currentJob.setForeground(SECONDARY_FONT_COLOR);
         jobSelectionPanel.add(currentJob);
         jobSelectionPanel.add(nextJob);
 
@@ -284,7 +302,7 @@ public class TestApp {
                         jobFilterPanel, jobSelectionPanel, displayPanel, bottomPanel));
 
         for (JComponent component : backgroundColorPanesAndPanels) {
-            component.setBackground(BACKGROUND);
+            component.setBackground(PRIMARY_BACKGROUND);
         }
     }
 
@@ -313,7 +331,7 @@ public class TestApp {
 
                     public void run() {
 
-                        getUpdatedDoc();
+                        getUpdatedDoc(); //TODO use this as test button for now
                     }
                 });
             }
@@ -326,7 +344,7 @@ public class TestApp {
                 SwingUtilities.invokeLater(new Runnable() {
 
                     public void run() {
-
+                        
                         filterJobSelection();
                     }
                 });
@@ -717,7 +735,8 @@ public class TestApp {
             {
                 add(new JLabel("BIDDING PROGRAM") {
                     {
-                        setFont(TITLEFONT);
+                        setFont(TITLE_FONT);
+                        setForeground(TITLE_FONT_COLOR);
                         setHorizontalAlignment(JLabel.CENTER);
                         setVerticalAlignment(JLabel.BOTTOM);
                     }
@@ -725,12 +744,13 @@ public class TestApp {
                 add(new JLabel("Click \"Open Bidding File\" To Get Started") {
                     {
                         setFont(FONT);
+                        setForeground(SECONDARY_FONT_COLOR);
                         setHorizontalAlignment(JLabel.CENTER);
                         setVerticalAlignment(JLabel.TOP);
                     }
                 });
                 setLayout(new GridLayout(2, 0));
-                setBackground(SCROLLPANECOLOR);
+                setBackground(SECONDARY_BACKGROUND);
             }
         };
     }
@@ -751,6 +771,7 @@ public class TestApp {
             {
                 setHorizontalAlignment(0);
                 setFont(FONT);
+                setForeground(QUATERNARY_FONT_COLOR);
             }
         };
 
@@ -773,8 +794,8 @@ public class TestApp {
         final JCheckBox checkAll = new JCheckBox(" ALL ") {
             {
                 setFont(FONT);
-                setBackground(SCROLLPANECOLOR);
-                setForeground(FOREGROUND);
+                setBackground(SECONDARY_BACKGROUND);
+                setForeground(QUATERNARY_FONT_COLOR);
                 addItemListener(checkAllListener);
             }
         };
@@ -798,7 +819,7 @@ public class TestApp {
         int lineItemCount = 0;
 
         unfilteredDisplay = new JPanel(new GridBagLayout());
-        unfilteredDisplay.setBackground(SCROLLPANECOLOR);
+        unfilteredDisplay.setBackground(SECONDARY_BACKGROUND);
         // viewportContainer.add(unfilteredDisplay, BorderLayout.NORTH);
 
         unfilteredDisplayPane.setViewportView(unfilteredDisplay);
@@ -810,8 +831,8 @@ public class TestApp {
             {
                 setText(String.format("%-20s%-20s%-20s%16s", "CSJ", "County", "Highway", "Total Quantities"));
                 setFont(FONT);
-                setBackground(SCROLLPANECOLOR);
-                setForeground(FOREGROUND);
+                setBackground(SECONDARY_BACKGROUND);
+                setForeground(TERTIARY_FONT_COLOR);
             }
         }, displayConstraints);
 
@@ -824,8 +845,8 @@ public class TestApp {
             jobCheckBoxes.add(new JCheckBox(String.format("  %2d:", index + 1)) {
                 {
                     setFont(FONT);
-                    setBackground(SCROLLPANECOLOR);
-                    setForeground(FOREGROUND);
+                    setBackground(SECONDARY_BACKGROUND);
+                    setForeground(QUATERNARY_FONT_COLOR);
                     addItemListener(jobCheckBoxListener);
                 }
             });
@@ -848,7 +869,7 @@ public class TestApp {
                     currentJob.getSumOfQuantities())) {
                 {
                     setFont(new Font("Monospaced", Font.BOLD, 16));
-                    setForeground(FOREGROUND);
+                    setForeground(SECONDARY_FONT_COLOR);
                 }
             }, displayConstraints);
 
@@ -861,7 +882,7 @@ public class TestApp {
                         String.format("%-40s     %,10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(), "")) {
                     {
                         setFont(FONT);
-                        setForeground(FOREGROUND);
+                        setForeground(PRIMARY_FONT_COLOR);
                     }
                 }, displayConstraints);
 
@@ -869,7 +890,7 @@ public class TestApp {
         }
 
         JPanel columnHeader = new JPanel();
-        columnHeader.setBackground(SCROLLPANECOLOR);
+        columnHeader.setBackground(SECONDARY_BACKGROUND);
         columnHeader.add(label);
         unfilteredDisplayPane.setColumnHeaderView(columnHeader);
 
@@ -928,7 +949,7 @@ public class TestApp {
         JPanel filteredDisplay = new JPanel(new GridBagLayout());
         GridBagConstraints filteredDisplayConstraints = new GridBagConstraints();
 
-        filteredDisplay.setBackground(SCROLLPANECOLOR);
+        filteredDisplay.setBackground(SECONDARY_BACKGROUND);
         filteredDisplayPane.setViewportView(filteredDisplay);
 
         filteredDisplayConstraints.gridx = 0;
@@ -938,8 +959,8 @@ public class TestApp {
             {
                 setText(String.format("%-20s%-20s%-20s%16s", "CSJ", "County", "Highway", "Total Quantities"));
                 setFont(FONT);
-                setBackground(SCROLLPANECOLOR);
-                setForeground(FOREGROUND);
+                setBackground(SECONDARY_BACKGROUND);
+                setForeground(TERTIARY_FONT_COLOR);
             }
         }, filteredDisplayConstraints);
 
@@ -956,7 +977,7 @@ public class TestApp {
                     currentJob.getSumOfQuantities())) {
                 {
                     setFont(new Font("Monospaced", Font.BOLD, 16));
-                    setForeground(FOREGROUND);
+                    setForeground(SECONDARY_FONT_COLOR);
                 }
             }, filteredDisplayConstraints);
 
@@ -967,7 +988,7 @@ public class TestApp {
                         String.format("%-40s     %,10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(), "")) {
                     {
                         setFont(FONT);
-                        setForeground(FOREGROUND);
+                        setForeground(PRIMARY_FONT_COLOR);
                     }
                 }, filteredDisplayConstraints);
             }
@@ -984,13 +1005,24 @@ public class TestApp {
         JPanel legendPanel = new JPanel();
         legendPanel.setLayout(new GridBagLayout());
         legendPanel.setBorder(new EmptyBorder(0, 10, 0, 10));
+        legendPanel.setBackground(PRIMARY_BACKGROUND);
 
         legendDisplay = new JScrollPane();
         legendDisplay.setBorder(new EmptyBorder(0, 0, 0, 0));
         legendDisplay.getVerticalScrollBar().setUnitIncrement(16);
 
-        JLabel rightLocatorLabel = new JLabel("<");
-        JLabel leftLocatorLabel = new JLabel(">");
+        JLabel rightLocatorLabel = new JLabel("<") {
+            {
+
+                setForeground(SECONDARY_FONT_COLOR);
+            }
+        };
+        JLabel leftLocatorLabel = new JLabel(">") {
+            {
+
+                setForeground(SECONDARY_FONT_COLOR);
+            }
+        };
 
         jobButtons = new ArrayList<JButton>();
         for (int jobIndexForLegendButtons = 0; jobIndexForLegendButtons < filteredJobList
@@ -1012,6 +1044,7 @@ public class TestApp {
                 {
                     setText(String.format("%13s %s", county, CSJ));
                     setFont(FONT);
+                    setForeground(TERTIARY_FONT_COLOR);
 
                     addActionListener(new ActionListener() {
 
@@ -1072,20 +1105,27 @@ public class TestApp {
         currentJob.setText(String.format("(%02d/%02d)", jobIndex + 1,
                 filteredJobList.size()));
         final Job currentJob = filteredJobList.get(jobIndex);
-        pricingDisplayPane.setColumnHeaderView(new JLabel() {
+        pricingDisplayPane.setColumnHeaderView(new JPanel() {
             {
-                setText(String.format("%-20s%-20s%-20s%-20s", currentJob.getCsj(),
-                        currentJob.getCounty(),
-                        currentJob.getHighway(),
-                        "county's largest city:  ".concat(cityFinder.getLargestCity(currentJob.getCounty()))));
-                setFont(FONT);
-                setForeground(FOREGROUND);
+                setLayout(new FlowLayout(FlowLayout.LEFT));
+                setBackground(SECONDARY_BACKGROUND);
+                add(new JLabel() {
+                    {
+                        setText(String.format("%-20s%-20s%-20s%-20s", currentJob.getCsj(),
+                                currentJob.getCounty(),
+                                currentJob.getHighway(),
+                                "county's largest city:  ".concat(cityFinder.getLargestCity(currentJob.getCounty()))));
+                        setFont(FONT);
+                        setForeground(TERTIARY_FONT_COLOR);
+                    }
+                });
             }
         });
 
         JPanel pricingDisplay = new JPanel();
         pricingDisplayPane.setViewportView(pricingDisplay);
         pricingDisplay.setLayout(new GridBagLayout());
+        pricingDisplay.setBackground(SECONDARY_BACKGROUND);
 
         displayPricingConstraints.anchor = GridBagConstraints.BELOW_BASELINE_LEADING;
         displayPricingConstraints.ipadx = 10;
@@ -1108,12 +1148,17 @@ public class TestApp {
         pricingDisplay.add(new JLabel("Total Mobilizations Price?  ") {
             {
                 setFont(FONT);
-                setForeground(FOREGROUND);
+                setForeground(PRIMARY_FONT_COLOR);
             }
         }, displayPricingConstraints);
 
         displayPricingConstraints.gridx = 1;
-        pricingDisplay.add(new JLabel("$"), displayPricingConstraints);
+        pricingDisplay.add(new JLabel("$") {
+            {
+                setFont(FONT);
+                setForeground(QUATERNARY_FONT_COLOR);
+            }
+        }, displayPricingConstraints);
 
         displayPricingConstraints.gridx = 2;
         totalMobsTextField = new JTextField();
@@ -1143,7 +1188,7 @@ public class TestApp {
         pricingDisplay.add(new JLabel("Amount of mobilizations included?  ") {
             {
                 setFont(FONT);
-                setForeground(FOREGROUND);
+                setForeground(PRIMARY_FONT_COLOR);
             }
         }, displayPricingConstraints);
 
@@ -1174,12 +1219,17 @@ public class TestApp {
         pricingDisplay.add(new JLabel("Additional Mobilization Price?  ") {
             {
                 setFont(FONT);
-                setForeground(FOREGROUND);
+                setForeground(PRIMARY_FONT_COLOR);
             }
         }, displayPricingConstraints);
 
         displayPricingConstraints.gridx = 1;
-        pricingDisplay.add(new JLabel("$"), displayPricingConstraints);
+        pricingDisplay.add(new JLabel("$") {
+            {
+                setFont(FONT);
+                setForeground(QUATERNARY_FONT_COLOR);
+            }
+        }, displayPricingConstraints);
 
         displayPricingConstraints.gridx = 2;
         additionalMobsTextField = new JTextField();
@@ -1216,7 +1266,7 @@ public class TestApp {
                     " (Sq. Yds.)")) {
                 {
                     setFont(FONT);
-                    setForeground(FOREGROUND);
+                    setForeground(PRIMARY_FONT_COLOR);
                 }
             },
                     displayPricingConstraints);
@@ -1241,13 +1291,23 @@ public class TestApp {
             displayPricingConstraints.gridx = 1;
             displayPricingConstraints.gridy = index + 4;
 
-            pricingDisplay.add(new JLabel("$"), displayPricingConstraints);
+            pricingDisplay.add(new JLabel("$") {
+                {
+                    setFont(FONT);
+                    setForeground(QUATERNARY_FONT_COLOR);
+                }
+            }, displayPricingConstraints);
             displayPricingConstraints.gridx = 2;
 
             pricingDisplay.add(lineItemPrices.get(index), displayPricingConstraints);
 
             displayPricingConstraints.gridx = 3;
-            pricingDisplay.add(new JLabel("(per Sq. Yd.)"), displayPricingConstraints);
+            pricingDisplay.add(new JLabel(" (per Sq. Yd.)") {
+                {
+                    setFont(FONT);
+                    setForeground(QUATERNARY_FONT_COLOR);
+                }
+            }, displayPricingConstraints);
         }
     }
 
