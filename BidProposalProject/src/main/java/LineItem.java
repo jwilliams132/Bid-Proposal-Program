@@ -9,9 +9,9 @@ public class LineItem {
 
     public LineItem(String description, BigDecimal quantity, BigDecimal price) {
 
-        setDescription(description);
-        setQuantity(quantity);
-        setPrice(price);
+        this.description = description;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     // ====================================================================================================
@@ -21,11 +21,6 @@ public class LineItem {
     public String returnLineItems() {
 
         return String.format("%-40s%,11.0f    %1.2f%n", getDescription(), getQuantity(), getPrice());
-    }
-
-    public String formatLineItems() {
-
-        return String.format("|%s|%s|%1.2f", getDescription(), getQuantity(), getPrice());
     }
 
     // ====================================================================================================
@@ -55,6 +50,10 @@ public class LineItem {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
+    // ====================================================================================================
+    // Comparing
+    // ====================================================================================================
 
     @Override
     public boolean equals(Object obj) {

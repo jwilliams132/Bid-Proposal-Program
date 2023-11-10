@@ -12,9 +12,9 @@ public class Contractor {
     // used by CombinedFormat
     public Contractor(String infoLine) {
 
-        setContractorName(findContractorName(infoLine)); // sets name from a trimmed substring of infoLine
-        setContractorPhoneNumber(findContractorPhoneNumber(infoLine)); // sets phone number from a regex of infoLine
-        setContractorEmail(findContractorEmail(infoLine)); // sets email from a regex search of infoLine
+        this.contractorName = findContractorName(infoLine);
+        this.contractorPhoneNumber = findContractorPhoneNumber(infoLine);
+        this.contractorEmail = findContractorEmail(infoLine);
     }
 
     // used by ContractorStorage and V1Format
@@ -54,7 +54,7 @@ public class Contractor {
         String email = ""; // buffer
 
         // uses Pattern/Matcher to search through the string using regex.
-        Matcher emailMatcher = Pattern.compile("[A-Za-z0-9\\.]+@[A-Za-z-]+\\.[A-Za-z]+").matcher(infoLine); 
+        Matcher emailMatcher = Pattern.compile("[A-Za-z0-9\\.]+@[A-Za-z-]+\\.[A-Za-z]+").matcher(infoLine);
 
         // if regex finds the email, assign it to the buffer
         if (emailMatcher.find()) {
@@ -71,7 +71,7 @@ public class Contractor {
         String phone = ""; // buffer
 
         // uses Pattern/Matcher to search through the string using regex.
-        Matcher phoneNumberMatcher = Pattern.compile("\\(*\\d{3}\\)*.{8}").matcher(infoLine); 
+        Matcher phoneNumberMatcher = Pattern.compile("\\(*\\d{3}\\)*.{8}").matcher(infoLine);
 
         // if regex finds the phone number, assign it to the buffer
         if (phoneNumberMatcher.find()) {
@@ -80,15 +80,6 @@ public class Contractor {
             return phone;
         }
         return "==No Phone Found=="; // returns a message if no phone number is found
-    }
-
-    // ====================================================================================================
-    // Outputting Data
-    // ====================================================================================================
-
-    public String toString() {
-
-        return String.format("%-40s%-45s%40s%n", getContractorName(), getContractorPhoneNumber(), getContractorEmail());
     }
 
     // ====================================================================================================
@@ -134,6 +125,10 @@ public class Contractor {
 
         return contractorEstimateNumber;
     }
+
+    // ====================================================================================================
+    // Comparing
+    // ====================================================================================================
 
     public boolean equals(Object obj) {
 

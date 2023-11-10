@@ -90,18 +90,20 @@ public class CombinedFormat extends Format {
         boolean lineItemStart = false, contractorStart = false;
         for (int index = 0; index < job.size(); index++) {
 
-            String line = job.get(index);
+            String line = job.get(index).trim();
             // get data from county line
             if (line.startsWith("COUNTY")) {
 
                 county = line.substring(8, 32).trim();
                 highway = line.substring(41, 59).trim();
+                continue;
             }
 
             // get data from control line
             if (line.startsWith("CONTROL")) {
 
                 csj = line.substring(16, 27);
+                continue;
             }
 
             // get data from working days
@@ -117,6 +119,7 @@ public class CombinedFormat extends Format {
                         workingDays = Integer.valueOf(buffer);
                     }
                 }
+                continue;
             }
 
             // Check if the line starts with "BIDS RECEIVED UNTIL: "
@@ -147,23 +150,34 @@ public class CombinedFormat extends Format {
                         e.printStackTrace();
                     }
                 }
+                continue;
             }
 
             // start the line item count
-            if (line.startsWith("ITEM DES")) {
+            if (line.trim().startsWith("ITEM DES")) {
 
                 lineItemStart = true;
                 index += 3;
-                line = job.get(index);
+                line = job.get(index).trim();
             }
 
             // add each line item to ArrayList
             if (lineItemStart) {
 
-                if (!line.startsWith("+ DELETED ->"))
-                    lineItems.add(new LineItem(line.substring(13, 53).trim(),
-                            new BigDecimal(line.substring(55, 72).trim().replaceAll(",", "")),
-                            new BigDecimal(0)));
+                if (!line.startsWith("+ DELETED ->")) {
+                    
+                    try {
+
+                        lineItems.add(new LineItem(line.substring(13, 53).trim(),
+                                new BigDecimal(line.substring(55, 72).trim().replaceAll(",", "")),
+                                new BigDecimal(0)));
+                    } catch (NumberFormatException e) {
+
+                        // Handle the NumberFormatException
+                        System.err.println("NumberFormatException occurred: " + e.getMessage());
+                        // You can also throw a custom exception if needed
+                    }
+                }
 
                 if (job.get(index + 1).isBlank()) {
                     lineItemStart = false;
@@ -175,7 +189,7 @@ public class CombinedFormat extends Format {
 
                 contractorStart = true;
                 index += 2;
-                line = job.get(index);
+                line = job.get(index).trim();
             }
 
             if (contractorStart) { // add each contractor to array
@@ -183,7 +197,7 @@ public class CombinedFormat extends Format {
                 if (line.startsWith("*****")) {// if the current element in the job list starts with "*****",
                                                // increment the index
                     index++;
-                    line = job.get(index);
+                    line = job.get(index).trim();
                 }
 
                 /*
@@ -204,7 +218,7 @@ public class CombinedFormat extends Format {
                 // if the next element in the job list starts with "EMAIL", increment the index
                 if (job.get(index + 1).trim().startsWith("EMAIL")) {
                     index++;
-                    line = job.get(index);
+                    line = job.get(index).trim();
                 }
             }
         }

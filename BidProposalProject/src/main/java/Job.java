@@ -1,10 +1,11 @@
-import java.util.List;
-import java.util.Objects;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Job {
 
@@ -13,116 +14,87 @@ public class Job {
     private String county, highway, csj;
     private Date biddingDate = new Date(946684800000L); // January 1, 2000, 00:00:00 UTC == default case
     private int workingDays = 0, upTo_Mobs = 1;
-    private BigDecimal totalMobs = new BigDecimal(0), additionalMobs = new BigDecimal(0);
+    private BigDecimal totalMobs = new BigDecimal(0),
+            additionalMobs = new BigDecimal(0),
+            standbyPrice = new BigDecimal(1500),
+            minimumDayCharge = new BigDecimal(7500);
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Adjust the format as needed
 
-    // used for no pricing added
+    // used by CombinedFormat
     public Job(String county, String highway, String csj, int workingDays, Date biddingDate, List<LineItem> lineItems,
             List<Contractor> contractorList) {
 
-        setCounty(county);
-        setHighway(highway);
-        setCsj(csj);
-        setWorkingDays(workingDays);
-        setBiddingDate(biddingDate);
-
-        if (lineItems != null) {
-            setLineItems(lineItems);
-        }
-
-        setContractorList(contractorList);
-
+        this.county = county;
+        this.highway = highway;
+        this.csj = csj;
+        this.workingDays = workingDays;
+        this.biddingDate = biddingDate;
+        this.lineItems = lineItems;
+        this.contractorList = contractorList;
         removeBlacklistedContractors();
     }
 
-    public Job(String county, String highway, String csj, int workingDays, List<LineItem> lineItems, int upTo_Mobs,
-            BigDecimal totalMobs, BigDecimal additionalMobs, List<Contractor> contractorList) {
-
-        setCounty(county);
-        setHighway(highway);
-        setCsj(csj);
-        setWorkingDays(workingDays);
-
-        setUpTo_Mobs(upTo_Mobs);
-        setTotalMobs(totalMobs);
-        setAdditionalMobs(additionalMobs);
-
-        if (lineItems != null) {
-            setLineItems(lineItems);
-        }
-
-        setContractorList(contractorList);
-
-        removeBlacklistedContractors();
-    }
-
+    // used by V1Format
     public Job(String county, String highway, String csj, int workingDays, int upTo_Mobs, BigDecimal totalMobs,
             BigDecimal additionalMobs, List<LineItem> lineItems, List<Contractor> contractorList) {
 
-        setCounty(county);
-        setHighway(highway);
-        setCsj(csj);
-        setWorkingDays(workingDays);
-        setUpTo_Mobs(upTo_Mobs);
-        setTotalMobs(totalMobs);
-        setAdditionalMobs(additionalMobs);
-        setLineItems(lineItems);
-        setContractorList(contractorList);
+        this.county = county;
+        this.highway = highway;
+        this.csj = csj;
+        this.workingDays = workingDays;
+        this.upTo_Mobs = upTo_Mobs;
+        this.totalMobs = totalMobs;
+        this.additionalMobs = additionalMobs;
+        this.lineItems = lineItems;
+        this.contractorList = contractorList;
     }
 
+    // used by V2Format
     public Job(String county, String highway, String csj, int workingDays, int upTo_Mobs, BigDecimal totalMobs,
             BigDecimal additionalMobs, Date biddingDate, List<LineItem> lineItems, List<Contractor> contractorList) {
 
-        setCounty(county);
-        setHighway(highway);
-        setCsj(csj);
-        setWorkingDays(workingDays);
-        setUpTo_Mobs(upTo_Mobs);
-        setTotalMobs(totalMobs);
-        setAdditionalMobs(additionalMobs);
-        setBiddingDate(biddingDate);
-        setLineItems(lineItems);
-        setContractorList(contractorList);
+        this.county = county;
+        this.highway = highway;
+        this.csj = csj;
+        this.workingDays = workingDays;
+        this.upTo_Mobs = upTo_Mobs;
+        this.totalMobs = totalMobs;
+        this.additionalMobs = additionalMobs;
+        this.biddingDate = biddingDate;
+        this.lineItems = lineItems;
+        this.contractorList = contractorList;
+    }
+
+    // testing purposes only
+    public Job() {
+
     }
 
     // ====================================================================================================
     // Blacklisting
     // ====================================================================================================
 
-    // removes blacklisted contractors i.e. Angel Bros, Austin Bridge and Road, Lone
-    // Star, Texas Materials
+    // removes blacklisted contractors i.e. Lone Star, Texas Materials
     public void removeBlacklistedContractors() {
 
-        List<String> blacklistedContractorNames = new ArrayList<String>();
-        List<Contractor> blacklistedContractors = new ArrayList<Contractor>();
+        List<String> blacklist = new ArrayList<String>();
 
         // populate the blacklist ArrayList with names
-        blacklistedContractorNames.add("Angel Brothers");
-        blacklistedContractorNames.add("AUSTIN BRIDGE & ROAD SERVICES, LP");
-        blacklistedContractorNames.add("LONE STAR PAVING COMPANY");
-        blacklistedContractorNames.add("TEXAS MATERIALS GROUP, INC");
+        blacklist.add("Angel Brothers");
+        blacklist.add("AUSTIN BRIDGE & ROAD SERVICES, LP");
+        blacklist.add("LONE STAR PAVING COMPANY");
+        blacklist.add("TEXAS MATERIALS GROUP, INC");
 
         // for every contractor in the ArrayList, compare the name to the blacklisted
         // names
-        for (Contractor contractor : contractorList) {
-
-            // checks every index of the blacklist against the name
-            for (String blacklistName : blacklistedContractorNames) {
-
-                // compares names against blacklist
-                if (contractor.getContractorName().equalsIgnoreCase(blacklistName)) {
-
-                    blacklistedContractors.add(contractor); // add blacklisted Contractor object to ArrayList
-                }
-            }
-        }
+        List<Contractor> contractorsToRemove = contractorList.stream()
+                .filter(contractor -> blacklist.stream()
+                        .anyMatch(blacklistName -> contractor.getContractorName().equalsIgnoreCase(blacklistName)))
+                .collect(Collectors.toList());
 
         // removes blacklisted contractors from contractorList
-        for (Contractor contractor : blacklistedContractors) {
-
-            contractorList.remove(contractor);
-        }
+        contractorsToRemove.forEach(contractor -> contractorList.remove(contractor));
     }
 
     // ====================================================================================================
@@ -197,120 +169,129 @@ public class Job {
         return emails;
     }
 
-    public List<String> formatJobStorage() {
-
-        List<String> estimateNumberContentLine = new ArrayList<String>();
-        for (Contractor contractor : contractorList) {
-
-            estimateNumberContentLine.add(String.format("%-17s%-40s%-45s%40s%n", contractor.getContractorEstimateNo(),
-                    contractor.getContractorName(), contractor.getContractorPhoneNumber(),
-                    contractor.getContractorEmail()));
-        }
-        return estimateNumberContentLine;
-    }
-
     // ====================================================================================================
     // Getter Setters
     // ====================================================================================================
 
     public Date getBiddingDate() {
+
         return biddingDate;
     }
 
     public void setBiddingDate(Date biddingDate) {
+
         this.biddingDate = biddingDate;
     }
 
     public List<Contractor> getContractorList() {
+
         return contractorList;
     }
 
     public void setContractorList(List<Contractor> contractorList) {
+
         this.contractorList = contractorList;
     }
 
     public List<LineItem> getLineItems() {
+
         return lineItems;
     }
 
     public void setLineItems(List<LineItem> lineItems) {
+
         this.lineItems = lineItems;
     }
 
     public String getCounty() {
+
         return county;
     }
 
     public void setCounty(String county) {
+
         this.county = county;
     }
 
     public String getHighway() {
+
         return highway;
     }
 
     public void setHighway(String highway) {
+
         this.highway = highway;
     }
 
     public String getCsj() {
+
         return csj;
     }
 
     public void setCsj(String csj) {
+
         this.csj = csj;
     }
 
     public int getWorkingDays() {
+
         return workingDays;
+
     }
 
     public void setWorkingDays(int workingDays) {
+
         this.workingDays = workingDays;
     }
 
     public int getUpTo_Mobs() {
+
         return upTo_Mobs;
     }
 
     public void setUpTo_Mobs(int upTo_Mobs) {
+
         this.upTo_Mobs = upTo_Mobs;
     }
 
     public BigDecimal getTotalMobs() {
+
         return totalMobs;
     }
 
     public void setTotalMobs(BigDecimal totalMobs) {
+
         this.totalMobs = totalMobs;
     }
 
     public BigDecimal getAdditionalMobs() {
+
         return additionalMobs;
     }
 
     public void setAdditionalMobs(BigDecimal additionalMobs) {
+
         this.additionalMobs = additionalMobs;
     }
 
-    public BigDecimal getSumOfQuantities() {
-        BigDecimal sum = new BigDecimal(0);
-        for (LineItem lineItem : getLineItems()) {
-            sum.add(lineItem.getQuantity());
-        }
-        return sum;
-    }
-
-    public int getProductionDays() {
-        return 5;
-    }
-
     public BigDecimal getStandbyPrice() {
-        return new BigDecimal(1500);
+
+        return standbyPrice;
+    }
+
+    public void setStandbyPrice(BigDecimal standbyPrice) {
+
+        this.standbyPrice = standbyPrice;
     }
 
     public BigDecimal getMinimumDayCharge() {
-        return new BigDecimal(7500);
+
+        return minimumDayCharge;
+    }
+
+    public void setMinimumDayCharge(BigDecimal minimumDayCharge) {
+
+        this.minimumDayCharge = minimumDayCharge;
     }
 
     public String getBiddingDateString() {
@@ -330,8 +311,18 @@ public class Job {
         }
     }
 
+    public BigDecimal getSumOfQuantities() {
+
+        BigDecimal sum = new BigDecimal(0);
+        for (LineItem lineItem : getLineItems()) {
+
+            sum = sum.add(lineItem.getQuantity());
+        }
+        return sum;
+    }
+
     // ====================================================================================================
-    // Equals
+    // Comparing
     // ====================================================================================================
 
     @Override
@@ -344,7 +335,7 @@ public class Job {
         if (o == null || getClass() != o.getClass())
 
             return false;
-            
+
         Job job = (Job) o;
 
         return Objects.equals(county, job.county) &&

@@ -113,8 +113,8 @@ public class V2ExcelFormat extends ExcelFormat {
             BigDecimalToWordsConverter converter = new BigDecimalToWordsConverter();
             setCellValue(sheetName, GENERALCONDITION3.getCol(), GENERALCONDITION3.getRow(), String.format(
                     "%s (%d) Mobilization included in initial proposal. Additional Mobilizations shall be %s each.",
-                    converter.convertToWords(job.getUpTo_Mobs()), job.getUpTo_Mobs(),
-                    converter.convertToWords(job.getAdditionalMobs())));
+                    converter.convertIntToWords(job.getUpTo_Mobs()), job.getUpTo_Mobs(),
+                    converter.convertCurrencyToWords(job.getAdditionalMobs())));
 
             setCellValue(sheetName, SPECIALCONDITION1.getCol(), SPECIALCONDITION1.getRow(),
                     String.format(

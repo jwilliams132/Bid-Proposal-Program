@@ -1,7 +1,7 @@
 
 import org.junit.jupiter.api.Test;
 
-public class TestAppTest {
+public class TestApplication {
 
 	@Test
     void test() {
