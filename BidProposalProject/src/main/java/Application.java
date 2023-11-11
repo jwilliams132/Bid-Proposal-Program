@@ -107,7 +107,6 @@ public class Application {
         }
     };
 
-    
     // =====Open File Panel=====
     /**/private JPanel openFilePanel;
 
@@ -331,7 +330,7 @@ public class Application {
 
                     public void run() {
 
-                        getUpdatedDoc(); //TODO use this as test button for now
+                        getUpdatedDoc(); // TODO use this as test button for now
                     }
                 });
             }
@@ -344,7 +343,7 @@ public class Application {
                 SwingUtilities.invokeLater(new Runnable() {
 
                     public void run() {
-                        
+
                         filterJobSelection();
                     }
                 });
