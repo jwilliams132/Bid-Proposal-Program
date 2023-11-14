@@ -152,4 +152,14 @@
 
     </style>
     <bind style="checkBoxStyle" type="region" key="CheckBox" />
+    <!-- Style for labels -->
+    <style id="labelStyle">
+        <insets top="2" left="2" right="2" bottom="2" />
+    </style>
+    <bind style="labelStyle" type="region" key="Label" />
+
+    <state value="FOCUSED">
+
+    </state>
+    <bind style="labelStyle" type="region" key="Label" />
 </synth>
