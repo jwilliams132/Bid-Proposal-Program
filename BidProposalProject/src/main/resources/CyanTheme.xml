@@ -102,4 +102,54 @@
     <bind style="textFieldStyle" type="region" key="EditorPane" />
     <bind style="textFieldStyle" type="region" key="TextPane" />
     <bind style="textFieldStyle" type="region" key="PasswordField" />
+    <!-- Style for check box / tick box as we say in this country -->
+    <style id="checkBoxStyle">
+        <insets top="0" left="0" right="0" bottom="0" />
+
+        <imageIcon id="gn" path="images/Checkbox_GreyBox_NoCheck.png" />
+		<imageIcon id="gw" path="images/Checkbox_GreyBox_WhiteCheck.png" />
+		<imageIcon id="rn" path="images/Checkbox_RedBox_NoCheck.png" />
+		<imageIcon id="rw" path="images/Checkbox_RedBox_WhiteCheck.png" />
+        <state>
+            <!-- <property key="CheckBox.icon" value="base" /> -->
+            <property key="CheckBox.icon" value="gn" />
+            <color value="red" type="TEXT_FOREGROUND" />
+        </state>
+
+        <state value="DISABLED">
+            <!-- <property key="CheckBox.icon" value="base" /> -->
+            <property key="CheckBox.icon" value="gn" />
+        </state>
+
+        <state value="DISABLED and SELECTED">
+            <!-- <property key="CheckBox.icon" value="base" /> -->
+            <property key="CheckBox.icon" value="gw" />
+        </state>
+
+        <state value="MOUSE_OVER">
+            <!-- <property key="CheckBox.icon" value="m" /> -->
+            <property key="CheckBox.icon" value="rn" />
+            <color value="orange" type="TEXT_FOREGROUND" />
+        </state>
+
+        <state value="PRESSED">
+            <!-- <property key="CheckBox.icon" value="p" /> -->
+            <property key="CheckBox.icon" value="gw" />
+            <color value="yellow" type="TEXT_FOREGROUND" />
+        </state>
+
+        <state value="SELECTED">
+            <!-- <property key="CheckBox.icon" value="s" /> -->
+            <property key="CheckBox.icon" value="gw" />
+            <color value="blue" type="TEXT_FOREGROUND" />
+        </state>
+
+        <state value="MOUSE_OVER and SELECTED">
+            <!-- <property key="CheckBox.icon" value="ms" /> -->
+            <property key="CheckBox.icon" value="rw" />
+            <color value="magenta" type="TEXT_FOREGROUND" />
+        </state>
+
+    </style>
+    <bind style="checkBoxStyle" type="region" key="CheckBox" />
 </synth>
