@@ -117,10 +117,10 @@
 		<imageIcon id="gw" path="images/Checkbox_GreyBox_WhiteCheck.png" />
 		<imageIcon id="rn" path="images/Checkbox_RedBox_NoCheck.png" />
 		<imageIcon id="rw" path="images/Checkbox_RedBox_WhiteCheck.png" />
+
         <state>
             <!-- <property key="CheckBox.icon" value="base" /> -->
             <property key="CheckBox.icon" value="gn" />
-            <color value="red" type="TEXT_FOREGROUND" />
         </state>
 
         <state value="DISABLED">
@@ -136,25 +136,21 @@
         <state value="MOUSE_OVER">
             <!-- <property key="CheckBox.icon" value="m" /> -->
             <property key="CheckBox.icon" value="rn" />
-            <color value="orange" type="TEXT_FOREGROUND" />
         </state>
 
         <state value="PRESSED">
             <!-- <property key="CheckBox.icon" value="p" /> -->
             <property key="CheckBox.icon" value="gw" />
-            <color value="yellow" type="TEXT_FOREGROUND" />
         </state>
 
         <state value="SELECTED">
             <!-- <property key="CheckBox.icon" value="s" /> -->
             <property key="CheckBox.icon" value="gw" />
-            <color value="blue" type="TEXT_FOREGROUND" />
         </state>
 
         <state value="MOUSE_OVER and SELECTED">
             <!-- <property key="CheckBox.icon" value="ms" /> -->
             <property key="CheckBox.icon" value="rw" />
-            <color value="magenta" type="TEXT_FOREGROUND" />
         </state>
 
     </style>
