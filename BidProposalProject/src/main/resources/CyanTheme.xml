@@ -42,4 +42,64 @@
         </state>
     </style>
     <bind style="buttonStyle" type="region" key="Button" />
+    <!-- Style for text fields -->
+    <style id="textFieldStyle">
+        <insets top="2" left="2" right="2" bottom="2" />
+        <font name="Monospaced" size="12" />
+        <!-- For each state, have to provide multiple imagePainters, one for each text component -->
+        <state> <!-- Normal state for text fields -->
+            <imagePainter method="textFieldBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="textAreaBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="formattedTextFieldBackground"
+                path="images/TextField_Unfocused.png" sourceInsets="8 8 8 8" />
+            <imagePainter method="editorPaneBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="textPaneBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="passwordFieldBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <color value="white" type="TEXT_FOREGROUND" />
+            <color value="#568AF2" type="TEXT_BACKGROUND" /> <!-- Highlight colour consistent across
+			all states -->
+        </state>
+        <state value="DISABLED"> <!-- Disabled state for text fields -->
+            <imagePainter method="textFieldBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="textAreaBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="formattedTextFieldBackground"
+                path="images/TextField_Unfocused.png" sourceInsets="8 8 8 8" />
+            <imagePainter method="editorPaneBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="textPaneBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="passwordFieldBackground" path="images/TextField_Unfocused.png"
+                sourceInsets="8 8 8 8" />
+            <color value="white" type="TEXT_FOREGROUND" />
+        </state>
+        <state value="FOCUSED"> <!-- Focused state for text fields -->
+            <imagePainter method="textFieldBackground" path="images/TextField.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="textAreaBackground" path="images/TextField.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="formattedTextFieldBackground" path="images/TextField.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="editorPaneBackground" path="images/TextField.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="textPaneBackground" path="images/TextField.png"
+                sourceInsets="8 8 8 8" />
+            <imagePainter method="passwordFieldBackground" path="images/TextField.png"
+                sourceInsets="8 8 8 8" />
+            <color value="white" type="TEXT_FOREGROUND" />
+        </state>
+    </style>
+    <bind style="textFieldStyle" type="region" key="TextField" />
+    <bind style="textFieldStyle" type="region" key="TextArea" />
+    <bind style="textFieldStyle" type="region" key="FormattedTextField" /> <!-- Is overridden in the
+	case of the JSpinner's JFormattedTextField -->
+    <bind style="textFieldStyle" type="region" key="EditorPane" />
+    <bind style="textFieldStyle" type="region" key="TextPane" />
+    <bind style="textFieldStyle" type="region" key="PasswordField" />
 </synth>
