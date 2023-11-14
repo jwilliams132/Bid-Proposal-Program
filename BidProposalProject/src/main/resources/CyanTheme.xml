@@ -13,4 +13,33 @@
         </state>
     </style>
     <bind style="basicStyle" type="region" key=".*" />
+    <!-- Style for buttons -->
+    <style id="buttonStyle">
+        <insets top="16" left="16" right="16" bottom="16" />
+        <state> <!-- Normal state for button -->
+            <color value="#afccd6" type="TEXT_FOREGROUND" />
+            <imagePainter method="buttonBackground" path="images/Button.png" sourceInsets="8 8 8 8" />
+        </state>
+        <state value="FOCUSED"> <!-- Disabled state for button -->
+            <color value="#afccd6" type="TEXT_FOREGROUND" />
+            <imagePainter method="buttonBackground" path="images/Button_Focused.png"
+                sourceInsets="8 8 8 8" />
+        </state>
+        <state value="MOUSE_OVER"> <!-- Hovered state for button -->
+            <color value="#afccd6" type="TEXT_FOREGROUND" />
+            <imagePainter method="buttonBackground" path="images/Button_Hovered.png"
+                sourceInsets="8 8 8 8" />
+        </state>
+        <state value="MOUSE_OVER AND FOCUSED"> <!-- Selected Pressed state for buttons -->
+            <color value="#afccd6" type="TEXT_FOREGROUND" />
+            <imagePainter method="buttonBackground" path="images/Button_Hovered_Focused.png"
+                sourceInsets="8 8 8 8" />
+        </state>
+        <state value="DISABLED"> <!-- Selected Pressed state for buttons -->
+            <color value="#58696e" type="TEXT_FOREGROUND" />
+            <imagePainter method="buttonBackground" path="images/Button_Disabled.png"
+                sourceInsets="8 8 8 8" />
+        </state>
+    </style>
+    <bind style="buttonStyle" type="region" key="Button" />
 </synth>
