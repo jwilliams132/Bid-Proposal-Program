@@ -1,0 +1,16 @@
+<synth ml-update="aware">
+    <!-- A basic style, applies to all regions, as specified in the bind tag -->
+    <style id="basicStyle">
+        <opaque value="TRUE" />
+        <font name="Monospaced" size="12" />
+
+        <state> <!-- Normal state -->
+            <!-- <color value="#DBDBDB" type="TEXT_FOREGROUND" /> -->
+            <color value="#0d1521" type="BACKGROUND" />
+            <color value="#0d1521" type="FOREGROUND" />
+            <!-- <imagePainter method="comboBoxBackground" path="images/.png" sourceInsets="8 8 8
+			8"/> -->
+        </state>
+    </style>
+    <bind style="basicStyle" type="region" key=".*" />
+</synth>
