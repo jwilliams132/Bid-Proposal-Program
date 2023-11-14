@@ -156,7 +156,6 @@
     </style>
     <bind style="checkBoxStyle" type="region" key="CheckBox" />
     </style>
-    <bind style="labelStyle" type="region" key="Label" />
 
 
 </synth>
