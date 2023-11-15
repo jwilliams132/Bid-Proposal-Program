@@ -1,12 +1,18 @@
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileFilter;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 
 public class FileManager {
 
@@ -28,6 +34,7 @@ public class FileManager {
     public File chooseFile(String knownFile, String currentDirectory, fileChooserOptions option,
             FileFilter fileFilter) {
 
+        synthLookAndFeel();
         JFileChooser fileChooser = new JFileChooser(); // create a new JFileChooser object
 
         // Set the current directory of the JFileChooser to the user's desktop
@@ -69,11 +76,13 @@ public class FileManager {
             return new File(fileChooser.getSelectedFile().getAbsolutePath()); // create new file object of
                                                                               // the file selected
         }
+        windowsLookAndFeel();
         return null;
     }
 
     public String chooseDirectory(String currentDirectory) {
 
+        synthLookAndFeel();
         if (currentDirectory == null)
             currentDirectory = desktopDirectory.getAbsolutePath();
         JFileChooser directoryChooser = new JFileChooser();
@@ -83,7 +92,7 @@ public class FileManager {
         if (response == JFileChooser.APPROVE_OPTION)
 
             return directoryChooser.getSelectedFile().getAbsolutePath();
-
+        windowsLookAndFeel();
         return null;
     }
 
@@ -136,8 +145,51 @@ public class FileManager {
     }
 
     public List<String> readFile(String filePath) {
-        
+
         File file = chooseFile(filePath, null, FileManager.fileChooserOptions.OPEN, null);
         return readFile(file);
+    }
+
+    private static void synthLookAndFeel() {
+
+        SynthLookAndFeel laf = new SynthLookAndFeel();
+        try {
+
+            File file = new File("BidProposalProject\\src\\main\\resources\\CyanTheme.xml");
+            URL url = file.toURI().toURL();
+            laf.load(url);
+            UIManager.setLookAndFeel(laf);
+        } catch (ParseException parseException) {
+
+            System.out.println("parseException");
+            parseException.printStackTrace();
+        } catch (IllegalArgumentException IllegalArgumentException) {
+
+            System.out.println("IllegalArgumentException");
+            IllegalArgumentException.printStackTrace();
+        } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
+
+            System.out.println("unsupportedLookAndFeelException");
+            unsupportedLookAndFeelException.printStackTrace();
+        } catch (MalformedURLException e) {
+
+            e.printStackTrace();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+
+    }
+
+    private static void windowsLookAndFeel() {
+
+        try {
+
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | UnsupportedLookAndFeelException e) {
+
+            e.printStackTrace();
+        }
     }
 }

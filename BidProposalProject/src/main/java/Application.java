@@ -1,3 +1,4 @@
+import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
@@ -9,6 +10,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,8 +21,12 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,8 +46,12 @@ import javax.swing.JTextField;
 import javax.swing.JViewport;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileFilter;
+
+import javax.swing.plaf.synth.*;
 
 public class Application {
 
@@ -53,20 +63,20 @@ public class Application {
     private final Font FONT = new Font("Monospaced", Font.PLAIN, 16);
 
     // Dark Theme Colors
-    // private final Color PRIMARY_FONT_COLOR = new Color(0, 179, 189);
-    // private final Color SECONDARY_FONT_COLOR = new Color(55, 136, 186);
-    // private final Color TERTIARY_FONT_COLOR = new Color(192, 155, 82);
-    // private final Color QUATERNARY_FONT_COLOR = new Color(201, 62, 113);
-    // private final Color PRIMARY_BACKGROUND = new Color(13, 21, 33);
-    // private final Color SECONDARY_BACKGROUND = new Color(16, 26, 41);
+    private final Color PRIMARY_FONT_COLOR = new Color(0, 179, 189);
+    private final Color SECONDARY_FONT_COLOR = new Color(55, 136, 186);
+    private final Color TERTIARY_FONT_COLOR = new Color(192, 155, 82);
+    private final Color QUATERNARY_FONT_COLOR = new Color(61, 86, 123);
+    private final Color PRIMARY_BACKGROUND = new Color(13, 21, 33);
+    private final Color SECONDARY_BACKGROUND = new Color(16, 26, 41);
 
     // Light Theme Colors
-    private final Color PRIMARY_FONT_COLOR = Color.BLACK;
-    private final Color SECONDARY_FONT_COLOR = Color.BLACK;
-    private final Color TERTIARY_FONT_COLOR = Color.BLACK;
-    private final Color QUATERNARY_FONT_COLOR = Color.BLACK;
-    private final Color PRIMARY_BACKGROUND = Color.WHITE;
-    private final Color SECONDARY_BACKGROUND = Color.LIGHT_GRAY;
+    // private final Color PRIMARY_FONT_COLOR = Color.BLACK;
+    // private final Color SECONDARY_FONT_COLOR = Color.BLACK;
+    // private final Color TERTIARY_FONT_COLOR = Color.BLACK;
+    // private final Color QUATERNARY_FONT_COLOR = Color.BLACK;
+    // private final Color PRIMARY_BACKGROUND = Color.WHITE;
+    // private final Color SECONDARY_BACKGROUND = Color.LIGHT_GRAY;
 
     private final Color TITLE_FONT_COLOR = TERTIARY_FONT_COLOR;
 
@@ -151,6 +161,7 @@ public class Application {
 
             public void run() {
 
+                // initLookAndFeel();
                 new Application();
             }
         });
@@ -162,6 +173,39 @@ public class Application {
     public Application() {
 
         initialize();
+    }
+    
+    private static void initLookAndFeel() {
+
+        SynthLookAndFeel laf = new SynthLookAndFeel();
+
+        try {
+
+            File file = new File("BidProposalProject\\src\\main\\resources\\CyanTheme.xml");
+            URL url = file.toURI().toURL();
+            laf.load(url);
+            UIManager.setLookAndFeel(laf);
+
+        } catch (ParseException parseException) {
+
+            System.out.println("parseException");
+            parseException.printStackTrace();
+        } catch (IllegalArgumentException IllegalArgumentException) {
+
+            System.out.println("IllegalArgumentException");
+            IllegalArgumentException.printStackTrace();
+        } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
+
+            System.out.println("unsupportedLookAndFeelException");
+            unsupportedLookAndFeelException.printStackTrace();
+        } catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -203,6 +247,7 @@ public class Application {
         openFilePathLabel = new JLabel("File Path:  ");
         openFilePathLabel.setFont(FONT);
         openFilePathLabel.setForeground(QUATERNARY_FONT_COLOR);
+        // openFilePathLabel.requestFocus();
         openFilePanel.add(chooseOpenFile, BorderLayout.WEST);
         openFilePanel.add(openFilePathLabel, BorderLayout.CENTER);
         openFilePanel.add(updateBidders, BorderLayout.EAST);
@@ -242,6 +287,20 @@ public class Application {
         jobSelectionPanel.add(nextJob);
 
         createTestKeyStroke();
+        try {
+            // Create an instance of the Robot class
+            Robot robot = new Robot();
+
+            // Simulate pressing Ctrl+T
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_T);
+
+            // Simulate releasing Ctrl+T
+            robot.keyRelease(KeyEvent.VK_T);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
     }
 
     // ====================================================================================================
@@ -251,6 +310,7 @@ public class Application {
     private void initializeButtons() {
 
         chooseOpenFile = new JButton("Open Bidding File...");
+        // chooseOpenFile.setName("buttonStyle");
         updateBidders = new JButton("Add Updated Bidders");
         chooseSaveFolder = new JButton("Choose a folder to save to...");
         saveExcel = new JButton("Export Excel Files");
@@ -276,16 +336,17 @@ public class Application {
         openFilePanel.setLayout(new BorderLayout(10, 10));
 
         saveFilePanel = new JPanel();
-        saveFilePanel.setLayout(new BorderLayout(10, 10));
-        saveFilePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        saveFilePanel.setLayout(new BorderLayout(5, 0));
+        saveFilePanel.setBorder(new EmptyBorder(0, 10, 10, 10));
 
         displayPanel = new JPanel();
         displayPanel.setLayout(new BorderLayout());
 
         bottomPanel = new JPanel();
-        bottomPanel.setLayout(new BorderLayout());
+        bottomPanel.setLayout(new BorderLayout(0, 0));
 
         dataManipulationPanel = new JPanel();
+        dataManipulationPanel.setBorder(new EmptyBorder(0, 5, 0, 0));
         dataManipulationPanel.setLayout(new BorderLayout(0, 0));
 
         jobFilterPanel = new JPanel();
@@ -316,6 +377,7 @@ public class Application {
                     public void run() {
 
                         openChosenStartFile();
+                        
 
                     }
                 });
@@ -1161,8 +1223,6 @@ public class Application {
 
         displayPricingConstraints.gridx = 2;
         totalMobsTextField = new JTextField();
-        totalMobsTextField.setText(String.format("%.0f",
-                filteredJobList.get(jobIndex).getTotalMobs()));
 
         totalMobsTextField.setPreferredSize(new Dimension(50, 20));
         totalMobsTextField.addFocusListener(new FocusListener() {
@@ -1177,6 +1237,8 @@ public class Application {
 
         });
         pricingDisplay.add(totalMobsTextField, displayPricingConstraints);
+        totalMobsTextField.setText(String.format("%.0f",
+                filteredJobList.get(jobIndex).getTotalMobs()));
     }
 
     public void addUpTo_MobsToPricingPage(JPanel pricingDisplay, GridBagConstraints displayPricingConstraints) {
