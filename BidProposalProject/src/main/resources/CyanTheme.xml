@@ -5,8 +5,8 @@
         <font name="Monospaced" size="12" />
 
         <state> <!-- Normal state -->
-            <!-- <color value="magenta" type="BACKGROUND" /> -->
-            <!-- <color value="black" type="FOREGROUND" /> -->
+            <color value="white" type="BACKGROUND" />
+            <color value="black" type="FOREGROUND" />
         </state>
     </style>
     <bind style="basicStyle" type="region" key=".*" />
@@ -322,7 +322,7 @@
             <color value="#DBDBDB" type="TEXT_FOREGROUND" />
         </state>
     </style>
-    <!-- <bind style="spinnerEditorStyle" type="name" key="Spinner.formattedTextField" /> <!-- Overrides -->
+    <!-- <bind style="spinnerEditorStyle" type="name" key="Spinner.formattedTextField" /> <! Overrides -->
     the style defined for all formatted text fields -->
 
     <!-- Style for panels -->
