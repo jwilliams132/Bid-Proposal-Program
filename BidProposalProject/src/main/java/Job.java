@@ -17,7 +17,7 @@ public class Job {
     private BigDecimal totalMobs = new BigDecimal(0),
             additionalMobs = new BigDecimal(0),
             standbyPrice = new BigDecimal(1500),
-            minimumDayCharge = new BigDecimal(7500);
+            minimumDayCharge = new BigDecimal(6000);
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Adjust the format as needed
 

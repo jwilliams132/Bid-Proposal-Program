@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 public class InputFileProcessor {
 
     private FileManager fileManager = new FileManager();
-    public List<Job> savedJobStorage;
 
     public enum FileFormat {
 

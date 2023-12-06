@@ -1,4 +1,3 @@
-import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
@@ -10,7 +9,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Point;
-import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -63,20 +61,20 @@ public class Application {
     private final Font FONT = new Font("Monospaced", Font.PLAIN, 16);
 
     // Dark Theme Colors
-    private final Color PRIMARY_FONT_COLOR = new Color(0, 179, 189);
-    private final Color SECONDARY_FONT_COLOR = new Color(55, 136, 186);
-    private final Color TERTIARY_FONT_COLOR = new Color(192, 155, 82);
-    private final Color QUATERNARY_FONT_COLOR = new Color(61, 86, 123);
-    private final Color PRIMARY_BACKGROUND = new Color(13, 21, 33);
-    private final Color SECONDARY_BACKGROUND = new Color(16, 26, 41);
+    // private final Color PRIMARY_FONT_COLOR = new Color(0, 179, 189);
+    // private final Color SECONDARY_FONT_COLOR = new Color(55, 136, 186);
+    // private final Color TERTIARY_FONT_COLOR = new Color(192, 155, 82);
+    // private final Color QUATERNARY_FONT_COLOR = new Color(61, 86, 123);
+    // private final Color PRIMARY_BACKGROUND = new Color(13, 21, 33);
+    // private final Color SECONDARY_BACKGROUND = new Color(16, 26, 41);
 
     // Light Theme Colors
-    // private final Color PRIMARY_FONT_COLOR = Color.BLACK;
-    // private final Color SECONDARY_FONT_COLOR = Color.BLACK;
-    // private final Color TERTIARY_FONT_COLOR = Color.BLACK;
-    // private final Color QUATERNARY_FONT_COLOR = Color.BLACK;
-    // private final Color PRIMARY_BACKGROUND = Color.WHITE;
-    // private final Color SECONDARY_BACKGROUND = Color.LIGHT_GRAY;
+    private final Color PRIMARY_FONT_COLOR = Color.BLACK;
+    private final Color SECONDARY_FONT_COLOR = Color.BLACK;
+    private final Color TERTIARY_FONT_COLOR = Color.BLACK;
+    private final Color QUATERNARY_FONT_COLOR = Color.BLACK;
+    private final Color PRIMARY_BACKGROUND = Color.WHITE;
+    private final Color SECONDARY_BACKGROUND = Color.LIGHT_GRAY;
 
     private final Color TITLE_FONT_COLOR = TERTIARY_FONT_COLOR;
 
@@ -152,9 +150,9 @@ public class Application {
     private JPanel bottomPanel;
     private ArrayList<JButton> jobButtons;
 
-    /**
-     * Launch the application. TODO
-     */
+    // /**
+    // * Launch the application. TODO
+    // */
     public static void main(String[] args) {
 
         EventQueue.invokeLater(new Runnable() {
@@ -167,21 +165,22 @@ public class Application {
         });
     }
 
-    /**
-     * Create the application.
-     */
+    // /**
+    // * Create the application.
+    // */
     public Application() {
 
         initialize();
     }
-    
+
     private static void initLookAndFeel() {
 
         SynthLookAndFeel laf = new SynthLookAndFeel();
 
         try {
 
-            File file = new File("BidProposalProject\\src\\main\\resources\\CyanTheme.xml");
+            File file = new File(
+                    "C:\\Users\\Jacob\\Documents\\GitHub\\Bid-Proposal-Program\\BidProposalProject\\src\\main\\resources\\CyanTheme.xml");
             URL url = file.toURI().toURL();
             laf.load(url);
             UIManager.setLookAndFeel(laf);
@@ -287,20 +286,20 @@ public class Application {
         jobSelectionPanel.add(nextJob);
 
         createTestKeyStroke();
-        try {
-            // Create an instance of the Robot class
-            Robot robot = new Robot();
+        // try {
+        // // Create an instance of the Robot class
+        // Robot robot = new Robot();
 
-            // Simulate pressing Ctrl+T
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_T);
+        // // Simulate pressing Ctrl+T
+        // robot.keyPress(KeyEvent.VK_CONTROL);
+        // robot.keyPress(KeyEvent.VK_T);
 
-            // Simulate releasing Ctrl+T
-            robot.keyRelease(KeyEvent.VK_T);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
+        // // Simulate releasing Ctrl+T
+        // robot.keyRelease(KeyEvent.VK_T);
+        // robot.keyRelease(KeyEvent.VK_CONTROL);
+        // } catch (AWTException e) {
+        // e.printStackTrace();
+        // }
     }
 
     // ====================================================================================================
@@ -377,7 +376,6 @@ public class Application {
                     public void run() {
 
                         openChosenStartFile();
-                        
 
                     }
                 });
@@ -820,6 +818,14 @@ public class Application {
     // Unfiltered Display
     // ===========================================================================
 
+    /*
+     * requires fields:
+     * FONT, QUATERNARY_FONT_COLOR, SECONDARY_BACKGROUND, TERTIARY_FONT_COLOR,
+     * jobCheckBoxes, currentJobList, currentJobFilterIndexes
+     * 
+     * uses methods:
+     * updateScrollPaneHeader()
+     */
     public JScrollPane getUnfilteredDisplay() {
 
         JScrollPane unfilteredDisplayPane = new JScrollPane();
@@ -966,6 +972,13 @@ public class Application {
         return unfilteredDisplayPane;
     }
 
+    /*
+     * requires fields:
+     * jobCheckBoxes, currentJobList
+     * 
+     * uses methods:
+     * 
+     */
     private void updateScrollPaneHeader(JLabel label) {
 
         StringBuilder labelString = new StringBuilder();
@@ -1002,6 +1015,14 @@ public class Application {
     // Filtered Display
     // ===========================================================================
 
+    /*
+     * requires fields:
+     * FONT, PRIMARY_FONT_COLOR, SECONDARY_BACKGROUND, TERTIARY_FONT_COLOR,
+     * filteredJobList
+     * 
+     * uses methods:
+     * 
+     */
     private JScrollPane getFilteredDisplay() {
 
         JScrollPane filteredDisplayPane = new JScrollPane();
@@ -1060,7 +1081,14 @@ public class Application {
     // ===========================================================================
     // Pricing Display
     // ===========================================================================
-
+    /*
+     * requires fields:
+     * FONT, PRIMARY_BACKGROUND, SECONDARY_FONT_COLOR, TERTIARY_FONT_COLOR,
+     * legendDisplay, jobButtons, filteredJobList, jobIndex
+     * 
+     * uses methods:
+     * setPrices(), resetLegendAndPricingPanel(), enableIterationButtons
+     */
     public JScrollPane getLegendPane() {
 
         JPanel legendPanel = new JPanel();
@@ -1587,7 +1615,7 @@ public class Application {
 
             showWarning("Warning", "Invalid input", invalidInput + " is not a valid number for total mobilizations");
             valid = false;
-        }
+        } 
 
         invalidInput = checkTextFields(lineItemPrices);
 

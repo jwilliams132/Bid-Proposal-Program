@@ -34,7 +34,7 @@ public class FileManager {
     public File chooseFile(String knownFile, String currentDirectory, fileChooserOptions option,
             FileFilter fileFilter) {
 
-        synthLookAndFeel();
+        // synthLookAndFeel();
         JFileChooser fileChooser = new JFileChooser(); // create a new JFileChooser object
 
         // Set the current directory of the JFileChooser to the user's desktop
@@ -76,13 +76,13 @@ public class FileManager {
             return new File(fileChooser.getSelectedFile().getAbsolutePath()); // create new file object of
                                                                               // the file selected
         }
-        windowsLookAndFeel();
+        // windowsLookAndFeel();
         return null;
     }
 
     public String chooseDirectory(String currentDirectory) {
 
-        synthLookAndFeel();
+        // synthLookAndFeel();
         if (currentDirectory == null)
             currentDirectory = desktopDirectory.getAbsolutePath();
         JFileChooser directoryChooser = new JFileChooser();
@@ -92,7 +92,7 @@ public class FileManager {
         if (response == JFileChooser.APPROVE_OPTION)
 
             return directoryChooser.getSelectedFile().getAbsolutePath();
-        windowsLookAndFeel();
+        // windowsLookAndFeel();
         return null;
     }
 
@@ -150,46 +150,46 @@ public class FileManager {
         return readFile(file);
     }
 
-    private static void synthLookAndFeel() {
+    // private static void synthLookAndFeel() {
 
-        SynthLookAndFeel laf = new SynthLookAndFeel();
-        try {
+    //     SynthLookAndFeel laf = new SynthLookAndFeel();
+    //     try {
 
-            File file = new File("BidProposalProject\\src\\main\\resources\\CyanTheme.xml");
-            URL url = file.toURI().toURL();
-            laf.load(url);
-            UIManager.setLookAndFeel(laf);
-        } catch (ParseException parseException) {
+    //         File file = new File("BidProposalProject\\src\\main\\resources\\CyanTheme.xml");
+    //         URL url = file.toURI().toURL();
+    //         laf.load(url);
+    //         UIManager.setLookAndFeel(laf);
+    //     } catch (ParseException parseException) {
 
-            System.out.println("parseException");
-            parseException.printStackTrace();
-        } catch (IllegalArgumentException IllegalArgumentException) {
+    //         System.out.println("parseException");
+    //         parseException.printStackTrace();
+    //     } catch (IllegalArgumentException IllegalArgumentException) {
 
-            System.out.println("IllegalArgumentException");
-            IllegalArgumentException.printStackTrace();
-        } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
+    //         System.out.println("IllegalArgumentException");
+    //         IllegalArgumentException.printStackTrace();
+    //     } catch (UnsupportedLookAndFeelException unsupportedLookAndFeelException) {
 
-            System.out.println("unsupportedLookAndFeelException");
-            unsupportedLookAndFeelException.printStackTrace();
-        } catch (MalformedURLException e) {
+    //         System.out.println("unsupportedLookAndFeelException");
+    //         unsupportedLookAndFeelException.printStackTrace();
+    //     } catch (MalformedURLException e) {
 
-            e.printStackTrace();
-        } catch (IOException e) {
+    //         e.printStackTrace();
+    //     } catch (IOException e) {
 
-            e.printStackTrace();
-        }
+    //         e.printStackTrace();
+    //     }
 
-    }
+    // }
 
-    private static void windowsLookAndFeel() {
+    // private static void windowsLookAndFeel() {
 
-        try {
+    //     try {
 
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-                | UnsupportedLookAndFeelException e) {
+    //         UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+    //     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+    //             | UnsupportedLookAndFeelException e) {
 
-            e.printStackTrace();
-        }
-    }
+    //         e.printStackTrace();
+    //     }
+    // }
 }
