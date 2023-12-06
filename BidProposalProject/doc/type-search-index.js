@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"FileManager.fileChooserOptions"},{"p":"<Unnamed>","l":"FileManager"}];updateSearchResults();
