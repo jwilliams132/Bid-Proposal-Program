@@ -366,7 +366,7 @@ public class App extends Application {
 					nextJob.setVisible(true);
 					currentJobLabel.setVisible(true);
 					addPricing.setDisable(true);
-					enableIterationButtons();
+					updateCurrentJobItems(currentJob);
 					pricingController = new PricingDisplayController();
 					pricingController = loader.getController();
 					pricingController.setPreferences(preferences);
@@ -434,7 +434,7 @@ public class App extends Application {
 
 	@FXML
 	private void updateInfo() {
-
+		
 	}
 
 	@FXML
