@@ -4,32 +4,39 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "java",
-            "name": "Application",
-            "request": "launch",
-            "mainClass": "Application",
-            "projectName": "BidProposalProject"
-        },
-        {
-            "type": "java",
-            "name": "Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "ParseFullDoc",
-            "request": "launch",
-            "mainClass": "ParseFullDoc",
-            "projectName": "BidProposalProject"
-        },
-        {
-            "type": "java",
-            "name": "TestApp",
-            "request": "launch",
-            "mainClass": "TestApp",
-            "projectName": "BidProposalProject"
-        }
-    ]
+		{
+			"type": "java",
+			"name": "App",
+			"request": "launch",
+			"mainClass": "gearworks/gearworks.App",
+			"projectName": "javafx_testing"
+		},
+		{
+			"type": "java",
+			"name": "Application",
+			"request": "launch",
+			"mainClass": "Application",
+			"projectName": "BidProposalProject"
+		},
+		{
+			"type": "java",
+			"name": "Current File",
+			"request": "launch",
+			"mainClass": "${file}"
+		},
+		{
+			"type": "java",
+			"name": "ParseFullDoc",
+			"request": "launch",
+			"mainClass": "ParseFullDoc",
+			"projectName": "BidProposalProject"
+		},
+		{
+			"type": "java",
+			"name": "TestApp",
+			"request": "launch",
+			"mainClass": "TestApp",
+			"projectName": "BidProposalProject"
+		}
+	]
 }

@@ -55,7 +55,7 @@ public class PricingDisplayController {
 		});
 	}
 
-	public void setupLegend() {
+	private void setupLegend() {
 
 		jobButtons = new ArrayList<Button>();
 
@@ -87,7 +87,7 @@ public class PricingDisplayController {
 		jobButtons.get(currentJobIndex).getStyleClass().add("button-hover");
 	}
 
-	public void setupPricing() {
+	private void setupPricing() {
 
 		TexasCityFinder cityFinder = new TexasCityFinder();
 
@@ -406,7 +406,7 @@ public class PricingDisplayController {
 		return valid;
 	}
 
-	public String checkBigDecTextFields(List<TextField> textFields) {
+	private String checkBigDecTextFields(List<TextField> textFields) {
 
 		for (TextField textField : textFields) {
 
@@ -421,7 +421,7 @@ public class PricingDisplayController {
 		return null;
 	}
 
-	public String checkBigDecTextField(TextField textField) {
+	private String checkBigDecTextField(TextField textField) {
 
 		try {
 
@@ -433,7 +433,7 @@ public class PricingDisplayController {
 		return null;
 	}
 
-	public String checkIntegerTextField(TextField textField) {
+	private String checkIntegerTextField(TextField textField) {
 		try {
 
 			Integer.parseInt(textField.getText());
@@ -457,11 +457,6 @@ public class PricingDisplayController {
 	public void setCurrentJobIndex(int currentJob) {
 
 		this.currentJobIndex = currentJob;
-	}
-
-	public int getCurrentJobIndex() {
-
-		return currentJobIndex;
 	}
 
 	public void setApp(App app) {

@@ -24,7 +24,6 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -213,7 +212,7 @@ public class App extends Application {
 		nextJob.setDisable(true);
 	}
 
-	public CustomMenuItem getTextFieldMenuItem(String labelText, String option) {
+	private CustomMenuItem getTextFieldMenuItem(String labelText, String option) {
 
 		CustomMenuItem customMenuItem;
 
@@ -282,7 +281,7 @@ public class App extends Application {
 		return customMenuItem;
 	}
 
-	public void upToMobsOptionChange() {
+	private void upToMobsOptionChange() {
 
 		preferences.setUpToMobsVisible(upToMobsCMI.isSelected());
 		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
@@ -293,7 +292,7 @@ public class App extends Application {
 		}
 	}
 
-	public void additionalMobsOptionChange() {
+	private void additionalMobsOptionChange() {
 
 		preferences.setAdditionalMobsVisible(additionalMobsCMI.isSelected());
 		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
@@ -555,7 +554,7 @@ public class App extends Application {
 		excelOutput.createExcelFile(filteredJobList, lettingMonthDirectory);
 	}
 
-	public void handleThemeChange(Themes theme) {
+	private void handleThemeChange(Themes theme) {
 
 		preferences.setTheme(Themes.valueOf(((RadioMenuItem) themeToggleGroup.getSelectedToggle()).getText()));
 		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
@@ -578,19 +577,6 @@ public class App extends Application {
 		// Update the label text as needed
 		currentJobLabel.setText(String.format("(%02d/%02d)", currentJob + 1, filteredJobList.size()));
 		enableIterationButtons();
-	}
-
-	// Method to toggle the starting theme later on
-	public void toggleStartingTheme(Themes startingTheme) {
-
-		for (Toggle toggle : themeToggleGroup.getToggles()) {
-
-			if (((RadioMenuItem) toggle).getText().equals(startingTheme.toString())) {
-
-				themeToggleGroup.selectToggle(toggle);
-				break;
-			}
-		}
 	}
 
 	private void enableIterationButtons() {
@@ -627,7 +613,8 @@ public class App extends Application {
 		alert.showAndWait();
 	}
 
-	public void closeApplication() {
+	@FXML
+	private void closeApplication() {
 
 		Platform.exit();
 	}
