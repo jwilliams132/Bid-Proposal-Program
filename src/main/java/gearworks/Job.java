@@ -114,7 +114,7 @@ public class Job {
         System.out.println("Additional Mobs:  " + getAdditionalMobs());
 
         if (!getLineItems().isEmpty()) {
-            System.out.printf("%n%-40s%-12s%8s%n", "Item Description:", "Quantities:", "Price:");
+            System.out.printf("%n%-10s%-40s%-12s%8s%n", "Spec No.:", "Item Description:", "Quantities:", "Price:");
             System.out.println("=".repeat(60));
             for (LineItem lineItem : getLineItems()) {
 
@@ -143,7 +143,7 @@ public class Job {
         job.add("Working Days:     " + getWorkingDays());
 
         if (!getLineItems().isEmpty()) {
-            job.add(String.format("%n%-40s%-12s%8s%n", "Item Description:", "Quantities:", "Price:"));
+            job.add(String.format("%n%-10s%-40s%-12s%8s%n", "Spec No.:", "Item Description:", "Quantities:", "Price:"));
             job.add("=".repeat(60));
             for (LineItem lineItem : getLineItems()) {
 

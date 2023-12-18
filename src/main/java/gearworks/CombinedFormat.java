@@ -18,247 +18,264 @@ import java.util.regex.Pattern;
  */
 public class CombinedFormat extends Format {
 
-    /**
-     * The file header specific to the Combined Format.
-     */
-    public static final String fileHeader = "COUNTY";
+	/**
+	 * The file header specific to the Combined Format.
+	 */
+	public static final String fileHeader = "COUNTY";
 
-    /**
-     * Default constructor for CombinedFormat.
-     */
-    public CombinedFormat() {
+	/**
+	 * Default constructor for CombinedFormat.
+	 */
+	public CombinedFormat() {
 
-    }
+	}
 
-    /**
-     * Constructor for CombinedFormat that takes a Test enum.
-     *
-     * @param test A Test enum value (not used in this constructor).
-     */
-    // public CombinedFormat(Test test) {
+	/**
+	 * Constructor for CombinedFormat that takes a Test enum.
+	 *
+	 * @param test A Test enum value (not used in this constructor).
+	 */
+	// public CombinedFormat(Test test) {
 
-    //     FileManager fileManager = new FileManager();
-    //     File file = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
-    //     List<String> fileContents = fileManager.readFile(file);
-    //     List<Job> jobs = jobsFromFormat(fileContents);
-    //     jobs.forEach(job -> job.printJobInfo());
-    // }
+	// FileManager fileManager = new FileManager();
+	// File file = fileManager.chooseFile(null, null,
+	// FileManager.fileChooserOptions.OPEN, null);
+	// List<String> fileContents = fileManager.readFile(file);
+	// List<Job> jobs = jobsFromFormat(fileContents);
+	// jobs.forEach(job -> job.printJobInfo());
+	// }
 
-    /**
-     * Converts a Job object into a formatted job data string in the CombinedFormat.
-     *
-     * <p>
-     * This method is specific to the CombinedFormat and should not be overridden by
-     * subclasses. It converts a Job object into a formatted string that adheres to
-     * the
-     * CombinedFormat structure.
-     *
-     * @param job A Job object to be converted into a CombinedFormat formatted
-     *            string.
-     * @return A formatted string representing the job data in CombinedFormat.
-     * @throws UnsupportedOperationException if an attempt is made to override this
-     *                                       method.
-     */
-    @Override
-    public String jobToFormat(Job job) {
+	/**
+	 * Converts a Job object into a formatted job data string in the CombinedFormat.
+	 *
+	 * <p>
+	 * This method is specific to the CombinedFormat and should not be overridden by
+	 * subclasses. It converts a Job object into a formatted string that adheres to
+	 * the
+	 * CombinedFormat structure.
+	 *
+	 * @param job A Job object to be converted into a CombinedFormat formatted
+	 *            string.
+	 * @return A formatted string representing the job data in CombinedFormat.
+	 * @throws UnsupportedOperationException if an attempt is made to override this
+	 *                                       method.
+	 */
+	@Override
+	public String jobToFormat(Job job) {
 
-        throw new UnsupportedOperationException(
-                "Files using CombinedFormat are from the Whitley Siddons site and will only ever have info taken from this format, never to.");
-    }
+		throw new UnsupportedOperationException(
+				"Files using CombinedFormat are from the Whitley Siddons site and will only ever have info taken from this format, never to.");
+	}
 
-    /**
-     * Parses a formatted job data string in the CombinedFormat and creates a Job
-     * object.
-     *
-     * <p>
-     * This method is specific to the CombinedFormat and is used to parse a job data
-     * string
-     * in CombinedFormat format and construct a Job object from it.
-     *
-     * @param jobLineString A formatted string representing job data in
-     *                      CombinedFormat.
-     * @return A Job object parsed from the input jobLineString.
-     */
-    @Override
-    public Job jobFromFormat(String jobLineString) {
+	/**
+	 * Parses a formatted job data string in the CombinedFormat and creates a Job
+	 * object.
+	 *
+	 * <p>
+	 * This method is specific to the CombinedFormat and is used to parse a job data
+	 * string
+	 * in CombinedFormat format and construct a Job object from it.
+	 *
+	 * @param jobLineString A formatted string representing job data in
+	 *                      CombinedFormat.
+	 * @return A Job object parsed from the input jobLineString.
+	 */
+	@Override
+	public Job jobFromFormat(String jobLineString) {
 
-        List<String> job = new ArrayList<String>(Arrays.asList(jobLineString.split("\\|", -1)));
+		List<String> job = new ArrayList<String>(Arrays.asList(jobLineString.split("\\|", -1)));
 
-        List<Contractor> contractorList = new ArrayList<Contractor>();
-        List<LineItem> lineItems = new ArrayList<LineItem>();
-        String county = "", highway = "", csj = "";
-        Date biddingDate = null;
-        int workingDays = 0;
-        boolean lineItemStart = false, contractorStart = false;
-        for (int index = 0; index < job.size(); index++) {
+		List<Contractor> contractorList = new ArrayList<Contractor>();
+		List<LineItem> lineItems = new ArrayList<LineItem>();
+		String county = "", highway = "", csj = "";
+		Date biddingDate = null;
+		int workingDays = 0;
+		boolean lineItemStart = false, contractorStart = false;
 
-            String line = job.get(index).trim();
-            // get data from county line
-            if (line.startsWith("COUNTY")) {
+		for (int index = 0; index < job.size(); index++) {
+			String line = job.get(index);
+			try {
 
-                county = line.substring(8, 32).trim();
-                highway = line.substring(41, 59).trim();
-                continue;
-            }
+				// get data from county line
+				if (line.startsWith("COUNTY:")) {
 
-            // get data from control line
-            if (line.startsWith("CONTROL")) {
+					county = line.substring(8, 32).trim();
+					highway = line.substring(41, 59).trim();
+					continue;
+				}
 
-                csj = line.substring(16, 27);
-                continue;
-            }
+				// get data from control line
+				if (line.startsWith("CONTROL")) {
 
-            // get data from working days
-            if (line.startsWith("TIME FOR COMPLETION")) {
+					csj = line.substring(16, 27);
+					continue;
+				}
 
-                Matcher workingDaysMatcher = Pattern.compile(": [0-9]* WORKING DAYS").matcher(line);
-                if (workingDaysMatcher.find()) {
+				// get data from working days
+				if (line.startsWith("TIME FOR COMPLETION")) {
 
-                    String buffer = workingDaysMatcher.group();
-                    buffer = buffer.substring(2, buffer.length() - 13).trim();
+					Matcher workingDaysMatcher = Pattern.compile(": [0-9]* WORKING DAYS").matcher(line);
+					if (workingDaysMatcher.find()) {
 
-                    if (buffer.length() != 0) {
-                        workingDays = Integer.valueOf(buffer);
-                    }
-                }
-                continue;
-            }
+						String buffer = workingDaysMatcher.group();
+						buffer = buffer.substring(2, buffer.length() - 13).trim();
 
-            // Check if the line starts with "BIDS RECEIVED UNTIL: "
-            if (line.startsWith("BIDS RECEIVED UNTIL:  ")) {
-                // Define a regular expression pattern to match the date and time
-                String datePattern = "\\d{1,2}:\\d{2}\\s[a-zA-Z]{2}\\s[a-zA-Z]+\\s\\d{1,2},\\s\\d{4}";
+						if (buffer.length() != 0) {
+							workingDays = Integer.valueOf(buffer);
+						}
+					}
+					continue;
+				}
 
-                // Create a Pattern object
-                Pattern pattern = Pattern.compile(datePattern);
+				// Check if the line starts with "BIDS RECEIVED UNTIL: "
+				if (line.startsWith("BIDS RECEIVED UNTIL:  ")) {
+					// Define a regular expression pattern to match the date and time
+					String datePattern = "\\d{1,2}:\\d{2}\\s[a-zA-Z]{2}\\s[a-zA-Z]+\\s\\d{1,2},\\s\\d{4}";
 
-                // Create a Matcher object to find the date and time
-                Matcher matcher = pattern.matcher(line);
+					// Create a Pattern object
+					Pattern pattern = Pattern.compile(datePattern);
 
-                // Check if the pattern is found in the line
-                if (matcher.find()) {
-                    // Extract and save the date and time
-                    String extractedDateTime = matcher.group();
+					// Create a Matcher object to find the date and time
+					Matcher matcher = pattern.matcher(line);
 
-                    // Define a SimpleDateFormat to parse the extracted date and time
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a MMMM dd, yyyy");
+					// Check if the pattern is found in the line
+					if (matcher.find()) {
+						// Extract and save the date and time
+						String extractedDateTime = matcher.group();
 
-                    try {
-                        biddingDate = dateFormat.parse(extractedDateTime);
-                        // dateObject now contains the Date representation of the extracted date and
-                        // time
-                    } catch (ParseException e) {
-                        // Handle parsing errors, e.g., if the date format is not as expected
-                        e.printStackTrace();
-                    }
-                }
-                continue;
-            }
+						// Define a SimpleDateFormat to parse the extracted date and time
+						SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a MMMM dd, yyyy");
 
-            // start the line item count
-            if (line.trim().startsWith("ITEM DES")) {
+						try {
+							biddingDate = dateFormat.parse(extractedDateTime);
+							// dateObject now contains the Date representation of the extracted date and
+							// time
+						} catch (ParseException e) {
+							// Handle parsing errors, e.g., if the date format is not as expected
+							e.printStackTrace();
+						}
+					}
+					continue;
+				}
 
-                lineItemStart = true;
-                index += 3;
-                line = job.get(index).trim();
-            }
+				// start the line item count
+				if (line.trim().startsWith("ITEM DES")) {
 
-            // add each line item to ArrayList
-            if (lineItemStart) {
+					lineItemStart = true;
+					index += 3;
+					line = job.get(index);
+				}
 
-                if (!line.startsWith("+ DELETED ->")) {
-                    
-                    try {
+				// add each line item to ArrayList
+				if (lineItemStart) {
 
-                        lineItems.add(new LineItem(line.substring(13, 53).trim(),
-                                new BigDecimal(line.substring(55, 72).trim().replaceAll(",", "")),
-                                new BigDecimal(0)));
-                    } catch (NumberFormatException e) {
+					if (!line.startsWith("+ DELETED ->")) {
 
-                        // Handle the NumberFormatException
-                        System.err.println("NumberFormatException occurred: " + e.getMessage());
-                        // You can also throw a custom exception if needed
-                    }
-                }
+						try {
+							lineItems.add(new LineItem(
+									line.substring(5, 15).trim(),
+									line.substring(19, 58).trim(),
+									line.substring(58, 63).trim(),
+									new BigDecimal(line.substring(63, 78).trim().replaceAll(",", "")),
+									new BigDecimal(0)));
+						} catch (NumberFormatException e) {
 
-                if (job.get(index + 1).isBlank()) {
-                    lineItemStart = false;
-                }
-            }
+							System.out.println("spec.:  " + line.substring(0, 19).trim());
+							System.out.println("desc.:  " + line.substring(19, 59).trim());
+							System.out.println("quan.:  " + line.substring(61, 77).trim().replaceAll(",", ""));
+							// Handle the NumberFormatException
+							System.err.println("NumberFormatException occurred: " + e.getMessage());
+							// You can also throw a custom exception if needed
+						}
+					}
 
-            // start the contractor count
-            if (line.startsWith("PLANHOLDERS")) {
+					if (job.get(index + 1).isBlank()) {
+						lineItemStart = false;
+					}
+				}
 
-                contractorStart = true;
-                index += 2;
-                line = job.get(index).trim();
-            }
+				// start the contractor count
+				if (line.startsWith("PLANHOLDERS")) {
 
-            if (contractorStart) { // add each contractor to array
+					contractorStart = true;
+					index += 2;
+					line = job.get(index).trim();
+				}
+				if (csj.equals("0978-01-039"))
+					System.out.println("bitch");
+				if (contractorStart) { // add each contractor to array
 
-                if (line.startsWith("*****")) {// if the current element in the job list starts with "*****",
-                                               // increment the index
-                    index++;
-                    line = job.get(index).trim();
-                }
+					if (line.startsWith("*****")) {// if the current element in the job list starts with "*****",
+													// increment the index
+						index++;
+						line = job.get(index).trim();
+					}
 
-                /*
-                 * create a new Contractor object with the current element in the job list and
-                 * either the next element in the job list if it starts with "EMAIL", or a
-                 * string indicating that no email was found then add the contractor to the
-                 * contractorList array
-                 */
-                contractorList.add(new Contractor(
-                        line + "  " + (job.get(index + 1).trim().startsWith("EMAIL") ? job.get(index + 1)
-                                : "==No Email Found==")));
+					/*
+					 * create a new Contractor object with the current element in the job list and
+					 * either the next element in the job list if it starts with "EMAIL", or a
+					 * string indicating that no email was found then add the contractor to the
+					 * contractorList array
+					 */
+					contractorList.add(new Contractor(
+							line + "  "
+									+ (job.get(index + 1).trim().startsWith("EMAIL")
+											|| job.get(index + 1).trim().startsWith("Email") ? job.get(index + 1)
+													: "==No Email Found==")));
 
-                // if the next or next-to-next element in the job list is blank, set
-                // contractorStart to false
-                if (job.get(index + 1).isBlank() || job.get(index + 2).isBlank())
-                    contractorStart = false;
+					// if the next or next-to-next element in the job list is blank, set
+					// contractorStart to false
+					if (job.get(index + 1).isBlank() || job.get(index + 2).isBlank())
+						contractorStart = false;
 
-                // if the next element in the job list starts with "EMAIL", increment the index
-                if (job.get(index + 1).trim().startsWith("EMAIL")) {
-                    index++;
-                    line = job.get(index).trim();
-                }
-            }
-        }
-        return new Job(county, highway, csj, workingDays, biddingDate, lineItems, contractorList);
-    }
+					// if the next element in the job list starts with "EMAIL", increment the index
+					if (job.get(index + 1).trim().startsWith("EMAIL")) {
+						index++;
+						line = job.get(index).trim();
+					}
+				}
+			} catch (StringIndexOutOfBoundsException e) {
+				e.printStackTrace();
+				System.out.println("Line Index:  " + index + ("  Line:  " + line));
+			} catch (NumberFormatException e) {
+				System.out.println("NumberFormatException happened.");
+			}
+		}
+		return new Job(county, highway, csj, workingDays, biddingDate, lineItems, contractorList);
+	}
 
-    /**
-     * Parses a list of formatted job data strings in the CombinedFormat and creates
-     * a list of Job objects.
-     *
-     * <p>
-     * This method is specific to the CombinedFormat and is used to parse a list of
-     * job data strings
-     * in CombinedFormat format and construct a list of Job objects from them.
-     *
-     * @param contentsByLine A list of formatted strings representing job data in
-     *                       CombinedFormat, where each
-     *                       string represents a single job entry.
-     * @return A list of Job objects parsed from the input job data strings.
-     */
-    @Override
-    public List<Job> jobsFromFormat(List<String> contentsByLine) {
+	/**
+	 * Parses a list of formatted job data strings in the CombinedFormat and creates
+	 * a list of Job objects.
+	 *
+	 * <p>
+	 * This method is specific to the CombinedFormat and is used to parse a list of
+	 * job data strings
+	 * in CombinedFormat format and construct a list of Job objects from them.
+	 *
+	 * @param contentsByLine A list of formatted strings representing job data in
+	 *                       CombinedFormat, where each
+	 *                       string represents a single job entry.
+	 * @return A list of Job objects parsed from the input job data strings.
+	 */
+	@Override
+	public List<Job> jobsFromFormat(List<String> contentsByLine) {
 
-        final String END_OF_JOB_DELIMITER = "================================================================================";
+		final String END_OF_JOB_DELIMITER = "================================================================================";
 
-        StringBuilder jobLineString = new StringBuilder();
-        List<Job> jobs = new ArrayList<Job>();
-        for (String nextLine : contentsByLine) {
-            if (nextLine.startsWith(END_OF_JOB_DELIMITER)) {
+		StringBuilder jobLineString = new StringBuilder();
+		List<Job> jobs = new ArrayList<Job>();
+		for (String nextLine : contentsByLine) {
+			if (nextLine.startsWith(END_OF_JOB_DELIMITER)) {
 
-                jobs.add(jobFromFormat(jobLineString.toString()));
-                jobLineString = new StringBuilder();
-                continue;
-            } else {
+				jobs.add(jobFromFormat(jobLineString.toString()));
+				jobLineString = new StringBuilder();
+				continue;
+			} else {
 
-                jobLineString.append(nextLine).append("|");
-            }
-        }
-        return jobs;
-    }
+				jobLineString.append(nextLine).append("|");
+			}
+		}
+		return jobs;
+	}
 }

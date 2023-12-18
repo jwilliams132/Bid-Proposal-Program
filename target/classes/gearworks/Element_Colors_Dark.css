@@ -156,3 +156,8 @@
 .text-field:focused {
     -fx-border-color: #49324e;
 }
+
+.optionTextField {
+	-fx-border-color: #92315a;
+	-fx-background-color: #101A29;
+}

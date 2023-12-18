@@ -6,7 +6,11 @@ import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -93,10 +97,10 @@ public class App extends Application {
 	private Display currentDisplay = Display.STARTUP;
 
 	private enum SaveFileFormats {
-		V1, V2
+		V1, V2, V3
 	}
 
-	private SaveFileFormats preferredExcelFormat = SaveFileFormats.V2;
+	private SaveFileFormats preferredExcelFormat = SaveFileFormats.V3;
 
 	private FileManager fileManager = new FileManager();
 	private InputFileProcessor fileProcessor = new InputFileProcessor();
@@ -136,7 +140,7 @@ public class App extends Application {
 			e.printStackTrace();
 		}
 
-		scene = new Scene(root, 1300, 800); // 1300, 600
+		scene = new Scene(root, 1600, 900); // 1300, 600
 
 		// window.initStyle(StageStyle.TRANSPARENT);
 		window.setScene(scene);
@@ -167,7 +171,7 @@ public class App extends Application {
 		}
 
 		preferences = json_Manager.loadPreferences("src\\main\\resources\\gearworks\\config.json", Preferences.class);
-		upToMobsCMI = new CheckMenuItem("Show Up to Mobs Option") {
+		upToMobsCMI = new CheckMenuItem("Show Up to Mobs Option in Pricing") {
 			{
 				setOnAction(event -> {
 					event.consume();
@@ -177,7 +181,7 @@ public class App extends Application {
 
 			}
 		};
-		additionalMobsCMI = new CheckMenuItem("Show Add. Mobs Option") {
+		additionalMobsCMI = new CheckMenuItem("Show Add. Mobs Option in Pricing") {
 			{
 				setOnAction(event -> {
 					event.consume();
@@ -219,7 +223,7 @@ public class App extends Application {
 		HBox hBox = new HBox();
 		hBox.setAlignment(Pos.CENTER);
 		hBox.setSpacing(5);
-		hBox.setPrefWidth(180);
+		hBox.setPrefWidth(250);
 
 		Label label = new Label(labelText);
 		// label.setFont(Font.font("Courier New", FontWeight.NORMAL, 12));
@@ -243,6 +247,7 @@ public class App extends Application {
 		TextField textField = new TextField(textFieldContent);
 		textField.setAlignment(Pos.CENTER_RIGHT);
 		textField.setPrefWidth(50);
+		textField.getStyleClass().add("optionTextField");
 		hBox.getChildren().add(textField);
 
 		Button button = new Button("\u2713");
@@ -433,7 +438,24 @@ public class App extends Application {
 
 	@FXML
 	private void updateInfo() {
+
+		// Create a map to store multiple instances with identifiers
+        Map<String, Job> complexObjects = new HashMap<>();
 		
+		filteredJobList.forEach(job -> complexObjects.put(job.getCsj(), job));
+
+        // Create ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // Specify the path to the output file
+        String outputPath = "C:\\Users\\Jacob\\Desktop\\New folder (2)\\output.json";
+
+        try {
+            // Write the map of objects to the JSON file
+            objectMapper.writeValue(new File(outputPath), complexObjects);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 
 	@FXML

@@ -78,6 +78,7 @@ public class UnfilteredDisplayController {
 					setFont(Font.font("Courier New", FontWeight.BOLD, 16));
 					getStyleClass().add("secondaryLabel");
 					setStyle("-fx-padding: 1 0 0 0; ");
+					setUnderline(true);
 				}
 			});
 			contentRegion.add(new VBox() {
@@ -92,8 +93,7 @@ public class UnfilteredDisplayController {
 				lineItemCount++;
 				yIndex = index + lineItemCount;
 				lineItemLabels.add(lineItemCount - 1, new Label(
-						String.format("  %-40s     %,10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(),
-								"")) {
+					lineItem.returnLabelFormattedString()) {
 					{
 						setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
 						getStyleClass().add("primaryLabel");

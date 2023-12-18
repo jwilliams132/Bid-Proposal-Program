@@ -105,7 +105,7 @@ public class FileManager {
         // While the scanner has more lines, add each line to the ArrayList.
         // Trim the line to remove any leading or trailing white space.
         while (scanner.hasNext())
-            fileContents.add(scanner.nextLine().trim());
+            fileContents.add(scanner.nextLine());
 
         // Close the scanner and return the ArrayList of file contents.
         scanner.close();

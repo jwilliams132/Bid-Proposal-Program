@@ -281,13 +281,10 @@ public class PricingDisplayController {
 				.size(); lineItemIndex++) {
 
 			final int finalIndex = lineItemIndex;
+			LineItem currentLineItem = filteredJobList.get(currentJobIndex).getLineItems().get(finalIndex);
 			lineItemLabels.add(finalIndex, new Label() {
 				{
-					setText(String.format("%-40s%s%,12.2f%s",
-							filteredJobList.get(currentJobIndex).getLineItems().get(finalIndex).getDescription(),
-							"    Quantity: ",
-							filteredJobList.get(currentJobIndex).getLineItems().get(finalIndex).getQuantity(),
-							" (Sq. Yds.)"));
+					setText(currentLineItem.returnLabelFormattedString());
 					setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
 					getStyleClass().add("primaryLabel");
 				}
@@ -320,7 +317,7 @@ public class PricingDisplayController {
 			});
 			jobContents.add(lineItemTextFields.get(finalIndex), 2, lineItemIndex + yIndexStart);
 
-			Label unitsLabel = new Label(" (per Sq. Yd.)") {
+			Label unitsLabel = new Label(String.format(" (per %s)", currentLineItem.getUnit())) {
 				{
 					setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
 					getStyleClass().add("quaternaryLabel");
@@ -457,6 +454,11 @@ public class PricingDisplayController {
 	public void setCurrentJobIndex(int currentJob) {
 
 		this.currentJobIndex = currentJob;
+	}
+
+	public int getCurrentJobIndex() {
+
+		return currentJobIndex;
 	}
 
 	public void setApp(App app) {

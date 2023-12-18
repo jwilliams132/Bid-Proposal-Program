@@ -5,81 +5,114 @@ import java.util.Objects;
 
 public class LineItem {
 
-    private String description;
-    private BigDecimal quantity;
-    private BigDecimal price = new BigDecimal(0);
+	private String description, specNumber, unit;
 
-    public LineItem(String description, BigDecimal quantity, BigDecimal price) {
+	private BigDecimal quantity;
+	private BigDecimal price = new BigDecimal(0);
 
-        this.description = description;
-        this.quantity = quantity;
-        this.price = price;
-    }
+	public LineItem(String description, BigDecimal quantity, BigDecimal price) {
 
-    // ====================================================================================================
-    // Outputting Data
-    // ====================================================================================================
+		this.description = description;
+		this.quantity = quantity;
+		this.price = price;
+	}
 
-    public String returnLineItems() {
+	public LineItem(String specNumber, String description, String unit, BigDecimal quantity, BigDecimal price) {
 
-        return String.format("%-40s%,11.0f    %1.2f%n", getDescription(), getQuantity(), getPrice());
-    }
+		this.specNumber = specNumber;
+		this.description = description;
+		this.unit = unit;
+		this.quantity = quantity;
+		this.price = price;
+	}
 
-    // ====================================================================================================
-    // Getter Setters
-    // ====================================================================================================
+	// ====================================================================================================
+	// Outputting Data
+	// ====================================================================================================
 
-    public String getDescription() {
-        return description;
-    }
+	public String returnLineItems() {
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+		return String.format("%-10n%-40s%,11.0f    %1.2f%n", getSpecNumber(), getDescription(), getQuantity(),
+				getPrice());
+	}
 
-    public BigDecimal getQuantity() {
-        return quantity;
-    }
+	public String returnLabelFormattedString() {
 
-    public void setQuantity(BigDecimal quantity) {
-        this.quantity = quantity;
-    }
+		return String.format("%12s  %-39s  %,14.2f %-4s", getSpecNumber(), getDescription(), getQuantity(), getUnit());
+	}
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+	// ====================================================================================================
+	// Getter Setters
+	// ====================================================================================================
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+	public String getSpecNumber() {
+		return specNumber;
+	}
 
-    // ====================================================================================================
-    // Comparing
-    // ====================================================================================================
+	public void setSpecNumber(String specNumber) {
+		this.specNumber = specNumber;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
+	public String getDescription() {
+		return description;
+	}
 
-        if (this == obj) {
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-            return true;
-        }
+	public String getUnit() {
+		return unit;
+	}
 
-        if (obj == null || getClass() != obj.getClass()) {
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
 
-            return false;
-        }
+	public BigDecimal getQuantity() {
+		return quantity;
+	}
 
-        LineItem otherLineItem = (LineItem) obj;
+	public void setQuantity(BigDecimal quantity) {
+		this.quantity = quantity;
+	}
 
-        return Objects.equals(description, otherLineItem.description) &&
-                Objects.equals(quantity, otherLineItem.quantity) &&
-                Objects.equals(price, otherLineItem.price);
-    }
+	public BigDecimal getPrice() {
+		return price;
+	}
 
-    @Override
-    public int hashCode() {
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
 
-        return Objects.hash(description, quantity, price);
-    }
+	// ====================================================================================================
+	// Comparing
+	// ====================================================================================================
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (this == obj) {
+
+			return true;
+		}
+
+		if (obj == null || getClass() != obj.getClass()) {
+
+			return false;
+		}
+
+		LineItem otherLineItem = (LineItem) obj;
+
+		return Objects.equals(specNumber, otherLineItem.specNumber) &&
+				Objects.equals(description, otherLineItem.description) &&
+				Objects.equals(quantity, otherLineItem.quantity) &&
+				Objects.equals(price, otherLineItem.price);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(specNumber, description, quantity, price);
+	}
 }

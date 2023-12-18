@@ -13,7 +13,7 @@ public class InputFileProcessor {
 
     public enum FileFormat {
 
-        COMBINED, V1, V2
+        COMBINED, V1, V2, V3
     }
 
     public InputFileProcessor() {
@@ -67,6 +67,12 @@ public class InputFileProcessor {
             fileContents.remove(0); // removes file header
         }
 
+		if (fileContents.get(0).startsWith(V3Format.fileHeader)) {
+
+            fileFormat = new V3Format();
+            fileContents.remove(0); // removes file header
+        }
+
         if (fileFormat == null) {
 
             showWarning("Warning", "Error", "The File (" + knownFilePath + ") Opened Does Not Match Known Formats");
@@ -87,6 +93,10 @@ public class InputFileProcessor {
 
             case V2:
                 fileFormat = new V2Format();
+                break;
+
+			case V3:
+                fileFormat = new V3Format();
                 break;
 
             default:

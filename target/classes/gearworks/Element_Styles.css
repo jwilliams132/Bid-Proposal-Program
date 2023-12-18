@@ -71,3 +71,8 @@
 
     -fx-border-radius: 3px;
 }
+
+.optionTextField {
+	-fx-padding: 3 10 3 10;
+	-fx-pref-width: 75;
+}

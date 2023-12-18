@@ -166,3 +166,7 @@
 	-fx-text-fill: #616161;
     -fx-highlight-fill: #3390ff;
 }
+
+.optionTextField {
+	-fx-background-color: #fafafa;
+}

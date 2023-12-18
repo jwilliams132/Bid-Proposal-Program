@@ -11,60 +11,60 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class FilteredDisplayController {
-    
-    @FXML
-    VBox filteredDisplay, contentRegion;
 
-    @FXML
-    ScrollPane scrollPane;
+	@FXML
+	VBox filteredDisplay, contentRegion;
 
-    @FXML
-    Label header;
+	@FXML
+	ScrollPane scrollPane;
 
-    private List<Job> filteredJobList;
+	@FXML
+	Label header;
 
-    private List<Label> jobTitles = new ArrayList<Label>();
-    private List<Label> lineItemLabels = new ArrayList<Label>();
+	private List<Job> filteredJobList;
 
-    public void customizeAppearance() {
+	private List<Label> jobTitles = new ArrayList<Label>();
+	private List<Label> lineItemLabels = new ArrayList<Label>();
 
-        header.setText(String.format("%-20s%-20s%-20s%16s", "CSJ", "County", "Highway",
-                "Total Quantities"));
+	public void customizeAppearance() {
 
-        for (int index = 0; index < filteredJobList.size(); index++) {
-            int finalInt = index;
-            int lineItemCount = 0;
+		header.setText(String.format("%-20s%-20s%-20s%16s", "CSJ", "County", "Highway",
+				"Total Quantities"));
 
-            Job currentJob = filteredJobList.get(index);
-            jobTitles.add(finalInt, new Label(String.format("%-20s%-20s%-20s     %,11.2f",
-                    currentJob.getCsj(),
-                    currentJob.getCounty(),
-                    currentJob.getHighway(),
-                    currentJob.getSumOfQuantities())) {
-                {
-                    setFont(Font.font("Courier New", FontWeight.BOLD, 16));
-                    getStyleClass().add("secondaryLabel");
-                    setStyle("-fx-padding: 1 0 0 0; ");
-                }
-            });
-            contentRegion.getChildren().add(jobTitles.get(finalInt));
-            for (LineItem lineItem : currentJob.getLineItems()) {
-                lineItemCount++;
-                lineItemLabels.add(lineItemCount - 1, new Label(
-                        String.format("  %-40s     %,10.2f%19s", lineItem.getDescription(), lineItem.getQuantity(),
-                                "")) {
-                    {
-                        setFont(Font.font("Courier New", FontWeight.BOLD, 16));
-                        getStyleClass().add("primaryLabel");
-                    }
-                });
-                contentRegion.getChildren().add(lineItemLabels.get(lineItemCount - 1));
-            }
-        }
-    }
+		for (int index = 0; index < filteredJobList.size(); index++) {
+			int finalInt = index;
+			int lineItemCount = 0;
 
-    public void setFilteredJobList(List<Job> jobList) {
+			Job currentJob = filteredJobList.get(index);
+			jobTitles.add(finalInt, new Label(String.format("%-20s%-20s%-20s     %,11.2f",
+					currentJob.getCsj(),
+					currentJob.getCounty(),
+					currentJob.getHighway(),
+					currentJob.getSumOfQuantities())) {
+				{
+					setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+					getStyleClass().add("secondaryLabel");
+					setStyle("-fx-padding: 1 0 0 0; ");
+					setUnderline(true);
+				}
+			});
+			contentRegion.getChildren().add(jobTitles.get(finalInt));
+			for (LineItem lineItem : currentJob.getLineItems()) {
+				lineItemCount++;
+				lineItemLabels.add(lineItemCount - 1, new Label(
+						lineItem.returnLabelFormattedString()) {
+					{
+						setFont(Font.font("Courier New", FontWeight.BOLD, 16));
+						getStyleClass().add("primaryLabel");
+					}
+				});
+				contentRegion.getChildren().add(lineItemLabels.get(lineItemCount - 1));
+			}
+		}
+	}
 
-        this.filteredJobList = jobList;
-    }
+	public void setFilteredJobList(List<Job> jobList) {
+
+		this.filteredJobList = jobList;
+	}
 }
