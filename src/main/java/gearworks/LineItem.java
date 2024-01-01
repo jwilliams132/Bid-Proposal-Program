@@ -32,7 +32,7 @@ public class LineItem {
 
 	public String returnLineItems() {
 
-		return String.format("%-10n%-40s%,11.0f    %1.2f%n", getSpecNumber(), getDescription(), getQuantity(),
+		return String.format("%-10s%-40s%,11.0f    %1.2f%n", getSpecNumber(), getDescription(), getQuantity(),
 				getPrice());
 	}
 
