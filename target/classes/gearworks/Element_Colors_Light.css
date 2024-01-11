@@ -1,0 +1,172 @@
+.primaryBackground {
+    -fx-background-color: #f3f3f3;
+}
+
+.secondaryBackground {
+    -fx-background-color: #fafafa;
+
+}
+
+.secondaryScrollBackground {
+    -fx-background-color: #fafafa;
+    -fx-background: #fafafa;
+}
+
+.primaryLabel {
+    -fx-text-fill: #679c00
+}
+
+.secondaryLabel {
+    -fx-text-fill: #333333
+}
+
+.tertiaryLabel {
+    -fx-text-fill: #0089b3
+}
+
+.quaternaryLabel {
+    -fx-text-fill: #f9005a
+}
+
+.button {
+    -fx-background-color: #007acc;
+    -fx-text-fill: #ffffff;
+}
+
+.button:hover {
+    -fx-background-color: #0062a3;
+}
+
+.button:disabled {
+    -fx-background-color: transparent;
+    -fx-border-color: #007acc;
+    -fx-text-fill: #616161;
+}
+
+.button-hover {
+    -fx-background-color: #0062a3;
+}
+
+.customMenuButton {
+    -fx-background-color: #ffffff;
+    /* -fx-border-color: #007acc; */
+    -fx-text-fill: #616161;
+}
+
+.customMenuButton:hover {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #616161;
+}
+
+/* Remove the background from the scrollbar track */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane>.scroll-bar:vertical .thumb,
+.scroll-pane>.scroll-bar:horizontal .thumb {
+    -fx-background-color: #bebebe;
+}
+
+.scroll-pane:hover>.scroll-bar:vertical .thumb,
+.scroll-pane:hover>.scroll-bar:horizontal .thumb {
+    -fx-background-color: #919191;
+}
+
+/* Remove the increment button */
+.scroll-bar:vertical .increment-button,
+.scroll-bar:horizontal .increment-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:horizontal .increment-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .decrement-button,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+}
+
+
+.menu-bar {
+    -fx-background-color: #dddddd;
+}
+
+.menu-bar .menu:hover {
+    -fx-background-color: #d2d2d2;
+}
+
+.menu-bar .menu .label {
+    -fx-text-fill: #333333;
+}
+
+.menu-bar .menu:showing .label {
+    -fx-text-fill: #333333;
+}
+
+/* mainBar label = #333333 subBar label not hovered = #616161 */
+.menu-bar .menu:showing {
+    -fx-background-color: #d2d2d2;
+}
+
+.menu-bar .menu .menu-item .label {
+    -fx-text-fill: #616161;
+}
+
+.menu-bar .menu .menu-item:focused {
+    -fx-background-color: #0060c0;
+}
+
+.menu-bar .menu .menu-item:focused .label {
+    -fx-text-fill: #fefdfd;
+}
+
+.context-menu {
+    -fx-background-color: #ffffff;
+}
+
+
+.context-menu>*>.separator>.line {
+    -fx-border-color: #d4d4d4;
+}
+
+
+
+
+
+.check-box .box {
+    -fx-background-color: transparent;
+    -fx-border-color: #cecece;
+}
+
+.check-box:focused .box {
+	-fx-border-color: #0090f1;
+}
+
+.check-box:focused .box {
+	-fx-border-color: #0090f1;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #61667f;
+	
+}
+
+.text-field {
+    -fx-border-color: #cecece;
+    -fx-background-color: transparent;
+    -fx-text-fill: #616161;
+}
+
+.text-field:focused {
+    -fx-border-color: #0090f1;
+	-fx-text-fill: #616161;
+    -fx-highlight-fill: #3390ff;
+}
+
+.optionTextField {
+	-fx-background-color: #fafafa;
+}

@@ -3,6 +3,7 @@ package gearworks;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -440,22 +441,22 @@ public class App extends Application {
 	private void updateInfo() {
 
 		// Create a map to store multiple instances with identifiers
-        Map<String, Job> complexObjects = new HashMap<>();
-		
+		Map<String, Job> complexObjects = new HashMap<>();
+
 		filteredJobList.forEach(job -> complexObjects.put(job.getCsj(), job));
 
-        // Create ObjectMapper
-        ObjectMapper objectMapper = new ObjectMapper();
+		// Create ObjectMapper
+		ObjectMapper objectMapper = new ObjectMapper();
 
-        // Specify the path to the output file
-        String outputPath = "C:\\Users\\Jacob\\Desktop\\New folder (2)\\output.json";
+		// Specify the path to the output file
+		String outputPath = "C:\\Users\\Jacob\\Desktop\\New folder (2)\\output.json";
 
-        try {
-            // Write the map of objects to the JSON file
-            objectMapper.writeValue(new File(outputPath), complexObjects);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+		try {
+			// Write the map of objects to the JSON file
+			objectMapper.writeValue(new File(outputPath), complexObjects);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -559,6 +560,11 @@ public class App extends Application {
 
 	@FXML
 	private void saveExcel() {
+
+		filteredJobList.forEach(job -> {
+			job.setMinimumDayCharge(new BigDecimal(preferences.getDropDeadPrice()));
+			job.setStandbyPrice(new BigDecimal(preferences.getStandByPrice()));
+		});
 		ExcelFormatInterface excelOutput;
 		switch (preferredExcelFormat) {
 			case V1:
