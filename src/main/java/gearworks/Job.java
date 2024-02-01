@@ -87,6 +87,7 @@ public class Job {
         blacklist.add("AUSTIN BRIDGE & ROAD SERVICES, LP");
         blacklist.add("LONE STAR PAVING COMPANY");
         blacklist.add("TEXAS MATERIALS GROUP, INC");
+		blacklist.add("HUNTER INDUSTRIES, LTD");
 
         // for every contractor in the ArrayList, compare the name to the blacklisted
         // names
