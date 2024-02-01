@@ -11,6 +11,7 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -202,6 +203,7 @@ public class PricingDisplayController {
 				filteredJobList.get(currentJobIndex).getTotalMobs()));
 		jobContents.add(totalMobsTextField, 2, 0);
 		totalMobsTextField.requestFocus();
+		setKeybinds(totalMobsTextField);
 	}
 
 	private void addUpTo_MobsToPricingPage() {
@@ -227,6 +229,7 @@ public class PricingDisplayController {
 		upToMobsTextField.setText(String.format("%d",
 				filteredJobList.get(currentJobIndex).getUpTo_Mobs()));
 		jobContents.add(upToMobsTextField, 2, 1);
+		setKeybinds(upToMobsTextField);
 	}
 
 	private void addAdditionalMobsToPricingPage() {
@@ -264,6 +267,7 @@ public class PricingDisplayController {
 		additionalMobsTextField.setText(String.format("%.0f",
 				filteredJobList.get(currentJobIndex).getAdditionalMobs()));
 		jobContents.add(additionalMobsTextField, 2, yIndex);
+		setKeybinds(additionalMobsLabel);
 	}
 
 	private void addLineItemsToPricingPage() {
@@ -325,6 +329,7 @@ public class PricingDisplayController {
 			};
 			denominations.add(unitsLabel);
 			jobContents.add(unitsLabel, 3, lineItemIndex + yIndexStart);
+			lineItemTextFields.forEach(x-> setKeybinds(x));
 		}
 	}
 
@@ -444,6 +449,26 @@ public class PricingDisplayController {
 	public void updateJobDisplay() {
 
 		setupPricing();
+	}
+
+	public void setKeybinds(Control control) {
+
+		control.setOnKeyPressed(event -> {
+
+			switch (event.getCode()) {
+
+				case PAGE_UP:
+					app.getPreviousJobButton().fire();
+					break;
+
+				case PAGE_DOWN:
+					app.getNextJobButton().fire();
+					break;
+					
+				default:
+					break;
+			}
+		});
 	}
 
 	public void setJobList(List<Job> jobList) {

@@ -646,4 +646,14 @@ public class App extends Application {
 
 		Platform.exit();
 	}
+
+	public Button getPreviousJobButton() {
+
+		return previousJob;
+	}
+
+	public Button getNextJobButton() {
+		
+		return nextJob;
+	}
 }
