@@ -527,8 +527,10 @@ public class App extends Application {
 		ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
 		ArrayList<String> emailListBuffer = new ArrayList<String>();
 
-		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Program Output.txt",
+		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2 Output.txt",
 				InputFileProcessor.FileFormat.V2);
+		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
+				InputFileProcessor.FileFormat.V3);
 
 		ContractorStorage storage = new ContractorStorage();
 		// add all job data to fileContentBuffer
