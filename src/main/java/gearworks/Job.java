@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Job {
 
@@ -298,11 +299,13 @@ public class Job {
 		this.minimumDayCharge = minimumDayCharge;
 	}
 
+	@JsonIgnore
 	public String getBiddingDateString() {
 
 		return dateFormat.format(biddingDate);
 	}
 
+	@JsonIgnore
 	public void setBiddingDateFromString(String biddingDateString) {
 
 		try {
@@ -315,6 +318,7 @@ public class Job {
 		}
 	}
 
+	@JsonIgnore
 	public BigDecimal getSumOfQuantities() {
 
 		BigDecimal sum = new BigDecimal(0);

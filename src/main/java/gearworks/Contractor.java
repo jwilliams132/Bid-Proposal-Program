@@ -11,6 +11,9 @@ public class Contractor {
     private String contractorEmail;
     private String contractorEstimateNumber;
 
+	public Contractor() {
+		
+	}
     // used by CombinedFormat
     public Contractor(String infoLine) {
 
