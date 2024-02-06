@@ -201,12 +201,12 @@ public class App extends Application {
 			root.getStylesheets().add(CSS_Colors_Dark);
 		if (preferences.getTheme() == Themes.LIGHT)
 			root.getStylesheets().add(CSS_Colors_Light);
+		// root.getStylesheets().add(preferences.getTheme() == Themes.DARK ?
+		// CSS_Colors_Dark : CSS_Colors_Light);
 
-		// toggleStartingTheme(preferences.getTheme());
 		loadDisplayFXML("StartupDisplay.fxml", Display.STARTUP);
 		undoFilter.setOnAction(e -> removeFilter());
 		addColors();
-		// addDragControl();
 
 		// updateBidders.setDisable(true);
 		chooseSaveFolder.setDisable(true);
@@ -334,6 +334,7 @@ public class App extends Application {
 		currentJobLabel.setVisible(false);
 
 		try {
+
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 
 			display = loader.load();
@@ -531,7 +532,6 @@ public class App extends Application {
 				InputFileProcessor.FileFormat.V2);
 		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
 				InputFileProcessor.FileFormat.V3);
-
 		ContractorStorage storage = new ContractorStorage();
 		// add all job data to fileContentBuffer
 		for (Job job : filteredJobList) {
@@ -655,7 +655,7 @@ public class App extends Application {
 	}
 
 	public Button getNextJobButton() {
-		
+
 		return nextJob;
 	}
 }
