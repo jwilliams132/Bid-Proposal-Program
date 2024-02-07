@@ -15,6 +15,7 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -107,6 +108,8 @@ public class PricingDisplayController {
 			addAdditionalMobsToPricingPage();
 		addLineItemsToPricingPage();
 
+		addSpecialLineItemButton();
+
 		Platform.runLater(() -> {
 			totalMobsTextField.requestFocus();
 		});
@@ -169,6 +172,27 @@ public class PricingDisplayController {
 		Timeline timeline = new Timeline(keyFrame);
 		timeline.play();
 	}
+
+	/*
+	 * addToPricingPage Format {
+	 * 
+	 * count all before lines for row index
+	 * 
+	 * ----create label
+	 * ----jobContents.add(label, 0, 0);
+	 * 
+	 * if needed
+	 * ----create denomination label
+	 * ----jobContents.add(denomination, 1, 0);
+	 * 
+	 * ----create text textfield
+	 * ----TextField.setOnMouseClicked(e ->
+	 * ----TextField.addListener(e ->
+	 * ----TextField.setText(previous value)
+	 * ----jobContents.add(textfield, 2, 0);
+	 * ----setKeybinds(TextField);
+	 * }
+	 */
 
 	private void addTotalMobsToPricingPage() {
 
@@ -329,9 +353,84 @@ public class PricingDisplayController {
 			};
 			denominations.add(unitsLabel);
 			jobContents.add(unitsLabel, 3, lineItemIndex + yIndexStart);
-			lineItemTextFields.forEach(x-> setKeybinds(x));
+			lineItemTextFields.forEach(x -> setKeybinds(x));
 		}
 	}
+
+	// ====================================================================================================
+	//
+	// ====================================================================================================
+
+	private void addSpecialLineItemButton() {
+
+		Button addSpecialButton = new Button("+ Add Special Line Item");
+		addSpecialButton.setOnAction(event -> {
+
+			addSpecialLineToPricingPage();
+			jobContents.getChildren().remove(addSpecialButton); // Remove the button when clicked
+		});
+		jobContents.add(addSpecialButton, 0, jobContents.getRowCount());
+	}
+
+	private void addSpecialLineToPricingPage() {
+
+    int currentRowIndex = jobContents.getRowCount();
+
+    TextField specialLineDescription = new TextField();
+    specialLineDescription.setPromptText("Enter description...");
+    jobContents.add(specialLineDescription, 0, currentRowIndex);
+
+    Button addQuantityButton = new Button("+ Quantity");
+    addQuantityButton.setOnAction(event -> {
+
+        // Replace the button with a text field for entering quantity
+        TextField quantityTextField = new TextField();
+        quantityTextField.setPromptText("Enter quantity...");
+        jobContents.add(quantityTextField, 1, currentRowIndex); // Use the correct row index
+
+        // Add Ctrl+Delete key event handler for removing quantity text field
+        quantityTextField.setOnKeyPressed(e -> {
+
+            if (e.getCode() == KeyCode.DELETE && e.isControlDown()) {
+				
+                jobContents.getChildren().remove(quantityTextField);
+                jobContents.add(addQuantityButton, 1, currentRowIndex);
+            }
+        });
+
+        jobContents.getChildren().remove(addQuantityButton); // Remove the original button
+    });
+    jobContents.add(addQuantityButton, 1, currentRowIndex); // Use the correct row index
+
+    // Similarly, add the listener to the price text field
+    Button addPriceButton = new Button("+ Price");
+    addPriceButton.setOnAction(event -> {
+
+        // Replace the button with a text field for entering price
+        TextField priceTextField = new TextField();
+        priceTextField.setPromptText("Enter price...");
+        jobContents.add(priceTextField, 2, currentRowIndex); // Use the correct row index
+
+        // Add Ctrl+Delete key event handler for removing price text field
+        priceTextField.setOnKeyPressed(e -> {
+
+            if (e.getCode() == KeyCode.DELETE && e.isControlDown()) {
+
+                jobContents.getChildren().remove(priceTextField);
+                jobContents.add(addPriceButton, 2, currentRowIndex);
+            }
+        });
+
+        jobContents.getChildren().remove(addPriceButton); // Remove the original button
+    });
+    jobContents.add(addPriceButton, 2, currentRowIndex); // Use the correct row index
+
+    addSpecialLineItemButton(); // Add a new "+ Add Special Line Item" button below the current row
+}
+	
+	// ====================================================================================================
+	//
+	// ====================================================================================================
 
 	public void setPrices() {
 
@@ -464,7 +563,7 @@ public class PricingDisplayController {
 				case PAGE_DOWN:
 					app.getNextJobButton().fire();
 					break;
-					
+
 				default:
 					break;
 			}

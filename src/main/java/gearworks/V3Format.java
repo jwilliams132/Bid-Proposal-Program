@@ -50,32 +50,6 @@ public class V3Format extends Format {
     }
 
     /**
-     * Constructor for V2Format that takes a Test enum.
-     *
-     * @param test A Test enum value (not used in this constructor).
-     */
-    // public V2Format(Test test) {
-
-    //     FileManager fileManager = new FileManager();
-    //     File file = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, null);
-    //     ArrayList<String> fileContents = fileManager.readFile(file);
-
-    //     List<Job> jobs = jobsFromFormat(fileContents);
-    //     List<String> jobStrings = jobsToFormat(jobs);
-
-    //     for (int i = 0; i < fileContents.size(); i++) {
-
-    //         if (fileContents.get(i).equals(jobStrings.get(i))) {
-
-    //             System.out.println("job: " + i + " :good");
-    //         } else {
-    //             System.out.println(fileContents.get(i));
-    //             System.out.println(jobStrings.get(i));
-    //         }
-    //     }
-    // }
-
-    /**
      * Converts a Job object into a formatted string in V2Format.
      *
      * <p>

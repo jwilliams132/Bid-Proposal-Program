@@ -10,6 +10,10 @@ public class LineItem {
 	private BigDecimal quantity;
 	private BigDecimal price = new BigDecimal(0);
 
+	public LineItem() {
+
+	}
+	
 	public LineItem(String description, BigDecimal quantity, BigDecimal price) {
 
 		this.description = description;

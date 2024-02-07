@@ -11,6 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javafx.application.Application;
@@ -201,12 +206,12 @@ public class App extends Application {
 			root.getStylesheets().add(CSS_Colors_Dark);
 		if (preferences.getTheme() == Themes.LIGHT)
 			root.getStylesheets().add(CSS_Colors_Light);
+		// root.getStylesheets().add(preferences.getTheme() == Themes.DARK ?
+		// CSS_Colors_Dark : CSS_Colors_Light);
 
-		// toggleStartingTheme(preferences.getTheme());
 		loadDisplayFXML("StartupDisplay.fxml", Display.STARTUP);
 		undoFilter.setOnAction(e -> removeFilter());
 		addColors();
-		// addDragControl();
 
 		// updateBidders.setDisable(true);
 		chooseSaveFolder.setDisable(true);
@@ -334,6 +339,7 @@ public class App extends Application {
 		currentJobLabel.setVisible(false);
 
 		try {
+
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 
 			display = loader.load();
@@ -400,8 +406,9 @@ public class App extends Application {
 
 		// Create a filter for .txt files
 		FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("Text Files (*.txt)", "*.txt");
+		FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
 
-		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, txtFilter);
+		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, allFilter);
 
 		if (inputFile == null) {
 
@@ -410,10 +417,34 @@ public class App extends Application {
 		}
 
 		try {
+			if (inputFile.getName().endsWith(".txt"))
 
-			currentJobList = fileProcessor.parseFile(inputFile.getAbsolutePath());
+				currentJobList = fileProcessor.parseFile(inputFile.getAbsolutePath());
+
+			if (inputFile.getName().endsWith(".json")) {
+
+				ObjectMapper objectMapper = new ObjectMapper();
+				currentJobList = Arrays.asList(objectMapper.readValue(inputFile, Job[].class));
+			}
 		} catch (UnsupportedOperationException e) {
 
+			return; // here to stop code from running further with a unknown format.
+		} catch (JsonParseException e) {
+
+			showWarning("JSON Parsing Error", "Error parsing JSON file (JSON syntax is wrong)", e.getMessage());
+			e.printStackTrace();
+			return;
+		} catch (JsonMappingException e) {
+
+			showWarning("JSON Mapping Error", "Error mapping JSON file to Job objects (JSON can't map to Job Objects)",
+					e.getMessage());
+			e.printStackTrace();
+			return;
+		} catch (IOException e) {
+
+			showWarning("IO Error", "Error reading JSON file (e.g., file not found, permission issues)",
+					e.getMessage());
+			e.printStackTrace();
 			return;
 		}
 
@@ -527,9 +558,29 @@ public class App extends Application {
 		ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
 		ArrayList<String> emailListBuffer = new ArrayList<String>();
 
-		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Program Output.txt",
+		File jsonOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Job Data.json", null,
+            FileManager.fileChooserOptions.SAVE, null);
+			
+		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2 Output.txt",
 				InputFileProcessor.FileFormat.V2);
-
+		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
+				InputFileProcessor.FileFormat.V3);
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			objectMapper.writeValue(jsonOutput, filteredJobList);
+		} catch (JsonGenerationException e) {
+			showWarning("JSON Generation Error", "Error generating JSON", e.getMessage());
+			e.printStackTrace();
+			return;
+		} catch (JsonMappingException e) {
+			showWarning("JSON Mapping Error", "Error mapping JSON file to Java objects", e.getMessage());
+			e.printStackTrace();
+			return;
+		} catch (IOException e) {
+			showWarning("IO Error", "Error writing to JSON file", e.getMessage());
+			e.printStackTrace();
+			return;
+		}
 		ContractorStorage storage = new ContractorStorage();
 		// add all job data to fileContentBuffer
 		for (Job job : filteredJobList) {
@@ -653,7 +704,7 @@ public class App extends Application {
 	}
 
 	public Button getNextJobButton() {
-		
+
 		return nextJob;
 	}
 }
