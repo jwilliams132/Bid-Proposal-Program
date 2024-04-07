@@ -97,7 +97,7 @@ public class PricingDisplayController {
 		jobHeader.setText(String.format("%-20s%-20s%-20s%-20s", currentJob.getCsj(),
 				currentJob.getCounty(),
 				currentJob.getHighway(),
-				"county's largest city:  ".concat(cityFinder.getLargestCity(currentJob.getCounty()))));
+				"county's largest city:  ".concat(cityFinder.getLargestCity(currentJob.getCounty()) != null ? cityFinder.getLargestCity(currentJob.getCounty()) : "no city found")));
 		jobContents.getChildren().clear();
 		denominations = new ArrayList<Label>();
 		lineItemLabels = new ArrayList<Label>();
