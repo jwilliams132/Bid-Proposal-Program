@@ -80,6 +80,7 @@ public class App extends Application {
 	private Button chooseOpenFile,
 			updateBidders,
 			chooseSaveFolder,
+			createClearText,
 			saveExcel,
 			filterJobs,
 			addPricing,
@@ -214,6 +215,7 @@ public class App extends Application {
 		addColors();
 
 		// updateBidders.setDisable(true);
+		createClearText.setDisable(true);
 		chooseSaveFolder.setDisable(true);
 		saveExcel.setDisable(true);
 		filterJobs.setDisable(true);
@@ -354,6 +356,7 @@ public class App extends Application {
 					if (previousDisplay == Display.PRICING)
 						pricingController.setPrices();
 					addPricing.setDisable(true);
+					createClearText.setDisable(true);
 					currentJob = 0;
 					unfilteredController = new UnfilteredDisplayController();
 					unfilteredController = loader.getController();
@@ -498,6 +501,7 @@ public class App extends Application {
 
 		loadDisplayFXML("FilteredDisplay.fxml", Display.FILTERED);
 		addPricing.setDisable(false);
+		createClearText.setDisable(false);
 	}
 
 	@FXML
@@ -541,30 +545,33 @@ public class App extends Application {
 	}
 
 	@FXML
+	private void createClearText() {
+
+		if (!preferences.isInputDirectoryUsed())
+			lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
+
+		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Program Output (User Friendly).txt",
+		InputFileProcessor.FileFormat.CLEAR_TEXT);
+	}
+
+	@FXML
 	private void saveFiles() {
 
 		if (currentDisplay == Display.PRICING && !pricingController.isPricingValid())
 			return;
 		pricingController.setPrices();
 
-		lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
-		// Get the selected file
-		File userFriendlyOutput = fileManager.chooseFile(
-				lettingMonthDirectory + "\\Program Output (User Friendly).txt", null,
-				FileManager.fileChooserOptions.SAVE, null);
-		File emailList = fileManager.chooseFile(lettingMonthDirectory + "\\Email List.txt", null,
-				FileManager.fileChooserOptions.SAVE, null);
 
-		ArrayList<String> userFriendlyOutputBuffer = new ArrayList<String>();
-		ArrayList<String> emailListBuffer = new ArrayList<String>();
+		
+		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Email List.txt",
+		InputFileProcessor.FileFormat.EMAIL);
+		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2 Output.txt",
+		// InputFileProcessor.FileFormat.V2);
+		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
+		// InputFileProcessor.FileFormat.V3);
 
 		File jsonOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Job Data.json", null,
-            FileManager.fileChooserOptions.SAVE, null);
-			
-		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2 Output.txt",
-				InputFileProcessor.FileFormat.V2);
-		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
-				InputFileProcessor.FileFormat.V3);
+				FileManager.fileChooserOptions.SAVE, null);
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			objectMapper.writeValue(jsonOutput, filteredJobList);
@@ -582,22 +589,11 @@ public class App extends Application {
 			return;
 		}
 		ContractorStorage storage = new ContractorStorage();
-		// add all job data to fileContentBuffer
 		for (Job job : filteredJobList) {
-
-			userFriendlyOutputBuffer.addAll(job.formatUserFriendlyJobInfo());
-			userFriendlyOutputBuffer.add("-".repeat(100));
-
-			emailListBuffer.addAll(job.formatEmailList());
 
 			job.getContractorList().forEach(contractor -> storage.addToContractList(contractor));
 		}
 		storage.formatContractorList();
-		fileManager.saveFile(userFriendlyOutput, userFriendlyOutputBuffer);
-		fileManager.saveFile(emailList, emailListBuffer);
-
-		// // Set the prices for the current job
-		// setPrices();
 
 		// Set the file path label to show the chosen file
 		directoryPath.setText("Directory Path:  " + lettingMonthDirectory);

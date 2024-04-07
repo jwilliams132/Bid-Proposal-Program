@@ -30,7 +30,7 @@ public class FileManager {
             // FileFilter fileFilter) {
             FileChooser.ExtensionFilter fileFilter) {
 
-        FileChooser fileChooser = new FileChooser(); // create a new JFileChooser object
+        FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(desktopDirectory);
 
         if (fileFilter != null)
@@ -40,10 +40,13 @@ public class FileManager {
 
             File givenFile = new File(knownFile);
 
-            if (givenFile.exists())
+            if (givenFile.exists() && option == fileChooserOptions.OPEN)
                 return givenFile;
 
             if (option == fileChooserOptions.SAVE) {
+
+				givenFile = createUniqueFile(knownFile);
+				
                 try {
                     givenFile.createNewFile();
                     return givenFile;
@@ -140,4 +143,22 @@ public class FileManager {
         File file = chooseFile(filePath, null, FileManager.fileChooserOptions.OPEN, null);
         return readFile(file);
     }
+
+	public File createUniqueFile(String baseFilePath) {
+		
+		File outputFile = new File(baseFilePath);
+
+		if (outputFile.exists()) {
+
+			int counter = 1;
+			do {
+
+				counter++;
+				String newFilename;
+				newFilename = baseFilePath.replace(".txt", "(" + counter + ").txt");
+				outputFile = new File(newFilename);
+			} while (outputFile.exists());
+		}
+		return outputFile;
+	}
 }
