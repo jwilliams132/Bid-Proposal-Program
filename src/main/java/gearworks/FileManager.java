@@ -150,7 +150,7 @@ public class FileManager {
 
 		if (outputFile.exists()) {
 
-			int counter = 1;
+			int counter = 0;
 			do {
 
 				counter++;
