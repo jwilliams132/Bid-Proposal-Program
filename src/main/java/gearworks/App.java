@@ -86,11 +86,15 @@ public class App extends Application {
 			addPricing,
 			previousJob,
 			nextJob;
-	private Button undoFilter = new Button("Undo Filtering");
+	private Button undoFilter = new Button("Undo Filtering") {
+		{
+			setPrefWidth(144);
+		}
+	};
 
 	@FXML
 	private Menu viewMenu, optionsMenu;
-	private CheckMenuItem upToMobsCMI, additionalMobsCMI;
+	private CheckMenuItem upToMobsCMI, additionalMobsCMI, inputDirectoryUsed;
 	private ToggleGroup themeToggleGroup;
 
 	private final String CSS_Styles = this.getClass().getResource("Element_Styles.css").toExternalForm();
@@ -197,10 +201,21 @@ public class App extends Application {
 				setSelected(preferences.isAdditionalMobsVisible());
 			}
 		};
+		inputDirectoryUsed = new CheckMenuItem("Use Input File Folder for Output Files") {
+			{
+				setOnAction(event -> {
+					event.consume();
+					inputDirectoryUsedChange();
+				});
+				setSelected(preferences.isInputDirectoryUsed());
+			}
+		};
+
 		optionsMenu.getItems().add(upToMobsCMI);
 		optionsMenu.getItems().add(additionalMobsCMI);
 		optionsMenu.getItems().add(getTextFieldMenuItem("Drop Dead Price:  ", "DROPDEAD"));
 		optionsMenu.getItems().add(getTextFieldMenuItem("Standby Price:  ", "STANDBY"));
+		optionsMenu.getItems().add(inputDirectoryUsed);
 
 		root.getStylesheets().add(CSS_Styles);
 		if (preferences.getTheme() == Themes.DARK)
@@ -314,6 +329,12 @@ public class App extends Application {
 			pricingController.setPreferences(preferences);
 			pricingController.updateJobDisplay();
 		}
+	}
+
+	private void inputDirectoryUsedChange() {
+
+		preferences.setInputDirectoryUsed(inputDirectoryUsed.isSelected());
+		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
 	}
 
 	private void addColors() {
@@ -454,7 +475,6 @@ public class App extends Application {
 		lettingMonthDirectory = Paths.get(inputFile.getAbsolutePath()).getParent().toString();
 
 		openFilePath.setText("File Path: " + inputFile);
-		chooseSaveFolder.setDisable(false);
 		filterJobs.setDisable(false);
 		undoFilter.setDisable(false);
 		addPricing.setDisable(true);
@@ -547,6 +567,8 @@ public class App extends Application {
 			return;
 		pricingController.setPrices();
 
+		if (!preferences.isInputDirectoryUsed())
+			lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
 
 		
 		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Email List.txt",

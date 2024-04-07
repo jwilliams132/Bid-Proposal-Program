@@ -4,6 +4,7 @@ public class Preferences {
 
     public boolean upToMobsVisible;
     public boolean additionalMobsVisible;
+	public boolean inputDirectoryUsed;
 
     public Themes theme;
 
@@ -14,6 +15,7 @@ public class Preferences {
 
         this.upToMobsVisible = true;
         this.additionalMobsVisible = true;
+		this.inputDirectoryUsed = true;
         this.theme = Themes.DARK;
         this.dropDeadPrice = 0;
         this.standByPrice = 0;
@@ -38,6 +40,16 @@ public class Preferences {
 
         this.additionalMobsVisible = isAdditionalMobsVisible;
     }
+
+	public boolean isInputDirectoryUsed() {
+
+		return inputDirectoryUsed;
+	}
+
+	public void setInputDirectoryUsed(boolean isInputDirectoryUsed) {
+		
+		this.inputDirectoryUsed = isInputDirectoryUsed;
+	}
 
     public Themes getTheme() {
 
