@@ -474,23 +474,9 @@ public class App extends Application {
 	@FXML
 	private void updateInfo() {
 
-		// Create a map to store multiple instances with identifiers
-		Map<String, Job> complexObjects = new HashMap<>();
-
-		filteredJobList.forEach(job -> complexObjects.put(job.getCsj(), job));
-
-		// Create ObjectMapper
-		ObjectMapper objectMapper = new ObjectMapper();
-
-		// Specify the path to the output file
-		String outputPath = "C:\\Users\\Jacob\\Desktop\\New folder (2)\\output.json";
-
-		try {
-			// Write the map of objects to the JSON file
-			objectMapper.writeValue(new File(outputPath), complexObjects);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		System.out.println((filterJobs.getWidth()));
+		System.out.println((addPricing.getWidth()));
+		System.out.println((chooseSaveFolder.getWidth()));
 	}
 
 	@FXML
@@ -573,21 +559,26 @@ public class App extends Application {
 		File jsonOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Job Data.json", null,
 				FileManager.fileChooserOptions.SAVE, null);
 		try {
+
 			ObjectMapper objectMapper = new ObjectMapper();
 			objectMapper.writeValue(jsonOutput, filteredJobList);
 		} catch (JsonGenerationException e) {
+
 			showWarning("JSON Generation Error", "Error generating JSON", e.getMessage());
 			e.printStackTrace();
 			return;
 		} catch (JsonMappingException e) {
+
 			showWarning("JSON Mapping Error", "Error mapping JSON file to Java objects", e.getMessage());
 			e.printStackTrace();
 			return;
 		} catch (IOException e) {
+
 			showWarning("IO Error", "Error writing to JSON file", e.getMessage());
 			e.printStackTrace();
 			return;
 		}
+
 		ContractorStorage storage = new ContractorStorage();
 		for (Job job : filteredJobList) {
 
