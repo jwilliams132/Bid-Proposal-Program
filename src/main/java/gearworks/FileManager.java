@@ -11,141 +11,141 @@ import javafx.stage.FileChooser;
 
 public class FileManager {
 
-    public enum fileChooserOptions {
-        OPEN, SAVE
-    };
+	public enum fileChooserOptions {
+		OPEN, SAVE
+	};
 
-    // Create a File object that points to the user's desktop directory.
-    private final File desktopDirectory = new File(System.getProperty("user.home") + "/Desktop");
+	// Create a File object that points to the user's desktop directory.
+	private final File desktopDirectory = new File(System.getProperty("user.home") + "/Desktop");
 
-    public FileManager() {
+	public FileManager() {
 
-    }
+	}
 
-    /*
-     * File userFriendlyOutput = fileManager.chooseFile(FILE_NAME,
-     * DIRECTORY,FileManager.fileChooserOptions.OPEN,FILTER);
-     */
-    public File chooseFile(String knownFile, String currentDirectory, fileChooserOptions option,
-            // FileFilter fileFilter) {
-            FileChooser.ExtensionFilter fileFilter) {
+	/*
+	 * File userFriendlyOutput = fileManager.chooseFile(FILE_NAME,
+	 * DIRECTORY,FileManager.fileChooserOptions.OPEN,FILTER);
+	 */
+	public File chooseFile(String knownFile, String currentDirectory, fileChooserOptions option,
+			// FileFilter fileFilter) {
+			FileChooser.ExtensionFilter fileFilter) {
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(desktopDirectory);
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setInitialDirectory(desktopDirectory);
 
-        if (fileFilter != null)
-            fileChooser.getExtensionFilters().add(fileFilter);
+		if (fileFilter != null)
+			fileChooser.getExtensionFilters().add(fileFilter);
 
-        if (knownFile != null) {
+		if (knownFile != null) {
 
-            File givenFile = new File(knownFile);
+			File givenFile = new File(knownFile);
 
-            if (givenFile.exists() && option == fileChooserOptions.OPEN)
-                return givenFile;
+			if (givenFile.exists() && option == fileChooserOptions.OPEN)
+				return givenFile;
 
-            if (option == fileChooserOptions.SAVE) {
+			if (option == fileChooserOptions.SAVE) {
 
 				givenFile = createUniqueFile(knownFile);
-				
-                try {
-                    givenFile.createNewFile();
-                    return givenFile;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
 
-        }
+				try {
+					givenFile.createNewFile();
+					return givenFile;
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 
-        if (currentDirectory != null)
-            // sets the directory to start your search for a file in
-            fileChooser.setInitialDirectory(new File(currentDirectory));
+		}
 
-        // Show the open or save dialog based on the value of "option"
-        File selectedFile = option == fileChooserOptions.OPEN
-                ? fileChooser.showOpenDialog(null)
-                : fileChooser.showSaveDialog(null);
+		if (currentDirectory != null)
+			// sets the directory to start your search for a file in
+			fileChooser.setInitialDirectory(new File(currentDirectory));
 
-        if (selectedFile != null) {
-            return selectedFile;
-        }
+		// Show the open or save dialog based on the value of "option"
+		File selectedFile = option == fileChooserOptions.OPEN
+				? fileChooser.showOpenDialog(null)
+				: fileChooser.showSaveDialog(null);
 
-        return null;
-    }
+		if (selectedFile != null) {
+			return selectedFile;
+		}
 
-    public String chooseDirectory(String currentDirectory) {
+		return null;
+	}
 
-        if (currentDirectory == null)
-            currentDirectory = System.getProperty("user.home");
+	public String chooseDirectory(String currentDirectory) {
 
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setInitialDirectory(new File(currentDirectory));
+		if (currentDirectory == null)
+			currentDirectory = System.getProperty("user.home");
 
-        File selectedDirectory = directoryChooser.showDialog(null);
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		directoryChooser.setInitialDirectory(new File(currentDirectory));
 
-        if (selectedDirectory != null) {
-            return selectedDirectory.getAbsolutePath();
-        }
+		File selectedDirectory = directoryChooser.showDialog(null);
 
-        return null;
-    }
+		if (selectedDirectory != null) {
+			return selectedDirectory.getAbsolutePath();
+		}
 
-    public ArrayList<String> readFile(File file) {
+		return null;
+	}
 
-        Scanner scanner = null;
-        ArrayList<String> fileContents = new ArrayList<String>();
+	public ArrayList<String> readFile(File file) {
 
-        // Try to create a Scanner object to read the input file.
-        // If the file is not found, print an error message.
-        try {
+		Scanner scanner = null;
+		ArrayList<String> fileContents = new ArrayList<String>();
 
-            scanner = new Scanner(file);
-        } catch (Exception e) {
+		// Try to create a Scanner object to read the input file.
+		// If the file is not found, print an error message.
+		try {
 
-            System.out.println("COULD NOT FIND FILE.");
-        }
+			scanner = new Scanner(file);
+		} catch (Exception e) {
 
-        // While the scanner has more lines, add each line to the ArrayList.
-        // Trim the line to remove any leading or trailing white space.
-        while (scanner.hasNext())
-            fileContents.add(scanner.nextLine());
+			System.out.println("COULD NOT FIND FILE.");
+		}
 
-        // Close the scanner and return the ArrayList of file contents.
-        scanner.close();
-        return fileContents;
-    }
+		// While the scanner has more lines, add each line to the ArrayList.
+		// Trim the line to remove any leading or trailing white space.
+		while (scanner.hasNext())
+			fileContents.add(scanner.nextLine());
 
-    public void saveFile(File file, List<String> content) {
+		// Close the scanner and return the ArrayList of file contents.
+		scanner.close();
+		return fileContents;
+	}
 
-        // Create a Formatter object to write to the output file.
-        // If the file cannot be created, print an error message.
-        Formatter formatter = null;
-        try {
+	public void saveFile(File file, List<String> content) {
 
-            formatter = new Formatter(file);
-        } catch (Exception e) {
+		// Create a Formatter object to write to the output file.
+		// If the file cannot be created, print an error message.
+		Formatter formatter = null;
+		try {
 
-            System.err.println("File not Created");
-        }
+			formatter = new Formatter(file);
+		} catch (Exception e) {
 
-        // Write each element of the ArrayList to the file, followed by a newline.
-        for (String line : content) {
+			System.err.println("File not Created");
+		}
 
-            formatter.format("%s%n", line);
-        }
+		// Write each element of the ArrayList to the file, followed by a newline.
+		for (String line : content) {
 
-        // Close the Formatter and save the file.
-        formatter.close();
-    }
+			formatter.format("%s%n", line);
+		}
 
-    public List<String> readFile(String filePath) {
+		// Close the Formatter and save the file.
+		formatter.close();
+	}
 
-        File file = chooseFile(filePath, null, FileManager.fileChooserOptions.OPEN, null);
-        return readFile(file);
-    }
+	public List<String> readFile(String filePath) {
+
+		File file = chooseFile(filePath, null, FileManager.fileChooserOptions.OPEN, null);
+		return readFile(file);
+	}
 
 	public File createUniqueFile(String baseFilePath) {
-		
+
 		File outputFile = new File(baseFilePath);
 
 		if (outputFile.exists()) {
@@ -155,10 +155,29 @@ public class FileManager {
 
 				counter++;
 				String newFilename;
-				newFilename = baseFilePath.replace(".txt", "(" + counter + ").txt");
+				String[] tokens = baseFilePath.split("\\.");
+				newFilename = tokens[0] + "(" + counter + ")" + "." + tokens[1];
 				outputFile = new File(newFilename);
 			} while (outputFile.exists());
 		}
 		return outputFile;
+	}
+
+	public String createUniqueFileName(String baseFilePath) {
+
+		File outputFile = new File(baseFilePath);
+		if (outputFile.exists()) {
+
+			int counter = 0;
+			do {
+
+				counter++;
+				String newFilename;
+				String[] tokens = baseFilePath.split("\\.");
+				newFilename = tokens[0] + "(" + counter + ")" + "." + tokens[1];
+				outputFile = new File(newFilename);
+			} while (outputFile.exists());
+		}
+		return outputFile.getAbsolutePath();
 	}
 }

@@ -378,6 +378,7 @@ public class App extends Application {
 						pricingController.setPrices();
 					addPricing.setDisable(true);
 					createClearText.setDisable(true);
+					chooseSaveFolder.setDisable(true);
 					currentJob = 0;
 					unfilteredController = new UnfilteredDisplayController();
 					unfilteredController = loader.getController();
@@ -387,7 +388,6 @@ public class App extends Application {
 					break;
 
 				case FILTERED:
-
 					filteredJobList = unfilteredController.getFilteredList();
 					filteredIndices = unfilteredController.getFilteredIndexes();
 					filteredController = new FilteredDisplayController();
@@ -401,6 +401,7 @@ public class App extends Application {
 					nextJob.setVisible(true);
 					currentJobLabel.setVisible(true);
 					addPricing.setDisable(true);
+					chooseSaveFolder.setDisable(false);
 					updateCurrentJobItems(currentJob);
 					pricingController = new PricingDisplayController();
 					pricingController = loader.getController();
@@ -429,9 +430,9 @@ public class App extends Application {
 	private void openFile() {
 
 		// Create a filter for .txt files
-		FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("Text Files (*.txt)", "*.txt");
+		// FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("Text
+		// Files (*.txt)", "*.txt");
 		FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
-
 		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, allFilter);
 
 		if (inputFile == null) {
@@ -442,7 +443,6 @@ public class App extends Application {
 
 		try {
 			if (inputFile.getName().endsWith(".txt"))
-
 				currentJobList = fileProcessor.parseFile(inputFile.getAbsolutePath());
 
 			if (inputFile.getName().endsWith(".json")) {
@@ -555,9 +555,8 @@ public class App extends Application {
 
 		if (!preferences.isInputDirectoryUsed())
 			lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
-
 		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Program Output (User Friendly).txt",
-		InputFileProcessor.FileFormat.CLEAR_TEXT);
+				InputFileProcessor.FileFormat.CLEAR_TEXT);
 	}
 
 	@FXML
@@ -570,20 +569,22 @@ public class App extends Application {
 		if (!preferences.isInputDirectoryUsed())
 			lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
 
-		
 		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Email List.txt",
-		InputFileProcessor.FileFormat.EMAIL);
-		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2 Output.txt",
-		// InputFileProcessor.FileFormat.V2);
-		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
-		// InputFileProcessor.FileFormat.V3);
+				InputFileProcessor.FileFormat.EMAIL);
+		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2 Output.txt",
+				InputFileProcessor.FileFormat.V2);
+		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
+				InputFileProcessor.FileFormat.V3);
 
-		File jsonOutput = fileManager.chooseFile(lettingMonthDirectory + "\\Job Data.json", null,
+		String jsonOutputPath = fileManager.createUniqueFileName(lettingMonthDirectory + "\\Job Data.json");
+		File jsonOutput = fileManager.chooseFile(jsonOutputPath, null,
 				FileManager.fileChooserOptions.SAVE, null);
+
 		try {
 
 			ObjectMapper objectMapper = new ObjectMapper();
 			objectMapper.writeValue(jsonOutput, filteredJobList);
+
 		} catch (JsonGenerationException e) {
 
 			showWarning("JSON Generation Error", "Error generating JSON", e.getMessage());
@@ -602,10 +603,8 @@ public class App extends Application {
 		}
 
 		ContractorStorage storage = new ContractorStorage();
-		for (Job job : filteredJobList) {
-
+		for (Job job : filteredJobList)
 			job.getContractorList().forEach(contractor -> storage.addToContractList(contractor));
-		}
 		storage.formatContractorList();
 
 		// Set the file path label to show the chosen file
