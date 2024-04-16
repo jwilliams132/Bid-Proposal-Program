@@ -1,127 +1,47 @@
-# javafx_testing
- 
+This program is used for the production of bid proposals for the company that uses it. It lets you choose files that either have TxDot formatting or the program's outputted formats. You then can use the GUI to filter contracts and add company chosen prices to any line items for each contract. You can then save any work you have done using the program's formats. Once the pricing is confirmed, you can then export that data to an excel file template where the company can then create pdf's, using the template's macro, of each contractor that bid on each contract. This is currently set up to use my current employer's bid proposal format that was given to me in excel. Currently, the TxDot input files are obtained by a third party program called "Easy Link Pro", by Whitley Siddons website, which obtains the files from the TxDot website. This third party program allows filtering of individual line items for construction companies that specialize in certain kinds of work (i.e., Milling, Asphalt, Concrete). 
 
-```
-javafx_testing
-├─ .vscode
-│  ├─ launch.json
-│  └─ settings.json
-├─ pom.xml
-├─ README.md
-├─ src
-│  └─ main
-│     ├─ java
-│     │  ├─ gearworks
-│     │  │  ├─ App.java
-│     │  │  ├─ BigDecimalToWordsConverter.java
-│     │  │  ├─ CombinedFormat.java
-│     │  │  ├─ Contractor.java
-│     │  │  ├─ ContractorStorage.java
-│     │  │  ├─ ExcelFormat.java
-│     │  │  ├─ ExcelFormatInterface.java
-│     │  │  ├─ FileManager.java
-│     │  │  ├─ FilteredDisplayController.java
-│     │  │  ├─ Format.java
-│     │  │  ├─ FormatInterface.java
-│     │  │  ├─ InputFileProcessor.java
-│     │  │  ├─ Job.java
-│     │  │  ├─ JSON_Manager.java
-│     │  │  ├─ LineItem.java
-│     │  │  ├─ Preferences.java
-│     │  │  ├─ PricingDisplayController.java
-│     │  │  ├─ Save_File_Formats
-│     │  │  ├─ StartupDisplayController.java
-│     │  │  ├─ TexasCityFinder.java
-│     │  │  ├─ Theme.java
-│     │  │  ├─ Themes.java
-│     │  │  ├─ UnfilteredDisplayController.java
-│     │  │  ├─ UpdateInfoDisplayController.java
-│     │  │  ├─ V1ExcelFormat.java
-│     │  │  ├─ V1Format.java
-│     │  │  ├─ V2ExcelFormat.java
-│     │  │  └─ V2Format.java
-│     │  └─ module-info.java
-│     └─ resources
-│        └─ gearworks
-│           ├─ Base_Gui.fxml
-│           ├─ config.json
-│           ├─ Contractor List.csv
-│           ├─ DarkTheme.json
-│           ├─ Element_Styles.css
-│           ├─ FilteredDisplay.fxml
-│           ├─ LightTheme.json
-│           ├─ List_of_counties_in_Texas.csv
-│           ├─ Logo.jpg
-│           ├─ PricingDisplay.fxml
-│           ├─ StartupDisplay.fxml
-│           └─ UnfilteredDisplay.fxml
-└─ target
-   ├─ classes
-   │  ├─ gearworks
-   │  │  ├─ App$Display.class
-   │  │  ├─ App$SaveFileFormats.class
-   │  │  ├─ App$TEST.class
-   │  │  ├─ App.class
-   │  │  ├─ Base_Gui.fxml
-   │  │  ├─ BigDecimalToWordsConverter.class
-   │  │  ├─ CombinedFormat.class
-   │  │  ├─ config.json
-   │  │  ├─ Contractor List.csv
-   │  │  ├─ Contractor.class
-   │  │  ├─ ContractorStorage.class
-   │  │  ├─ DarkTheme.json
-   │  │  ├─ Element_Styles.css
-   │  │  ├─ ExcelFormat.class
-   │  │  ├─ ExcelFormatInterface.class
-   │  │  ├─ FileManager$fileChooserOptions.class
-   │  │  ├─ FileManager.class
-   │  │  ├─ FilteredDisplay.fxml
-   │  │  ├─ FilteredDisplayController$1.class
-   │  │  ├─ FilteredDisplayController$2.class
-   │  │  ├─ FilteredDisplayController.class
-   │  │  ├─ Format.class
-   │  │  ├─ FormatInterface.class
-   │  │  ├─ InputFileProcessor$FileFormat.class
-   │  │  ├─ InputFileProcessor.class
-   │  │  ├─ Job.class
-   │  │  ├─ JSON_Manager.class
-   │  │  ├─ LightTheme.json
-   │  │  ├─ LineItem.class
-   │  │  ├─ List_of_counties_in_Texas.csv
-   │  │  ├─ Logo.jpg
-   │  │  ├─ Preferences.class
-   │  │  ├─ PricingDisplay.fxml
-   │  │  ├─ PricingDisplayController$1.class
-   │  │  ├─ PricingDisplayController$10.class
-   │  │  ├─ PricingDisplayController$2.class
-   │  │  ├─ PricingDisplayController$3.class
-   │  │  ├─ PricingDisplayController$4.class
-   │  │  ├─ PricingDisplayController$5.class
-   │  │  ├─ PricingDisplayController$6.class
-   │  │  ├─ PricingDisplayController$7.class
-   │  │  ├─ PricingDisplayController$8.class
-   │  │  ├─ PricingDisplayController$9.class
-   │  │  ├─ PricingDisplayController.class
-   │  │  ├─ Save_File_Formats
-   │  │  ├─ StartupDisplay.fxml
-   │  │  ├─ StartupDisplayController.class
-   │  │  ├─ Test.class
-   │  │  ├─ TexasCityFinder.class
-   │  │  ├─ Theme.class
-   │  │  ├─ Themes.class
-   │  │  ├─ UnfilteredDisplay.fxml
-   │  │  ├─ UnfilteredDisplayController$1.class
-   │  │  ├─ UnfilteredDisplayController$2.class
-   │  │  ├─ UnfilteredDisplayController$3.class
-   │  │  ├─ UnfilteredDisplayController$4.class
-   │  │  ├─ UnfilteredDisplayController$5.class
-   │  │  ├─ UnfilteredDisplayController.class
-   │  │  ├─ UpdateInfoDisplayController.class
-   │  │  ├─ V1ExcelFormat.class
-   │  │  ├─ V1Format.class
-   │  │  ├─ V2ExcelFormat.class
-   │  │  └─ V2Format.class
-   │  └─ module-info.class
-   └─ test-classes
+Here is an outline of the classes used, separated by their relative functions
 
-```
+Main Logic + Main FXML Controller
+	App.java
+
+FXML Controllers
+	StartupDisplayController.java
+	UnfilteredDisplayController.java
+	UpdateInfoDisplayController.java
+	FilteredDisplayController.java
+	PricingDisplayController.java
+
+Input/Output File Formats
+	InputFileProcessor.java
+	FormatInterface.java
+	Format.java
+	CombinedFormat.java
+	V1Format.java
+	V2Format.java
+	ClearTextFormat.java
+	EmailFormat.java
+	
+I/O Managers	
+	JSON_Manager.java
+	FileManager.java
+
+Export File Formats
+	ExcelFormatInterface.java
+	ExcelFormat.java
+	V1ExcelFormat.java
+	V2ExcelFormat.java
+
+Data Formats
+	Job.java
+	Contractor.java
+	LineItem.java
+	Themes.java
+
+Data Storage
+	ContractorStorage.java
+	Preferences.java
+
+Utility Classes
+	BigDecimalToWordsConverter.java
+	TexasCityFinder.java
