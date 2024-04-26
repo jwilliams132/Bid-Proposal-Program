@@ -307,6 +307,7 @@ public class App extends Application {
 		customMenuItem = new CustomMenuItem(hBox);
 		customMenuItem.setHideOnClick(false);
 		return customMenuItem;
+
 	}
 
 	private void upToMobsOptionChange() {
