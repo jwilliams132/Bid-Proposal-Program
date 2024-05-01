@@ -10,6 +10,49 @@
     -fx-padding: 3 3 3 3;
 }
 
+.manipulationButton {
+	/* -fx-pref-width: 5; */
+	-fx-pref-height: 5;
+	-fx-font-size: 14px;
+	-fx-padding: -1 5 -1 5;
+	/* up right down left */
+}
+
+#upLeft {
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-background-radius: 5 5 0 0;
+    -fx-border-radius: 5 5 0 0;
+}
+
+#downLeft {
+	-fx-border-width: 0 1px 1px 1px;
+	-fx-background-radius: 0 0 5 5;
+	-fx-border-radius: 0 0 5 5;
+}
+
+#upRight {
+	/* -fx-spacing: 0 0 0 0; */
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-background-radius: 5 5 0 0;
+    -fx-border-radius: 5 5 0 0;
+	/* -fx-pref-width: 40; */
+}
+
+#downRight {
+	/* -fx-spacing: 0 0 0 0; */
+	-fx-border-width: 0 1px 1px 1px;
+	-fx-background-radius: 0 0 5 5;
+    -fx-border-radius: 0 0 5 5;
+	/* -fx-pref-width: 40; */
+}
+
+#deleteButton {
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-background-radius: 5 5 5 5;
+    -fx-border-radius: 5 5 5 5;
+	-fx-padding: 9 2 8 1;
+}
+
 /* Remove the background from the scrollbar track */
 .scroll-bar:vertical,
 .scroll-bar:horizontal {
