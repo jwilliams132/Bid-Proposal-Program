@@ -94,7 +94,7 @@ public class App extends Application {
 
 	@FXML
 	private Menu viewMenu, optionsMenu;
-	private CheckMenuItem upToMobsCMI, additionalMobsCMI, inputDirectoryUsed;
+	private CheckMenuItem upToMobsCMI, additionalMobsCMI, inputDirectoryUsed, deletionWarningsShown;
 	private ToggleGroup themeToggleGroup;
 
 	private final String CSS_Styles = this.getClass().getResource("Element_Styles.css").toExternalForm();
@@ -210,12 +210,22 @@ public class App extends Application {
 				setSelected(preferences.isInputDirectoryUsed());
 			}
 		};
+		deletionWarningsShown = new CheckMenuItem("Show Warnings for Line Item Deletion") {
+			{
+				setOnAction(event -> {
+					event.consume();
+					showDeletionWarningsChange();
+				});
+				setSelected(preferences.isDeletionWarningsShown());
+			}
+		};
 
 		optionsMenu.getItems().add(upToMobsCMI);
 		optionsMenu.getItems().add(additionalMobsCMI);
 		optionsMenu.getItems().add(getTextFieldMenuItem("Drop Dead Price:  ", "DROPDEAD"));
 		optionsMenu.getItems().add(getTextFieldMenuItem("Standby Price:  ", "STANDBY"));
 		optionsMenu.getItems().add(inputDirectoryUsed);
+		optionsMenu.getItems().add(deletionWarningsShown);
 
 		root.getStylesheets().add(CSS_Styles);
 		if (preferences.getTheme() == Themes.DARK)
@@ -335,6 +345,12 @@ public class App extends Application {
 	private void inputDirectoryUsedChange() {
 
 		preferences.setInputDirectoryUsed(inputDirectoryUsed.isSelected());
+		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
+	}
+
+	private void showDeletionWarningsChange() {
+		
+		preferences.setDeletionWarningsShown(deletionWarningsShown.isSelected());
 		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
 	}
 

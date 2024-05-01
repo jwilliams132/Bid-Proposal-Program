@@ -5,6 +5,7 @@ public class Preferences {
     public boolean upToMobsVisible;
     public boolean additionalMobsVisible;
 	public boolean inputDirectoryUsed;
+	public boolean deletionWarningsShown;
 
     public Themes theme;
 
@@ -16,6 +17,7 @@ public class Preferences {
         this.upToMobsVisible = true;
         this.additionalMobsVisible = true;
 		this.inputDirectoryUsed = true;
+		this.deletionWarningsShown = true;
         this.theme = Themes.DARK;
         this.dropDeadPrice = 0;
         this.standByPrice = 0;
@@ -55,6 +57,16 @@ public class Preferences {
 
         return theme;
     }
+
+	public boolean isDeletionWarningsShown() {
+
+		return deletionWarningsShown;
+	}
+
+	public void setDeletionWarningsShown(boolean isDeletionWarningsShown) {
+
+		this.deletionWarningsShown = isDeletionWarningsShown; 
+	}
 
     public void setTheme(Themes theme) {
         
