@@ -42,7 +42,7 @@ public class LineItem {
 
 	public String returnLabelFormattedString() {
 
-		return String.format("%12s  %-39s  %,14.2f %-4s", getSpecNumber(), getDescription(), getQuantity(), getUnit());
+		return String.format("%7s  %-39s  %,14.2f %-4s", getSpecNumber(), getDescription(), getQuantity(), getUnit());
 	}
 
 	// ====================================================================================================

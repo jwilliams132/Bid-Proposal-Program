@@ -7,6 +7,8 @@
 		"CONTPHONE",
 		"Databind",
 		"DAYSOFPRODUCTION",
+		"DCCB",
+		"Dragboard",
 		"DROPDEAD",
 		"ESTIMATENO",
 		"GENERALCONDITION",
@@ -19,6 +21,7 @@
 		"MINIMUMDAYCHARGE",
 		"PERMOBS",
 		"PRICEAPPLICABLEDATE",
+		"RMVD",
 		"SCROLLPANECOLOR",
 		"SENTTO",
 		"SPECIALCONDITION",
@@ -30,5 +33,6 @@
 		"Vvalue",
 		"xslm"
 	],
-    "java.debug.settings.onBuildFailureProceed": true
+	"java.debug.settings.onBuildFailureProceed": true,
+	"java.debug.settings.showQualifiedNames": true
 }
