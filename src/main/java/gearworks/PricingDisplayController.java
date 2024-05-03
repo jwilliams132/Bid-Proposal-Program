@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -23,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -129,6 +131,7 @@ public class PricingDisplayController {
 						? cityFinder.getLargestCity(currentJob.getCounty())
 						: "no city found")));
 		jobContents.getChildren().clear();
+		// jobContents.setOnMouseMoved(this::handleMouseMoved); // TODO
 
 		denominations = new ArrayList<Label>();
 		lineItemSpecNumberLabels = new ArrayList<Label>();
@@ -160,6 +163,15 @@ public class PricingDisplayController {
 			totalMobsTextField.requestFocus();
 		});
 	}
+	// MARK: mouse show rowButtons
+	// private void handleMouseMoved(MouseEvent event) { // TODO
+
+	// double mouseY = event.getY();
+	// int numRows = jobContents.getRowCount();
+	// double rowHeight = jobContents.getHeight() / numRows;
+	// int currentRow = (int) (mouseY / rowHeight);
+	// System.out.println("Mouse in row: " + currentRow);
+	// }
 
 	public void changeState(int index) {
 
