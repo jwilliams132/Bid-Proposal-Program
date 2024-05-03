@@ -511,9 +511,10 @@ public class App extends Application {
 	@FXML
 	private void updateInfo() {
 
-		System.out.println((filterJobs.getWidth()));
-		System.out.println((addPricing.getWidth()));
-		System.out.println((chooseSaveFolder.getWidth()));
+		System.out.println("=".repeat(150));
+		System.out.println("----- Console Break -----".repeat(6));
+		System.out.println("=".repeat(150));
+		System.out.println();
 	}
 
 	@FXML
