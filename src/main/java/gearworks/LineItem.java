@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class LineItem {
 
-	private String description, specNumber, unit;
+	private String description, specNumber, unit = "SY";
 
 	private BigDecimal quantity;
 	private BigDecimal price = new BigDecimal(0);

@@ -86,7 +86,6 @@ public class Job {
 
 		// populate the blacklist ArrayList with names
 		blacklist.add("Angel Brothers");
-		blacklist.add("AUSTIN BRIDGE & ROAD SERVICES, LP");
 		blacklist.add("LONE STAR PAVING COMPANY");
 		blacklist.add("TEXAS MATERIALS GROUP, INC");
 		blacklist.add("HUNTER INDUSTRIES, LTD");
@@ -142,7 +141,7 @@ public class Job {
 
 		job.add("County:		      " + getCounty());
 		job.add("Highway:	      " + getHighway());
-		job.add("CSJ:		      " + getCsj());
+		job.add("CSJ:		      " + getCsj().replace("-", ""));
 		job.add("Working Days:     " + getWorkingDays());
 
 		if (!getLineItems().isEmpty()) {
