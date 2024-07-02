@@ -3,9 +3,11 @@ package gearworks;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.TreeMap;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -26,6 +28,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -51,37 +54,61 @@ public class PricingDisplayController {
 	private List<Label> lineItemDescriptionLabels = new ArrayList<Label>();
 	private List<Label> lineItemQuantityLabels = new ArrayList<Label>();
 	private List<Label> lineItemUnitLabels = new ArrayList<Label>();
-	private List<Label> denominations = new ArrayList<Label>();
-	private TreeMap<Integer, Map<specialRowContent, Object>> specialRowsInUse = new TreeMap<Integer, Map<specialRowContent, Object>>();
+	private List<Label> lineItemDenominations = new ArrayList<Label>();
+	private TreeMap<Integer, Map<SpecialRowContent, Control>> specialRowsInUse = new TreeMap<Integer, Map<SpecialRowContent, Control>>();
+	private TreeMap<ManipulationButtonTypes, Control> manipulationButtonRef = new TreeMap<ManipulationButtonTypes, Control>();
 	private TextField totalMobsTextField;
 	private TextField upToMobsTextField;
 	private TextField additionalMobsTextField;
-	private List<TextField> lineItemTextFields = new ArrayList<TextField>();
+	private List<TextField> lineItemPriceTextFields = new ArrayList<TextField>();
 	private Button addSpecialButton = new Button("+ Add Special Line Item");
+	private GridPane manipulationButtons;
 
 	private App app;
 	private List<Job> filteredJobList;
 	private List<Button> jobButtons;
 	private int currentJobIndex = 0;
+	private int hoveredRowIndex = 0;
 
-	private final int DESCRIPTION_COLUMN = 0;
+	private final int MOBS_COLUMN = 0;
 	private final int LINE_ITEM_BUTTONS_COLUMN = 0;
 	private final int SPEC_NUMBER_COLUMN = 1;
-	private final int LI_DESCRIPTION_COLUMN = 2;
+	private final int DESCRIPTION_COLUMN = 2;
 	private final int QUANTITY_COLUMN = 3;
 	private final int UNITS_COLUMN = 4;
 	private final int DENOMINATION_COLUMN = 5;
 	private final int PRICE_COLUMN = 6;
 	private final int PER_COLUMN = 7;
 
-	private enum specialRowContent {
-		MANIPULATION_BUTTONS, DESCRIPTION_TEXTFIELD, QUANTITY_BUTTON, PRICE_BUTTON, QUANTITY_TEXTFIELD, PRICE_TEXTFIELD
+	private enum SpecialRowContent {
+
+		// MANIPULATION_BUTTONS,
+		SPEC_NUMBER_LABEL,
+		DESCRIPTION_LABEL,
+		DESCRIPTION_TEXTFIELD,
+		QUANTITY_BUTTON,
+		QUANTITY_LABEL,
+		QUANTITY_TEXTFIELD,
+		UNIT_LABEL,
+		PRICE_BUTTON,
+		PRICE_TEXTFIELD,
+		DENOMINATION_LABEL
+	}
+
+	private enum ManipulationButtonTypes {
+
+		MOVE_UP,
+		MOVE_DOWN,
+		EDIT,
+		CONFIRM,
+		COPY_DOWN,
+		DELETE
 	}
 
 	public void customizeAppearance() {
 
 		setupLegend();
-		setupPricing();
+		updateJobDisplay();
 		Platform.runLater(() -> {
 			totalMobsTextField.requestFocus();
 		});
@@ -119,7 +146,8 @@ public class PricingDisplayController {
 		jobButtons.get(currentJobIndex).getStyleClass().add("button-hover");
 	}
 
-	private void setupPricing() {
+	// MARK: setupPricing
+	public void updateJobDisplay() {
 
 		TexasCityFinder cityFinder = new TexasCityFinder();
 
@@ -131,14 +159,18 @@ public class PricingDisplayController {
 						? cityFinder.getLargestCity(currentJob.getCounty())
 						: "no city found")));
 		jobContents.getChildren().clear();
-		// jobContents.setOnMouseMoved(this::handleMouseMoved); // TODO
+		addGridConstraints();
 
-		denominations = new ArrayList<Label>();
+		jobContents.setOnMouseMoved(this::handleMouseMoved); // TODO hover for nav
+
+		lineItemDenominations = new ArrayList<Label>();
 		lineItemSpecNumberLabels = new ArrayList<Label>();
 		lineItemDescriptionLabels = new ArrayList<Label>();
 		lineItemQuantityLabels = new ArrayList<Label>();
 		lineItemUnitLabels = new ArrayList<Label>();
-		specialRowsInUse = new TreeMap<Integer, Map<specialRowContent, Object>>();
+		specialRowsInUse = new TreeMap<Integer, Map<SpecialRowContent, Control>>();
+
+		hoveredRowIndex = -1;
 
 		int nextAvailableGridRowIndex = 0;
 
@@ -157,21 +189,160 @@ public class PricingDisplayController {
 
 		addLineItemsToPricingPage(nextAvailableGridRowIndex);
 		nextAvailableGridRowIndex += currentJob.getLineItems().size();
-		resetAddSpecialButton(nextAvailableGridRowIndex);
+		setAddSpecialButton(nextAvailableGridRowIndex);
 
 		Platform.runLater(() -> {
 			totalMobsTextField.requestFocus();
 		});
 	}
-	// MARK: mouse show rowButtons
-	// private void handleMouseMoved(MouseEvent event) { // TODO
 
-	// double mouseY = event.getY();
-	// int numRows = jobContents.getRowCount();
-	// double rowHeight = jobContents.getHeight() / numRows;
-	// int currentRow = (int) (mouseY / rowHeight);
-	// System.out.println("Mouse in row: " + currentRow);
-	// }
+	public void addGridConstraints() {
+
+		int zero = 80;
+		int one = 90;
+		int two = 400;
+		int three = 140;
+		int four = 50;
+		int five = 5;
+		int six = 180;
+		int seven = 100;
+		int total = zero + one + two + three + four + five + six + seven;
+
+		jobContents.setPrefWidth(total + 50);
+		jobContents.setMinWidth(total + 50);
+
+		jobContents.setPrefHeight(650);
+		jobContents.setMinHeight(650);
+
+		ColumnConstraints col0Constraints = new ColumnConstraints();
+		col0Constraints.setMinWidth(zero);
+		col0Constraints.setMaxWidth(zero);
+		col0Constraints.setPrefWidth(zero);
+		jobContents.getColumnConstraints().add(0, col0Constraints);
+
+		ColumnConstraints col1Constraints = new ColumnConstraints();
+		col1Constraints.setMinWidth(one);
+		col1Constraints.setMaxWidth(one);
+		col1Constraints.setPrefWidth(one);
+		jobContents.getColumnConstraints().add(1, col1Constraints);
+
+		ColumnConstraints col2Constraints = new ColumnConstraints();
+		col2Constraints.setMinWidth(two);
+		col2Constraints.setMaxWidth(two);
+		col2Constraints.setPrefWidth(two);
+		jobContents.getColumnConstraints().add(2, col2Constraints);
+
+		ColumnConstraints col3Constraints = new ColumnConstraints();
+		col3Constraints.setMinWidth(three);
+		col3Constraints.setMaxWidth(three);
+		col3Constraints.setPrefWidth(three);
+		jobContents.getColumnConstraints().add(3, col3Constraints);
+
+		ColumnConstraints col4Constraints = new ColumnConstraints();
+		col4Constraints.setMinWidth(four);
+		col4Constraints.setMaxWidth(four);
+		col4Constraints.setPrefWidth(four);
+		jobContents.getColumnConstraints().add(4, col4Constraints);
+
+		ColumnConstraints col5Constraints = new ColumnConstraints();
+		col5Constraints.setMinWidth(five);
+		col5Constraints.setMaxWidth(five);
+		col5Constraints.setPrefWidth(five);
+		jobContents.getColumnConstraints().add(5, col5Constraints);
+
+		ColumnConstraints col6Constraints = new ColumnConstraints();
+		col6Constraints.setMinWidth(six);
+		col6Constraints.setMaxWidth(six);
+		col6Constraints.setPrefWidth(six);
+		jobContents.getColumnConstraints().add(6, col6Constraints);
+
+		ColumnConstraints col7Constraints = new ColumnConstraints();
+		col7Constraints.setMinWidth(seven);
+		col7Constraints.setMaxWidth(seven);
+		col7Constraints.setPrefWidth(seven);
+		jobContents.getColumnConstraints().add(7, col7Constraints);
+	}
+
+	// MARK: mouse show rowButtons
+	private void handleMouseMoved(MouseEvent event) { // TODO
+
+		double mouseY = event.getY();
+		// int numRows = specialRowsInUse.lastKey();
+		// double rowHeight = jobContents.getHeight() / numRows;
+		// int currentRow = (int) (mouseY / rowHeight);
+
+		int currentRow = -1;
+
+		double totalMobs = 44.5;
+		double other = 49;
+		double nonLIHeight = totalMobs + (preferences.isAdditionalMobsVisible() ? other : 0)
+				+ (preferences.isUpToMobsVisible() ? other : 0);
+
+		// System.out.println(specialRowsInUse);
+		double maxRowHeight = nonLIHeight;
+		
+		for (Integer integer : specialRowsInUse.keySet()) {
+			double bufferHeight = 0;
+			for (Control control : specialRowsInUse.get(integer).values()) {
+				bufferHeight = (control.getHeight() + 9) > bufferHeight ? (control.getHeight() + 9) : bufferHeight;
+			}
+			maxRowHeight += bufferHeight;
+			if (mouseY < maxRowHeight) {
+				currentRow = integer;
+				break;
+			}
+		}
+
+		// System.out.println("MouseY:  " + mouseY);
+
+		if (currentRow == hoveredRowIndex)
+			return;
+
+		int lineItemStartRowIndex = 1
+				+ (preferences.isAdditionalMobsVisible() ? 1 : 0)
+				+ (preferences.isUpToMobsVisible() ? 1 : 0);
+		int lineItemEndRowIndex = lineItemStartRowIndex
+				+ filteredJobList.get(currentJobIndex).getLineItems().size() - 1;
+
+		// System.out.println("LISR: " + lineItemStartRowIndex);
+		// System.out.println("LIER: " + lineItemEndRowIndex);
+		// System.out.println("Current Row: " + currentRow);
+		if (currentRow >= lineItemStartRowIndex && currentRow <= lineItemEndRowIndex) {
+
+			if (manipulationButtons != null)
+
+				jobContents.getChildren().remove(manipulationButtons);
+
+			GridPane newManipulationButtons = getLineItemManipulationButtons(currentRow);
+			// if (currentRow == lineItemEndRowIndex &&
+			// !jobContents.getChildren().contains(addSpecialButton))
+
+			jobContents.add(newManipulationButtons, LINE_ITEM_BUTTONS_COLUMN, currentRow);
+
+			manipulationButtons = newManipulationButtons;
+			if (specialRowsInUse.get(currentRow).containsKey(SpecialRowContent.DESCRIPTION_TEXTFIELD)) {
+
+				manipulationButtons.getChildren().remove(manipulationButtonRef.get(ManipulationButtonTypes.EDIT));
+				manipulationButtons.add(manipulationButtonRef.get(ManipulationButtonTypes.CONFIRM), 1, 0);
+			}
+			hoveredRowIndex = currentRow;
+			return;
+		}
+		if (currentRow > lineItemEndRowIndex && !jobContents.getChildren().contains(addSpecialButton)) {
+
+			if (manipulationButtons != null)
+
+				jobContents.getChildren().remove(manipulationButtons);
+
+			GridPane newManipulationButtons = getLineItemManipulationButtons(currentRow);
+			jobContents.add(newManipulationButtons, LINE_ITEM_BUTTONS_COLUMN, currentRow);
+			manipulationButtons = newManipulationButtons;
+			manipulationButtons.getChildren().remove(manipulationButtonRef.get(ManipulationButtonTypes.EDIT));
+			manipulationButtons.add(manipulationButtonRef.get(ManipulationButtonTypes.CONFIRM), 1, 0);
+
+			hoveredRowIndex = currentRow;
+		}
+	}
 
 	public void changeState(int index) {
 
@@ -180,7 +351,7 @@ public class PricingDisplayController {
 		jobButtons.get(index).getStyleClass().add("button-hover");
 		currentJobIndex = index;
 		app.updateCurrentJobItems(currentJobIndex);
-		setupPricing();
+		updateJobDisplay();
 		legendAutoFollow();
 	}
 
@@ -232,21 +403,14 @@ public class PricingDisplayController {
 
 	private void addTotalMobsToPricingPage() {
 
-		totalMobsLabel = new Label("Total Mobilizations Price?  ") {
-			{
-				setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-				getStyleClass().add("secondaryLabel");
-			}
-		};
-		jobContents.add(totalMobsLabel, DESCRIPTION_COLUMN, 0, 3, 1);
+		totalMobsLabel = new Label("Total Mobilizations Price?  ");
+		setFontAndColor(totalMobsLabel, "secondaryLabel", null);
+		jobContents.add(totalMobsLabel, MOBS_COLUMN, 0, 3, 1);
 
-		Label denomination = new Label("$") {
-			{
-				setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-				getStyleClass().add("quaternaryLabel");
-			}
-		};
-		denominations.add(denomination);
+		Label denomination = new Label("$");
+		setFontAndColor(denomination, "quaternaryLabel", null);
+
+		lineItemDenominations.add(denomination);
 		jobContents.add(denomination, DENOMINATION_COLUMN, 0);
 
 		totalMobsTextField = new TextField();
@@ -269,13 +433,9 @@ public class PricingDisplayController {
 
 	private void addUpTo_MobsToPricingPage() {
 
-		upToMobsLabel = new Label("How Many Mobilizations Included?  ") {
-			{
-				setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-				getStyleClass().add("secondaryLabel");
-			}
-		};
-		jobContents.add(upToMobsLabel, DESCRIPTION_COLUMN, 1, 3, 1);
+		upToMobsLabel = new Label("How Many Mobilizations Included?  ");
+		setFontAndColor(upToMobsLabel, "secondaryLabel", null);
+		jobContents.add(upToMobsLabel, MOBS_COLUMN, 1, 3, 1);
 
 		upToMobsTextField = new TextField();
 		upToMobsTextField.setOnMouseClicked(e -> {
@@ -301,21 +461,13 @@ public class PricingDisplayController {
 		if (preferences.isUpToMobsVisible()) {
 			yIndex++;
 		}
-		additionalMobsLabel = new Label("Additional Mobilization Price?  ") {
-			{
-				setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-				getStyleClass().add("secondaryLabel");
-			}
-		};
-		jobContents.add(additionalMobsLabel, DESCRIPTION_COLUMN, yIndex, 3, 1);
+		additionalMobsLabel = new Label("Additional Mobilization Price?  ");
+		setFontAndColor(additionalMobsLabel, "secondaryLabel", null);
+		jobContents.add(additionalMobsLabel, MOBS_COLUMN, yIndex, 3, 1);
 
-		Label denomination = new Label("$") {
-			{
-				setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-				getStyleClass().add("quaternaryLabel");
-			}
-		};
-		denominations.add(denomination);
+		Label denomination = new Label("$");
+		setFontAndColor(denomination, "quaternaryLabel", null);
+		lineItemDenominations.add(denomination);
 		jobContents.add(denomination, DENOMINATION_COLUMN, yIndex);
 		additionalMobsTextField = new TextField();
 		additionalMobsTextField.setOnMouseClicked(e -> {
@@ -337,101 +489,83 @@ public class PricingDisplayController {
 
 	private void addLineItemsToPricingPage(int startingIndexForLineItems) {
 
-		lineItemTextFields.clear();
+		lineItemPriceTextFields.clear();
 
 		for (int lineItemIndex = 0; lineItemIndex < filteredJobList.get(currentJobIndex).getLineItems()
 				.size(); lineItemIndex++) {
 
-			final int finalIndex = lineItemIndex;
+			int gridRowIndex = lineItemIndex + startingIndexForLineItems;
 
-			LineItem currentLineItem = filteredJobList.get(currentJobIndex).getLineItems().get(finalIndex);
-
-			// ========================= ADD MANIPULATION BUTTONS ====================
-			jobContents.add(getLineItemManipulationButtons(finalIndex),
-					LINE_ITEM_BUTTONS_COLUMN,
-					lineItemIndex + startingIndexForLineItems); // TODO make the edit button show on start
+			LineItem currentLineItem = filteredJobList.get(currentJobIndex).getLineItems().get(lineItemIndex);
 
 			// ========================= ADD LINE ITEM SPEC NUMBER ===================
-			lineItemSpecNumberLabels.add(finalIndex, new Label() {
-				{
-					setText(String.format("%7s", currentLineItem.getSpecNumber()));
-					setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-					getStyleClass().add("primaryLabel");
-				}
-			});
-			jobContents.add(lineItemSpecNumberLabels.get(finalIndex), SPEC_NUMBER_COLUMN,
-					lineItemIndex + startingIndexForLineItems);
+			lineItemSpecNumberLabels.add(lineItemIndex, new Label());
+			setFontAndColor(lineItemSpecNumberLabels.get(lineItemIndex), "primaryLabel",
+					String.format("%7s",
+							currentLineItem.getSpecNumber() == null ? "" : currentLineItem.getSpecNumber()));
+			jobContents.add(lineItemSpecNumberLabels.get(lineItemIndex), SPEC_NUMBER_COLUMN,
+					gridRowIndex);
 
 			// ========================= ADD LINE ITEM DESCRIPTION ===================
-			lineItemDescriptionLabels.add(finalIndex, new Label() {
-				{
-					setText(String.format("%-39s", currentLineItem.getDescription()));
-					setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-					getStyleClass().add("primaryLabel");
-					setWrapText(true);
-					setPrefWidth(400);
-				}
-			});
-			jobContents.add(lineItemDescriptionLabels.get(finalIndex), LI_DESCRIPTION_COLUMN,
-					lineItemIndex + startingIndexForLineItems);
-			addDragAndDropFunctionToLabel(lineItemDescriptionLabels.get(finalIndex), finalIndex);
+			lineItemDescriptionLabels.add(lineItemIndex, new Label());
+			setFontAndColor(lineItemDescriptionLabels.get(lineItemIndex), "primaryLabel",
+					String.format("%-39s", currentLineItem.getDescription()));
+			lineItemDescriptionLabels.get(lineItemIndex).setWrapText(true);
+			lineItemDescriptionLabels.get(lineItemIndex).setPrefWidth(400);
+			jobContents.add(lineItemDescriptionLabels.get(lineItemIndex), DESCRIPTION_COLUMN,
+					gridRowIndex);
 
 			// ========================= ADD LINE ITEM QUANTITY ======================
-			lineItemQuantityLabels.add(finalIndex, new Label() {
-				{
-					setText(String.format("%,14.2f", currentLineItem.getQuantity()));
-					setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-					getStyleClass().add("primaryLabel");
-				}
-			});
-			jobContents.add(lineItemQuantityLabels.get(finalIndex), QUANTITY_COLUMN,
-					lineItemIndex + startingIndexForLineItems);
+			lineItemQuantityLabels.add(lineItemIndex, new Label());
+			setFontAndColor(lineItemQuantityLabels.get(lineItemIndex), "primaryLabel",
+					String.format("%,14.2f", currentLineItem.getQuantity()));
+			jobContents.add(lineItemQuantityLabels.get(lineItemIndex), QUANTITY_COLUMN,
+					gridRowIndex);
 
 			// ========================= ADD LINE ITEM UNITS =========================
-			lineItemUnitLabels.add(finalIndex, new Label() {
-				{
-					setText(String.format("%-4s", currentLineItem.getUnit()));
-					setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-					getStyleClass().add("primaryLabel");
-				}
-			});
-			jobContents.add(lineItemUnitLabels.get(finalIndex), UNITS_COLUMN,
-					lineItemIndex + startingIndexForLineItems);
+			lineItemUnitLabels.add(lineItemIndex, new Label());
+			setFontAndColor(lineItemUnitLabels.get(lineItemIndex), "primaryLabel",
+					String.format("%-4s", currentLineItem.getUnit() == null ? "SY" : currentLineItem.getUnit()));
+			jobContents.add(lineItemUnitLabels.get(lineItemIndex), UNITS_COLUMN,
+					gridRowIndex);
 
 			// ========================= ADD DENOMINATION LABEL ======================
 
-			Label denomination = new Label("$") {
-				{
-					setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-					getStyleClass().add("quaternaryLabel");
-				}
-			};
-			denominations.add(denomination);
-			jobContents.add(denomination, DENOMINATION_COLUMN, lineItemIndex + startingIndexForLineItems);
+			Label denomination = new Label("$");
+			setFontAndColor(denomination, "quaternaryLabel", null);
+			lineItemDenominations.add(denomination);
+			jobContents.add(denomination, DENOMINATION_COLUMN, gridRowIndex);
 
 			// ========================= ADD PRICING INPUT ===========================
-
-			lineItemTextFields.add(new TextField() {
+			int finalIndex = lineItemIndex;
+			lineItemPriceTextFields.add(new TextField() {
 				{
 					setText(String.format("%1.2f",
 							filteredJobList.get(currentJobIndex).getLineItems().get(finalIndex).getPrice()));
 				}
 			});
-			addTextFieldAutoSelect(lineItemTextFields.get(finalIndex));
-			jobContents.add(lineItemTextFields.get(finalIndex), PRICE_COLUMN,
-					lineItemIndex + startingIndexForLineItems);
+			addTextFieldAutoSelect(lineItemPriceTextFields.get(lineItemIndex));
+			jobContents.add(lineItemPriceTextFields.get(lineItemIndex), PRICE_COLUMN,
+					gridRowIndex);
 
 			// ========================= ADD PER LABEL ===============================
 
-			Label unitsLabel = new Label(String.format(" (per %s)", currentLineItem.getUnit())) {
-				{
-					setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
-					getStyleClass().add("quaternaryLabel");
-				}
-			};
-			denominations.add(unitsLabel);
-			jobContents.add(unitsLabel, PER_COLUMN, lineItemIndex + startingIndexForLineItems);
-			lineItemTextFields.forEach(x -> setKeybinds(x));
+			Label unitsLabel = new Label();
+			setFontAndColor(unitsLabel, "quaternaryLabel",
+					String.format(" (per %s)", currentLineItem.getUnit() == null ? "SY" : currentLineItem.getUnit()));
+			lineItemDenominations.add(unitsLabel);
+			jobContents.add(unitsLabel, PER_COLUMN, gridRowIndex);
+			lineItemPriceTextFields.forEach(x -> setKeybinds(x));
+
+			Map<SpecialRowContent, Control> lineItemContents = new TreeMap<SpecialRowContent, Control>();
+			lineItemContents.put(SpecialRowContent.SPEC_NUMBER_LABEL, lineItemSpecNumberLabels.get(lineItemIndex));
+			lineItemContents.put(SpecialRowContent.DESCRIPTION_LABEL, lineItemDescriptionLabels.get(lineItemIndex));
+			lineItemContents.put(SpecialRowContent.QUANTITY_LABEL, lineItemQuantityLabels.get(lineItemIndex));
+			lineItemContents.put(SpecialRowContent.UNIT_LABEL, lineItemUnitLabels.get(lineItemIndex));
+			lineItemContents.put(SpecialRowContent.PRICE_TEXTFIELD, lineItemPriceTextFields.get(lineItemIndex));
+			lineItemContents.put(SpecialRowContent.DENOMINATION_LABEL, lineItemDenominations.get(lineItemIndex));
+
+			specialRowsInUse.put(gridRowIndex, lineItemContents);
 		}
 
 	}
@@ -450,171 +584,30 @@ public class PricingDisplayController {
 		});
 	}
 
-	private void addDragAndDropFunctionToLabel(Label lineItemLabel, final int finalIndex) {
-
-		// Add mouse event handlers for drag and drop
-		lineItemLabel.setOnDragDetected(event -> {
-
-			lineItemLabel.setStyle("-fx-background-color: lightblue;");
-			Dragboard db = lineItemLabel.startDragAndDrop(TransferMode.MOVE);
-			ClipboardContent content = new ClipboardContent();
-			content.putString(Integer.toString(finalIndex));
-			db.setContent(content);
-			event.consume();
-		});
-
-		lineItemLabel.setOnDragOver(event -> {
-
-			lineItemLabel.setStyle("-fx-border-color: blue; -fx-border-width: 2px;");
-			if (event.getGestureSource() != lineItemLabel && event.getDragboard().hasString()) {
-				event.acceptTransferModes(TransferMode.MOVE);
-			}
-			event.consume();
-		});
-
-		lineItemLabel.setOnDragDropped(event -> {
-
-			Dragboard db = event.getDragboard();
-			boolean success = false;
-			if (db.hasString()) {
-				int draggedIndex = Integer.parseInt(db.getString());
-				moveLineItem(draggedIndex, finalIndex);
-				success = true;
-			}
-			event.setDropCompleted(success);
-			event.consume();
-		});
-
-		lineItemLabel.setOnDragExited(event -> {
-			// Reset the styles
-			lineItemLabel.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
-
-			// Rest of the code
-		});
-	}
-
 	private void moveLineItem(int fromIndex, int toIndex) {
 
-		if (fromIndex == toIndex)
+		int nonLineItemRows = 1
+				+ (preferences.isAdditionalMobsVisible() ? 1 : 0)
+				+ (preferences.isUpToMobsVisible() ? 1 : 0);
+
+		if (fromIndex == toIndex ||
+				toIndex <= nonLineItemRows ||
+				toIndex - nonLineItemRows >= filteredJobList.get(currentJobIndex).getLineItems().size())
 			return;
 
-		if (toIndex <= 0)
-			return;
+		Map<SpecialRowContent, Control> from = specialRowsInUse.get(fromIndex);
+		Map<SpecialRowContent, Control> to = specialRowsInUse.get(toIndex);
 
-		if (toIndex >= filteredJobList.get(currentJobIndex).getLineItems().size())
-			return;
+		removeRowContents(fromIndex);
+		removeRowContents(toIndex);
 
-		LineItem draggedItem = filteredJobList.get(currentJobIndex).getLineItems().remove(fromIndex);
-		filteredJobList.get(currentJobIndex).getLineItems().add(toIndex, draggedItem);
+		specialRowsInUse.put(toIndex, from);
+		specialRowsInUse.put(fromIndex, to);
+
+		LineItem lineItem = filteredJobList.get(currentJobIndex).getLineItems().remove(fromIndex - nonLineItemRows);
+		filteredJobList.get(currentJobIndex).getLineItems().add(toIndex - nonLineItemRows, lineItem);
 
 		updateJobDisplay();
-	}
-
-	// MARK: resetAddSpecialButton
-	private void resetAddSpecialButton(int rowIndexToAddTo) {
-
-		addSpecialButton.setOnAction(event -> {
-
-			jobContents.getChildren().remove(addSpecialButton); // Remove the button when clicked
-			specialRowsInUse.put(
-					rowIndexToAddTo,
-					addSpecialLineToGrid(rowIndexToAddTo));
-					checkMapOccupancy(rowIndexToAddTo);
-		});
-		jobContents.getChildren().remove(addSpecialButton);
-		jobContents.add(addSpecialButton, LI_DESCRIPTION_COLUMN, rowIndexToAddTo);
-	}
-
-	// MARK: addSpecialLineToGrid
-	private Map<specialRowContent, Object> addSpecialLineToGrid(int rowIndexToAddTo) {
-
-		System.out.println("== addLine " + "=".repeat(89));
-
-		// int gridIndex = jobContents.getRowCount();
-
-		GridPane manipulationButtons = getLineItemManipulationButtons(rowIndexToAddTo);
-		TextField specialLineDescription = new TextField();
-		TextField priceTextField = new TextField();
-		TextField quantityTextField = new TextField();
-		Button addPriceButton = new Button("+ Price");
-		Button addQuantityButton = new Button("+ Quantity");
-
-		// ========================= ADD MANIPULATION BUTTONS ====================
-		jobContents.add(manipulationButtons, LINE_ITEM_BUTTONS_COLUMN, rowIndexToAddTo);
-
-		// ========================= LINE ITEM DESCRIPTION ===================
-		specialLineDescription.setPromptText("Enter description...");
-		jobContents.add(specialLineDescription, LI_DESCRIPTION_COLUMN, rowIndexToAddTo);
-
-		// ========================= LINE ITEM QUANTITY ======================
-		System.out.println("addLineToGrid, ABI, row:  " + rowIndexToAddTo + ", QB, TQB, TQTF");
-		addButtonImplementation(
-				rowIndexToAddTo,
-				addQuantityButton,
-				"Enter Quantity",
-				"Add Quantity...",
-				QUANTITY_COLUMN,
-				specialRowContent.QUANTITY_BUTTON,
-				specialRowContent.QUANTITY_TEXTFIELD);
-
-		System.out.println("addLineToGrid, ATFI, row:  " + rowIndexToAddTo + ", QTF, TQTF, TQB");
-		addTextFieldImplementation(
-				rowIndexToAddTo,
-				quantityTextField,
-				"Enter Quantity",
-				"Add Quantity...",
-				QUANTITY_COLUMN,
-				specialRowContent.QUANTITY_TEXTFIELD,
-				specialRowContent.QUANTITY_BUTTON);
-
-		jobContents.add(addQuantityButton, QUANTITY_COLUMN, rowIndexToAddTo); // Use the correct row index
-
-		// quantityTextField.setPromptText("Enter description...");
-		// jobContents.add(quantityTextField, QUANTITY_COLUMN, rowIndexToAddTo); // Use
-		// the correct row index
-
-		// ========================= PRICING INPUT ===========================
-		System.out.println("addLineToGrid, ABI, row:  " + rowIndexToAddTo + ", PB, TPB, TPTF");
-		addButtonImplementation(
-				rowIndexToAddTo,
-				addPriceButton,
-				"Enter Price",
-				"Add Price...",
-				PRICE_COLUMN,
-				specialRowContent.PRICE_BUTTON,
-				specialRowContent.PRICE_TEXTFIELD);
-
-		System.out.println("addLineToGrid, ATFI, row:  " + rowIndexToAddTo + ", PTF, TPTF, TPB");
-		addTextFieldImplementation(
-				rowIndexToAddTo,
-				priceTextField,
-				"Enter Price",
-				"Add Price...",
-				PRICE_COLUMN,
-				specialRowContent.PRICE_TEXTFIELD,
-				specialRowContent.PRICE_BUTTON);
-
-		jobContents.add(addPriceButton, PRICE_COLUMN, rowIndexToAddTo);
-
-		// priceTextField.setPromptText("Enter description...");
-		// jobContents.add(priceTextField, PRICE_COLUMN, rowIndexToAddTo); // Use the
-		// correct row index
-
-		resetAddSpecialButton(rowIndexToAddTo + 1);
-
-		Map<specialRowContent, Object> specialLineItemContents = new TreeMap<>();
-		specialLineItemContents.put(specialRowContent.MANIPULATION_BUTTONS, manipulationButtons);
-		specialLineItemContents.put(specialRowContent.DESCRIPTION_TEXTFIELD, specialLineDescription);
-		specialLineItemContents.put(specialRowContent.QUANTITY_BUTTON, addQuantityButton);
-		// specialLineItemContents.put(specialRowContent.QUANTITY_TEXTFIELD,
-		// quantityTextField);
-		specialLineItemContents.put(specialRowContent.PRICE_BUTTON, addPriceButton);
-		// specialLineItemContents.put(specialRowContent.PRICE_TEXTFIELD,
-		// priceTextField);
-
-		System.out.println("== addLine end " + "=".repeat(85));
-		System.out.println();
-		return specialLineItemContents;
 	}
 
 	private GridPane getLineItemManipulationButtons(int rowIndex) {
@@ -647,11 +640,11 @@ public class PricingDisplayController {
 		});
 		editButton.setOnAction(event -> {
 
-			editButtonAction(manipulationGrid, editButton);
+			editButtonAction(confirmButton, rowIndex);
 		});
 		confirmButton.setOnAction(event -> {
 
-			confirmButtonAction(manipulationGrid, editButton);
+			confirmButtonAction(editButton, rowIndex);
 		});
 		deleteButton.setOnAction(event -> {
 
@@ -659,80 +652,348 @@ public class PricingDisplayController {
 		});
 		copyButton.setOnAction(event -> {
 
-			copyButtonAction();
+			copyButtonAction(rowIndex);
 		});
 
 		GridPane.setRowSpan(deleteButton, 2);
 		manipulationGrid.setHgap(2);
 		manipulationGrid.add(moveUpButton, 0, 0);
 		manipulationGrid.add(moveDownButton, 0, 1);
-		manipulationGrid.add(confirmButton, 1, 0);
+		manipulationGrid.add(editButton, 1, 0);
 		manipulationGrid.add(copyButton, 1, 1);
 		manipulationGrid.add(deleteButton, 2, 0, 1, 2);
+
+		manipulationButtonRef.put(ManipulationButtonTypes.MOVE_UP, moveUpButton);
+		manipulationButtonRef.put(ManipulationButtonTypes.MOVE_DOWN, moveDownButton);
+		manipulationButtonRef.put(ManipulationButtonTypes.EDIT, editButton);
+		manipulationButtonRef.put(ManipulationButtonTypes.CONFIRM, confirmButton);
+		manipulationButtonRef.put(ManipulationButtonTypes.COPY_DOWN, copyButton);
+		manipulationButtonRef.put(ManipulationButtonTypes.DELETE, deleteButton);
+
 		return manipulationGrid;
 	}
 
-	// MARK: Copy Action
-	private void copyButtonAction() {
+	// MARK: TODO Copy Action
+	private void copyButtonAction(int rowIndex) {
+
+		int nonLineItemRows = 1
+				+ (preferences.isAdditionalMobsVisible() ? 1 : 0)
+				+ (preferences.isUpToMobsVisible() ? 1 : 0);
+		int lineItemListSize = filteredJobList.get(currentJobIndex).getLineItems().size();
+		int lastUsedGridRowIndex = nonLineItemRows + lineItemListSize - 1;
 		// copy line item to buffer
+		Map<SpecialRowContent, Control> buffer = specialRowsInUse.get(rowIndex);
+		for (int index = lastUsedGridRowIndex; index > rowIndex; index--) {
+			moveLineItem(index, index + 1);
+		}
+		specialRowsInUse.put(rowIndex + 1, buffer);
+		remapStoredChildren();
+		LineItem referenceLI = filteredJobList.get(currentJobIndex).getLineItems()
+				.get(rowIndex - nonLineItemRows);
+		LineItem bufferLI = new LineItem(referenceLI.getSpecNumber(), referenceLI.getDescription(),
+				referenceLI.getUnit(), referenceLI.getQuantity(), referenceLI.getPrice());
+		filteredJobList.get(currentJobIndex).getLineItems().add(rowIndex - nonLineItemRows + 1, bufferLI);
+		updateJobDisplay();
 		// add buffer to index+1 as text field
 	}
 
 	// MARK: Delete Action
 	private void deleteButtonAction(int rowIndexToDelete) {
 
-		if (rowIndexToDelete < 0)
+		int lineItemIndex = rowIndexToDelete - 1
+				- (preferences.isAdditionalMobsVisible() ? 1 : 0)
+				- (preferences.isUpToMobsVisible() ? 1 : 0);
+		if (!preferences.isDeletionWarningsShown()) {
+
+			if (lineItemIndex < filteredJobList.get(currentJobIndex).getLineItems().size())
+
+				filteredJobList.get(currentJobIndex).getLineItems().remove(lineItemIndex);
+
+			removeRowContents(rowIndexToDelete);
+			remapStoredChildren();
+			updateListAfterDeletion();
+			updateJobDisplay();
 			return;
-
-		if (rowIndexToDelete < filteredJobList.get(currentJobIndex).getLineItems().size()) {
-
-			if (!preferences.isDeletionWarningsShown()) {
-
-				filteredJobList.get(currentJobIndex).getLineItems().remove(rowIndexToDelete);
-				updateJobDisplay();
-				return;
-			}
-			if (showConfirmationAlert(rowIndexToDelete)) {
-
-				filteredJobList.get(currentJobIndex).getLineItems().remove(rowIndexToDelete);
-				updateJobDisplay();
-				return;
-			}
 		}
-		if (rowIndexToDelete >= filteredJobList.get(currentJobIndex).getLineItems().size()) {
-			if (jobContents.getChildren()
-					.contains(specialRowsInUse
-							.get(rowIndexToDelete)
-							.get(specialRowContent.DESCRIPTION_TEXTFIELD))) {
 
-				removeSpecialRowContents(rowIndexToDelete);
-				specialRowsInUse.remove(rowIndexToDelete);
-				updateListAfterDeletion();
-				remapStoredChildren();
-			}
+		if (showConfirmationAlert(rowIndexToDelete)) {
+
+			if (lineItemIndex < filteredJobList.get(currentJobIndex).getLineItems().size())
+
+				filteredJobList.get(currentJobIndex).getLineItems().remove(lineItemIndex);
+
+			removeRowContents(rowIndexToDelete);
+			remapStoredChildren();
+			updateListAfterDeletion();
+			updateJobDisplay();
 		}
 	}
 
 	// MARK: Confirm Action
-	private void confirmButtonAction(GridPane manipulationGrid, Button editButton) {
-		// remove confirm button
-		// add edit button
-		manipulationGrid.add(editButton, 1, 0);
-		// switch text fields to labels
+	private void confirmButtonAction(Button editButton, int rowIndex) {
+
+		BigDecimal quantity = null;
+		BigDecimal price = null;
+		if (jobContents.getChildren()
+				.contains(specialRowsInUse.get(rowIndex).get(SpecialRowContent.QUANTITY_TEXTFIELD))) {
+
+			TextField bufferTF = (TextField) specialRowsInUse.get(rowIndex).get(SpecialRowContent.QUANTITY_TEXTFIELD);
+			try {
+
+				if (bufferTF.getText().equals(""))
+
+					quantity = new BigDecimal(0.00);
+				else
+
+					quantity = new BigDecimal(bufferTF.getText());
+
+			} catch (NumberFormatException e) {
+
+				app.showWarning("Warning", "Invalid input",
+						"\"" + bufferTF.getText()
+								+ "\" is not a valid number for quantity. Make sure there are only numbers and up to one decimal point.");
+				return;
+			}
+		}
+		if (jobContents.getChildren()
+				.contains(specialRowsInUse.get(rowIndex).get(SpecialRowContent.PRICE_TEXTFIELD))) {
+
+			TextField bufferTF = (TextField) specialRowsInUse.get(rowIndex).get(SpecialRowContent.PRICE_TEXTFIELD);
+			try {
+
+				if (bufferTF.getText().equals(""))
+
+					price = new BigDecimal(0.00);
+				else
+
+					price = new BigDecimal(bufferTF.getText());
+
+			} catch (NumberFormatException e) {
+
+				app.showWarning("Warning", "Invalid input",
+						"\"" + bufferTF.getText()
+								+ "\" is not a valid number for price. Make sure there are only numbers and up to one decimal point.");
+				return;
+			}
+		}
+		manipulationButtons.getChildren().remove(manipulationButtonRef.get(ManipulationButtonTypes.CONFIRM));
+		manipulationButtons.add(manipulationButtonRef.get(ManipulationButtonTypes.EDIT), 1, 0);
+
+		int lineItemStartRowIndex = 1
+				+ (preferences.isAdditionalMobsVisible() ? 1 : 0)
+				+ (preferences.isUpToMobsVisible() ? 1 : 0);
+		int lineItemEndRowIndex = lineItemStartRowIndex
+				+ filteredJobList.get(currentJobIndex).getLineItems().size() - 1;
+
+		boolean isSpecialLineItem = rowIndex > lineItemEndRowIndex;
+		LineItem lineItem = isSpecialLineItem ? new LineItem()
+				: filteredJobList.get(currentJobIndex).getLineItems()
+						.get(rowIndex - lineItemStartRowIndex);
+
+		// ========================= LINE ITEM DESCRIPTION ===================
+
+		TextField description = (TextField) specialRowsInUse.get(rowIndex).get(SpecialRowContent.DESCRIPTION_TEXTFIELD);
+		// remove from grid and map
+		jobContents.getChildren()
+				.remove(specialRowsInUse.get(rowIndex).remove(SpecialRowContent.DESCRIPTION_TEXTFIELD));
+
+		// add new label and style it
+		Label tempDLabel = new Label();
+		setFontAndColor(tempDLabel, "primaryLabel", String.format("%-39s", description.getText()));
+		tempDLabel.setWrapText(true);
+		tempDLabel.setPrefWidth(400);
+		specialRowsInUse.get(rowIndex).put(SpecialRowContent.DESCRIPTION_LABEL, tempDLabel);
+
+		// add label to grid
+		jobContents.add(specialRowsInUse.get(rowIndex).get(SpecialRowContent.DESCRIPTION_LABEL),
+				DESCRIPTION_COLUMN, rowIndex);
+
+		// set line item description
+		if (isSpecialLineItem) {
+
+			lineItem.setDescription(description.getText());
+		} else {
+
+			filteredJobList.get(currentJobIndex).getLineItems().get(rowIndex - lineItemStartRowIndex)
+					.setDescription(description.getText());
+		}
+
+		// ========================= LINE ITEM QUANTITY ======================
+		if (jobContents.getChildren().contains(specialRowsInUse.get(rowIndex).get(SpecialRowContent.QUANTITY_BUTTON))) {
+
+			jobContents.getChildren()
+					.remove(specialRowsInUse.get(rowIndex).get(SpecialRowContent.QUANTITY_BUTTON));
+			quantity = new BigDecimal(0.00);
+
+		} else {
+
+			jobContents.getChildren()
+					.remove(specialRowsInUse.get(rowIndex).get(SpecialRowContent.QUANTITY_TEXTFIELD));
+		}
+
+		// add new label and style it
+		specialRowsInUse.get(rowIndex).put(SpecialRowContent.QUANTITY_LABEL, new Label());
+		setFontAndColor((Label) specialRowsInUse.get(rowIndex).get(SpecialRowContent.QUANTITY_LABEL),
+				"primaryLabel",
+				String.format("%,14.2f", quantity));
+
+		// add label to grid
+		jobContents.add(specialRowsInUse.get(rowIndex).get(SpecialRowContent.QUANTITY_LABEL),
+				QUANTITY_COLUMN, rowIndex);
+
+		// ========================= LINE ITEM PRICE =========================
+		if (jobContents.getChildren().contains(specialRowsInUse.get(rowIndex).get(SpecialRowContent.PRICE_BUTTON))) {
+
+			jobContents.getChildren().remove(specialRowsInUse.get(rowIndex).get(SpecialRowContent.PRICE_BUTTON));
+			jobContents.add(specialRowsInUse.get(rowIndex).get(SpecialRowContent.PRICE_TEXTFIELD), PRICE_COLUMN,
+					rowIndex);
+			price = new BigDecimal(0.00);
+		}
+		// set line item description
+		if (isSpecialLineItem) {
+
+			lineItem.setQuantity(quantity);
+			lineItem.setPrice(price);
+			filteredJobList.get(currentJobIndex).getLineItems().add(lineItem);
+		} else {
+
+			filteredJobList.get(currentJobIndex).getLineItems().get(rowIndex - lineItemStartRowIndex)
+					.setQuantity(quantity);
+		}
+		filteredJobList.get(currentJobIndex).getLineItems().get(rowIndex - lineItemStartRowIndex).setQuantity(quantity);
+
+		if (isSpecialLineItem) {
+
+			setAddSpecialButton(rowIndex + 1);
+		}
 	}
 
 	// MARK: Edit Action
-	private void editButtonAction(GridPane manipulationGrid, Button editButton) {
-		// remove edit button
-		manipulationGrid.getChildren().remove(editButton);
-		// add confirm button
-		// switch label with text fields
+	private void editButtonAction(Button confirmButton, int rowIndex) {
+
+		manipulationButtons.getChildren().remove(manipulationButtonRef.get(ManipulationButtonTypes.EDIT));
+		manipulationButtons.add(manipulationButtonRef.get(ManipulationButtonTypes.CONFIRM), 1, 0);
+
+		int lineItemStartRowIndex = 1
+				+ (preferences.isAdditionalMobsVisible() ? 1 : 0)
+				+ (preferences.isUpToMobsVisible() ? 1 : 0);
+		// int lineItemEndRowIndex = lineItemStartRowIndex
+		// + filteredJobList.get(currentJobIndex).getLineItems().size() - 1;
+
+		LineItem lineItem = filteredJobList.get(currentJobIndex).getLineItems()
+				.get(rowIndex - lineItemStartRowIndex);
+
+		// ========================= LINE ITEM DESCRIPTION ===================
+		jobContents.getChildren()
+				.remove(specialRowsInUse.get(rowIndex).remove(SpecialRowContent.DESCRIPTION_LABEL));
+		specialRowsInUse.get(rowIndex).put(SpecialRowContent.DESCRIPTION_TEXTFIELD,
+				new TextField(lineItem.getDescription()) {
+					{
+						setText(lineItem.getDescription());
+						setPrefWidth(400);
+					}
+				});
+		jobContents.add(specialRowsInUse.get(rowIndex).get(SpecialRowContent.DESCRIPTION_TEXTFIELD),
+				DESCRIPTION_COLUMN, rowIndex);
+
+		// ========================= LINE ITEM QUANTITY ======================
+		jobContents.getChildren()
+				.remove(specialRowsInUse.get(rowIndex).remove(SpecialRowContent.QUANTITY_LABEL));
+		specialRowsInUse.get(rowIndex).put(SpecialRowContent.QUANTITY_TEXTFIELD,
+				new TextField() {
+					{
+						setText(
+								(lineItem.getQuantity() != null ? lineItem.getQuantity().toString() : "0"));
+						setPrefWidth(135);
+					}
+				});
+		jobContents.add(specialRowsInUse.get(rowIndex).get(SpecialRowContent.QUANTITY_TEXTFIELD),
+				QUANTITY_COLUMN, rowIndex);
+	}
+
+	// MARK: resetAddSpecialButton
+	private void setAddSpecialButton(int rowIndexToAddTo) {
+
+		addSpecialButton.setOnAction(event -> {
+
+			jobContents.getChildren().remove(addSpecialButton); // Remove the button when clicked
+			specialRowsInUse.put(
+					rowIndexToAddTo,
+					addSpecialLineToGrid(rowIndexToAddTo));
+			// checkMapOccupancy(rowIndexToAddTo);
+		});
+		jobContents.getChildren().remove(addSpecialButton);
+		jobContents.add(addSpecialButton, DESCRIPTION_COLUMN, rowIndexToAddTo);
+	}
+
+	// MARK: addSpecialLineToGrid
+	private Map<SpecialRowContent, Control> addSpecialLineToGrid(int rowIndexToAddTo) {
+
+		TextField specialLineDescription = new TextField();
+		TextField priceTextField = new TextField();
+		TextField quantityTextField = new TextField();
+		Button addPriceButton = new Button("+ Price");
+		Button addQuantityButton = new Button("+ Quantity");
+
+		// ========================= LINE ITEM DESCRIPTION ===================
+		specialLineDescription.setPromptText("Enter description...");
+		jobContents.add(specialLineDescription, DESCRIPTION_COLUMN, rowIndexToAddTo);
+
+		// ========================= LINE ITEM QUANTITY ======================
+		addButtonImplementation(
+				rowIndexToAddTo,
+				addQuantityButton,
+				"Enter Quantity",
+				"Add Quantity...",
+				QUANTITY_COLUMN,
+				SpecialRowContent.QUANTITY_BUTTON,
+				SpecialRowContent.QUANTITY_TEXTFIELD);
+
+		addTextFieldImplementation(
+				rowIndexToAddTo,
+				quantityTextField,
+				"Enter Quantity",
+				"Add Quantity...",
+				QUANTITY_COLUMN,
+				SpecialRowContent.QUANTITY_TEXTFIELD,
+				SpecialRowContent.QUANTITY_BUTTON);
+
+		jobContents.add(addQuantityButton, QUANTITY_COLUMN, rowIndexToAddTo); // Use the correct row index
+
+		// ========================= PRICING INPUT ===========================
+		addButtonImplementation(
+				rowIndexToAddTo,
+				addPriceButton,
+				"Enter Price",
+				"Add Price...",
+				PRICE_COLUMN,
+				SpecialRowContent.PRICE_BUTTON,
+				SpecialRowContent.PRICE_TEXTFIELD);
+
+		addTextFieldImplementation(
+				rowIndexToAddTo,
+				priceTextField,
+				"Enter Price",
+				"Add Price...",
+				PRICE_COLUMN,
+				SpecialRowContent.PRICE_TEXTFIELD,
+				SpecialRowContent.PRICE_BUTTON);
+
+		jobContents.add(addPriceButton, PRICE_COLUMN, rowIndexToAddTo);
+
+		Map<SpecialRowContent, Control> specialLineItemContents = new TreeMap<>();
+		specialLineItemContents.put(SpecialRowContent.DESCRIPTION_TEXTFIELD, specialLineDescription);
+		specialLineItemContents.put(SpecialRowContent.QUANTITY_BUTTON, addQuantityButton);
+		specialLineItemContents.put(SpecialRowContent.QUANTITY_TEXTFIELD, quantityTextField);
+		specialLineItemContents.put(SpecialRowContent.PRICE_BUTTON, addPriceButton);
+		specialLineItemContents.put(SpecialRowContent.PRICE_TEXTFIELD, priceTextField);
+		return specialLineItemContents;
 	}
 
 	// MARK: updateListAfterDeletion
 	private void updateListAfterDeletion() {
 
-		TreeMap<Integer, Map<specialRowContent, Object>> tempTreeMap = new TreeMap<Integer, Map<specialRowContent, Object>>();
+		TreeMap<Integer, Map<SpecialRowContent, Control>> tempTreeMap = new TreeMap<Integer, Map<SpecialRowContent, Control>>();
 		int rowCount = 1; // this is to count totalMobilizations row
 
 		if (preferences.isAdditionalMobsVisible())
@@ -740,7 +1001,7 @@ public class PricingDisplayController {
 		if (preferences.isUpToMobsVisible())
 			rowCount++;
 		rowCount += filteredJobList.get(currentJobIndex).getLineItems().size();
-		for (Map<specialRowContent, Object> value : specialRowsInUse.values())
+		for (Map<SpecialRowContent, Control> value : specialRowsInUse.values())
 			tempTreeMap.put(rowCount++, value);
 		specialRowsInUse = tempTreeMap;
 	}
@@ -748,168 +1009,153 @@ public class PricingDisplayController {
 	// MARK: remapStoredChildren
 	private void remapStoredChildren() {
 
-		System.out.println("== remap " + "=".repeat(91));
 		specialRowsInUse.forEach((key, map) -> {
 
-			System.out.println(key);
-			System.out.println();
-			checkMapOccupancy(key);
-
-			// =MANIPULATION_BUTTONS===============================================================================
-			jobContents.getChildren().remove(map.get(specialRowContent.MANIPULATION_BUTTONS));
-
-			GridPane manipulationButtons = getLineItemManipulationButtons(key);
-			specialRowsInUse.get(key).put(specialRowContent.MANIPULATION_BUTTONS, manipulationButtons);
-			jobContents.add(manipulationButtons, LINE_ITEM_BUTTONS_COLUMN,
-					key);
-
 			// =DESCRIPTION_TEXTFIELD==============================================================================
-			if (map.containsKey(specialRowContent.DESCRIPTION_TEXTFIELD)) {
+			if (map.containsKey(SpecialRowContent.DESCRIPTION_TEXTFIELD)) {
 
-				jobContents.getChildren().remove(map.get(specialRowContent.DESCRIPTION_TEXTFIELD));
+				jobContents.getChildren().remove(map.get(SpecialRowContent.DESCRIPTION_TEXTFIELD));
 
-				jobContents.add((TextField) map.get(specialRowContent.DESCRIPTION_TEXTFIELD),
-						LI_DESCRIPTION_COLUMN, key);
+				jobContents.add((TextField) map.get(SpecialRowContent.DESCRIPTION_TEXTFIELD),
+						DESCRIPTION_COLUMN, key);
 			}
+
 			// =QUANTITY_BUTTON====================================================================================
+			if (map.containsKey(SpecialRowContent.QUANTITY_BUTTON)) {
 
-			if (map.containsKey(specialRowContent.QUANTITY_BUTTON)) {
-
-				System.out.println(jobContents.getChildren().remove(map.get(specialRowContent.QUANTITY_BUTTON)));
-				System.out.println("remap, ABI, row:  " + key + ", QB, TQB, TQTF");
 				addButtonImplementation(
 						key,
-						(Button) map.get(specialRowContent.QUANTITY_BUTTON),
+						(Button) map.get(SpecialRowContent.QUANTITY_BUTTON),
 						"Enter Quantity",
 						"Add Quantity...",
 						QUANTITY_COLUMN,
-						specialRowContent.QUANTITY_BUTTON,
-						specialRowContent.QUANTITY_TEXTFIELD);
+						SpecialRowContent.QUANTITY_BUTTON,
+						SpecialRowContent.QUANTITY_TEXTFIELD);
 
-				if (!jobContents.getChildren().contains((Button) map.get(specialRowContent.QUANTITY_BUTTON)))
-					jobContents.add((Button) map.get(specialRowContent.QUANTITY_BUTTON),
+				if (!jobContents.getChildren().contains((Button) map.get(SpecialRowContent.QUANTITY_BUTTON)))
+					jobContents.add((Button) map.get(SpecialRowContent.QUANTITY_BUTTON),
 							QUANTITY_COLUMN, key);
 			}
+
 			// =QUANTITY_TEXTFIELD=================================================================================
+			if (map.containsKey(SpecialRowContent.QUANTITY_TEXTFIELD)) {
 
-			if (map.containsKey(specialRowContent.QUANTITY_TEXTFIELD)) {
-
-				System.out.println(jobContents.getChildren().remove(map.get(specialRowContent.QUANTITY_TEXTFIELD)));
-				System.out.println("remap, ATFI, row:  " + key + ", QTF, TQTF, TQB");
 				addTextFieldImplementation(
 						key,
-						(TextField) map.get(specialRowContent.QUANTITY_TEXTFIELD),
+						(TextField) map.get(SpecialRowContent.QUANTITY_TEXTFIELD),
 						"Enter Quantity",
 						"Add Quantity...",
 						QUANTITY_COLUMN,
-						specialRowContent.QUANTITY_BUTTON,
-						specialRowContent.QUANTITY_TEXTFIELD);
+						SpecialRowContent.QUANTITY_BUTTON,
+						SpecialRowContent.QUANTITY_TEXTFIELD);
 
-				if (!jobContents.getChildren().contains((TextField) map.get(specialRowContent.QUANTITY_TEXTFIELD)))
-					jobContents.add((TextField) map.get(specialRowContent.QUANTITY_TEXTFIELD), QUANTITY_COLUMN, key);
+				if (!jobContents.getChildren().contains((TextField) map.get(SpecialRowContent.QUANTITY_TEXTFIELD)))
+					jobContents.add((TextField) map.get(SpecialRowContent.QUANTITY_TEXTFIELD), QUANTITY_COLUMN, key);
 			}
+
 			// =PRICE_BUTTON=======================================================================================
+			if (map.containsKey(SpecialRowContent.PRICE_BUTTON)) {
 
-			if (map.containsKey(specialRowContent.PRICE_BUTTON)) {
-
-				System.out.println(jobContents.getChildren().remove(map.get(specialRowContent.PRICE_BUTTON)));
-				System.out.println("remap, ABI, row:  " + key + ", PB, TPB, TPTF");
 				addButtonImplementation(
 						key,
-						(Button) map.get(specialRowContent.PRICE_BUTTON),
+						(Button) map.get(SpecialRowContent.PRICE_BUTTON),
 						"Enter Price",
 						"Add Price...",
 						PRICE_COLUMN,
-						specialRowContent.PRICE_BUTTON,
-						specialRowContent.PRICE_TEXTFIELD);
+						SpecialRowContent.PRICE_BUTTON,
+						SpecialRowContent.PRICE_TEXTFIELD);
 
-				if (!jobContents.getChildren().contains((Button) map.get(specialRowContent.PRICE_BUTTON)))
-					jobContents.add((Button) map.get(specialRowContent.PRICE_BUTTON), PRICE_COLUMN, key);
+				if (!jobContents.getChildren().contains((Button) map.get(SpecialRowContent.PRICE_BUTTON)))
+					jobContents.add((Button) map.get(SpecialRowContent.PRICE_BUTTON), PRICE_COLUMN, key);
 			}
+
 			// =PRICE_TEXTFIELD====================================================================================
+			if (map.containsKey(SpecialRowContent.PRICE_TEXTFIELD)) {
 
-			if (map.containsKey(specialRowContent.PRICE_TEXTFIELD)) {
-
-				System.out.println(jobContents.getChildren().remove(map.get(specialRowContent.PRICE_TEXTFIELD)));
-				System.out.println("remap, ABI, row:  " + key + ", PTF, TPTF, TPB");
 				addTextFieldImplementation(
 						key,
-						(TextField) map.get(specialRowContent.PRICE_TEXTFIELD),
+						(TextField) map.get(SpecialRowContent.PRICE_TEXTFIELD),
 						"Enter Price",
 						"Add Price...",
 						PRICE_COLUMN,
-						specialRowContent.PRICE_TEXTFIELD,
-						specialRowContent.PRICE_BUTTON);
-				if (!jobContents.getChildren().contains((TextField) map.get(specialRowContent.PRICE_TEXTFIELD)))
-					jobContents.add((TextField) map.get(specialRowContent.PRICE_TEXTFIELD), PRICE_COLUMN, key);
+						SpecialRowContent.PRICE_TEXTFIELD,
+						SpecialRowContent.PRICE_BUTTON);
+				if (!jobContents.getChildren().contains((TextField) map.get(SpecialRowContent.PRICE_TEXTFIELD)))
+					jobContents.add((TextField) map.get(SpecialRowContent.PRICE_TEXTFIELD), PRICE_COLUMN, key);
 			}
-			checkMapOccupancy(key);
 		});
+
 		jobContents.getChildren().remove(addSpecialButton);
+
 		if (!specialRowsInUse.isEmpty()) {
-			resetAddSpecialButton(specialRowsInUse.lastKey() + 1);
-			System.out.println("== remap end SR>0 " + "=".repeat(82));
-			System.out.println();
+
+			setAddSpecialButton(specialRowsInUse.lastKey() + 1);
 			return;
 		}
+
 		int usedRowCount = 1 + (preferences.isAdditionalMobsVisible() ? 1 : 0)
 				+ (preferences.isUpToMobsVisible() ? 1 : 0)
 				+ filteredJobList.get(currentJobIndex).getLineItems().size();
-		resetAddSpecialButton(usedRowCount);
-		System.out.println("== remap end SR=0 " + "=".repeat(82));
-		System.out.println();
+		setAddSpecialButton(usedRowCount);
 	}
 
-	private void removeSpecialRowContents(int rowIndexToRemove) {
+	private void removeRowContents(int rowIndexToRemove) {
 
-		Map<specialRowContent, Object> rowMap = specialRowsInUse.get(rowIndexToRemove);
+		Map<SpecialRowContent, Control> rowMap = specialRowsInUse.get(rowIndexToRemove);
 
-		boolean hasManipulationButton = rowMap.containsKey(specialRowContent.MANIPULATION_BUTTONS);
-		boolean hasDescriptionTextField = rowMap.containsKey(specialRowContent.DESCRIPTION_TEXTFIELD);
-		boolean hasQuantityButton = rowMap.containsKey(specialRowContent.QUANTITY_BUTTON);
-		boolean hasQuantityTextField = rowMap.containsKey(specialRowContent.QUANTITY_TEXTFIELD);
-		boolean hasPriceButton = rowMap.containsKey(specialRowContent.PRICE_BUTTON);
-		boolean hasPriceTextField = rowMap.containsKey(specialRowContent.PRICE_TEXTFIELD);
+		boolean hasSpecNumberLabel = rowMap.containsKey(SpecialRowContent.SPEC_NUMBER_LABEL);
+		boolean hasDescriptionLabel = rowMap.containsKey(SpecialRowContent.DESCRIPTION_LABEL);
+		boolean hasDescriptionTextField = rowMap.containsKey(SpecialRowContent.DESCRIPTION_TEXTFIELD);
+		boolean hasQuantityLabel = rowMap.containsKey(SpecialRowContent.QUANTITY_LABEL);
+		boolean hasQuantityButton = rowMap.containsKey(SpecialRowContent.QUANTITY_BUTTON);
+		boolean hasQuantityTextField = rowMap.containsKey(SpecialRowContent.QUANTITY_TEXTFIELD);
+		boolean hasUnitLabel = rowMap.containsKey(SpecialRowContent.UNIT_LABEL);
+		boolean hasPriceButton = rowMap.containsKey(SpecialRowContent.PRICE_BUTTON);
+		boolean hasPriceTextField = rowMap.containsKey(SpecialRowContent.PRICE_TEXTFIELD);
+		boolean hasDenominationLabel = rowMap.containsKey(SpecialRowContent.DENOMINATION_LABEL);
 
-		System.out.println("-".repeat(50));
-		System.out.println("RemoveRowContents         Row: " + rowIndexToRemove);
-		System.out.println("- - - - - - - - -         Nav: " + hasManipulationButton);
-		System.out.println("- - - - - - - - - Description: " + hasDescriptionTextField);
-		System.out.println("- - - - - - - - -   QuantityB: " + hasQuantityButton);
-		System.out.println("- - - - - - - - -  QuantityTF: " + hasQuantityTextField);
-		System.out.println("- - - - - - - - -      PriceB: " + hasPriceButton);
-		System.out.println("- - - - - - - - -     PriceTF: " + hasPriceTextField);
-		System.out.println("-".repeat(50));
-		System.out.println();
+		if (hasSpecNumberLabel)
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.SPEC_NUMBER_LABEL));
 
-		if (hasManipulationButton)
-			jobContents.getChildren().remove(rowMap.get(specialRowContent.MANIPULATION_BUTTONS));
+		if (hasDescriptionLabel)
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.DESCRIPTION_LABEL));
 
 		if (hasDescriptionTextField)
-			jobContents.getChildren().remove(rowMap.get(specialRowContent.DESCRIPTION_TEXTFIELD));
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.DESCRIPTION_TEXTFIELD));
 
 		if (hasQuantityButton)
-			jobContents.getChildren().remove(rowMap.get(specialRowContent.QUANTITY_BUTTON));
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.QUANTITY_BUTTON));
+
+		if (hasQuantityLabel)
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.QUANTITY_LABEL));
 
 		if (hasQuantityTextField)
-			jobContents.getChildren().remove(rowMap.get(specialRowContent.QUANTITY_TEXTFIELD));
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.QUANTITY_TEXTFIELD));
+
+		if (hasUnitLabel)
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.UNIT_LABEL));
 
 		if (hasPriceButton)
-			jobContents.getChildren().remove(rowMap.get(specialRowContent.PRICE_BUTTON));
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.PRICE_BUTTON));
 
 		if (hasPriceTextField)
-			jobContents.getChildren().remove(rowMap.get(specialRowContent.PRICE_TEXTFIELD));
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.PRICE_TEXTFIELD));
+
+		if (hasDenominationLabel) {
+			jobContents.getChildren().remove(rowMap.get(SpecialRowContent.DENOMINATION_LABEL));
+		}
+		specialRowsInUse.remove(rowIndexToRemove);
 	}
 
 	// MARK: Add B/TF Functions
 	private void addButtonImplementation(int rowIndexToAddTo, Button button, String textFieldPrompt, String buttonText,
-			int column, specialRowContent removeType, specialRowContent addType) {
+			int column, SpecialRowContent removeType, SpecialRowContent addType) {
 
 		button.setOnAction(event -> {
 
 			TextField textField = new TextField();
-			System.out.println("ABI, ATFI, row:  " + rowIndexToAddTo + ", prompt:  " + buttonText + ", " + removeType
-					+ ", " + addType);
+			// System.out.println("ABI, ATFI, row: " + rowIndexToAddTo + ", prompt: " +
+			// buttonText + ", " + removeType + ", " + addType);
 			addTextFieldImplementation(
 					rowIndexToAddTo,
 					textField,
@@ -919,17 +1165,17 @@ public class PricingDisplayController {
 					addType,
 					removeType);
 
-					jobContents.getChildren().remove(button);
+			jobContents.getChildren().remove(button);
 			jobContents.add(textField, column, rowIndexToAddTo);
 			specialRowsInUse.get(rowIndexToAddTo).remove(removeType);
 			specialRowsInUse.get(rowIndexToAddTo).put(addType, textField);
-			checkMapOccupancy(rowIndexToAddTo);
+			// checkMapOccupancy(rowIndexToAddTo);
 		});
 	}
 
 	private void addTextFieldImplementation(int rowIndexToAddTo, TextField textField,
-			String textFieldPrompt, String buttonText, int column, specialRowContent removeType,
-			specialRowContent addType) {
+			String textFieldPrompt, String buttonText, int column, SpecialRowContent removeType,
+			SpecialRowContent addType) {
 
 		textField.setPromptText(textFieldPrompt);
 		textField.setOnKeyPressed(e -> {
@@ -937,8 +1183,8 @@ public class PricingDisplayController {
 			if (e.getCode() == KeyCode.DELETE && e.isControlDown()) {
 
 				Button button = new Button(buttonText);
-				System.out.println("ATFI, ABI, row:  " + rowIndexToAddTo + ", prompt:  " + buttonText + ", "
-						+ removeType + ", " + addType);
+				// System.out.println("ATFI, ABI, row: " + rowIndexToAddTo + ", prompt: " +
+				// buttonText + ", " + removeType + ", " + addType);
 				addButtonImplementation(
 						rowIndexToAddTo,
 						button,
@@ -947,27 +1193,32 @@ public class PricingDisplayController {
 						column,
 						addType,
 						removeType);
-						jobContents.getChildren().remove(textField);
+				jobContents.getChildren().remove(textField);
 				jobContents.add(button,
 						column,
 						rowIndexToAddTo);
-				checkMapOccupancy(rowIndexToAddTo);
+				// checkMapOccupancy(rowIndexToAddTo);
 				specialRowsInUse.get(rowIndexToAddTo).remove(removeType);
 				specialRowsInUse.get(rowIndexToAddTo).put(addType, button);
-				checkMapOccupancy(rowIndexToAddTo);
+				// checkMapOccupancy(rowIndexToAddTo);
 			}
 		});
 	}
 
-	private void swapLineItemToEdit(int lineItemIndex) {
+	// ====================================================================================================
+	// Utilities
+	// ====================================================================================================
 
-	}
+	private void setFontAndColor(Label label, String color, String textLine) {
 
-	private void swapLineItemToConfirmed(int gridRowIndex) {
-
+		label.setFont(Font.font("Courier New", FontWeight.NORMAL, 16));
+		label.getStyleClass().add(color);
+		if (textLine != null)
+			label.setText(textLine);
 	}
 
 	private boolean showConfirmationAlert(int lineItemIndex) {
+
 		// Display warning dialog
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation Dialog");
@@ -988,23 +1239,31 @@ public class PricingDisplayController {
 
 	public void checkMapOccupancy(int rowIndex) {
 
-		Map<specialRowContent, Object> rowMap = specialRowsInUse.get(rowIndex);
+		Map<SpecialRowContent, Control> rowMap = specialRowsInUse.get(rowIndex);
 
-		boolean hasManipulationButton = rowMap.containsKey(specialRowContent.MANIPULATION_BUTTONS);
-		boolean hasDescriptionTextField = rowMap.containsKey(specialRowContent.DESCRIPTION_TEXTFIELD);
-		boolean hasQuantityButton = rowMap.containsKey(specialRowContent.QUANTITY_BUTTON);
-		boolean hasQuantityTextField = rowMap.containsKey(specialRowContent.QUANTITY_TEXTFIELD);
-		boolean hasPriceButton = rowMap.containsKey(specialRowContent.PRICE_BUTTON);
-		boolean hasPriceTextField = rowMap.containsKey(specialRowContent.PRICE_TEXTFIELD);
+		boolean hasSpecNumberLabel = rowMap.containsKey(SpecialRowContent.SPEC_NUMBER_LABEL);
+		boolean hasDescriptionLabel = rowMap.containsKey(SpecialRowContent.DESCRIPTION_LABEL);
+		boolean hasDescriptionTextField = rowMap.containsKey(SpecialRowContent.DESCRIPTION_TEXTFIELD);
+		boolean hasQuantityLabel = rowMap.containsKey(SpecialRowContent.QUANTITY_LABEL);
+		boolean hasQuantityButton = rowMap.containsKey(SpecialRowContent.QUANTITY_BUTTON);
+		boolean hasQuantityTextField = rowMap.containsKey(SpecialRowContent.QUANTITY_TEXTFIELD);
+		boolean hasUnitLabel = rowMap.containsKey(SpecialRowContent.UNIT_LABEL);
+		boolean hasPriceButton = rowMap.containsKey(SpecialRowContent.PRICE_BUTTON);
+		boolean hasPriceTextField = rowMap.containsKey(SpecialRowContent.PRICE_TEXTFIELD);
+		boolean hasDenominationLabel = rowMap.containsKey(SpecialRowContent.DENOMINATION_LABEL);
 
 		System.out.println("-".repeat(50));
-		System.out.println("        Key:  " + rowIndex);
-		System.out.println("        Nav:  " + hasManipulationButton);
-		System.out.println("Description:  " + hasDescriptionTextField);
-		System.out.println("  QuantityB:  " + hasQuantityButton);
-		System.out.println(" QuantityTF:  " + hasQuantityTextField);
-		System.out.println("     PriceB:  " + hasPriceButton);
-		System.out.println("    PriceTF:  " + hasPriceTextField);
+		System.out.println("Key:  " + rowIndex);
+		System.out.println("Spec:            " + hasSpecNumberLabel);
+		System.out.println("Description L:   " + hasDescriptionLabel);
+		System.out.println("Description TF:  " + hasDescriptionTextField);
+		System.out.println("Quantity L:      " + hasQuantityLabel);
+		System.out.println("Quantity B:      " + hasQuantityButton);
+		System.out.println("Quantity TF:     " + hasQuantityTextField);
+		System.out.println("Units:           " + hasUnitLabel);
+		System.out.println("Price B:         " + hasPriceButton);
+		System.out.println("Price TF:        " + hasPriceTextField);
+		System.out.println("Denomination L:  " + hasDenominationLabel);
 		System.out.println("-".repeat(50));
 		System.out.println();
 	}
@@ -1021,16 +1280,16 @@ public class PricingDisplayController {
 		if (preferences.isAdditionalMobsVisible())
 			filteredJobList.get(currentJobIndex).setAdditionalMobs(new BigDecimal(additionalMobsTextField.getText()));
 
-		for (int index = 0; index < lineItemTextFields.size(); index++) {
+		for (int index = 0; index < lineItemPriceTextFields.size(); index++) {
 			filteredJobList
 					.get(currentJobIndex)
 					.getLineItems()
 					.get(index)
-					.setPrice(new BigDecimal(lineItemTextFields.get(index).getText()));
+					.setPrice(new BigDecimal(lineItemPriceTextFields.get(index).getText()));
 		}
 		filteredJobList.get(currentJobIndex).setMinimumDayCharge(new BigDecimal(preferences.getDropDeadPrice()));
 		filteredJobList.get(currentJobIndex).setStandbyPrice(new BigDecimal(preferences.getStandByPrice()));
-		lineItemTextFields.clear();
+		lineItemPriceTextFields.clear();
 	}
 
 	public boolean isPricingValid() {
@@ -1074,7 +1333,7 @@ public class PricingDisplayController {
 		}
 
 		// ----lineItemTextFields----------------------------
-		invalidInput = checkBigDecTextFields(lineItemTextFields);
+		invalidInput = checkBigDecTextFields(lineItemPriceTextFields);
 		if (invalidInput != null) {
 
 			app.showWarning("Warning", "Invalid input",
@@ -1120,11 +1379,6 @@ public class PricingDisplayController {
 			return textField.getText();
 		}
 		return null;
-	}
-
-	public void updateJobDisplay() {
-
-		setupPricing();
 	}
 
 	public void setKeybinds(Control control) {
