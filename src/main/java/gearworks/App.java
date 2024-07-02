@@ -445,10 +445,7 @@ public class App extends Application {
 
 	@FXML
 	private void openFile() {
-
-		// Create a filter for .txt files
-		// FileChooser.ExtensionFilter txtFilter = new FileChooser.ExtensionFilter("Text
-		// Files (*.txt)", "*.txt");
+		
 		FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
 		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, allFilter);
 
@@ -589,10 +586,10 @@ public class App extends Application {
 
 		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Email List.txt",
 				InputFileProcessor.FileFormat.EMAIL);
-		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2 Output.txt",
-				InputFileProcessor.FileFormat.V2);
-		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
-				InputFileProcessor.FileFormat.V3);
+		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2 Output.txt",
+		// 		InputFileProcessor.FileFormat.V2);
+		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
+		// 		InputFileProcessor.FileFormat.V3);
 
 		String jsonOutputPath = fileManager.createUniqueFileName(lettingMonthDirectory + "\\Job Data.json");
 		File jsonOutput = fileManager.chooseFile(jsonOutputPath, null,
