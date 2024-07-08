@@ -5,7 +5,11 @@ import java.util.Objects;
 
 public class LineItem {
 
-	private String description, specNumber, unit = "SY";
+	private String description,
+			itemNumber,
+			descriptionCode,
+			// specialNumber,
+			unit = "SY";
 
 	private BigDecimal quantity;
 	private BigDecimal price = new BigDecimal(0);
@@ -13,7 +17,8 @@ public class LineItem {
 	public LineItem() {
 
 	}
-	
+
+	@Deprecated
 	public LineItem(String description, BigDecimal quantity, BigDecimal price) {
 
 		this.description = description;
@@ -21,9 +26,34 @@ public class LineItem {
 		this.price = price;
 	}
 
-	public LineItem(String specNumber, String description, String unit, BigDecimal quantity, BigDecimal price) {
+	@Deprecated
+	public LineItem(String specNumber,
+			String description,
+			String unit,
+			BigDecimal quantity,
+			BigDecimal price) {
 
-		this.specNumber = specNumber;
+		String[] tokens = specNumber.split(" ");
+		this.itemNumber = tokens[0];
+		this.descriptionCode = tokens[1];
+
+		this.description = description;
+		this.unit = unit;
+		this.quantity = quantity;
+		this.price = price;
+	}
+
+	public LineItem(String itemNumber,
+			String descriptionCode,
+			// String specialNumber,
+			String description,
+			String unit,
+			BigDecimal quantity,
+			BigDecimal price) {
+
+		this.itemNumber = itemNumber;
+		this.descriptionCode = descriptionCode;
+		// this.specialNumber = specialNumber;
 		this.description = description;
 		this.unit = unit;
 		this.quantity = quantity;
@@ -49,13 +79,36 @@ public class LineItem {
 	// Getter Setters
 	// ====================================================================================================
 
-	public String getSpecNumber() {
-		return specNumber;
+	public String getItemNumber() {
+		return itemNumber;
 	}
 
-	public void setSpecNumber(String specNumber) {
-		this.specNumber = specNumber;
+	public void setItemNumber(String itemNumber) {
+		this.itemNumber = itemNumber;
 	}
+
+	public String getDescriptionCode() {
+		return descriptionCode;
+	}
+
+	public void setDescriptionCode(String descriptionCode) {
+		this.descriptionCode = descriptionCode;
+	}
+
+	public String getSpecNumber() {
+		return itemNumber +
+				" " + descriptionCode
+		// " " + specialNumber
+		;
+	}
+
+	// public String getSpecialNumber() {
+	// return specialNumber;
+	// }
+
+	// public void setSpecialNumber(String specialNumber) {
+	// this.specialNumber = specialNumber;
+	// }
 
 	public String getDescription() {
 		return description;
@@ -108,7 +161,8 @@ public class LineItem {
 
 		LineItem otherLineItem = (LineItem) obj;
 
-		return Objects.equals(specNumber, otherLineItem.specNumber) &&
+		return Objects.equals(itemNumber, otherLineItem.itemNumber) &&
+				Objects.equals(descriptionCode, otherLineItem.descriptionCode) &&
 				Objects.equals(description, otherLineItem.description) &&
 				Objects.equals(quantity, otherLineItem.quantity) &&
 				Objects.equals(price, otherLineItem.price);
@@ -117,6 +171,6 @@ public class LineItem {
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(specNumber, description, quantity, price);
+		return Objects.hash(itemNumber, descriptionCode, description, quantity, price);
 	}
 }

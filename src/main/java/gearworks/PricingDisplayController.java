@@ -690,7 +690,7 @@ public class PricingDisplayController {
 		remapStoredChildren();
 		LineItem referenceLI = filteredJobList.get(currentJobIndex).getLineItems()
 				.get(rowIndex - nonLineItemRows);
-		LineItem bufferLI = new LineItem(referenceLI.getSpecNumber(), referenceLI.getDescription(),
+		LineItem bufferLI = new LineItem(referenceLI.getItemNumber(), referenceLI.getDescriptionCode(), referenceLI.getDescription(),
 				referenceLI.getUnit(), referenceLI.getQuantity(), referenceLI.getPrice());
 		filteredJobList.get(currentJobIndex).getLineItems().add(rowIndex - nonLineItemRows + 1, bufferLI);
 		updateJobDisplay();

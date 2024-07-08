@@ -45,6 +45,7 @@ public abstract class ExcelFormat implements ExcelFormatInterface {
     }
 
     public void setCellValue(String sheetName, int colNum, int rowNum, Object value) {
+
         Sheet sheet = workbook.getSheet(sheetName);
 
         Row row = sheet.getRow(rowNum);
@@ -73,6 +74,24 @@ public abstract class ExcelFormat implements ExcelFormatInterface {
             throw new IllegalArgumentException("Invalid value type: " + value.getClass().getName());
         }
     }
+
+	public void setCellFormula(String sheetName, int colNum, int rowNum, String formula) {
+	
+		Sheet sheet = workbook.getSheet(sheetName);
+
+        Row row = sheet.getRow(rowNum);
+        if (row == null) {
+
+            row = sheet.createRow(rowNum);
+        }
+        Cell cell = row.getCell(colNum);
+        if (cell == null) {
+
+            cell = row.createCell(colNum);
+        }
+
+		cell.setCellFormula(formula);
+	}
 
     public void saveWorkbook(String filePath) {
         try {

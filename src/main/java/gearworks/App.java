@@ -349,7 +349,7 @@ public class App extends Application {
 	}
 
 	private void showDeletionWarningsChange() {
-		
+
 		preferences.setDeletionWarningsShown(deletionWarningsShown.isSelected());
 		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
 	}
@@ -445,7 +445,7 @@ public class App extends Application {
 
 	@FXML
 	private void openFile() {
-		
+
 		FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
 		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, allFilter);
 
@@ -586,10 +586,12 @@ public class App extends Application {
 
 		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Email List.txt",
 				InputFileProcessor.FileFormat.EMAIL);
-		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2 Output.txt",
-		// 		InputFileProcessor.FileFormat.V2);
-		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3 Output.txt",
-		// 		InputFileProcessor.FileFormat.V3);
+		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2
+		// Output.txt",
+		// InputFileProcessor.FileFormat.V2);
+		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V3
+		// Output.txt",
+		// InputFileProcessor.FileFormat.V3);
 
 		String jsonOutputPath = fileManager.createUniqueFileName(lettingMonthDirectory + "\\Job Data.json");
 		File jsonOutput = fileManager.chooseFile(jsonOutputPath, null,
@@ -648,7 +650,9 @@ public class App extends Application {
 			case V2:
 				excelOutput = new V2ExcelFormat();
 				break;
-
+			case V3:
+				excelOutput = new V3ExcelFormat();
+				break;
 			default:
 				excelOutput = new V2ExcelFormat();
 				break;

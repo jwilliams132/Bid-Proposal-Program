@@ -172,17 +172,20 @@ public class CombinedFormat extends Format {
 					if (!line.startsWith("+ DELETED ->")) {
 
 						try {
+							
 							lineItems.add(new LineItem(
-									line.substring(5, 15).trim(),
+									line.substring(5, 9).trim(),
+									line.substring(10, 14).trim(),
+									// line.substring(15, 18).trim(), // Special No.
 									line.substring(19, 58).trim(),
-									line.substring(58, 63).trim(),
+									line.substring(59, 62).trim(),
 									new BigDecimal(line.substring(63, 78).trim().replaceAll(",", "")),
 									new BigDecimal(0)));
 						} catch (NumberFormatException e) {
 
-							System.out.println("spec.:  " + line.substring(0, 19).trim());
-							System.out.println("desc.:  " + line.substring(19, 59).trim());
-							System.out.println("quan.:  " + line.substring(61, 77).trim().replaceAll(",", ""));
+							System.out.println("spec.:  " + line.substring(5, 18).trim());
+							System.out.println("desc.:  " + line.substring(19, 58).trim());
+							System.out.println("quan.:  " + line.substring(63, 78).trim().replaceAll(",", ""));
 							// Handle the NumberFormatException
 							System.err.println("NumberFormatException occurred: " + e.getMessage());
 							// You can also throw a custom exception if needed
@@ -193,7 +196,7 @@ public class CombinedFormat extends Format {
 						lineItemStart = false;
 					}
 				}
-
+				
 				// start the contractor count
 				if (line.startsWith("PLANHOLDERS")) {
 
