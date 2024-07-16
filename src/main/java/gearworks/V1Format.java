@@ -164,7 +164,8 @@ public class V1Format extends Format {
      *                      object.
      * @return A Job object representing the data parsed from the input string.
      */
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public Job jobFromFormat(String jobLineString) {
 
         // Remove the first character from jobLineString

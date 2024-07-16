@@ -134,7 +134,8 @@ public class V2Format extends Format {
      * @param jobLineString A formatted string representing job data in V2Format.
      * @return A Job object parsed from the input jobLineString.
      */
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public Job jobFromFormat(String jobLineString) {
 
         String[] tokens = jobLineString.split("\\|");

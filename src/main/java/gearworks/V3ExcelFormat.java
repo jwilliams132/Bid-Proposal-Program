@@ -1,6 +1,5 @@
 package gearworks;
 
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -77,7 +76,6 @@ public class V3ExcelFormat extends ExcelFormat {
 		String sheetName;
 		Contractor contractor;
 		LineItem lineItem;
-		BigDecimal lineItemAmount;
 
 		for (int contractorIndex = 0; contractorIndex < job.getContractorList().size(); contractorIndex++) {
 
