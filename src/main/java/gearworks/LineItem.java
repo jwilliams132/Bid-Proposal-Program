@@ -3,11 +3,15 @@ package gearworks;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class LineItem {
 
 	private String description,
-			itemNumber,
-			descriptionCode,
+			itemNumber = "",
+			descriptionCode = "",
 			// specialNumber,
 			unit = "SY";
 
@@ -26,6 +30,24 @@ public class LineItem {
 		this.price = price;
 	}
 
+	@JsonCreator
+    public LineItem(
+            @JsonProperty("itemNumber") String itemNumber,
+            @JsonProperty("descriptionCode") String descriptionCode,
+            // @JsonProperty("specialNumber") String specialNumber,
+            @JsonProperty("description") String description,
+            @JsonProperty("unit") String unit,
+            @JsonProperty("quantity") BigDecimal quantity,
+            @JsonProperty("price") BigDecimal price) {
+        this.itemNumber = itemNumber;
+        this.descriptionCode = descriptionCode;
+        // this.specialNumber = specialNumber;
+        this.description = description;
+        this.unit = unit;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
 	@Deprecated
 	public LineItem(String specNumber,
 			String description,
@@ -37,23 +59,6 @@ public class LineItem {
 		this.itemNumber = tokens[0];
 		this.descriptionCode = tokens[1];
 
-		this.description = description;
-		this.unit = unit;
-		this.quantity = quantity;
-		this.price = price;
-	}
-
-	public LineItem(String itemNumber,
-			String descriptionCode,
-			// String specialNumber,
-			String description,
-			String unit,
-			BigDecimal quantity,
-			BigDecimal price) {
-
-		this.itemNumber = itemNumber;
-		this.descriptionCode = descriptionCode;
-		// this.specialNumber = specialNumber;
 		this.description = description;
 		this.unit = unit;
 		this.quantity = quantity;
@@ -95,6 +100,7 @@ public class LineItem {
 		this.descriptionCode = descriptionCode;
 	}
 
+	@JsonIgnore
 	public String getSpecNumber() {
 		return itemNumber +
 				" " + descriptionCode
