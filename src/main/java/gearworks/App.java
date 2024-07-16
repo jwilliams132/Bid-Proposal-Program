@@ -155,6 +155,7 @@ public class App extends Application {
 
 		// window.initStyle(StageStyle.TRANSPARENT);
 		window.setScene(scene);
+		window.setMaximized(true);
 		window.setTitle("Williams Road LLC Bid Form Program");
 
 		InputStream stream = getClass().getResourceAsStream("Logo.jpg");
