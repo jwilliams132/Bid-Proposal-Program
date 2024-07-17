@@ -52,24 +52,24 @@ public class InputFileProcessor {
 	public List<Job> parseFile(String knownFilePath) {
 
 		List<String> fileContents = getFileContents(knownFilePath);
-		FormatInterface fileFormat = null;
-		if (fileContents.get(0).startsWith(CombinedFormat.fileHeader))
+		FileFormatInterface fileFormat = null;
+		if (fileContents.get(0).startsWith(FileFormat_Combined.fileHeader))
 
-			fileFormat = new CombinedFormat();
+			fileFormat = new FileFormat_Combined();
 
-		if (fileContents.get(0).startsWith(V1Format.fileHeader))
+		if (fileContents.get(0).startsWith(FileFormat_V1.fileHeader))
 
-			fileFormat = new V1Format();
+			fileFormat = new FileFormat_V1();
 
-		if (fileContents.get(0).startsWith(V2Format.fileHeader)) {
+		if (fileContents.get(0).startsWith(FileFormat_V2.fileHeader)) {
 
-			fileFormat = new V2Format();
+			fileFormat = new FileFormat_V2();
 			fileContents.remove(0); // removes file header
 		}
 
-		if (fileContents.get(0).startsWith(V3Format.fileHeader)) {
+		if (fileContents.get(0).startsWith(FileFormat_V3.fileHeader)) {
 
-			fileFormat = new V3Format();
+			fileFormat = new FileFormat_V3();
 			fileContents.remove(0); // removes file header
 		}
 
@@ -84,31 +84,31 @@ public class InputFileProcessor {
 
 	public void saveFileFormat(List<Job> jobs, String filePath, FileFormat format) {
 
-		FormatInterface fileFormat;
+		FileFormatInterface fileFormat;
 		switch (format) {
 
 			case V1:
-				fileFormat = new V1Format();
+				fileFormat = new FileFormat_V1();
 				break;
 
 			case V2:
-				fileFormat = new V2Format();
+				fileFormat = new FileFormat_V2();
 				break;
 
 			case V3:
-				fileFormat = new V3Format();
+				fileFormat = new FileFormat_V3();
 				break;
 
 			case CLEAR_TEXT:
-				fileFormat = new ClearTextFormat();
+				fileFormat = new FileFormat_ClearText();
 				break;
 
 			case EMAIL:
-				fileFormat = new EmailFormat();
+				fileFormat = new FileFormat_Email();
 				break;
 
 			default:
-				fileFormat = new V2Format();
+				fileFormat = new FileFormat_V2();
 				break;
 		}
 

@@ -118,9 +118,9 @@ public class App extends Application {
 	private List<Integer> filteredIndices;
 	private int currentJob = 0;
 
-	private UnfilteredDisplayController unfilteredController;
-	private FilteredDisplayController filteredController;
-	private PricingDisplayController pricingController;
+	private Controller_UnfilteredDisplay unfilteredController;
+	private Controller_FilteredDisplay filteredController;
+	private Controller_PricingDisplay pricingController;
 	// private UpdateInfoDisplayController updateController;
 
 	private String lettingMonthDirectory;
@@ -394,7 +394,7 @@ public class App extends Application {
 					createClearText.setDisable(true);
 					chooseSaveFolder.setDisable(true);
 					currentJob = 0;
-					unfilteredController = new UnfilteredDisplayController();
+					unfilteredController = new Controller_UnfilteredDisplay();
 					unfilteredController = loader.getController();
 					unfilteredController.setJobList(currentJobList);
 					unfilteredController.setFilteredIndexes(filteredIndices);
@@ -404,7 +404,7 @@ public class App extends Application {
 				case FILTERED:
 					filteredJobList = unfilteredController.getFilteredList();
 					filteredIndices = unfilteredController.getFilteredIndexes();
-					filteredController = new FilteredDisplayController();
+					filteredController = new Controller_FilteredDisplay();
 					filteredController = loader.getController();
 					filteredController.setFilteredJobList(filteredJobList);
 					filteredController.customizeAppearance();
@@ -417,7 +417,7 @@ public class App extends Application {
 					addPricing.setDisable(true);
 					chooseSaveFolder.setDisable(false);
 					updateCurrentJobItems(currentJob);
-					pricingController = new PricingDisplayController();
+					pricingController = new Controller_PricingDisplay();
 					pricingController = loader.getController();
 					pricingController.setPreferences(preferences);
 					pricingController.setJobList(filteredJobList);
@@ -444,6 +444,7 @@ public class App extends Application {
 	private void openFile() {
 
 		FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
+		allFilter = null;
 		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, allFilter);
 
 		if (inputFile == null) {
@@ -641,17 +642,17 @@ public class App extends Application {
 		ExcelFormatInterface excelOutput;
 		switch (preferredExcelFormat) {
 			case V1:
-				excelOutput = new V1ExcelFormat();
+				excelOutput = new ExcelFormat_V1();
 				break;
 
 			case V2:
-				excelOutput = new V2ExcelFormat();
+				excelOutput = new ExcelFormat_V2();
 				break;
 			case V3:
-				excelOutput = new V3ExcelFormat();
+				excelOutput = new ExcelFormat_V3();
 				break;
 			default:
-				excelOutput = new V2ExcelFormat();
+				excelOutput = new ExcelFormat_V2();
 				break;
 		}
 		excelOutput.createExcelFile(filteredJobList, lettingMonthDirectory);

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * An interface for defining data formatting methods.
  */
-public interface FormatInterface {
+public interface FileFormatInterface {
 
     /**
      * Converts a single Job object into a formatted string representation.

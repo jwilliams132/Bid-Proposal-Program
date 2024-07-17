@@ -9,7 +9,7 @@ import java.util.List;
  * A concrete implementation of the Format interface for handling data in the V1
  * Format.
  */
-public class V1Format extends Format {
+public class FileFormat_V1 extends FileFormat {
 
     final int COUNTY_INDEX = 0;
     final int HIGHWAY_INDEX = 1;
@@ -42,7 +42,7 @@ public class V1Format extends Format {
     /**
      * Default constructor for V1Format.
      */
-    public V1Format() {
+    public FileFormat_V1() {
 
     }
 

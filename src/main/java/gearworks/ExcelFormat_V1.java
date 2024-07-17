@@ -8,7 +8,7 @@ import org.apache.poi.ss.util.CellReference;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class V1ExcelFormat extends ExcelFormat {
+public class ExcelFormat_V1 extends ExcelFormat {
 
     private final String templateFileName = "BidProposalProject\\src\\main\\resources\\Test Template.xlsm";
 

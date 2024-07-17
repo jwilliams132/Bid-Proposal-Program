@@ -3,9 +3,9 @@ package gearworks;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClearTextFormat extends Format {
+public class FileFormat_ClearText extends FileFormat {
 
-	public ClearTextFormat() {
+	public FileFormat_ClearText() {
 
 	}
 

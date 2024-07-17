@@ -32,7 +32,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
-public class PricingDisplayController {
+public class Controller_PricingDisplay {
 
 	private Preferences preferences;
 

@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class StartupDisplayController {
+public class Controller_StartupDisplay {
     
     @FXML
     private VBox startupDisplay;

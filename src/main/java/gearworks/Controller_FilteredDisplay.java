@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class FilteredDisplayController {
+public class Controller_FilteredDisplay {
 
 	@FXML
 	VBox filteredDisplay, contentRegion;

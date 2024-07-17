@@ -3,9 +3,9 @@ package gearworks;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmailFormat extends Format {
+public class FileFormat_Email extends FileFormat {
 
-	public EmailFormat() {
+	public FileFormat_Email() {
 
 	}
 

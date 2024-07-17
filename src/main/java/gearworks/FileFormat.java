@@ -13,7 +13,7 @@ enum Test {
  * Subclasses should override the appropriate methods to provide specific
  * formatting logic.
  */
-public abstract class Format implements FormatInterface {
+public abstract class FileFormat implements FileFormatInterface {
 
     /**
      * Converts a formatted job data string into a Job object.

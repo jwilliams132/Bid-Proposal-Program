@@ -13,7 +13,7 @@ import org.apache.poi.ss.util.CellReference;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class V2ExcelFormat extends ExcelFormat {
+public class ExcelFormat_V2 extends ExcelFormat {
 
     private final String templateFileName = "src\\main\\resources\\gearworks\\Test Template (9-30-23).xlsm";
 

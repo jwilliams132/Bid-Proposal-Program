@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class V2Format extends Format {
+public class FileFormat_V2 extends FileFormat {
 
     final int COUNTY_INDEX = 0;
     final int HIGHWAY_INDEX = 1;
@@ -43,7 +43,7 @@ public class V2Format extends Format {
     /**
      * Default constructor for V2Format.
      */
-    public V2Format() {
+    public FileFormat_V2() {
 
     }
 

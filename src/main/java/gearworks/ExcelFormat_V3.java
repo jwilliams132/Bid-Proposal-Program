@@ -12,7 +12,7 @@ import org.apache.poi.ss.util.CellReference;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class V3ExcelFormat extends ExcelFormat {
+public class ExcelFormat_V3 extends ExcelFormat {
 
 	private final String templateFileName = "src\\main\\resources\\gearworks\\Bid Template (7-7-24).xlsm";
 

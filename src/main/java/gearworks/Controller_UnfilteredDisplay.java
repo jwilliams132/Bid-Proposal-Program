@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class UnfilteredDisplayController {
+public class Controller_UnfilteredDisplay {
 
 	private List<Job> jobList;
 	private List<CheckBox> jobCheckBoxes;
