@@ -1,6 +1,7 @@
 package gearworks;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Formatter;
@@ -76,7 +77,7 @@ public class FileManager {
 	public String chooseDirectory(String currentDirectory) {
 
 		if (currentDirectory == null)
-			currentDirectory = System.getProperty("user.home");
+			currentDirectory = System.getProperty("user.home") + "/Desktop";
 
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		directoryChooser.setInitialDirectory(new File(currentDirectory));
@@ -100,7 +101,7 @@ public class FileManager {
 		try {
 
 			scanner = new Scanner(file);
-		} catch (Exception e) {
+		} catch (FileNotFoundException e) {
 
 			System.out.println("COULD NOT FIND FILE.");
 		}

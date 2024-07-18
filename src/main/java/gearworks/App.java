@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -74,6 +75,7 @@ public class App extends Application {
 			directoryPath;
 	@FXML
 	private Button chooseOpenFile,
+			chooseOpenFolder,
 			updateBidders,
 			chooseSaveFolder,
 			createClearText,
@@ -109,6 +111,11 @@ public class App extends Application {
 
 	private SaveFileFormats preferredExcelFormat = SaveFileFormats.V3;
 
+	private enum InputType {
+		FILE, DIRECTORY
+	}
+
+	private InputType inputType;
 	private FileManager fileManager = new FileManager();
 	private InputFileProcessor fileProcessor = new InputFileProcessor();
 	private JSON_Manager json_Manager = new JSON_Manager();
@@ -427,7 +434,7 @@ public class App extends Application {
 					break;
 
 				case UPDATE:
-					// updateController = new UpdateInfoDisplayController();
+					// updateController = new Controller_UpdateInfoDisplay();
 					// updateController = loader.getController();
 					break;
 
@@ -442,6 +449,8 @@ public class App extends Application {
 
 	@FXML
 	private void openFile() {
+
+		inputType = InputType.FILE;
 
 		FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
 		allFilter = null;
@@ -501,6 +510,45 @@ public class App extends Application {
 
 		loadDisplayFXML("UnfilteredDisplay.fxml", Display.UNFILTERED);
 		// changeDisplay(getUnfilteredDisplay(), Display.UNFILTERED);
+	}
+
+	@FXML
+	private void openFolder() {
+
+		inputType = InputType.DIRECTORY;
+		
+		List<String> fileNameFilter = null; // for when you implement .json file filter
+		
+		File jobsDirectory = new File(fileManager.chooseDirectory(null) + File.separator + "Jobs");
+
+		if (fileNameFilter == null) {
+
+			// filter for files that fit the naming scheme used by Whitley Siddons
+			List<File> jobFiles = List.of(jobsDirectory.listFiles()).stream()
+					.filter(file -> file.getName()
+							.matches("[A-Z]*-[0-9]{4}-[0-9]{2}-[0-9]{3}\\(.*\\)\\.txt"))
+					.collect(Collectors.toList());
+
+			FileFormat_TxDot_Single parser = new FileFormat_TxDot_Single();
+			currentJobList = parser.jobsFromFormat(jobFiles);
+		}
+
+		lettingMonthDirectory = Paths.get(jobsDirectory.getAbsolutePath()).getParent().toString();
+
+		openFilePath.setText("File Path: " + jobsDirectory);
+		filterJobs.setDisable(false);
+		undoFilter.setDisable(false);
+		addPricing.setDisable(true);
+		updateBidders.setDisable(false);
+		previousJob.setDisable(true);
+		nextJob.setDisable(true);
+
+		// Replace the existing filterJobs button with the newButton
+		jobFilterPanel.getChildren().set(0, filterJobs);
+		if (filteredIndices != null)
+			filteredIndices.clear(); // reset filter
+
+		loadDisplayFXML("UnfilteredDisplay.fxml", Display.UNFILTERED);
 	}
 
 	@FXML

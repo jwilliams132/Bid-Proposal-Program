@@ -6,6 +6,13 @@
     "configurations": [
 		{
 			"type": "java",
+			"name": "LettingFolderSetup",
+			"request": "launch",
+			"mainClass": "gearworks/gearworks.LettingFolderSetup",
+			"projectName": "javafx_testing"
+		},
+		{
+			"type": "java",
 			"name": "App",
 			"request": "launch",
 			"mainClass": "gearworks/gearworks.App",

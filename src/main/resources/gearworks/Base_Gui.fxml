@@ -64,7 +64,8 @@
 			<HBox fx:id="openFilePanel" spacing="10" style="-fx-padding: 10 10 10 10;"
 				alignment="CENTER_LEFT">
 				<children>
-					<Button fx:id="chooseOpenFile" text="Open Bidding File..." onAction="#openFile" />
+					<Button fx:id="chooseOpenFile" text="Open File" onAction="#openFile" />
+					<Button fx:id="chooseOpenFolder" text="Open Folder" onAction="#openFolder" />
 					<Label fx:id="openFilePath" text="File Path: ">
 						<font>
 							<Font name="Courier New" size="16" />
