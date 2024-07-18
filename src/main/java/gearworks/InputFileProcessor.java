@@ -53,9 +53,9 @@ public class InputFileProcessor {
 
 		List<String> fileContents = getFileContents(knownFilePath);
 		FileFormatInterface fileFormat = null;
-		if (fileContents.get(0).startsWith(FileFormat_Combined.fileHeader))
+		if (fileContents.get(0).startsWith(FileFormat_TxDot_Combined.fileHeader))
 
-			fileFormat = new FileFormat_Combined();
+			fileFormat = new FileFormat_TxDot_Combined();
 
 		if (fileContents.get(0).startsWith(FileFormat_V1.fileHeader))
 

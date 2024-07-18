@@ -16,7 +16,8 @@ import java.util.regex.Pattern;
  * Combined Format.
  * This format is specific to data from the Whitley Siddons site.
  */
-public class FileFormat_Combined extends FileFormat {
+public class FileFormat_TxDot_Combined extends FileFormat {
+	
 
 	/**
 	 * The file header specific to the Combined Format.
@@ -26,7 +27,7 @@ public class FileFormat_Combined extends FileFormat {
 	/**
 	 * Default constructor for CombinedFormat.
 	 */
-	public FileFormat_Combined() {
+	public FileFormat_TxDot_Combined() {
 
 	}
 
