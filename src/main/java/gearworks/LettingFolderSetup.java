@@ -29,9 +29,9 @@ public class LettingFolderSetup {
     // Method to create an entire directory structure
     public void createDirectoryStructure(String basePath) {
 
-        String[] years = {"2022", "2023", "2024"};
+        String[] years = {"2024"};
         String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-        String[] subFolders = {"Jobs", "Plans", "Proposals"};
+        String[] subFolders = {"Jobs", "Plans", "Proposals - PDF", "Proposals - Excel"};
 
         for (String year : years) {
 
