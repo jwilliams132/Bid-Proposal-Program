@@ -125,7 +125,6 @@ public class FileFormat_TxDot_Single {
 							// You can also throw a custom exception if needed
 						}
 					}
-					System.out.println(county);
 					if (fileContents.size() > index + 1 && fileContents.get(index + 1).isBlank()) {
 						lineItemStart = false;
 					}
