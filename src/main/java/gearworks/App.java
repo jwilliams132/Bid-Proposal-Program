@@ -112,8 +112,9 @@ public class App extends Application {
 
 	private InputType inputType;
 	private FileManager fileManager = new FileManager();
-	private InputFileProcessor fileProcessor = new InputFileProcessor();
 	private JSON_Manager json_Manager = new JSON_Manager();
+	private InputFileProcessor fileProcessor = new InputFileProcessor();
+	private Preferences_Manager preferences_Manager = new Preferences_Manager();
 	private Preferences preferences;
 
 	private List<Job> currentJobList, filteredJobList;
@@ -180,7 +181,8 @@ public class App extends Application {
 			viewMenu.getItems().add(radioMenuItem);
 		}
 
-		preferences = json_Manager.loadPreferences("src\\main\\resources\\gearworks\\config.json", Preferences.class);
+		preferences = preferences_Manager.loadPreferences("src\\main\\resources\\gearworks\\config.json",
+				Preferences.class);
 		upToMobsCMI = new CheckMenuItem("Show Up to Mobs Option in Pricing") {
 			{
 				setOnAction(event -> {
@@ -303,7 +305,7 @@ public class App extends Application {
 				default:
 					break;
 			}
-			json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences,
+			preferences_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences,
 					Preferences.class);
 			if (currentDisplay == Display.PRICING) {
 
@@ -322,7 +324,8 @@ public class App extends Application {
 	private void upToMobsOptionChange() {
 
 		preferences.setUpToMobsVisible(upToMobsCMI.isSelected());
-		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
+		preferences_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences,
+				Preferences.class);
 		if (currentDisplay == Display.PRICING) {
 
 			pricingController.setPreferences(preferences);
@@ -333,7 +336,8 @@ public class App extends Application {
 	private void additionalMobsOptionChange() {
 
 		preferences.setAdditionalMobsVisible(additionalMobsCMI.isSelected());
-		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
+		preferences_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences,
+				Preferences.class);
 		if (currentDisplay == Display.PRICING) {
 
 			pricingController.setPreferences(preferences);
@@ -344,13 +348,15 @@ public class App extends Application {
 	private void inputDirectoryUsedChange() {
 
 		preferences.setInputDirectoryUsed(inputDirectoryUsed.isSelected());
-		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
+		preferences_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences,
+				Preferences.class);
 	}
 
 	private void showDeletionWarningsChange() {
 
 		preferences.setDeletionWarningsShown(deletionWarningsShown.isSelected());
-		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
+		preferences_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences,
+				Preferences.class);
 	}
 
 	private void addColors() {
@@ -663,7 +669,8 @@ public class App extends Application {
 	private void handleThemeChange(Themes theme) {
 
 		preferences.setTheme(Themes.valueOf(((RadioMenuItem) themeToggleGroup.getSelectedToggle()).getText()));
-		json_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences, Preferences.class);
+		preferences_Manager.savePreferences("src\\main\\resources\\gearworks\\config.json", preferences,
+				Preferences.class);
 
 		if (preferences.getTheme() == Themes.LIGHT) {
 			root.getStylesheets().remove(CSS_Colors_Dark);
