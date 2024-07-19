@@ -124,9 +124,10 @@ public class App extends Application {
 	private Controller_UnfilteredDisplay unfilteredController;
 	private Controller_FilteredDisplay filteredController;
 	private Controller_PricingDisplay pricingController;
-	// private UpdateInfoDisplayController updateController;
+	// private Controller_UpdateInfoDisplay updateController;
 
 	private String lettingMonthDirectory;
+	
 
 	public static void main(String[] args) {
 		launch(args);
@@ -511,9 +512,9 @@ public class App extends Application {
 	private void openFolder() {
 
 		inputType = InputType.DIRECTORY;
-		
+
 		List<String> fileNameFilter = null; // for when you implement .json file filter
-		
+
 		File jobsDirectory = new File(fileManager.chooseDirectory(null) + File.separator + "Jobs");
 
 		if (fileNameFilter == null) {
