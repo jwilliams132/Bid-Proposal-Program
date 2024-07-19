@@ -30,7 +30,7 @@ public class InputFileProcessor {
 	 */
 	public ArrayList<String> getFileContents(String knownFilePath) {
 
-		File inputFile = fileManager.chooseFile(knownFilePath, null, FileManager.fileChooserOptions.OPEN, null);
+		File inputFile = fileManager.chooseFile(knownFilePath, false, null, FileManager.fileChooserOptions.OPEN, null);
 		if (inputFile == null) {
 
 			showWarning("Warning", "Error", "No file selected");
@@ -112,7 +112,7 @@ public class InputFileProcessor {
 				break;
 		}
 
-		File outputFile = fileManager.chooseFile(filePath, null, FileManager.fileChooserOptions.SAVE, null);
+		File outputFile = fileManager.chooseFile(filePath, true, null, FileManager.fileChooserOptions.SAVE, null);
 		fileManager.saveFile(outputFile, fileFormat.jobsToFormat(jobs));
 	}
 

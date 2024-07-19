@@ -27,7 +27,7 @@ public class FileManager {
 	 * File userFriendlyOutput = fileManager.chooseFile(FILE_NAME,
 	 * DIRECTORY,FileManager.fileChooserOptions.OPEN,FILTER);
 	 */
-	public File chooseFile(String knownFile, String currentDirectory, fileChooserOptions option,
+	public File chooseFile(String knownFile, boolean makeUnique, String currentDirectory, fileChooserOptions option,
 			// FileFilter fileFilter) {
 			FileChooser.ExtensionFilter fileFilter) {
 
@@ -46,7 +46,7 @@ public class FileManager {
 
 			if (option == fileChooserOptions.SAVE) {
 
-				givenFile = createUniqueFile(knownFile);
+				givenFile = makeUnique ? createUniqueFile(knownFile) : new File(knownFile);
 
 				try {
 					givenFile.createNewFile();
@@ -141,7 +141,7 @@ public class FileManager {
 
 	public List<String> readFile(String filePath) {
 
-		File file = chooseFile(filePath, null, FileManager.fileChooserOptions.OPEN, null);
+		File file = chooseFile(filePath, false, null, FileManager.fileChooserOptions.OPEN, null);
 		return readFile(file);
 	}
 

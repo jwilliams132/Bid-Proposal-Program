@@ -16,7 +16,7 @@ public class ContractorStorage {
 
 	public ContractorStorage() {
 
-		contractorsFile = fileManager.chooseFile(contractorFilePath, null,
+		contractorsFile = fileManager.chooseFile(contractorFilePath, false, null,
 				FileManager.fileChooserOptions.OPEN, null);
 
 		ArrayList<String> fileContents = null;

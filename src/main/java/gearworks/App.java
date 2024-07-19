@@ -455,7 +455,7 @@ public class App extends Application {
 
 		FileChooser.ExtensionFilter allFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
 		allFilter = null;
-		File inputFile = fileManager.chooseFile(null, null, FileManager.fileChooserOptions.OPEN, allFilter);
+		File inputFile = fileManager.chooseFile(null, false, null, FileManager.fileChooserOptions.OPEN, allFilter);
 
 		if (inputFile == null) {
 
