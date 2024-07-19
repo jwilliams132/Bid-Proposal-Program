@@ -2,66 +2,84 @@ package gearworks;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * This class provides methods for loading and saving preferences from/to JSON
- * files.
- * It uses the Jackson library for JSON processing.
- */
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 public class JSON_Manager {
 
-    /**
-     * Loads preferences from a JSON file.
-     *
-     * @param filePath       The path to the JSON file.
-     * @param preferredClass The class type representing the preferences.
-     * @param <T>            The type of preferences class.
-     * @return An instance of the preferences class loaded from the JSON file, or a
-     *         new instance if loading fails.
-     */
-    public <T> T loadPreferences(String filePath, Class<T> preferredClass) {
+	private FileManager fileManager = new FileManager();
+	private ObjectMapper objectMapper = new ObjectMapper();
 
-        File file = new File(filePath);
-        ObjectMapper mapper = new ObjectMapper();
+	public JSON_Manager() {
 
-        try {
+	}
 
-            return mapper.readValue(file, preferredClass);
-        } catch (IOException e) {
+	public <T> List<T> parseJsonFile(File inputFile, Class<T[]> type) throws IOException {
 
-            e.printStackTrace();
-            try {
+		try {
 
-                return preferredClass.getDeclaredConstructor().newInstance();
-            } catch (Exception ex) {
+			T[] array = objectMapper.readValue(inputFile, type);
+			return Arrays.asList(array);
+		} catch (JsonParseException e) {
 
-                ex.printStackTrace();
-                return null;
-            }
-        }
-    }
+			showWarning("JSON Parsing Error", "Error parsing JSON file (JSON syntax is wrong)", e.getMessage());
+			throw e;
+		} catch (JsonMappingException e) {
 
-    /**
-     * Saves preferences to a JSON file.
-     *
-     * @param filePath         The path to the JSON file.
-     * @param preferences      The preferences to be saved.
-     * @param preferencesClass The class type representing the preferences.
-     * @param <T>              The type of preferences class.
-     */
-    public <T> void savePreferences(String filePath, T preferences, Class<T> preferencesClass) {
-        
-        File file = new File(filePath);
-        ObjectMapper mapper = new ObjectMapper();
+			showWarning("JSON Mapping Error", "Error mapping JSON file to Job objects (JSON can't map to Job Objects)",
+					e.getMessage());
+			throw e;
+		} catch (IOException e) {
 
-        try {
+			showWarning("IO Error", "Error reading JSON file (e.g., file not found, permission issues)",
+					e.getMessage());
+			throw e;
+		}
+	}
 
-            mapper.writeValue(file, preferences);
-        } catch (IOException e) {
+	public <T> boolean saveToJSON(String filePath, boolean makeUnique, T objectToSave) {
 
-            e.printStackTrace();
-        }
-    }
+		File jsonOutput = fileManager.chooseFile(filePath, makeUnique,
+				null,
+				FileManager.fileChooserOptions.SAVE, null);
+
+		try {
+
+			ObjectMapper objectMapper = new ObjectMapper();
+			objectMapper.writeValue(jsonOutput, objectToSave);
+		} catch (JsonGenerationException e) {
+
+			showWarning("JSON Generation Error", "Error generating JSON", e.getMessage());
+			e.printStackTrace();
+			return false;
+		} catch (JsonMappingException e) {
+
+			showWarning("JSON Mapping Error", "Error mapping JSON file to Java objects", e.getMessage());
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+
+			showWarning("IO Error", "Error writing to JSON file", e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	public void showWarning(String header, String warningMessage, String argument) {
+
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle(header);
+		alert.setHeaderText(null);
+		alert.setContentText(warningMessage + ": " + argument);
+		alert.showAndWait();
+	}
 }

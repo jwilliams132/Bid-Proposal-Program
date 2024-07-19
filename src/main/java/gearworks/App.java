@@ -10,11 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -462,35 +457,18 @@ public class App extends Application {
 			return;
 		}
 
-		try {
-			if (inputFile.getName().endsWith(".txt"))
-				currentJobList = fileProcessor.parseFile(inputFile.getAbsolutePath());
+		if (inputFile.getName().endsWith(".txt"))
+			currentJobList = fileProcessor.parseFile(inputFile.getAbsolutePath());
 
-			if (inputFile.getName().endsWith(".json")) {
+		if (inputFile.getName().endsWith(".json")) {
 
-				ObjectMapper objectMapper = new ObjectMapper();
-				currentJobList = Arrays.asList(objectMapper.readValue(inputFile, Job[].class));
+			try {
+				json_Manager.parseJsonFile(inputFile, Job[].class);
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				return;
 			}
-		} catch (UnsupportedOperationException e) {
-
-			return; // here to stop code from running further with a unknown format.
-		} catch (JsonParseException e) {
-
-			showWarning("JSON Parsing Error", "Error parsing JSON file (JSON syntax is wrong)", e.getMessage());
-			e.printStackTrace();
-			return;
-		} catch (JsonMappingException e) {
-
-			showWarning("JSON Mapping Error", "Error mapping JSON file to Job objects (JSON can't map to Job Objects)",
-					e.getMessage());
-			e.printStackTrace();
-			return;
-		} catch (IOException e) {
-
-			showWarning("IO Error", "Error reading JSON file (e.g., file not found, permission issues)",
-					e.getMessage());
-			e.printStackTrace();
-			return;
 		}
 
 		lettingMonthDirectory = Paths.get(inputFile.getAbsolutePath()).getParent().toString();
@@ -639,31 +617,7 @@ public class App extends Application {
 		// Output.txt",
 		// InputFileProcessor.FileFormat.V3);
 
-		String jsonOutputPath = fileManager.createUniqueFileName(lettingMonthDirectory + "\\Job Data.json");
-		File jsonOutput = fileManager.chooseFile(jsonOutputPath, null,
-				FileManager.fileChooserOptions.SAVE, null);
-
-		try {
-
-			ObjectMapper objectMapper = new ObjectMapper();
-			objectMapper.writeValue(jsonOutput, filteredJobList);
-
-		} catch (JsonGenerationException e) {
-
-			showWarning("JSON Generation Error", "Error generating JSON", e.getMessage());
-			e.printStackTrace();
-			return;
-		} catch (JsonMappingException e) {
-
-			showWarning("JSON Mapping Error", "Error mapping JSON file to Java objects", e.getMessage());
-			e.printStackTrace();
-			return;
-		} catch (IOException e) {
-
-			showWarning("IO Error", "Error writing to JSON file", e.getMessage());
-			e.printStackTrace();
-			return;
-		}
+		json_Manager.saveToJSON(lettingMonthDirectory + "\\Job Data.json", true, filteredJobList);
 
 		ContractorStorage storage = new ContractorStorage();
 		for (Job job : filteredJobList)
