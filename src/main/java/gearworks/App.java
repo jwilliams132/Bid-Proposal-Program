@@ -415,6 +415,17 @@ public class App extends Application {
 					filteredController = new Controller_FilteredDisplay();
 					filteredController = loader.getController();
 					filteredController.setFilteredJobList(filteredJobList);
+
+					// save filter as JSON
+					List<String> filteredJobs = filteredJobList.stream()
+							.map(job -> String.format("%s-%s(%s).txt",
+									job.getCounty().replace(", ETC", ""),
+									job.getCsj(),
+									job.getHighway().replace(", ETC", "")))
+							.collect(Collectors.toList());
+					// JobFilter_FileName fileNameFilter = new JobFilter_FileName(filteredJobs);
+					boolean successfulJSON = json_Manager.saveToJSON(lettingMonthDirectory + "\\Filter_FileName.json", false, filteredJobs);
+					System.out.println(successfulJSON);
 					filteredController.customizeAppearance();
 					break;
 
