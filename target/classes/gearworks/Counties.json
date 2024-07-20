@@ -1,0 +1,1272 @@
+[
+	{
+		"name": "Anderson",
+		"district": "Tyler",
+		"largestCity": "Palestine"
+	},
+	{
+		"name": "Andrews",
+		"district": "Odessa",
+		"largestCity": "Andrews"
+	},
+	{
+		"name": "Angelina",
+		"district": "Lufkin",
+		"largestCity": "Lufkin"
+	},
+	{
+		"name": "Aransas",
+		"district": "Corpus Christi",
+		"largestCity": "Corpus Christi"
+	},
+	{
+		"name": "Archer",
+		"district": "Wichita Falls",
+		"largestCity": "Archer City"
+	},
+	{
+		"name": "Armstrong",
+		"district": "Amarillo",
+		"largestCity": "Claude"
+	},
+	{
+		"name": "Atascosa",
+		"district": "San Antonio",
+		"largestCity": "Pleasanton"
+	},
+	{
+		"name": "Austin",
+		"district": "Yoakum",
+		"largestCity": "Sealy"
+	},
+	{
+		"name": "Bailey",
+		"district": "Lubbock",
+		"largestCity": "Muleshoe"
+	},
+	{
+		"name": "Bandera",
+		"district": "San Antonio",
+		"largestCity": "Lakehills"
+	},
+	{
+		"name": "Bastrop",
+		"district": "Austin",
+		"largestCity": "Elgin"
+	},
+	{
+		"name": "Baylor",
+		"district": "Wichita Falls",
+		"largestCity": "Seymour"
+	},
+	{
+		"name": "Bee",
+		"district": "Corpus Christi",
+		"largestCity": "Beeville"
+	},
+	{
+		"name": "Bell",
+		"district": "Waco",
+		"largestCity": "Killeen"
+	},
+	{
+		"name": "Bexar",
+		"district": "San Antonio",
+		"largestCity": "San Antonio"
+	},
+	{
+		"name": "Blanco",
+		"district": "Austin",
+		"largestCity": "Johnson City"
+	},
+	{
+		"name": "Borden",
+		"district": "Abilene",
+		"largestCity": "Gail"
+	},
+	{
+		"name": "Bosque",
+		"district": "Waco",
+		"largestCity": "Clifton"
+	},
+	{
+		"name": "Bowie",
+		"district": "Atlanta",
+		"largestCity": "Texarkana"
+	},
+	{
+		"name": "Brazoria",
+		"district": "Houston",
+		"largestCity": "Pearland"
+	},
+	{
+		"name": "Brazos",
+		"district": "Bryan",
+		"largestCity": "College Station"
+	},
+	{
+		"name": "Brewster",
+		"district": "El Paso",
+		"largestCity": "Alpine"
+	},
+	{
+		"name": "Briscoe",
+		"district": "Childress",
+		"largestCity": "Silverton"
+	},
+	{
+		"name": "Brooks",
+		"district": "Pharr",
+		"largestCity": "Falfurrias"
+	},
+	{
+		"name": "Brown",
+		"district": "Brownwood",
+		"largestCity": "Brownwood"
+	},
+	{
+		"name": "Burleson",
+		"district": "Bryan",
+		"largestCity": "Caldwell"
+	},
+	{
+		"name": "Burnet",
+		"district": "Austin",
+		"largestCity": "Marble Falls"
+	},
+	{
+		"name": "Caldwell",
+		"district": "Austin",
+		"largestCity": "San Marcos"
+	},
+	{
+		"name": "Calhoun",
+		"district": "Yoakum",
+		"largestCity": "Port Lavaca"
+	},
+	{
+		"name": "Callahan",
+		"district": "Abilene",
+		"largestCity": "Clyde"
+	},
+	{
+		"name": "Cameron",
+		"district": "Pharr",
+		"largestCity": "Brownsville"
+	},
+	{
+		"name": "Camp",
+		"district": "Atlanta",
+		"largestCity": "Pittsburg"
+	},
+	{
+		"name": "Carson",
+		"district": "Amarillo",
+		"largestCity": "Panhandle"
+	},
+	{
+		"name": "Cass",
+		"district": "Atlanta",
+		"largestCity": "Atlanta"
+	},
+	{
+		"name": "Castro",
+		"district": "Lubbock",
+		"largestCity": "Dimmitt"
+	},
+	{
+		"name": "Chambers",
+		"district": "Beaumont",
+		"largestCity": "Mont Belvieu"
+	},
+	{
+		"name": "Cherokee",
+		"district": "Tyler",
+		"largestCity": "Jacksonville"
+	},
+	{
+		"name": "Childress",
+		"district": "Childress",
+		"largestCity": "Childress"
+	},
+	{
+		"name": "Clay",
+		"district": "Wichita Falls",
+		"largestCity": "Henrietta"
+	},
+	{
+		"name": "Cochran",
+		"district": "Lubbock",
+		"largestCity": "Morton"
+	},
+	{
+		"name": "Coke",
+		"district": "San Angelo",
+		"largestCity": "Robert Lee"
+	},
+	{
+		"name": "Coleman",
+		"district": "Brownwood",
+		"largestCity": "Coleman"
+	},
+	{
+		"name": "Collin",
+		"district": "Dallas",
+		"largestCity": "Plano"
+	},
+	{
+		"name": "Collingsworth",
+		"district": "Childress",
+		"largestCity": "Wellington"
+	},
+	{
+		"name": "Colorado",
+		"district": "Yoakum",
+		"largestCity": "Columbus"
+	},
+	{
+		"name": "Comal",
+		"district": "San Antonio",
+		"largestCity": "New Braunfels"
+	},
+	{
+		"name": "Comanche",
+		"district": "Brownwood",
+		"largestCity": "Comanche"
+	},
+	{
+		"name": "Concho",
+		"district": "San Angelo",
+		"largestCity": "Eden"
+	},
+	{
+		"name": "Cooke",
+		"district": "Wichita Falls",
+		"largestCity": "Gainesville"
+	},
+	{
+		"name": "Coryell",
+		"district": "Waco",
+		"largestCity": "Copperas Cove"
+	},
+	{
+		"name": "Cottle",
+		"district": "Childress",
+		"largestCity": "Paducah"
+	},
+	{
+		"name": "Crane",
+		"district": "Odessa",
+		"largestCity": "Crane"
+	},
+	{
+		"name": "Crockett",
+		"district": "San Angelo",
+		"largestCity": "Ozona"
+	},
+	{
+		"name": "Crosby",
+		"district": "Lubbock",
+		"largestCity": "Ralls"
+	},
+	{
+		"name": "Culberson",
+		"district": "El Paso",
+		"largestCity": "Van Horn"
+	},
+	{
+		"name": "Dallam",
+		"district": "Amarillo",
+		"largestCity": "Dalhart"
+	},
+	{
+		"name": "Dallas",
+		"district": "Dallas",
+		"largestCity": "Dallas"
+	},
+	{
+		"name": "Dawson",
+		"district": "Lubbock",
+		"largestCity": "Lamesa"
+	},
+	{
+		"name": "Deaf Smith",
+		"district": "Amarillo",
+		"largestCity": "Hereford"
+	},
+	{
+		"name": "Delta",
+		"district": "Paris",
+		"largestCity": "Cooper"
+	},
+	{
+		"name": "Denton",
+		"district": "Dallas",
+		"largestCity": "Denton"
+	},
+	{
+		"name": "DeWitt",
+		"district": "Yoakum",
+		"largestCity": "Cuero"
+	},
+	{
+		"name": "Dickens",
+		"district": "Childress",
+		"largestCity": "Spur"
+	},
+	{
+		"name": "Dimmit",
+		"district": "Laredo",
+		"largestCity": "Carrizo Springs"
+	},
+	{
+		"name": "Donley",
+		"district": "Childress",
+		"largestCity": "Clarendon"
+	},
+	{
+		"name": "Duval",
+		"district": "Laredo",
+		"largestCity": "San Diego"
+	},
+	{
+		"name": "Eastland",
+		"district": "Brownwood",
+		"largestCity": "Cisco"
+	},
+	{
+		"name": "Ector",
+		"district": "Odessa",
+		"largestCity": "Odessa"
+	},
+	{
+		"name": "Edwards",
+		"district": "San Angelo",
+		"largestCity": "Rocksprings"
+	},
+	{
+		"name": "El Paso",
+		"district": "El Paso",
+		"largestCity": "El Paso"
+	},
+	{
+		"name": "Ellis",
+		"district": "Dallas",
+		"largestCity": "Waxahachie"
+	},
+	{
+		"name": "Erath",
+		"district": "Fort Worth",
+		"largestCity": "Stephenville"
+	},
+	{
+		"name": "Falls",
+		"district": "Waco",
+		"largestCity": "Marlin"
+	},
+	{
+		"name": "Fannin",
+		"district": "Paris",
+		"largestCity": "Bonham"
+	},
+	{
+		"name": "Fayette",
+		"district": "Yoakum",
+		"largestCity": "La Grange"
+	},
+	{
+		"name": "Fisher",
+		"district": "Abilene",
+		"largestCity": "Rotan"
+	},
+	{
+		"name": "Floyd",
+		"district": "Lubbock",
+		"largestCity": "Floydada"
+	},
+	{
+		"name": "Foard",
+		"district": "Childress",
+		"largestCity": "Crowell"
+	},
+	{
+		"name": "Fort Bend",
+		"district": "Houston",
+		"largestCity": "Sugar Land"
+	},
+	{
+		"name": "Franklin",
+		"district": "Paris",
+		"largestCity": "Mount Vernon"
+	},
+	{
+		"name": "Freestone",
+		"district": "Bryan",
+		"largestCity": "Teague"
+	},
+	{
+		"name": "Frio",
+		"district": "San Antonio",
+		"largestCity": "Pearsall"
+	},
+	{
+		"name": "Gaines",
+		"district": "Lubbock",
+		"largestCity": "Seminole"
+	},
+	{
+		"name": "Galveston",
+		"district": "Houston",
+		"largestCity": "League City"
+	},
+	{
+		"name": "Garza",
+		"district": "Lubbock",
+		"largestCity": "Post"
+	},
+	{
+		"name": "Gillespie",
+		"district": "Austin",
+		"largestCity": "Fredericksburg"
+	},
+	{
+		"name": "Glasscock",
+		"district": "San Angelo",
+		"largestCity": "Garden City"
+	},
+	{
+		"name": "Goliad",
+		"district": "Corpus Christi",
+		"largestCity": "Goliad"
+	},
+	{
+		"name": "Gonzales",
+		"district": "Yoakum",
+		"largestCity": "Gonzales"
+	},
+	{
+		"name": "Gray",
+		"district": "Amarillo",
+		"largestCity": "Pampa"
+	},
+	{
+		"name": "Grayson",
+		"district": "Paris",
+		"largestCity": "Sherman"
+	},
+	{
+		"name": "Gregg",
+		"district": "Tyler",
+		"largestCity": "Longview"
+	},
+	{
+		"name": "Grimes",
+		"district": "Bryan",
+		"largestCity": "Navasota"
+	},
+	{
+		"name": "Guadalupe",
+		"district": "San Antonio",
+		"largestCity": "New Braunfels"
+	},
+	{
+		"name": "Hale",
+		"district": "Lubbock",
+		"largestCity": "Plainview"
+	},
+	{
+		"name": "Hall",
+		"district": "Childress",
+		"largestCity": "Memphis"
+	},
+	{
+		"name": "Hamilton",
+		"district": "Waco",
+		"largestCity": "Hamilton"
+	},
+	{
+		"name": "Hansford",
+		"district": "Amarillo",
+		"largestCity": "Spearman"
+	},
+	{
+		"name": "Hardeman",
+		"district": "Childress",
+		"largestCity": "Quanah"
+	},
+	{
+		"name": "Hardin",
+		"district": "Beaumont",
+		"largestCity": "Lumberton"
+	},
+	{
+		"name": "Harris",
+		"district": "Houston",
+		"largestCity": "Houston"
+	},
+	{
+		"name": "Harrison",
+		"district": "Atlanta",
+		"largestCity": "Marshall"
+	},
+	{
+		"name": "Hartley",
+		"district": "Amarillo",
+		"largestCity": "Dalhart"
+	},
+	{
+		"name": "Haskell",
+		"district": "Abilene",
+		"largestCity": "Haskell"
+	},
+	{
+		"name": "Hays",
+		"district": "Austin",
+		"largestCity": "San Marcos"
+	},
+	{
+		"name": "Hemphill",
+		"district": "Amarillo",
+		"largestCity": "Canadian"
+	},
+	{
+		"name": "Henderson",
+		"district": "Tyler",
+		"largestCity": "Athens"
+	},
+	{
+		"name": "Hidalgo",
+		"district": "Pharr",
+		"largestCity": "McAllen"
+	},
+	{
+		"name": "Hill",
+		"district": "Waco",
+		"largestCity": "Hillsboro"
+	},
+	{
+		"name": "Hockley",
+		"district": "Lubbock",
+		"largestCity": "Levelland"
+	},
+	{
+		"name": "Hood",
+		"district": "Fort Worth",
+		"largestCity": "Granbury"
+	},
+	{
+		"name": "Hopkins",
+		"district": "Paris",
+		"largestCity": "Sulphur Springs"
+	},
+	{
+		"name": "Houston",
+		"district": "Lufkin",
+		"largestCity": "Crockett"
+	},
+	{
+		"name": "Howard",
+		"district": "Abilene",
+		"largestCity": "Big Spring"
+	},
+	{
+		"name": "Hudspeth",
+		"district": "El Paso",
+		"largestCity": "Fort Hancock"
+	},
+	{
+		"name": "Hunt",
+		"district": "Paris",
+		"largestCity": "Greenville"
+	},
+	{
+		"name": "Hutchinson",
+		"district": "Amarillo",
+		"largestCity": "Borger"
+	},
+	{
+		"name": "Irion",
+		"district": "San Angelo",
+		"largestCity": "Mertzon"
+	},
+	{
+		"name": "Jack",
+		"district": "Fort Worth",
+		"largestCity": "Jacksboro"
+	},
+	{
+		"name": "Jackson",
+		"district": "Yoakum",
+		"largestCity": "Edna"
+	},
+	{
+		"name": "Jasper",
+		"district": "Beaumont",
+		"largestCity": "Jasper"
+	},
+	{
+		"name": "Jeff Davis",
+		"district": "El Paso",
+		"largestCity": "Fort Davis"
+	},
+	{
+		"name": "Jefferson",
+		"district": "Beaumont",
+		"largestCity": "Beaumont"
+	},
+	{
+		"name": "Jim Hogg",
+		"district": "Pharr",
+		"largestCity": "Hebbronville"
+	},
+	{
+		"name": "Jim Wells",
+		"district": "Corpus Christi",
+		"largestCity": "Alice"
+	},
+	{
+		"name": "Johnson",
+		"district": "Fort Worth",
+		"largestCity": "Cleburne"
+	},
+	{
+		"name": "Jones",
+		"district": "Abilene",
+		"largestCity": "Stamford"
+	},
+	{
+		"name": "Karnes",
+		"district": "Corpus Christi",
+		"largestCity": "Kenedy"
+	},
+	{
+		"name": "Kaufman",
+		"district": "Dallas",
+		"largestCity": "Forney"
+	},
+	{
+		"name": "Kendall",
+		"district": "San Antonio",
+		"largestCity": "Boerne"
+	},
+	{
+		"name": "Kenedy",
+		"district": "Pharr",
+		"largestCity": "Sarita"
+	},
+	{
+		"name": "Kent",
+		"district": "Abilene",
+		"largestCity": "Jayton"
+	},
+	{
+		"name": "Kerr",
+		"district": "San Antonio",
+		"largestCity": "Kerrville"
+	},
+	{
+		"name": "Kimble",
+		"district": "San Angelo",
+		"largestCity": "Junction"
+	},
+	{
+		"name": "King",
+		"district": "Childress",
+		"largestCity": "Guthrie"
+	},
+	{
+		"name": "Kinney",
+		"district": "Laredo",
+		"largestCity": "Brackettville"
+	},
+	{
+		"name": "Kleberg",
+		"district": "Corpus Christi",
+		"largestCity": "Kingsville"
+	},
+	{
+		"name": "Knox",
+		"district": "Childress",
+		"largestCity": "Munday"
+	},
+	{
+		"name": "La Salle",
+		"district": "Laredo",
+		"largestCity": "Cotulla"
+	},
+	{
+		"name": "Lamar",
+		"district": "Paris",
+		"largestCity": "Paris"
+	},
+	{
+		"name": "Lamb",
+		"district": "Lubbock",
+		"largestCity": "Littlefield"
+	},
+	{
+		"name": "Lampasas",
+		"district": "Brownwood",
+		"largestCity": "Lampasas"
+	},
+	{
+		"name": "Lavaca",
+		"district": "Yoakum",
+		"largestCity": "Hallettsville"
+	},
+	{
+		"name": "Lee",
+		"district": "Austin",
+		"largestCity": "Giddings"
+	},
+	{
+		"name": "Leon",
+		"district": "Bryan",
+		"largestCity": "Buffalo"
+	},
+	{
+		"name": "Liberty",
+		"district": "Beaumont",
+		"largestCity": "Dayton"
+	},
+	{
+		"name": "Limestone",
+		"district": "Waco",
+		"largestCity": "Mexia"
+	},
+	{
+		"name": "Lipscomb",
+		"district": "Amarillo",
+		"largestCity": "Booker"
+	},
+	{
+		"name": "Live Oak",
+		"district": "Corpus Christi",
+		"largestCity": "George West"
+	},
+	{
+		"name": "Llano",
+		"district": "Austin",
+		"largestCity": "Kingsland"
+	},
+	{
+		"name": "Loving",
+		"district": "Odessa",
+		"largestCity": "Mentone"
+	},
+	{
+		"name": "Lubbock",
+		"district": "Lubbock",
+		"largestCity": "Lubbock"
+	},
+	{
+		"name": "Lynn",
+		"district": "Lubbock",
+		"largestCity": "Tahoka"
+	},
+	{
+		"name": "Madison",
+		"district": "Bryan",
+		"largestCity": "Madisonville"
+	},
+	{
+		"name": "Marion",
+		"district": "Atlanta",
+		"largestCity": "Jefferson"
+	},
+	{
+		"name": "Martin",
+		"district": "Odessa",
+		"largestCity": "Stanton"
+	},
+	{
+		"name": "Mason",
+		"district": "Austin",
+		"largestCity": "Mason"
+	},
+	{
+		"name": "Matagorda",
+		"district": "Yoakum",
+		"largestCity": "Bay City"
+	},
+	{
+		"name": "Maverick",
+		"district": "Laredo",
+		"largestCity": "Eagle Pass"
+	},
+	{
+		"name": "McCulloch",
+		"district": "Brownwood",
+		"largestCity": "Brady"
+	},
+	{
+		"name": "McLennan",
+		"district": "Waco",
+		"largestCity": "Waco"
+	},
+	{
+		"name": "McMullen",
+		"district": "San Antonio",
+		"largestCity": "Tilden"
+	},
+	{
+		"name": "Medina",
+		"district": "San Antonio",
+		"largestCity": "Hondo"
+	},
+	{
+		"name": "Menard",
+		"district": "San Angelo",
+		"largestCity": "Menard"
+	},
+	{
+		"name": "Midland",
+		"district": "Odessa",
+		"largestCity": "Midland"
+	},
+	{
+		"name": "Milam",
+		"district": "Bryan",
+		"largestCity": "Rockdale"
+	},
+	{
+		"name": "Mills",
+		"district": "Brownwood",
+		"largestCity": "Goldthwaite"
+	},
+	{
+		"name": "Mitchell",
+		"district": "Abilene",
+		"largestCity": "Colorado City"
+	},
+	{
+		"name": "Montague",
+		"district": "Wichita Falls",
+		"largestCity": "Bowie"
+	},
+	{
+		"name": "Montgomery",
+		"district": "Houston",
+		"largestCity": "The Woodlands"
+	},
+	{
+		"name": "Moore",
+		"district": "Amarillo",
+		"largestCity": "Dumas"
+	},
+	{
+		"name": "Morris",
+		"district": "Atlanta",
+		"largestCity": "Daingerfield"
+	},
+	{
+		"name": "Motley",
+		"district": "Childress",
+		"largestCity": "Matador"
+	},
+	{
+		"name": "Nacogdoches",
+		"district": "Lufkin",
+		"largestCity": "Nacogdoches"
+	},
+	{
+		"name": "Navarro",
+		"district": "Dallas",
+		"largestCity": "Corsicana"
+	},
+	{
+		"name": "Newton",
+		"district": "Beaumont",
+		"largestCity": "Newton"
+	},
+	{
+		"name": "Nolan",
+		"district": "Abilene",
+		"largestCity": "Sweetwater"
+	},
+	{
+		"name": "Nueces",
+		"district": "Corpus Christi",
+		"largestCity": "Corpus Christi"
+	},
+	{
+		"name": "Ochiltree",
+		"district": "Amarillo",
+		"largestCity": "Perryton"
+	},
+	{
+		"name": "Oldham",
+		"district": "Amarillo",
+		"largestCity": "Vega"
+	},
+	{
+		"name": "Orange",
+		"district": "Beaumont",
+		"largestCity": "Orange"
+	},
+	{
+		"name": "Palo Pinto",
+		"district": "Fort Worth",
+		"largestCity": "Mineral Wells"
+	},
+	{
+		"name": "Panola",
+		"district": "Atlanta",
+		"largestCity": "Carthage"
+	},
+	{
+		"name": "Parker",
+		"district": "Fort Worth",
+		"largestCity": "Weatherford"
+	},
+	{
+		"name": "Parmer",
+		"district": "Lubbock",
+		"largestCity": "Friona"
+	},
+	{
+		"name": "Pecos",
+		"district": "Odessa",
+		"largestCity": "Fort Stockton"
+	},
+	{
+		"name": "Polk",
+		"district": "Lufkin",
+		"largestCity": "West Livingston"
+	},
+	{
+		"name": "Potter",
+		"district": "Amarillo",
+		"largestCity": "Amarillo"
+	},
+	{
+		"name": "Presidio",
+		"district": "El Paso",
+		"largestCity": "Presidio"
+	},
+	{
+		"name": "Rains",
+		"district": "Paris",
+		"largestCity": "Emory"
+	},
+	{
+		"name": "Randall",
+		"district": "Amarillo",
+		"largestCity": "Amarillo"
+	},
+	{
+		"name": "Reagan",
+		"district": "San Angelo",
+		"largestCity": "Big Lake"
+	},
+	{
+		"name": "Real",
+		"district": "San Angelo",
+		"largestCity": "Camp Wood"
+	},
+	{
+		"name": "Red River",
+		"district": "Paris",
+		"largestCity": "Clarksville"
+	},
+	{
+		"name": "Reeves",
+		"district": "Odessa",
+		"largestCity": "Pecos"
+	},
+	{
+		"name": "Refugio",
+		"district": "Corpus Christi",
+		"largestCity": "Refugio"
+	},
+	{
+		"name": "Roberts",
+		"district": "Amarillo",
+		"largestCity": "Miami"
+	},
+	{
+		"name": "Robertson",
+		"district": "Bryan",
+		"largestCity": "Hearne"
+	},
+	{
+		"name": "Rockwall",
+		"district": "Dallas",
+		"largestCity": "Dallas"
+	},
+	{
+		"name": "Runnels",
+		"district": "San Angelo",
+		"largestCity": "Ballinger"
+	},
+	{
+		"name": "Rusk",
+		"district": "Tyler",
+		"largestCity": "Henderson"
+	},
+	{
+		"name": "Sabine",
+		"district": "Lufkin",
+		"largestCity": "Milam"
+	},
+	{
+		"name": "San Augustine",
+		"district": "Lufkin",
+		"largestCity": "San Augustine"
+	},
+	{
+		"name": "San Jacinto",
+		"district": "Lufkin",
+		"largestCity": "Shepherd"
+	},
+	{
+		"name": "San Patricio",
+		"district": "Corpus Christi",
+		"largestCity": "Corpus Christi"
+	},
+	{
+		"name": "San Saba",
+		"district": "Brownwood",
+		"largestCity": "San Saba"
+	},
+	{
+		"name": "Schleicher",
+		"district": "San Angelo",
+		"largestCity": "Eldorado"
+	},
+	{
+		"name": "Scurry",
+		"district": "Abilene",
+		"largestCity": "Snyder"
+	},
+	{
+		"name": "Shackelford",
+		"district": "Abilene",
+		"largestCity": "Albany"
+	},
+	{
+		"name": "Shelby",
+		"district": "Lufkin",
+		"largestCity": "Center"
+	},
+	{
+		"name": "Sherman",
+		"district": "Amarillo",
+		"largestCity": "Stratford"
+	},
+	{
+		"name": "Smith",
+		"district": "Tyler",
+		"largestCity": "Tyler"
+	},
+	{
+		"name": "Somervell",
+		"district": "Fort Worth",
+		"largestCity": "Glen Rose"
+	},
+	{
+		"name": "Starr",
+		"district": "Pharr",
+		"largestCity": "Rio Grande City"
+	},
+	{
+		"name": "Stephens",
+		"district": "Brownwood",
+		"largestCity": "Breckenridge"
+	},
+	{
+		"name": "Sterling",
+		"district": "San Angelo",
+		"largestCity": "Sterling City"
+	},
+	{
+		"name": "Stonewall",
+		"district": "Yoakum",
+		"largestCity": "Aspermont"
+	},
+	{
+		"name": "Sutton",
+		"district": "San Angelo",
+		"largestCity": "Sonora"
+	},
+	{
+		"name": "Swisher",
+		"district": "Lubbock",
+		"largestCity": "Tulia"
+	},
+	{
+		"name": "Tarrant",
+		"district": "Fort Worth",
+		"largestCity": "Fort Worth"
+	},
+	{
+		"name": "Taylor",
+		"district": "Abilene",
+		"largestCity": "Abilene"
+	},
+	{
+		"name": "Terrell",
+		"district": "Odessa",
+		"largestCity": "Sanderson"
+	},
+	{
+		"name": "Terry",
+		"district": "Lubbock",
+		"largestCity": "Brownfield"
+	},
+	{
+		"name": "Throckmorton",
+		"district": "Wichita Falls",
+		"largestCity": "Throckmorton"
+	},
+	{
+		"name": "Titus",
+		"district": "Atlanta",
+		"largestCity": "Mount Pleasant"
+	},
+	{
+		"name": "Tom Green",
+		"district": "San Angelo",
+		"largestCity": "San Angelo"
+	},
+	{
+		"name": "Travis",
+		"district": "Austin",
+		"largestCity": "Austin"
+	},
+	{
+		"name": "Trinity",
+		"district": "Lufkin",
+		"largestCity": "Trinity"
+	},
+	{
+		"name": "Tyler",
+		"district": "Beaumont",
+		"largestCity": "Woodville"
+	},
+	{
+		"name": "Upshur",
+		"district": "Atlanta",
+		"largestCity": "Gladewater"
+	},
+	{
+		"name": "Upton",
+		"district": "Odessa",
+		"largestCity": "McCamey"
+	},
+	{
+		"name": "Uvalde",
+		"district": "San Antonio",
+		"largestCity": "Uvalde"
+	},
+	{
+		"name": "Val Verde",
+		"district": "Laredo",
+		"largestCity": "Del Rio"
+	},
+	{
+		"name": "Van Zandt",
+		"district": "Tyler",
+		"largestCity": "Canton"
+	},
+	{
+		"name": "Victoria",
+		"district": "Yoakum",
+		"largestCity": "Victoria"
+	},
+	{
+		"name": "Walker",
+		"district": "Bryan",
+		"largestCity": "Huntsville"
+	},
+	{
+		"name": "Waller",
+		"district": "Houston",
+		"largestCity": "Prairie View"
+	},
+	{
+		"name": "Ward",
+		"district": "Odessa",
+		"largestCity": "Monahans"
+	},
+	{
+		"name": "Washington",
+		"district": "Bryan",
+		"largestCity": "Brenham"
+	},
+	{
+		"name": "Webb",
+		"district": "Laredo",
+		"largestCity": "Laredo"
+	},
+	{
+		"name": "Wharton",
+		"district": "Yoakum",
+		"largestCity": "El Campo"
+	},
+	{
+		"name": "Wheeler",
+		"district": "Childress",
+		"largestCity": "Shamrock"
+	},
+	{
+		"name": "Wichita",
+		"district": "Wichita Falls",
+		"largestCity": "Wichita Falls"
+	},
+	{
+		"name": "Wilbarger",
+		"district": "Wichita Falls",
+		"largestCity": "Vernon"
+	},
+	{
+		"name": "Willacy",
+		"district": "Pharr",
+		"largestCity": "Raymondville"
+	},
+	{
+		"name": "Williamson",
+		"district": "Austin",
+		"largestCity": "Round Rock"
+	},
+	{
+		"name": "Wilson",
+		"district": "San Antonio",
+		"largestCity": "Floresville"
+	},
+	{
+		"name": "Winkler",
+		"district": "Odessa",
+		"largestCity": "Kermit"
+	},
+	{
+		"name": "Wise",
+		"district": "Fort Worth",
+		"largestCity": "Decatur"
+	},
+	{
+		"name": "Wood",
+		"district": "Tyler",
+		"largestCity": "Mineola"
+	},
+	{
+		"name": "Yoakum",
+		"district": "Lubbock",
+		"largestCity": "Denver City"
+	},
+	{
+		"name": "Young",
+		"district": "Wichita Falls",
+		"largestCity": "Graham"
+	},
+	{
+		"name": "Zapata",
+		"district": "Pharr",
+		"largestCity": "Zapata"
+	},
+	{
+		"name": "Zavala",
+		"district": "Laredo",
+		"largestCity": "Crystal City"
+	}
+]
