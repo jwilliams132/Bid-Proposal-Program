@@ -1,7 +1,12 @@
 package gearworks;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -82,4 +87,97 @@ public class JSON_Manager {
 		alert.setContentText(warningMessage + ": " + argument);
 		alert.showAndWait();
 	}
+
+	public <T> void csvToJSON(File inputFile, Class<T> type) {
+		
+        List<T> objectsList = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
+
+            String line;
+            while ((line = br.readLine()) != null) {
+
+                // Manual parsing logic for quoted fields
+                String[] fields = parseCSVLine(line);
+
+                T obj = createObjectFromFields(fields, type);
+                if (obj != null) {
+
+                    objectsList.add(obj);
+                }
+            }
+
+            // Write the list to a JSON file
+            saveToJSON(inputFile.getAbsolutePath().replace(".csv", ".json"), false, objectsList);
+
+        } catch (IOException e) {
+
+            showWarning("CSV to JSON Conversion Error", "Error reading CSV file or writing JSON file", e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private String[] parseCSVLine(String line) {
+
+        List<String> fields = new ArrayList<>();
+        StringBuilder field = new StringBuilder();
+        boolean insideQuotes = false;
+
+        for (char c : line.toCharArray()) {
+
+            if (c == '"') {
+
+                insideQuotes = !insideQuotes;
+            } else if (c == ',' && !insideQuotes) {
+
+                fields.add(field.toString());
+                field.setLength(0);
+            } else {
+
+                field.append(c);
+            }
+        }
+        fields.add(field.toString()); // Add the last field
+
+        return fields.toArray(new String[0]);
+    }
+
+    // This method should be implemented to map CSV fields to an object of type T
+    private <T> T createObjectFromFields(String[] fields, Class<T> type) {
+
+    try {
+
+        // Create a new instance of the type T
+        T instance = type.getDeclaredConstructor().newInstance();
+
+        // Get all fields of the class
+        Field[] classFields = type.getDeclaredFields();
+
+        for (int i = 0; i < fields.length && i < classFields.length; i++) {
+
+            Field field = classFields[i];
+            field.setAccessible(true); // Make private fields accessible
+
+            String value = fields[i];
+            if (field.getType() == int.class || field.getType() == Integer.class) {
+
+                field.set(instance, Integer.parseInt(value));
+            } else if (field.getType() == String.class) {
+
+                field.set(instance, value);
+            } else if (field.getType() == BigDecimal.class) {
+
+                field.set(instance, new BigDecimal(value));
+            } else {
+
+                // Handle other types as needed
+            }
+        }
+        return instance;
+    } catch (Exception e) {
+
+        e.printStackTrace();
+        return null;
+    }
+}
 }
