@@ -110,6 +110,14 @@
     -fx-background-color: #53263b;
 }
 
+.menu-bar .menu:showing .menu .label {
+    -fx-text-fill: #afccd6;
+}
+
+.menu-bar .menu:showing .menu:hover .label {
+    -fx-text-fill: #fefdfd;
+}
+
 .menu-bar .menu .menu-item:focused {
     -fx-background-color: #53263b;
 }

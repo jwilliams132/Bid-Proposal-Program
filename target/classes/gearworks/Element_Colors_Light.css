@@ -112,6 +112,14 @@
     -fx-background-color: #d2d2d2;
 }
 
+.menu-bar .menu:showing .menu .label {
+    -fx-text-fill: #333333;
+}
+
+.menu-bar .menu:showing .menu:hover .label {
+    -fx-text-fill: #fefdfd;
+}
+
 .menu-bar .menu .menu-item .label {
     -fx-text-fill: #616161;
 }
