@@ -23,10 +23,20 @@ public class JobFilterChain implements JobFilterInterface {
 		for (JobFilterInterface filter : filters) {
 
 			if (!filter.apply(job)) {
-				
+
 				return false;
 			}
 		}
 		return true;
 	}
+
+	public List<JobFilterInterface> getFilters() {
+		
+		return filters;
+	}
+
+	// List<Job> filteredJobs = jobs.stream()
+	// 		.filter(filterChain::apply)
+	// 		.collect(Collectors.toList());
+
 }

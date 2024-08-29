@@ -40,6 +40,11 @@
 						</items>
 					</Menu>
 
+					<Menu fx:id="filteringMenu" text="Filtering">
+						<items>
+
+						</items>
+					</Menu>
 					<Menu fx:id="viewMenu" text="View">
 						<items>
 

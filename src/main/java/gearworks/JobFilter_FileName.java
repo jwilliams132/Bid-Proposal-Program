@@ -4,7 +4,7 @@ import java.util.List;
 
 public class JobFilter_FileName implements JobFilterInterface {
 
-	private List<String> fileNames;
+	public List<String> fileNames;
 
 	public JobFilter_FileName(List<String> fileNames) {
 
@@ -14,7 +14,9 @@ public class JobFilter_FileName implements JobFilterInterface {
 	@Override
 	public boolean apply(Job job) {
 		
-		String fileName = String.format("%s-%s\\(%s\\).txt", job.getCounty(), job.getCsj(), job.getHighway());
+		String fileName = String.format("%s-%s(%s).txt", job.getCounty().replace(", ETC", ""), job.getCsj(), job.getHighway().replace(", ETC", ""));
+		System.out.println("File name:  " + fileName);
+		System.out.println(fileNames.contains(fileName));
 		return fileNames.contains(fileName);
 	}
 }

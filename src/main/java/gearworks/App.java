@@ -8,10 +8,15 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -19,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.CustomMenuItem;
 import javafx.scene.control.Label;
@@ -86,7 +92,7 @@ public class App extends Application {
 	};
 
 	@FXML
-	private Menu viewMenu, optionsMenu;
+	private Menu filteringMenu, viewMenu, optionsMenu;
 	private CheckMenuItem upToMobsCMI, additionalMobsCMI, inputDirectoryUsed, deletionWarningsShown;
 	private ToggleGroup themeToggleGroup;
 
@@ -114,11 +120,19 @@ public class App extends Application {
 	private FileManager fileManager = new FileManager();
 	private JSON_Manager json_Manager = new JSON_Manager();
 	private InputFileProcessor fileProcessor = new InputFileProcessor();
+	private CountyManager countyManager = new CountyManager();
 	private Preferences_Manager preferences_Manager = new Preferences_Manager();
 	private Preferences preferences;
 
-	private List<Job> currentJobList, filteredJobList;
+	private JobFilterChain filterChain = new JobFilterChain();
+	private JobFilter_FileName fileNameFilter;
+	private JobFilter_QuantitySum quantitySumFilter;
+	private JobFilter_District districtFilter;
+
+	private List<Job> jobListFromInput, filteredJobList, confirmedJobList;
 	private List<Integer> filteredIndices;
+	private Map<String, CheckBox> districtCheckBoxes = new TreeMap<String, CheckBox>();
+	private Set<String> blacklistedDistricts;
 	private int currentJob = 0;
 
 	private Controller_UnfilteredDisplay unfilteredController;
@@ -127,7 +141,7 @@ public class App extends Application {
 	// private Controller_UpdateInfoDisplay updateController;
 
 	private String lettingMonthDirectory;
-	
+	private boolean isFilterChainEmpty = true;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -184,6 +198,9 @@ public class App extends Application {
 
 		preferences = preferences_Manager.loadPreferences("src\\main\\resources\\gearworks\\config.json",
 				Preferences.class);
+
+		addFilterMenuItems();
+
 		upToMobsCMI = new CheckMenuItem("Show Up to Mobs Option in Pricing") {
 			{
 				setOnAction(event -> {
@@ -249,6 +266,100 @@ public class App extends Application {
 		addPricing.setDisable(true);
 		previousJob.setDisable(true);
 		nextJob.setDisable(true);
+	}
+
+	private void addFilterMenuItems() {
+
+		CheckMenuItem useMonthlyFilter = new CheckMenuItem("This Month's Created Filter");
+		useMonthlyFilter.setOnAction(event -> {
+
+			monthlyFilterChangeState(useMonthlyFilter.isSelected());
+		});
+
+		Menu useDistrictFilter = new Menu("Use District Filter (Districts to Blacklist ->)");
+
+		countyManager.getDistricts()
+				.forEach(districtName -> districtCheckBoxes.put(districtName, new CheckBox(districtName) {
+					{
+						setOnAction(event -> districtFilterChangeState());
+					}
+				}));
+		districtCheckBoxes.forEach((key, value) -> useDistrictFilter.getItems().add(new CustomMenuItem(value) {
+			{
+				setHideOnClick(false);
+			}
+		}));
+		CheckMenuItem useQuantityLimitFilter = new CheckMenuItem("Quantity Limit Filter");
+
+		filteringMenu.getItems().addAll(useMonthlyFilter, useDistrictFilter, useQuantityLimitFilter);
+	}
+
+	private void monthlyFilterChangeState(boolean isSelected) {
+
+		if (!isSelected) {
+
+			fileNameFilter = null;
+			filterChangeState();
+			return;
+		}
+		String monthlyFileFilterPath = lettingMonthDirectory + File.separator + "Filter_FileName.json";
+		File inputFile = new File(monthlyFileFilterPath);
+		List<String> fileNames;
+		try {
+
+			fileNames = json_Manager.parseJsonFile(inputFile, String[].class);
+		} catch (NullPointerException e) {
+
+			System.err.println(monthlyFileFilterPath + " WAS NOT FOUND.  ->  " + e.getMessage());
+			return;
+		} catch (IOException e) {
+
+			System.err.println("THERE WAS AN ISSUE WITH THIS FILE:  " + monthlyFileFilterPath + " BEING LOADED.  ->  "
+					+ e.getMessage());
+			return;
+		}
+		fileNameFilter = new JobFilter_FileName(fileNames);
+		filterChangeState();
+	}
+
+	private void districtFilterChangeState() {
+
+		blacklistedDistricts = new TreeSet<String>();
+
+		districtCheckBoxes.forEach((key, value) -> {
+
+			if (value.isSelected())
+				blacklistedDistricts.add(key);
+		});
+		boolean isAnySelected = districtCheckBoxes.values().stream().anyMatch(checkbox -> checkbox.isSelected());
+		districtFilter = isAnySelected ? new JobFilter_District(blacklistedDistricts) : null;
+
+		filterChangeState();
+
+	}
+
+	private void filterChangeState() {
+
+		filterChain = new JobFilterChain();
+		if (fileNameFilter != null)
+
+			filterChain.addFilter(fileNameFilter);
+
+		if (quantitySumFilter != null)
+
+			filterChain.addFilter(quantitySumFilter);
+
+		if (districtFilter != null)
+
+			filterChain.addFilter(districtFilter);
+		isFilterChainEmpty = filterChain.getFilters().size() == 0 ? true : false;
+		filteredJobList = jobListFromInput.stream()
+				.filter(filterChain::apply)
+				.collect(Collectors.toList());
+		filteredJobList.forEach(x -> {
+			System.out.println(x.getCounty() + "  " + x.getCsj());
+		});
+		loadDisplayFXML(currentDisplay);
 	}
 
 	private CustomMenuItem getTextFieldMenuItem(String labelText, String option) {
@@ -425,7 +536,7 @@ public class App extends Application {
 					currentJob = 0;
 					unfilteredController = new Controller_UnfilteredDisplay();
 					unfilteredController = loader.getController();
-					unfilteredController.setJobList(currentJobList);
+					unfilteredController.setJobList(isFilterChainEmpty ? jobListFromInput : filteredJobList);
 					unfilteredController.setFilteredIndexes(filteredIndices);
 					unfilteredController.customizeAppearance();
 					break;
