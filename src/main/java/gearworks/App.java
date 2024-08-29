@@ -534,7 +534,7 @@ public class App extends Application {
 					createClearText.setDisable(true);
 					chooseSaveFolder.setDisable(true);
 					currentJob = 0;
-					unfilteredController = new Controller_UnfilteredDisplay();
+					// unfilteredController = new Controller_UnfilteredDisplay();
 					unfilteredController = loader.getController();
 					unfilteredController.setJobList(isFilterChainEmpty ? jobListFromInput : filteredJobList);
 					unfilteredController.setFilteredIndexes(filteredIndices);
@@ -556,8 +556,8 @@ public class App extends Application {
 									job.getHighway().replace(", ETC", "")))
 							.collect(Collectors.toList());
 					// JobFilter_FileName fileNameFilter = new JobFilter_FileName(filteredJobs);
-					boolean successfulJSON = json_Manager.saveToJSON(lettingMonthDirectory + "\\Filter_FileName.json", false, filteredJobs);
-					System.out.println(successfulJSON);
+					json_Manager.saveToJSON(lettingMonthDirectory + "\\Filter_FileName.json",
+							false, filteredJobs);
 					filteredController.customizeAppearance();
 					break;
 
@@ -612,9 +612,9 @@ public class App extends Application {
 		if (inputFile.getName().endsWith(".json")) {
 
 			try {
-				json_Manager.parseJsonFile(inputFile, Job[].class);
+				jobListFromInput = json_Manager.parseJsonFile(inputFile, Job[].class);
 			} catch (Exception e) {
-				
+
 				e.printStackTrace();
 				return;
 			}
@@ -646,7 +646,9 @@ public class App extends Application {
 
 		List<String> fileNameFilter = null; // for when you implement .json file filter
 
-		File jobsDirectory = new File(fileManager.chooseDirectory(null) + File.separator + "Jobs");
+		File jobsDirectory = new File(
+				fileManager.chooseDirectory(System.getProperty("user.home") + "/Desktop/Letting/2024") + File.separator
+						+ "Jobs");
 
 		if (fileNameFilter == null) {
 
@@ -681,10 +683,10 @@ public class App extends Application {
 	@FXML
 	private void updateInfo() {
 
-		System.out.println("=".repeat(150));
-		System.out.println("----- Console Break -----".repeat(6));
-		System.out.println("=".repeat(150));
-		System.out.println();
+		// File file = new File("C:\\Users\\Jacob\\Desktop\\Letting\\Line Item
+		// Codes.csv");
+		// JSON_Manager manager = new JSON_Manager();
+		// manager.csvToJSON(file, TxDotLineItem.class);
 	}
 
 	@FXML
