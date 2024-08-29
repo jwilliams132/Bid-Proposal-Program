@@ -6,6 +6,10 @@ public class County {
 	private String district;
 	private String largestCity;
 	
+	public County() {
+
+	}
+	
 	public County(String name, String district, String largestCity) {
 
 		this.name = name;

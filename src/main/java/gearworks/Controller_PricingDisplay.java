@@ -145,7 +145,7 @@ public class Controller_PricingDisplay {
 	// MARK: setupPricing
 	public void updateJobDisplay() {
 
-		TexasCountyManager cityFinder = new TexasCountyManager();
+		CountyManager cityFinder = new CountyManager();
 
 		Job currentJob = filteredJobList.get(currentJobIndex);
 		jobHeader.setText(String.format("%-20s%-20s%-20s%-20s", currentJob.getCsj(),

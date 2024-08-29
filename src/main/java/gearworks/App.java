@@ -237,7 +237,7 @@ public class App extends Application {
 		// root.getStylesheets().add(preferences.getTheme() == Themes.DARK ?
 		// CSS_Colors_Dark : CSS_Colors_Light);
 
-		loadDisplayFXML("StartupDisplay.fxml", Display.STARTUP);
+		loadDisplayFXML(Display.STARTUP);
 		undoFilter.setOnAction(e -> removeFilter());
 		addColors();
 
@@ -374,12 +374,32 @@ public class App extends Application {
 				.forEach(x -> x.getStyleClass().add("primaryBackground"));
 	}
 
-	private void loadDisplayFXML(String fxml, Display currentDisplay) {
+	private void loadDisplayFXML(Display currentDisplay) {
 
 		Display previousDisplay = this.currentDisplay;
 		this.currentDisplay = currentDisplay;
 		VBox display = null;
 
+		String fxml;
+		switch (currentDisplay) {
+			case STARTUP:
+				fxml = "StartupDisplay.fxml";
+				break;
+			case UNFILTERED:
+				fxml = "UnfilteredDisplay.fxml";
+				break;
+			case FILTERED:
+				fxml = "FilteredDisplay.fxml";
+				break;
+			case PRICING:
+				fxml = "PricingDisplay.fxml";
+				break;
+			case UPDATE:
+				fxml = "UpdateDisplay.fxml";
+				break;
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + currentDisplay);
+		}
 		previousJob.setVisible(false);
 		nextJob.setVisible(false);
 		currentJobLabel.setVisible(false);
@@ -411,14 +431,14 @@ public class App extends Application {
 					break;
 
 				case FILTERED:
-					filteredJobList = unfilteredController.getFilteredList();
+					confirmedJobList = unfilteredController.getFilteredList();
 					filteredIndices = unfilteredController.getFilteredIndexes();
 					filteredController = new Controller_FilteredDisplay();
 					filteredController = loader.getController();
-					filteredController.setFilteredJobList(filteredJobList);
+					filteredController.setConfirmedJobList(confirmedJobList);
 
 					// save filter as JSON
-					List<String> filteredJobs = filteredJobList.stream()
+					List<String> filteredJobs = confirmedJobList.stream()
 							.map(job -> String.format("%s-%s(%s).txt",
 									job.getCounty().replace(", ETC", ""),
 									job.getCsj(),
@@ -440,7 +460,7 @@ public class App extends Application {
 					pricingController = new Controller_PricingDisplay();
 					pricingController = loader.getController();
 					pricingController.setPreferences(preferences);
-					pricingController.setJobList(filteredJobList);
+					pricingController.setJobList(confirmedJobList);
 					pricingController.setCurrentJobIndex(currentJob);
 					pricingController.customizeAppearance();
 					pricingController.setApp(this);
@@ -476,7 +496,7 @@ public class App extends Application {
 		}
 
 		if (inputFile.getName().endsWith(".txt"))
-			currentJobList = fileProcessor.parseFile(inputFile.getAbsolutePath());
+			jobListFromInput = fileProcessor.parseFile(inputFile.getAbsolutePath());
 
 		if (inputFile.getName().endsWith(".json")) {
 
@@ -504,7 +524,7 @@ public class App extends Application {
 		if (filteredIndices != null)
 			filteredIndices.clear(); // reset filter
 
-		loadDisplayFXML("UnfilteredDisplay.fxml", Display.UNFILTERED);
+		loadDisplayFXML(Display.UNFILTERED);
 		// changeDisplay(getUnfilteredDisplay(), Display.UNFILTERED);
 	}
 
@@ -526,7 +546,7 @@ public class App extends Application {
 					.collect(Collectors.toList());
 
 			FileFormat_TxDot_Single parser = new FileFormat_TxDot_Single();
-			currentJobList = parser.jobsFromFormat(jobFiles);
+			jobListFromInput = parser.jobsFromFormat(jobFiles);
 		}
 
 		lettingMonthDirectory = Paths.get(jobsDirectory.getAbsolutePath()).getParent().toString();
@@ -544,7 +564,7 @@ public class App extends Application {
 		if (filteredIndices != null)
 			filteredIndices.clear(); // reset filter
 
-		loadDisplayFXML("UnfilteredDisplay.fxml", Display.UNFILTERED);
+		loadDisplayFXML(Display.UNFILTERED);
 	}
 
 	@FXML
@@ -562,7 +582,7 @@ public class App extends Application {
 		// Replace the existing filterJobs button with the newButton
 		jobFilterPanel.getChildren().set(0, undoFilter);
 
-		loadDisplayFXML("FilteredDisplay.fxml", Display.FILTERED);
+		loadDisplayFXML(Display.FILTERED);
 		addPricing.setDisable(false);
 		createClearText.setDisable(false);
 	}
@@ -573,13 +593,13 @@ public class App extends Application {
 		// Replace the existing filterJobs button with the newButton
 		jobFilterPanel.getChildren().set(0, filterJobs);
 
-		loadDisplayFXML("UnfilteredDisplay.fxml", Display.UNFILTERED);
+		loadDisplayFXML(Display.UNFILTERED);
 	}
 
 	@FXML
 	private void switchToPricing() {
 
-		loadDisplayFXML("PricingDisplay.fxml", Display.PRICING);
+		loadDisplayFXML(Display.PRICING);
 	}
 
 	@FXML
@@ -612,7 +632,7 @@ public class App extends Application {
 
 		if (!preferences.isInputDirectoryUsed())
 			lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
-		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Program Output (User Friendly).txt",
+		fileProcessor.saveFileFormat(confirmedJobList, lettingMonthDirectory + "\\Program Output (User Friendly).txt",
 				InputFileProcessor.FileFormat.CLEAR_TEXT);
 	}
 
@@ -626,7 +646,7 @@ public class App extends Application {
 		if (!preferences.isInputDirectoryUsed())
 			lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
 
-		fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\Email List.txt",
+		fileProcessor.saveFileFormat(confirmedJobList, lettingMonthDirectory + "\\Email List.txt",
 				InputFileProcessor.FileFormat.EMAIL);
 		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2
 		// Output.txt",
@@ -635,10 +655,10 @@ public class App extends Application {
 		// Output.txt",
 		// InputFileProcessor.FileFormat.V3);
 
-		json_Manager.saveToJSON(lettingMonthDirectory + "\\Job Data.json", true, filteredJobList);
+		json_Manager.saveToJSON(lettingMonthDirectory + "\\Job Data.json", true, confirmedJobList);
 
 		ContractorStorage storage = new ContractorStorage();
-		for (Job job : filteredJobList)
+		for (Job job : confirmedJobList)
 			job.getContractorList().forEach(contractor -> storage.addToContractList(contractor));
 		storage.formatContractorList();
 
@@ -655,7 +675,7 @@ public class App extends Application {
 	@FXML
 	private void saveExcel() {
 
-		filteredJobList.forEach(job -> {
+		confirmedJobList.forEach(job -> {
 			job.setMinimumDayCharge(new BigDecimal(preferences.getDropDeadPrice()));
 			job.setStandbyPrice(new BigDecimal(preferences.getStandByPrice()));
 		});
@@ -675,7 +695,7 @@ public class App extends Application {
 				excelOutput = new ExcelFormat_V2();
 				break;
 		}
-		excelOutput.createExcelFile(filteredJobList, lettingMonthDirectory);
+		excelOutput.createExcelFile(confirmedJobList, lettingMonthDirectory);
 	}
 
 	private void handleThemeChange(Themes theme) {
@@ -700,13 +720,13 @@ public class App extends Application {
 		currentJob = currentJobIndex;
 
 		// Update the label text as needed
-		currentJobLabel.setText(String.format("(%02d/%02d)", currentJob + 1, filteredJobList.size()));
+		currentJobLabel.setText(String.format("(%02d/%02d)", currentJob + 1, confirmedJobList.size()));
 		enableIterationButtons();
 	}
 
 	private void enableIterationButtons() {
 
-		if (filteredJobList.size() == 1) {
+		if (confirmedJobList.size() == 1) {
 
 			previousJob.setDisable(true);
 			nextJob.setDisable(true);
@@ -717,12 +737,12 @@ public class App extends Application {
 			previousJob.setDisable(true);
 			nextJob.setDisable(false);
 		}
-		if (currentJob == filteredJobList.size() - 1) {
+		if (currentJob == confirmedJobList.size() - 1) {
 
 			previousJob.setDisable(false);
 			nextJob.setDisable(true);
 		}
-		if (currentJob > 0 && currentJob < filteredJobList.size() - 1) {
+		if (currentJob > 0 && currentJob < confirmedJobList.size() - 1) {
 
 			previousJob.setDisable(false);
 			nextJob.setDisable(false);

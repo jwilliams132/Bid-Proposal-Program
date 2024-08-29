@@ -63,7 +63,7 @@ public class Controller_FilteredDisplay {
 		}
 	}
 
-	public void setFilteredJobList(List<Job> jobList) {
+	public void setConfirmedJobList(List<Job> jobList) {
 
 		this.filteredJobList = jobList;
 	}
