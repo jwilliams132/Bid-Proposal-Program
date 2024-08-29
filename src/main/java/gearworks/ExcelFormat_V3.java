@@ -1,5 +1,6 @@
 package gearworks;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -51,7 +52,8 @@ public class ExcelFormat_V3 extends ExcelFormat {
 				createNewSheet(String.valueOf(i + 2));
 			}
 			populateExcel(job, getEstimateNo(lettingMonthDirectory), contractorNumber);
-			saveWorkbook(String.format("%s\\%S %s%s", lettingMonthDirectory,
+			saveWorkbook(String.format("%s\\%S %s%s", lettingMonthDirectory 
+			+ File.separator + "Proposals - Excel",
 					job.getCounty(),
 					job.getCsj(), ".xlsm"));
 			contractorNumber += job.getContractorList().size();
