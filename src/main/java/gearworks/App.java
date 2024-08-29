@@ -222,12 +222,12 @@ public class App extends Application {
 			}
 		};
 
+		optionsMenu.getItems().add(inputDirectoryUsed);
+		optionsMenu.getItems().add(deletionWarningsShown);
 		optionsMenu.getItems().add(upToMobsCMI);
 		optionsMenu.getItems().add(additionalMobsCMI);
 		optionsMenu.getItems().add(getTextFieldMenuItem("Drop Dead Price:  ", "DROPDEAD"));
 		optionsMenu.getItems().add(getTextFieldMenuItem("Standby Price:  ", "STANDBY"));
-		optionsMenu.getItems().add(inputDirectoryUsed);
-		optionsMenu.getItems().add(deletionWarningsShown);
 
 		root.getStylesheets().add(CSS_Styles);
 		if (preferences.getTheme() == Themes.DARK)
