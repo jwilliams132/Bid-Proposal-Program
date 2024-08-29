@@ -8,15 +8,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -770,10 +769,10 @@ public class App extends Application {
 
 		json_Manager.saveToJSON(lettingMonthDirectory + "\\Job Data.json", true, confirmedJobList);
 
-		ContractorStorage storage = new ContractorStorage();
-		for (Job job : confirmedJobList)
-			job.getContractorList().forEach(contractor -> storage.addToContractList(contractor));
-		storage.formatContractorList();
+		// ContractorStorage storage = new ContractorStorage();
+		// for (Job job : confirmedJobList)
+		// 	job.getContractorList().forEach(contractor -> storage.addToContractList(contractor));
+		// storage.formatContractorList();
 
 		// Set the file path label to show the chosen file
 		directoryPath.setText("Directory Path:  " + lettingMonthDirectory);
