@@ -1,0 +1,171 @@
+.primaryBackground {
+    -fx-background-color: #0d1521;
+}
+
+.secondaryBackground {
+    -fx-background-color: #101A29;
+
+}
+
+.secondaryScrollBackground {
+    -fx-background-color: #101A29;
+    -fx-background: #101A29;
+}
+
+.primaryLabel {
+    -fx-text-fill: #00b3bd;
+}
+
+.secondaryLabel {
+    -fx-text-fill: #3788ba;
+}
+
+.tertiaryLabel {
+    -fx-text-fill: #c09b52;
+}
+
+.quaternaryLabel {
+    -fx-text-fill: #c93e71;
+}
+
+.button {
+    -fx-background-color: #291b2d;
+    -fx-border-color: #92315a;
+    -fx-text-fill: #afccd6;
+}
+
+.button:hover {
+    -fx-background-color: #772c4d;
+}
+
+.button:disabled {
+    -fx-background-color: transparent;
+
+}
+
+.button-hover {
+    -fx-background-color: #772c4d;
+}
+
+.customMenuButton {
+    -fx-background-color: #291b2d;
+    -fx-border-color: #92315a;
+    -fx-text-fill: #afccd6;
+}
+
+/* Remove the background from the scrollbar track */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane>.scroll-bar:vertical .thumb,
+.scroll-pane>.scroll-bar:horizontal .thumb {
+    -fx-background-color: #281f33;
+}
+
+.scroll-pane:hover>.scroll-bar:vertical .thumb,
+.scroll-pane:hover>.scroll-bar:horizontal .thumb {
+    -fx-background-color: #332136;
+}
+
+/* Remove the increment button */
+.scroll-bar:vertical .increment-button,
+.scroll-bar:horizontal .increment-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:horizontal .increment-button {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .decrement-button,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+}
+
+
+.menu-bar {
+    -fx-background-color: #070c13;
+}
+
+.menu-bar .menu:hover {
+    -fx-background-color: #441f30;
+}
+
+.menu-bar .menu .label {
+    -fx-text-fill: #3d567b;
+}
+
+.menu-bar .menu:hover .label {
+    -fx-text-fill: #afccd6;
+}
+
+.menu-bar .menu:showing .label {
+    -fx-text-fill: #afccd6;
+}
+
+.menu-bar .menu:showing {
+    -fx-background-color: #53263b;
+}
+
+.menu-bar .menu:showing .menu .label {
+    -fx-text-fill: #afccd6;
+}
+
+.menu-bar .menu:showing .menu:hover .label {
+    -fx-text-fill: #fefdfd;
+}
+
+.menu-bar .menu .menu-item:focused {
+    -fx-background-color: #53263b;
+}
+
+.menu-bar .menu .menu-item:focused .label {
+    -fx-text-fill: #fefdfd;
+}
+
+.context-menu {
+    -fx-background-color: #441f30;
+    -fx-border-color: #000000;
+}
+
+
+.context-menu>*>.separator>.line {
+    -fx-border-color: #2c1825;
+}
+
+
+
+
+
+.check-box .box {
+    -fx-background-color: transparent;
+    -fx-border-color: #1e2d42;
+
+}
+.check-box:focused .box {
+	-fx-border-color: #48324d;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #bfc9ce;
+
+}
+
+.text-field {
+    -fx-border-color: #1e2d42;
+    -fx-background-color: transparent;
+    -fx-text-fill: #bfccdf;
+    -fx-highlight-fill: #5b2946;
+}
+
+.text-field:focused {
+    -fx-border-color: #49324e;
+}
+
+.optionTextField {
+	-fx-border-color: #92315a;
+	-fx-background-color: #101A29;
+}

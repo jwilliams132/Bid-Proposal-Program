@@ -1,0 +1,121 @@
+.button {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 10 10 10 10;
+}
+
+.customMenuButton {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 3 3 3 3;
+}
+
+.manipulationButton {
+	/* -fx-pref-width: 5; */
+	-fx-pref-height: 5;
+	-fx-font-size: 14px;
+	-fx-padding: -1 5 -1 5;
+	/* up right down left */
+}
+
+#upLeft {
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-background-radius: 5 5 0 0;
+    -fx-border-radius: 5 5 0 0;
+}
+
+#downLeft {
+	-fx-border-width: 0 1px 1px 1px;
+	-fx-background-radius: 0 0 5 5;
+	-fx-border-radius: 0 0 5 5;
+}
+
+#upRight {
+	/* -fx-spacing: 0 0 0 0; */
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-background-radius: 5 5 0 0;
+    -fx-border-radius: 5 5 0 0;
+	/* -fx-pref-width: 40; */
+}
+
+#downRight {
+	/* -fx-spacing: 0 0 0 0; */
+	-fx-border-width: 0 1px 1px 1px;
+	-fx-background-radius: 0 0 5 5;
+    -fx-border-radius: 0 0 5 5;
+	/* -fx-pref-width: 40; */
+}
+
+#deleteButton {
+	-fx-border-width: 1px 1px 1px 1px;
+	-fx-background-radius: 5 5 5 5;
+    -fx-border-radius: 5 5 5 5;
+	-fx-padding: 9 2 8 1;
+}
+
+/* Remove the background from the scrollbar track */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-pref-width: 17;
+}
+
+.scroll-pane>.scroll-bar:vertical .thumb,
+.scroll-pane>.scroll-bar:horizontal .thumb {
+    -fx-opacity: 0;
+}
+
+.scroll-pane:hover>.scroll-bar:vertical .thumb,
+.scroll-pane:hover>.scroll-bar:horizontal .thumb {
+	-fx-opacity: 1;
+}
+
+.menu-bar {
+    -fx-padding: 5 5 5 5;
+}
+
+.menu-bar .menu:hover,
+.menu-bar .menu:showing,
+.menu-bar .menu .menu-item:hover,
+.menu-bar .menu .menu-item.menu-item:focused {
+    -fx-background-radius: 5;
+}
+
+.context-menu {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-padding: 5 5 5 5;
+}
+
+
+.context-menu>*>.separator>.line {
+    -fx-border-insets: 5 0 5 0;
+}
+
+
+
+.check-box .box {
+    -fx-border-radius: 3px;
+
+}
+
+.check-box:selected .mark {
+
+    -fx-background-color: #bfc9ce;
+
+}
+
+.text-field {
+
+    -fx-border-radius: 3px;
+    -fx-padding: 10;
+}
+
+.text-field:focused {
+
+    -fx-border-radius: 3px;
+}
+
+.optionTextField {
+	-fx-padding: 3 10 3 10;
+	-fx-pref-width: 75;
+}

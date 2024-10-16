@@ -13,7 +13,7 @@ public class InputFileProcessor {
 
 	public enum FileFormat {
 
-		COMBINED, V1, V2, V3, CLEAR_TEXT, EMAIL
+		COMBINED, V1, V2, V3, CLEAR_TEXT, EMAIL, CALL_LIST
 	}
 
 	public InputFileProcessor() {
@@ -101,6 +101,10 @@ public class InputFileProcessor {
 
 			case CLEAR_TEXT:
 				fileFormat = new FileFormat_ClearText();
+				break;
+
+			case CALL_LIST:
+				fileFormat = new FileFormat_CallList();
 				break;
 
 			case EMAIL:

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Label?>
+
+<VBox fx:id="startupDisplay" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171"
+    xmlns:fx="http://javafx.com/fxml/1" styleClass="secondaryBackground">
+
+    <Label fx:id="main" text="BIDDING PROGRAM" style="-fx-font-weight: bold;" styleClass="tertiaryLabel">
+        <font>
+            <Font name="Courier New" size="50" />
+        </font>
+    </Label>
+    <Label fx:id="secondary" text="Click &quot;Open Bidding File&quot; To Get Started" styleClass="secondaryLabel">
+        <font>
+            <Font name="Courier New" size="16" />
+        </font>
+    </Label>
+</VBox>

@@ -746,6 +746,8 @@ public class App extends Application {
 			lettingMonthDirectory = fileManager.chooseDirectory(lettingMonthDirectory);
 		fileProcessor.saveFileFormat(confirmedJobList, lettingMonthDirectory + "\\Program Output (User Friendly).txt",
 				InputFileProcessor.FileFormat.CLEAR_TEXT);
+		fileProcessor.saveFileFormat(confirmedJobList, lettingMonthDirectory + "\\Call List.txt",
+				InputFileProcessor.FileFormat.CALL_LIST);
 	}
 
 	@FXML
@@ -760,6 +762,8 @@ public class App extends Application {
 
 		fileProcessor.saveFileFormat(confirmedJobList, lettingMonthDirectory + "\\Email List.txt",
 				InputFileProcessor.FileFormat.EMAIL);
+		fileProcessor.saveFileFormat(confirmedJobList, lettingMonthDirectory + "\\Call List.txt",
+				InputFileProcessor.FileFormat.CALL_LIST);
 		// fileProcessor.saveFileFormat(filteredJobList, lettingMonthDirectory + "\\V2
 		// Output.txt",
 		// InputFileProcessor.FileFormat.V2);
@@ -771,7 +775,8 @@ public class App extends Application {
 
 		// ContractorStorage storage = new ContractorStorage();
 		// for (Job job : confirmedJobList)
-		// 	job.getContractorList().forEach(contractor -> storage.addToContractList(contractor));
+		// job.getContractorList().forEach(contractor ->
+		// storage.addToContractList(contractor));
 		// storage.formatContractorList();
 
 		// Set the file path label to show the chosen file
